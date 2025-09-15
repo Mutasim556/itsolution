@@ -1,0 +1,98 @@
+/*
+************
+*************************
+15. testimonial
+******************************************************* 
+*************************************************************** */
+@use '../abstracts/mixins' as *;
+@use '../abstracts/variables' as *;
+
+
+.ns-price-item-4 {
+    border: 1px solid #eaeaea;
+    text-align: center;
+    &.ns-fetured {
+        border-color: var(--clr-theme-primary);
+    }
+  }
+  .ns-price-item-heading-4 {
+    display: inline-block;
+    height: 50px;
+    background-color: #242424;
+    line-height: 50px;
+    padding: 0 45px;
+    font-size: 22px;
+    color: #fff;
+    font-weight: 500;
+    position: relative;
+    z-index: 1;
+    font-family: "Inter", sans-serif;
+    margin-bottom: 42px;
+    &::after {
+        position: absolute;
+        content: "";
+        bottom: -20px;
+        right: 0;
+        left: 0;
+        clip-path: polygon(0 0, 50% 100%, 100% 0);
+        background-color: #040a0b;
+        width: 40px;
+        height: 20px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    &.ns-price-featured {
+        background-color: var(--clr-theme-primary);
+        &::after {
+            background-color: var(--clr-theme-primary);
+        }
+    }
+  }
+  .ns-price-item-heading-4
+  .ns-price-item-price-4 {
+    font-size: 50px;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+  .ns-price-item-price-4 span {
+    font-size: 20px;
+    display: inline-block;
+  }
+  .ns-price-item-plan-4 {
+    height: 50px;
+    line-height: 50px;
+    background-color: var(--clr-theme-primary);
+  }
+  .ns-price-item-plan-4 span {
+    color: #fff;
+    font-size: 22px;
+    font-weight: 600;
+  }
+  .ns-price-item-content-4 {
+    padding: 30px 30px 10px;
+    @media #{$xs}{
+      padding: 30px 15px 10px;
+    }
+  }
+  .ns-price-item-content-4 ul li {
+    color: var(--clr-body-text);
+    background-color: #f2f3f3;
+    height: 40px;
+    line-height: 40px;
+    margin-bottom: 15px;
+    i {
+      margin-right: 5px;
+    }
+    @media #{$xs}{
+      font-size: 15px;
+    }
+  }
+  .ns-price-item-content-4 ul li.inner-item-4 {
+    background-color: transparent;
+  }
+  .ns-price-item-btn-4 {
+    margin-bottom: 50px;
+  }
+  .ns-theme-btn.ns-price-btn-4 {
+    background-color: #242424;
+  }

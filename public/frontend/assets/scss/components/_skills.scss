@@ -1,0 +1,75 @@
+/*
+************
+*************************
+28. skills
+******************************************************* 
+*************************************************************** */
+@use '../abstracts/mixins' as *;
+@use '../abstracts/variables' as *;
+
+.ns-skills-area {
+    background-color: #f4f5f9;
+}
+.ns-skills-img {
+    position: relative;
+    z-index: 1;
+  }
+  .ns-skills-inner-img {
+    position: absolute;
+    top: -25px;
+    right: 80px;
+    z-index: 1;
+    @media #{$xs}{
+        right: 0;
+    }
+    @media #{$sm}{
+        right: 50px;
+    }
+  }
+
+.ns-skills-progress {
+    & .progress {
+        &-heading {
+            display: flex;
+            justify-content: space-between;
+            &-title {
+                margin-bottom: 3px;
+                color: #242424;
+                font-size: 18px;
+                font-weight: 500;
+            }
+            & span {
+                color: var(--clr-theme-primary);
+                font-size: 16px;
+                font-weight: 700;
+                display: inline-block;
+            }
+        }
+        &-item {
+            & .progress {
+                height: 6px;
+                outline: 1px solid var(--clr-theme-primary);
+                border-radius: 5px;
+                background-color: #fff;
+                padding: 1px 0;
+                padding-left: 1px;
+            }
+            & .progress-bar {
+                background: var(--clr-theme-primary);
+                height: 4px;
+                border-radius: 5px;
+            }
+        }
+    }
+}
+
+
+// home 6 
+
+.ns-skills-area-6 {
+    background-color: #242424;
+    
+    .ns-skills-progress .progress-heading-title {
+        color: #fff;
+    }
+}

@@ -1,0 +1,16 @@
+/*
+************
+*************************
+25. error
+******************************************************* 
+*************************************************************** */
+@use '../abstracts/mixins' as *;
+@use '../abstracts/variables' as *;
+.ns-error-content p {
+  font-size: 17px;
+  color: #7d7f85;
+  margin-bottom: 20px;
+}
+.ns-error-img {
+  margin-bottom: 20px;
+}

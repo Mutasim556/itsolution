@@ -1,0 +1,117 @@
+/*
+************
+*************************
+05. button
+******************************************************* 
+*************************************************************** */
+@use '../abstracts/mixins' as *;
+@use '../abstracts/variables' as *;
+
+.ns-theme-btn {
+    line-height: 50px;
+    height: 50px;
+    font-size: 17px;
+    padding: 0 35px;
+    font-weight: 500;
+    display: inline-block;
+    color: var(--clr-common-white);
+    border-radius: 4px;
+    background: var(--clr-theme-primary);
+    cursor: pointer;
+    margin-bottom: 0;
+    text-align: center;
+    text-transform: capitalize;
+    touch-action: manipulation;
+    transition: all 0.3s ease 0s;
+    white-space: nowrap;
+    border: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+    @media #{$xs}{
+        font-size: 16px;
+        padding: 0 30px;
+    }
+    &:hover {
+        color: var(--clr-common-white);
+        background-color: var(--clr-body-heading);
+   
+    }
+}
+.ns-theme-btn i {
+    font-size: 14px;
+    margin-left: 10px;
+    font-weight: 600;
+}
+.ns-play-btn {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    background: #fff;
+    text-align: center;
+    line-height: 50px;
+    border-radius: 50%;
+    color: var(--clr-theme-primary);
+    font-size: 16px;
+    position: relative;
+    z-index: 1;
+    &::after {
+        position: absolute;
+        left: 50%;
+        border-radius: 50%;
+        width: 100%;
+        height: 100%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        content: "";
+        background-color: var(--clr-theme-primary);
+        opacity: .3;
+        animation-name: playAnimation;
+        z-index: -1;
+        animation-duration: 1.8s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+        animation-delay: 0s;
+        background-color: rgb(255, 255, 255);
+        opacity: 0.4;
+    }
+    &:hover {
+        background-color: var(--clr-theme-primary);
+        color: #fff;
+    }
+}
+.ns-play-btn-2 {
+    background-color: var(--clr-theme-primary);
+    color: #fff;
+    &::after {
+        background-color: rgb(255, 170, 23);
+        opacity: .5;
+    }
+    &:hover {
+        background-color: #fff;
+        color: var(--clr-theme-primary);
+        &::after {
+            background-color: rgb(255, 255, 255);
+            opacity: 0.4;
+        }
+    }
+}
+
+@keyframes playAnimation {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1.6);
+        opacity: 0;
+    }
+}
+
+.ns-btn-white {
+    &:hover {
+        background-color: #fff;
+        color: var(--clr-theme-primary);
+    }
+}

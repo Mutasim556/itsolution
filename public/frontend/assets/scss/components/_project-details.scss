@@ -1,0 +1,118 @@
+/*
+************
+*************************
+11. project details
+******************************************************* 
+*************************************************************** */
+@use '../abstracts/mixins' as *;
+@use '../abstracts/variables' as *; 
+
+.ns-project-details-tab ul {
+  li {
+      margin-bottom: 15px;
+      display: block;
+      a {
+          display: block;
+          height: 60px;
+          background-color: #f4f5f9;
+          line-height: 60px;
+          padding: 0 20px;
+          font-size: 20px;
+          font-weight: 600;
+          color: var(--clr-body-heading);
+          position: relative;
+          z-index: 1;
+          padding-left: 54px;
+          @media #{$xs}{
+            font-size: 17px;
+          }
+          @media #{$sm}{
+            font-size: 20px;
+          }
+          span {
+              position: absolute;
+              left: 24px;
+              top: 50%;
+              content: "";
+              z-index: 2;
+              width: 7px;
+              height: 7px;
+              transform: translateY(-50%);
+              background-color: var(--clr-theme-primary);
+              @include transition(.3s);
+          }
+          &::before {
+              position: absolute;
+              left: 20px;
+              top: 50%;
+              content: "";
+              z-index: 2;
+              width: 15px;
+              height: 15px;
+              border: 2px solid var(--clr-theme-primary);
+              transform: translateY(-50%);
+              background-color: #f4f5f9;
+              @include transition(.3s);
+          }
+          &:hover {
+              background-color: var(--clr-theme-primary);
+              color: var(--clr-common-white);
+              &::before {
+                  background-color: var(--clr-theme-primary);
+                  border-color: #f4f5f9;
+              }
+              span {
+                  background-color: #f4f5f9;
+              }
+          }
+      }
+  }
+}
+.ns-project-details-text {
+  font-size: 18px;
+  margin-bottom: 40px;
+}
+.ns-project-details-content-text {
+  font-size: 17px;
+  margin-bottom: 20px;
+}
+.ns-project-details-quote {
+  padding: 20px 15px 20px;
+  background: #f4f5f9;
+  display: flex;
+  gap: 15px;
+  max-width: 470px;
+  margin-bottom: 30px;
+  p {
+    display: inline-block;
+    font-size: 17px;
+    font-style: italic;
+    margin-bottom: 0;
+  }
+  i {
+    display: inline-block;
+    font-size: 28px;
+    color: var(--clr-theme-primary);
+  }
+}
+.ns-project-details-list ul li {
+  display: flex;
+  align-items: center;
+  line-height: 1;
+  margin-bottom: 20px;
+  gap: 12px;
+  font-size: 17px;
+  color: var(--clr-body-text);
+  &:last-child {
+    margin-bottom: 0;
+  }
+  @media #{$xs}{
+    font-size: 16px;
+  }
+  @media #{$sm}{
+    font-size: 16px;
+  }
+  i {
+    color: var(--clr-theme-primary);
+  }
+}

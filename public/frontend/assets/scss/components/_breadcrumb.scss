@@ -1,0 +1,113 @@
+/*
+************
+*************************
+24. breadcrumb
+******************************************************* 
+*************************************************************** */
+@use '../abstracts/mixins' as *;
+@use '../abstracts/variables' as *;
+
+.breadcrumb-height {
+    min-height: 550px;
+    display: flex;
+    align-items: center;
+    padding-top: 82px;
+    @media #{$xs}{
+        min-height: 450px;
+    }
+}
+.ns-breadcrumb-area {
+    position: relative;
+    z-index: 1;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    overflow: hidden;
+    &::before {
+        position: absolute;
+        left: 0;
+        top: 0;
+        background-color: rgb(58, 59, 64);
+        opacity: 0.871;
+        width: 100%;
+        height: 100%;
+        content: '';
+        z-index: -1;
+    }
+    & .ns-breadcrumb {
+        &-wrap {
+            position: relative;
+            z-index: 5;
+        }
+        &-title {
+            color: var(--clr-common-white);
+            font-size: 60px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            @media #{$md} {
+                font-size: 46px;
+            }
+            @media #{$xs} {
+                font-size: 35px;
+                line-height: 1.3;
+            }
+            @media #{$sm} {
+                font-size: 40px;
+            }
+        }
+        &-list {
+            & a {
+                color: var(--clr-common-white);
+                display: inline-block;
+                position: relative;
+                z-index: 1;
+                &::after {
+                    display: inline-block;
+                    content: "/";
+                    font-size: 14px;
+                    font-weight: 500;
+                    margin-left: 5px;
+                }
+
+                &:hover {
+                    color: var(--clr-common-white);
+                }
+            }
+            & span {
+                color: var(--clr-theme-primary);
+                display: inline-block;
+            }
+        }
+    }
+}
+.ns-breadcrumb-shape-1 {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+}
+.ns-breadcrumb-shape-2 {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    @media #{$md}{
+        width: 25%;
+    }
+    @media #{$xs}{
+        width: 40%;
+    }
+    @media #{$sm}{
+        width: 30%;
+    }
+}
+.ns-breadcrumb-map {
+    position: absolute;
+    top: -3px;
+    right: 365px;
+    z-index: -1;
+}
+.ns-breadcrumb-wrap {
+	z-index: 1;
+	position: relative;
+}

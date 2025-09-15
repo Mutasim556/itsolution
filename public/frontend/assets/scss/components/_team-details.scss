@@ -1,0 +1,134 @@
+/*
+************
+*************************
+22. team details
+******************************************************* 
+*************************************************************** */
+@use '../abstracts/mixins' as *;
+@use '../abstracts/variables' as *; 
+
+.ns-team {
+    &-details {
+        &-area {
+            border-bottom: 1px solid #ddd;
+        }
+        &-text {
+            p {
+                font-size: 17px;
+                margin-bottom: 0;
+            }
+        }
+        &-item {
+            .ns-team-shape-1 {
+                top: -250px;
+            }
+            .ns-team-shape-2 {
+                right: -230px;
+            }
+            .ns-team-social-icon {
+                bottom: 115px;
+            }
+            .ns-team-social-btn .ns-team-social-btn-icon {
+                background-color: var(--clr-theme-primary);
+            }
+            &-content {
+                .ns-team-item-info {
+                    padding-bottom: 20px;
+                    border-bottom: none;
+                }
+            }
+        }
+        &-content {
+            margin-bottom: 40px;
+            p {
+                font-size: 18px;
+                margin-bottom: 0;
+            }
+        }
+        &-contact {
+            &-item {
+                span {
+                    width: 35px;
+                    height: 35px;
+                    display: inline-grid;
+                    place-items: center;
+                    border: 1px solid var(--clr-theme-primary);
+                    color: var(--clr-theme-primary);
+                    border-radius: 50%;
+                    margin-right: 15px;
+                }
+                a {
+                    display: inline-block;
+                    color: var(--clr-body-text);
+                    &:hover {
+                        color: var(--clr-theme-primary);
+                    }
+                }
+                p {
+                    display: inline-block;
+                    margin-bottom: 0;
+                    font-size: 17px;
+                }
+            }
+        }
+    }
+}
+.ns {
+    &-team-details-progressbar {
+        background-color: #f4f5f9;
+        padding: 25px 30px 30px;
+        border-radius: 3px;
+        margin-bottom: 45px;
+        @media #{$xs}{
+            padding: 25px 20px 30px;
+        }
+        @media #{$sm}{
+            padding: 25px 30px 30px;
+        }
+        &-label {
+            display: flex;
+            justify-content: space-between;
+
+            &-title {
+                font-size: 17px;
+                line-height: 1.2;
+                margin-bottom: 0;
+                font-weight: 600;
+                @media #{$xs}{
+                    font-size: 16px;
+                }
+                @media #{$sm}{
+                    font-size: 17px;
+                }
+            }
+
+            & span {
+                color: var(--clr-body-heading);
+                font-size: 17px;
+                line-height: 1.2;
+                font-family: $inter;
+                font-weight: 600;
+                display: inline-block;
+                @media #{$xs}{
+                    font-size: 16px;
+                }
+                @media #{$sm}{
+                    font-size: 17px;
+                }
+            }
+        }
+        & .progress {
+            height: 4px;
+            border-radius: 2px;
+            background-color: #ddd;
+        }
+        & .progress-bar {
+            background: var(--clr-theme-primary);;
+            border-radius: 2px;
+        }
+    }
+}
+.ns-team-details-progressbar,
+.ns-team-details-contact {
+	max-width: 520px;
+}

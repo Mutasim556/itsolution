@@ -1,0 +1,40 @@
+/*
+************
+*************************
+29. video
+******************************************************* 
+*************************************************************** */
+@use '../abstracts/mixins' as *;
+@use '../abstracts/variables' as *;
+
+.ns-video-area {
+  position: relative;
+}
+.ns-video-shape-1 {
+  position: absolute;
+  top: 230px;
+  right: 30px;
+  z-index: 1;
+}
+.ns-video-content {
+    text-align: center;
+  }
+  .ns-video-play-btn {
+    margin-bottom: 45px;
+  }
+  .ns-video-content-title {
+    color: #fff;
+    font-size: 40px;
+    margin-bottom: 15px;
+    @media #{$xs}{
+      font-size: 30px;
+    }
+    @media #{$sm}{
+      font-size: 34px;
+      list-style: 1.3;
+    }
+  }
+  .ns-video-content p {
+    color: #fff;
+    margin-bottom: 33px;
+  }

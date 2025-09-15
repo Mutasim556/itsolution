@@ -1,0 +1,81 @@
+/*
+************
+*************************
+13. brand
+******************************************************* 
+*************************************************************** */
+@use '../abstracts/mixins' as *;
+@use '../abstracts/variables' as *;
+
+.ns-brand-area {
+    border-bottom: 1px solid #dddddd;
+}
+.ns-brand-item {
+    position: relative;
+    text-align: center;
+    height: 60px;
+    line-height: 52px;
+    border: 1px solid transparent;
+    @include transition(.3s);
+    width: 100%;
+    border: 1px solid #eee;
+    & img {
+        @include transition(.3s);
+    }
+    .ns-brand-item-img-hover {
+        position: absolute;
+        left: 0;
+        top: 16px;
+        right: 0;
+        margin: 0 auto;
+        opacity: 0;
+        visibility: hidden;
+    }
+    &:hover {
+        border-color: var(--clr-theme-primary);
+        .ns-brand-item-img {
+            opacity: 0;
+            visibility: hidden;
+        }
+        .ns-brand-item-img-hover {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+}
+.swiper-slide-active {
+    .ns-brand-item {
+        border-color: var(--clr-theme-primary);
+        .ns-brand-item-img-hover {
+            opacity: 1;
+            visibility: visible;
+        }
+        .ns-brand-item-img {
+            opacity: 0;
+            visibility: hidden;
+        }
+    }
+}
+.bg_shape {
+    background-color: #dddddd;
+    position: absolute;
+    left: 2px;
+    top: 5803px;
+    width: 1920px;
+    height: 1px;
+    z-index: 391;
+}
+  
+  // home 3 
+
+.ns-brand-area-3 {
+    background-color: #232429;
+    border-color: #5b5c5f;
+}
+  
+  // home 6
+
+.ns-brand-area-6 {
+    background-color: #242424;
+    border-color: #4b4b4b;
+}

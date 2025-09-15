@@ -1,0 +1,135 @@
+/*
+************
+*************************
+19. newsletter
+******************************************************* 
+*************************************************************** */
+@use '../abstracts/mixins' as *;
+@use '../abstracts/variables' as *;
+
+.ns-newsletter-wrap {
+  position: relative;
+  z-index: 1;
+}
+.ns-newsletter-inner {
+  padding: 75px 60px 45px;
+  background: var(--clr-common-black);
+  border-radius: 10px;
+  position: relative;
+  z-index: 1;
+  overflow: hidden; 
+  @media #{$xs}{
+    padding: 75px 25px 45px;
+  }
+  img {
+    position: absolute;
+  }
+}
+.ns-newsletter-title {
+  color: #fff;
+  font-size: 30px;
+  line-height: 1.3;
+  margin-bottom: 0;
+  z-index: 9;
+  position: relative;
+  @media #{$xs}{
+    font-size: 20px;
+  }
+}
+.ns-newsletter-input {
+  display: flex;
+  width: 100%;
+  z-index: 9;
+  position: relative;
+  @media #{$xs}{
+    flex-direction: column;
+    gap: 10px;
+  }
+  @media #{$sm} {
+    flex-direction: row;
+    gap: 0;
+  }
+  input {
+    width: calc(100% - 150px);
+    border: none;
+    padding: 0 30px;
+    height: 50px;
+    display: grid;
+    place-items: center;
+    font-size: 17px;
+    color: var(--clr-body-text);
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    @media #{$xs}{
+      width: 100%;
+    }
+    @media #{$sm}{
+      width: calc(100% - 120px);
+    }
+  }
+  button {
+    width: 150px;
+    height: 50px;
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+    display: grid;
+    place-items: center;
+    background-color: var(--clr-theme-primary);
+    border: none;
+    color: #fff;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    &:hover {
+      color: var(--clr-theme-primary);
+      background-color: #f1f1f1;
+    }
+    @media #{$xs}{
+      width: 100%;
+    }
+    @media #{$sm}{
+      width: 120px;
+    }
+  }
+}
+.ns-newsletter-shape-1 {
+  left: -190px;
+  bottom: -60px;
+  z-index: 1;
+}
+.ns-newsletter-shape-2 {
+  bottom: -45px;
+  right: -100px;
+  z-index: 1;
+}
+.ns-newsletter-shape-3 {
+  left: 0;
+  right: 0;
+  top: 45px;
+  margin: 0 auto;
+}
+.ns-newsletter-icon {
+    position: absolute;
+    left: 50%;
+    top: -50px;
+    display: grid;
+    place-items: center;
+    z-index: 9;
+    width: 100px;
+    height: 100px;
+    background: var(--clr-theme-primary);
+    border-radius: 50%;
+    border: 10px solid #fff;
+    transform: translateX(-50%);
+}
+
+// home 2  
+.ns-newsletter-area-2 {
+  .ns-newsletter-wrap {
+    margin-bottom: -115px;
+    z-index: 9;
+  }
+  .ns-newsletter-inner {
+    outline: 5px solid #fff;
+  }
+}
