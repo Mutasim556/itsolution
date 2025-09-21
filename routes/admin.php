@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\Auth\AdminAuthController;
 use App\Http\Controllers\Admin\Auth\AdminLoginController;
+use App\Http\Controllers\Admin\HomepageSettingController;
 use App\Http\Controllers\Admin\Localization\BackendLanguageController;
 use App\Http\Controllers\Admin\Localization\ChangeLanguageController;
 use App\Http\Controllers\Admin\Localization\LanguageController;
@@ -63,6 +64,26 @@ Route::prefix('admin')->name('admin.')->group(function(){
             Route::get('/server/up',[MaintenanceModeController::class,'up'])->name('server.up');
             Route::get('/secret-code/delete/{id}',[MaintenanceModeController::class,'destroy'])->name('secret-code.delete');
             Route::get('/secret-code/delete-all',[MaintenanceModeController::class,'destroyAll'])->name('secret-code.delete-all');
+
+            
+
+
+        });
+        Route::prefix('pages')->name('pages.')->group(function(){
+            Route::controller(HomepageSettingController::class)->prefix('homepage')->name('homepage.')->group(function(){
+                Route::get('/main-slider','mainSlider')->name('main_slider');
+                Route::post('/main-slider','mainSliderStore')->name('main_slider_store');
+                Route::get('/main-slider-delete/{id}','mainSliderDelete')->name('main_slider_delete');
+                Route::get('/slider/update/status/{id}/{status}','updateSliderStatus');
+                Route::get('/slider/{id}/edit','edit');
+                Route::put('/slider/{id}','update');
+                Route::delete('/slider/{id}','destroySlider');
+
+                /** Other Route of Homepage */
+                Route::get('/other-contents','otherContent')->name('otherContent');
+                Route::post('/update-counter','updateCounter')->name('updateCounter');
+                Route::post('/update-aboutus','updateAboutus')->name('updateAboutus');
+            });
         });
     });
 });

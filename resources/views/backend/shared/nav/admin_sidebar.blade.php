@@ -57,21 +57,36 @@
             </ul>
         </li>
     @endif
+    @if (hasPermission(['homepage-index']))
+        <li class="sidebar-list"><a class="sidebar-link sidebar-title"
+                href="javascript:void(0)"><i data-feather="book-open"></i><span>{{ __('admin_local.Pages') }}</span></a>
+            <ul class="sidebar-submenu">
+                <li>
+                    <a class="submenu-title" href="javascript:void(0)">{{ __('admin_local.Home') }}<span class="sub-arrow"><i
+                                class="fa fa-angle-right"></i></span></a>
+                    
+                    <ul class="nav-sub-childmenu submenu-content">
+                        <li><a href="{{ route('admin.pages.homepage.main_slider') }}">{{ __('admin_local.Slider') }}</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    @endif
     @if (hasPermission(['maintenance-mode-index']))
-    <li class="sidebar-list">
-        <a class="sidebar-link sidebar-title" href="javascript:void(0)" aria-expanded="false">
-            <i data-feather="settings"></i>
-            <span class="lan-3">{{ __('admin_local.Settings') }}</span>
-        </a>
-        <ul class="sidebar-submenu">
-            @if (hasPermission(['maintenance-mode-index']))
-            <li>
-                <a href="{{ route('admin.settings.server.maintenanceMode') }}" class="sidebar-link">
-                    <span> {{ __('admin_local.Maintenance Mode') }} </span>
-                </a>
-            </li>
-            @endif
-        </ul>
-    </li>
+        <li class="sidebar-list">
+            <a class="sidebar-link sidebar-title" href="javascript:void(0)" aria-expanded="false">
+                <i data-feather="settings"></i>
+                <span class="lan-3">{{ __('admin_local.Settings') }}</span>
+            </a>
+            <ul class="sidebar-submenu">
+                @if (hasPermission(['maintenance-mode-index']))
+                    <li>
+                        <a href="{{ route('admin.settings.server.maintenanceMode') }}" class="sidebar-link">
+                            <span> {{ __('admin_local.Maintenance Mode') }} </span>
+                        </a>
+                    </li>
+                @endif
+            </ul>
+        </li>
     @endif
 </ul>
