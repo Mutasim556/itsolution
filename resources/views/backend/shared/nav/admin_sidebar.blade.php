@@ -64,13 +64,16 @@
                 <li>
                     <a class="submenu-title" href="javascript:void(0)" style="margin-bottom:5px;">{{ __('admin_local.Home') }}<span class="sub-arrow"><i
                                 class="fa fa-angle-right"></i></span></a>
-                    
+
                     <ul class="nav-sub-childmenu submenu-content">
                         <li><a href="{{ route('admin.pages.homepage.main_slider') }}">{{ __('admin_local.Slider') }}</a></li>
                     </ul>
                 </li>
                 <li>
                     <a class="sidebar-link" href="{{ route('admin.pages.aboutUs') }}" style="margin-bottom:5px;">{{ __('admin_local.About Us') }}</a>
+                </li>
+                 <li>
+                    <a class="sidebar-link" href="{{ route('admin.pages.contactUs') }}" style="margin-bottom:5px;">{{ __('admin_local.Contact') }}</a>
                 </li>
             </ul>
         </li>

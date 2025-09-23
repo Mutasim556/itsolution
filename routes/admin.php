@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AboutUsController;
 use App\Http\Controllers\Admin\Auth\AdminAuthController;
 use App\Http\Controllers\Admin\Auth\AdminLoginController;
+use App\Http\Controllers\Admin\ContactUsController;
 use App\Http\Controllers\Admin\HomepageSettingController;
 use App\Http\Controllers\Admin\Localization\BackendLanguageController;
 use App\Http\Controllers\Admin\Localization\ChangeLanguageController;
@@ -43,13 +44,13 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::post('/give-user-permissions', 'giveUserPermission')->name('giveUserPermission');
         });
 
-        //language controller 
+        //language controller
         Route::resource('language', LanguageController::class)->except(['craete', 'show']);
         Route::controller(LanguageController::class)->name('language.')->prefix('language')->group(function () {
             Route::get('/update/status/{id}/{status}', 'updateStatus')->name('language_status');
         });
 
-        //backend language controller 
+        //backend language controller
         Route::resource('backend/language', BackendLanguageController::class, ['as' => 'backend'])->except(['craete', 'show', 'edit', 'distroy']);
         Route::controller(BackendLanguageController::class)->name('backend.language.')->prefix('backend/language')->group(function () {
             Route::post('/store/translate/string', 'storeTranslateString')->name('storeTranslateString');
@@ -84,6 +85,12 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::controller(AboutUsController::class)->prefix('about-us')->group(function () {
                 Route::get('/update/about-us', 'aboutUs')->name('aboutUs');
                 Route::post('/update/about-us', 'updateAboutUs')->name('updateAboutUs');
+            });
+
+            Route::controller(ContactUsController::class)->prefix('contact-us')->group(function () {
+                Route::get('/update/contact-us', 'contactUs')->name('contactUs');
+                Route::post('/update/contact-us', 'updateContactUs')->name('updateContactUs');
+                Route::get('/messages', 'contactUsMessages')->name('contactUsMessages');
             });
         });
     });
