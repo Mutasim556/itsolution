@@ -60,7 +60,7 @@
                                                  ['status', 1],
                                                  ['delete', 0],
                                                  ['default', 1],
-                                             ])->first();
+                                             ])->first(); 
                                          @endphp
                                          <li class="nav-item"><a class="nav-link active" id="pills-defaultLang-tab"
                                                  data-bs-toggle="pill" href="#pills-defaultLang" role="tab"
@@ -436,7 +436,7 @@
             `);
          })
          $(document).on('click', '#add_more_point_btn2', function() {
-             var lang  = $(this).data('lang');  
+             var lang  = $(this).data('lang');
              var count = $(this).closest('.row').next('div').find('.form-group').length;
              $(this).closest('.row').next('div').append(`
                     <div class="form-group">
