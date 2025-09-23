@@ -301,9 +301,6 @@
                              </div>
                              <div class="row mt-4 mb-2">
                                  <div class="form-group col-lg-12">
-                                     <button class="btn btn-danger text-white font-weight-medium waves-effect text-start"
-                                         data-bs-dismiss="modal" style="float: right"
-                                         type="button">{{ __('admin_local.Close') }}</button>
                                      <button class="btn btn-primary mx-2" style="float: right"
                                          type="submit">{{ __('admin_local.Submit') }}</button>
                                  </div>
