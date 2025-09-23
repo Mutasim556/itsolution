@@ -82,26 +82,20 @@
                                 <span class="text-danger err-mgs"></span>
                             </div>
                             <div class="col-lg-12 mt-2">
-                                <label for="slider_image"><strong>{{ __('admin_local.Slider Image') }} ( 2376px x 807px )
+                                <label for="slider_image"><strong>{{ __('admin_local.Slider Image') }} ( 1920px x 896px )
                                     </strong></label>
-                                <input type="file" class="form-control" name="slider_image" id="slider_image" onchange="document.getElementById('preview_image').src = window.URL.createObjectURL(this.files[0])">
+                                <input type="file" class="form-control" name="slider_image" id="slider_image" onchange="document.getElementById('preview_image2').src = window.URL.createObjectURL(this.files[0])">
                                 <span class="text-danger err-mgs"></span>
                             </div>
                             <div class="col-lg-12 mt-2 mb-4">
                                 <label for="parent_slider_image"><strong>{{ __('admin_local.Preview Image') }}
                                     </strong></label>
-                                <img src="" id="preview_image" style="height: 100%;width:100%" alt="preview image">
+                                <img src="" id="preview_image2" style="height: 100%;width:100%" alt="preview image">
                             </div>
-                             <div class="col-lg-12 mt-2">
-                                <label for="slider_image"><strong>{{ __('admin_local.Slider Image 2') }} ( 660px x 660px )
-                                    </strong></label>
-                                <input type="file" class="form-control" name="slider_image2" id="slider_image2" onchange="document.getElementById('preview_image3').src = window.URL.createObjectURL(this.files[0])">
+                            <div class="col-lg-12 mt-2">
+                                <label for="slider_name"><strong>{{ __('admin_local.Video Link') }} </strong></label>
+                                <input type="text" class="form-control" name="video_link" id="video_link" placeholder="{{ __('admin_local.Youtube video link') }}">
                                 <span class="text-danger err-mgs"></span>
-                            </div>
-                            <div class="col-lg-12 mt-2 mb-4">
-                                <label for="parent_slider_image"><strong>{{ __('admin_local.Preview Image') }}
-                                    </strong></label>
-                                <img src="" id="preview_image3" style="height: 100%;width:100%" alt="preview image">
                             </div>
                         </div>
                         <div class="row mt-4 mb-2">
@@ -165,7 +159,7 @@
                                 <span class="text-danger err-mgs"></span>
                             </div>
                             <div class="col-lg-12 mt-2">
-                                <label for="slider_image"><strong>{{ __('admin_local.Slider Image') }} ( 1920px x 800px )
+                                <label for="slider_image"><strong>{{ __('admin_local.Slider Image') }} ( 1920px x 896px )
                                     </strong></label>
                                 <input type="file" class="form-control" name="slider_image" id="slider_image" onchange="document.getElementById('preview_image2').src = window.URL.createObjectURL(this.files[0])">
                                 <span class="text-danger err-mgs"></span>
@@ -175,18 +169,12 @@
                                     </strong></label>
                                 <img src="" id="preview_image2" style="height: 100%;width:100%" alt="preview image">
                             </div>
-
                             <div class="col-lg-12 mt-2">
-                                <label for="slider_image"><strong>{{ __('admin_local.Slider Image 2') }} ( 660px x 660px )
-                                    </strong></label>
-                                <input type="file" class="form-control" name="slider_image2" id="slider_image2" onchange="document.getElementById('preview_image4').src = window.URL.createObjectURL(this.files[0])">
+                                <label for="slider_name"><strong>{{ __('admin_local.Video Link') }} </strong></label>
+                                <input type="text" class="form-control" name="video_link" id="video_link" placeholder="{{ __('admin_local.Youtube video link') }}">
                                 <span class="text-danger err-mgs"></span>
                             </div>
-                            <div class="col-lg-12 mt-2 mb-4">
-                                <label for="parent_slider_image"><strong>{{ __('admin_local.Preview Image') }}
-                                    </strong></label>
-                                <img src="" id="preview_image4" style="height: 100%;width:100%" alt="preview image">
-                            </div>
+                            
                         </div>
 
                         <div class="row mt-4 mb-2">
@@ -235,7 +223,7 @@
                                 <thead>
                                     <tr>
                                         <th>{{ __('admin_local.Image') }}</th>
-                                        <th>{{ __('admin_local.Image 2') }}</th>
+                                        <th>{{ __('admin_local.Video') }}</th>
                                         <th>{{ __('admin_local.Title') }}</th>
                                         <th>{{ __('admin_local.Details') }}</th>
                                         <th>{{ __('admin_local.Button Text') }}</th>

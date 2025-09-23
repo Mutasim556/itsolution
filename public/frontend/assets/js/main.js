@@ -179,7 +179,14 @@
 			}
 		}
 	});
+	function initVideoPopup() {
+		$('.popup-video').magnificPopup({
+			type: 'iframe'
+		});
+	}
 
+	// initialize on page load
+	initVideoPopup();
 	const frontSliderActive = new Swiper(".slider-active", {
 		slidesPerView: 1,
 		// spaceBetween: 60,
@@ -212,6 +219,11 @@
 		autoplay: {
 			delay: 3000,             // wait 3s before sliding
 			disableOnInteraction: false,
+		},
+		on: {
+			slideChangeTransitionEnd: function () {
+				initVideoPopup();
+			}
 		}
 	});
 

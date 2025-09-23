@@ -14,7 +14,8 @@
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.8",
         "laravel/ui": "^4.3",
-        "spatie/laravel-permission": "^6.3"
+        "spatie/laravel-permission": "^6.3",
+        "stichoza/google-translate-php": "^5.3"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.9",

@@ -4,7 +4,13 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Admin\HomepageSilder;
+use App\Models\Admin\Language;
+use App\Models\Admin\Translation;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Intervention\Image\Drivers\Gd\Driver;
+use Intervention\Image\ImageManager;
+use Stichoza\GoogleTranslate\GoogleTranslate;
 
 class HomepageSettingController extends Controller
 {
@@ -28,6 +34,7 @@ class HomepageSettingController extends Controller
         $slider->slider_short_description= $data->slider_short_description;
         $slider->slider_link= $data->slider_link;
         $slider->slider_button_text= $data->slider_button_text;
+        $slider->slider_video= $data->video_link;
         $slider->status= 1;
         $slider->created_by = LoggedAdmin()->id;
         $slider->updated_by = LoggedAdmin()->id;
@@ -35,31 +42,20 @@ class HomepageSettingController extends Controller
         if($data->slider_image){
             $files = $data->slider_image;
             $file = time().'img1.'.$files->getClientOriginalExtension();
-            $file_name = 'bipebd/files/settings/homepage/slider/'.$file;
+            $file_name = 'itsolution/files/settings/homepage/slider/'.$file;
             $manager = new ImageManager(new Driver);
-            $manager->read($data->slider_image)->resize(1920,800)->save(env('ASSET_DIRECTORY').'/'.'bipebd/files/settings/homepage/slider/'.$file);
+            $manager->read($data->slider_image)->resize(1920,896)->save(env('ASSET_DIRECTORY').'/'.'itsolution/files/settings/homepage/slider/'.$file);
         }else{
             $file_name = "";
         }
 
         $slider->slider_image = $file_name;
 
-        if($data->slider_image2){
-            $files = $data->slider_image2;
-            $file = time().'img2.'.$files->getClientOriginalExtension();
-            $file_name = 'bipebd/files/settings/homepage/slider/'.$file;
-            $manager = new ImageManager(new Driver);
-            $manager->read($data->slider_image2)->resize(660,660)->save(env('ASSET_DIRECTORY').'/'.'bipebd/files/settings/homepage/slider/'.$file);
-        }else{
-            $file_name = "";
-        }
-
-        $slider->slider_image2 = $file_name;
-
 
         $slider->save();
 
         $languages =  Language::where([['status', 1], ['delete', 0]])->get();
+        
         foreach ($languages as $lang) {
             Translation::updateOrInsert([
                 'translationable_type'  => 'App\Models\Admin\HomepageSilder',
@@ -85,9 +81,9 @@ class HomepageSettingController extends Controller
                 'translationable_type'  => 'App\Models\Admin\HomepageSilder',
                 'translationable_id'    => $slider->id,
                 'locale'                => $lang->lang,
-                'key'                   => 'button_text',
+                'key'                   => 'slider_button_text',
             ],[
-                'value'                 =>  GoogleTranslate::trans($data->button_text, $lang->lang, 'en'),
+                'value'                 =>  GoogleTranslate::trans($data->slider_button_text, $lang->lang, 'en'),
                 'updated_at'            => Carbon::now(),
             ]);
         }
@@ -144,32 +140,21 @@ class HomepageSettingController extends Controller
         $slider->slider_short_description= $data->slider_short_description;
         $slider->slider_link= $data->slider_link;
         $slider->slider_button_text= $data->slider_button_text;
+        $slider->slider_video= $data->video_link;
         $slider->status= 1;
         $slider->updated_by = LoggedAdmin()->id;
 
         if($data->slider_image){
             $files = $data->slider_image;
             $file = time().'img1.'.$files->getClientOriginalExtension();
-            $file_name = 'bipebd/files/settings/homepage/slider/'.$file;
+            $file_name = 'itsolution/files/settings/homepage/slider/'.$file;
             $manager = new ImageManager(new Driver);
-            $manager->read($data->slider_image)->resize(1920,800)->save(env('ASSET_DIRECTORY').'/'.'bipebd/files/settings/homepage/slider/'.$file);
+            $manager->read($data->slider_image)->resize(1920,896)->save(env('ASSET_DIRECTORY').'/'.'itsolution/files/settings/homepage/slider/'.$file);
         }else{
             $file_name = $slider->slider_image;
         }
 
         $slider->slider_image = $file_name;
-
-        if($data->slider_image2){
-            $files = $data->slider_image2;
-            $file = time().'img2.'.$files->getClientOriginalExtension();
-            $file_name = 'bipebd/files/settings/homepage/slider/'.$file;
-            $manager = new ImageManager(new Driver);
-            $manager->read($data->slider_image2)->resize(660,660)->save(env('ASSET_DIRECTORY').'/'.'bipebd/files/settings/homepage/slider/'.$file);
-        }else{
-            $file_name = $slider->slider_image2;
-        }
-
-        $slider->slider_image2 = $file_name;
 
         $slider->save();
 
