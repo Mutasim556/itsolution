@@ -9,10 +9,11 @@ use App\Http\Controllers\Admin\Localization\BackendLanguageController;
 use App\Http\Controllers\Admin\Localization\ChangeLanguageController;
 use App\Http\Controllers\Admin\Localization\LanguageController;
 use App\Http\Controllers\Admin\Role\RoleAndPermissionController;
+use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\Settings\MaintenanceModeController;
 use App\Http\Controllers\Admin\User\UserController;
 use Illuminate\Support\Facades\Route;
-
+use Stichoza\GoogleTranslate\GoogleTranslate;
 
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::controller(AdminAuthController::class)->group(function () {
@@ -92,6 +93,26 @@ Route::prefix('admin')->name('admin.')->group(function () {
                 Route::post('/update/contact-us', 'updateContactUs')->name('updateContactUs');
                 Route::get('/messages', 'contactUsMessages')->name('contactUsMessages');
             });
+
+            /** Service Start */
+            Route::resource('service', ServiceController::class)->except('create', 'show');
+            Route::controller(ServiceController::class)->prefix('service')->group(function () {
+                Route::get('/update/status/{id}/{status}', 'updateStatus');
+            });
+            /** Service End */
         });
     });
+
+    Route::get('/translate-string',function(){
+        $data = [];
+        $langs = getLangs();
+        foreach($langs as $lang){
+            $darr =  GoogleTranslate::trans(request()->tdata, $lang->lang, 'en');
+            array_push($data,$darr);
+        }
+        return [
+            'tdata'=>$data,
+            'langs'=>$langs
+        ];
+    })->name('translateString');
 });

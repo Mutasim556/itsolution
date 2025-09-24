@@ -75,6 +75,9 @@
                  <li>
                     <a class="sidebar-link" href="{{ route('admin.pages.contactUs') }}" style="margin-bottom:5px;">{{ __('admin_local.Contact') }}</a>
                 </li>
+                <li>
+                    <a class="sidebar-link" href="{{ route('admin.pages.service.index') }}" style="margin-bottom:5px;">{{ __('admin_local.Services') }}</a>
+                </li>
             </ul>
         </li>
     @endif

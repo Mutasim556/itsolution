@@ -229,7 +229,7 @@
                         <div class="swiper-slide">
                             <div class="ns-service-item">
                                 <div class="ns-service-img w_img">
-                                    <a href="project-details.html"><img src="assets/img/service/service-1.jpg"
+                                    <a href="project-details.html"><img src="{{ asset('public/admin/images/images.png') }}"
                                             alt="Not Found"></a>
                                 </div>
                                 <div class="ns-service-content">
@@ -242,7 +242,8 @@
                                     <a href="project-details.html" class="ns-service-btn">Read More<i
                                             class="icofont-plus"></i></a>
                                     <div class="ns-service-content-icon">
-                                        <i class="icofont-mega-phone"></i>
+                                        <img height="60px" width="60px" src="{{ asset('public/admin/images/images.png') }}"
+                                            alt="Not Found">
                                     </div>
                                     <span class="ns-service-shape-1"></span>
                                     <span class="ns-service-shape-2"></span>
