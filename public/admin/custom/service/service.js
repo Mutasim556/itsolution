@@ -66,7 +66,7 @@ $(document).on('submit','#add_service_form',function(e){
 
 //update status
 $(document).on('change','#status_change',function(){
-    var status = $(this).data('status');
+    var status = $(this).data('status'); 
     var update_id = $(this).closest('tr').data('id');
     var cat_td = $(this).parent();
     cat_td.empty().append(`<i class="fa fa-refresh fa-spin"></i>`);

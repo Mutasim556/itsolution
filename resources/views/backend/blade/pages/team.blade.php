@@ -55,7 +55,7 @@
                      <i>{{ __('admin_local.The field labels marked with * are required input fields.') }}</i>
                  </p>
                  <div class="modal-body" style="margin-top: -20px">
-                     <form method="POSt" action="" id="add_member_form" enctype="multipart/form-data">
+                     <form method="POSt" action="" id="add_team_member_form" enctype="multipart/form-data">
                          @csrf
                          <div class="row">
                              <div class="col-sm-12 col-xl-12">
@@ -143,7 +143,7 @@
                                  <div class="row">
                                      <div class="form-group col-md-12">
                                          <label for="">{{ __('admin_local.Gender') }} *</label>
-                                         <select class="form-control" name="team_member_gender" id="team_member_gender" required>
+                                         <select class="form-control" name="team_member_gender" id="team_member_gender">
                                              <option value="">{{ __('admin_local.Select Please') }}</option>
                                              <option value="Male">{{ __('admin_local.Male') }}</option>
                                              <option value="Female">{{ __('admin_local.Female') }}</option>
@@ -153,13 +153,13 @@
                                      <div class="form-group col-md-12">
                                          <label for="">{{ __('admin_local.Phone') }} *</label>
                                          <input type="text" class="form-control" name="team_member_phone"
-                                             id="team_member_phone" required>
+                                             id="team_member_phone">
                                          <span class="text-danger err-mgs" id="team_member_phone_err"></span>
                                      </div>
                                      <div class="form-group col-md-12">
                                          <label for="">{{ __('admin_local.Email') }} *</label>
                                          <input type="text" class="form-control" name="team_member_email"
-                                             id="team_member_email" required>
+                                             id="team_member_email">
                                          <span class="text-danger err-mgs" id="team_member_email_err"></span>
                                      </div>
                                      <div class="form-group col-md-12">
@@ -191,10 +191,11 @@
                              <div class="col-sm-12 col-xl-6">
                                  <div class="row">
                                      <div class="form-group col-md-12">
-                                         <label for="">{{ __('admin_local.Team Member Image') }} (370X395) *</label>
+                                         <label for="">{{ __('admin_local.Team Member Image') }} (370X395)
+                                             *</label>
                                          <input type="file" class="form-control" name="team_member_image"
-                                             id="team_member_image" accept="image/*" 
-                                             onchange="document.getElementById('prev_team_member_image').src = window.URL.createObjectURL(this.files[0])" required>
+                                             id="team_member_image" accept="image/*"
+                                             onchange="document.getElementById('prev_team_member_image').src = window.URL.createObjectURL(this.files[0])">
                                          <span class="text-danger err-mgs" id="team_member_image_err"></span>
                                      </div>
                                      <div class="form-group col-md-12">
@@ -223,7 +224,7 @@
                                      <div class="form-group col-md-6">
                                          <label for="">{{ __('admin_local.Expertise Lavel') }}</label>
                                          <input type="number" min="1" max="100" class="form-control"
-                                             name="expertiselavel[]" id="expertiselavel">
+                                             name="expertiselavel[]" id="expertiselavel" placeholder="1 to 100">
                                          <span class="text-danger err-mgs" id="expertiselavel_err"></span>
                                      </div>
                                  </div>
@@ -247,8 +248,9 @@
                                  <button class="btn btn-danger text-white font-weight-medium waves-effect text-start"
                                      data-bs-dismiss="modal" style="float: right"
                                      type="button">{{ __('admin_local.Close') }}</button>
-                                 <button class="btn btn-primary mx-2" style="float: right"
-                                     type="submit">{{ __('admin_local.Submit') }}</button>
+                                 <button class="btn btn-primary mx-2" style="float: right" type="submit"><strong><i
+                                             class="fa fa-paper-plane"></i> &nbsp;
+                                         {{ __('admin_local.Submit') }}</strong></button>
                              </div>
 
                          </div>
@@ -308,26 +310,26 @@
                                      <div class="tab-pane fade show active" id="epills-defaultLang" role="tabpanel"
                                          aria-labelledby="epills-defaultLang-tab">
                                          <div class="form-group">
-                                             <label for="">{{ __('admin_local.member Name') }} (
+                                             <label for="">{{ __('admin_local.Team Member Name') }} (
                                                  {{ __('admin_local.Default') }} ) *</label>
-                                             <input type="text" class="form-control" name="member_name"
-                                                 id="member_name">
-                                             <span class="text-danger err-mgs" id="member_name_err"></span>
+                                             <input type="text" class="form-control" name="team_member_name"
+                                                 id="team_member_name">
+                                             <span class="text-danger err-mgs" id="team_member_name_err"></span>
                                          </div>
 
                                          <div class="form-group">
-                                             <label for="">{{ __('admin_local.Short Details') }} (
+                                             <label for="">{{ __('admin_local.Designation') }} (
                                                  {{ __('admin_local.Default') }} ) *</label>
-                                             <input type="text" class="form-control" name="member_short_details"
-                                                 id="member_short_details">
-                                             <span class="text-danger err-mgs" id="member_short_details_err"></span>
+                                             <input type="text" class="form-control" name="team_member_desig"
+                                                 id="team_member_desig">
+                                             <span class="text-danger err-mgs" id="team_member_desig_err"></span>
                                          </div>
 
                                          <div class="form-group">
-                                             <label for="">{{ __('admin_local.member Details') }} (
+                                             <label for="">{{ __('admin_local.About Team Member') }} (
                                                  {{ __('admin_local.Default') }} ) *</label>
-                                             <textarea class="form-control ckeditorappend" name="member_details" id="member_details2"></textarea>
-                                             <span class="text-danger err-mgs" id="member_details_err"></span>
+                                             <textarea class="form-control ckeditorappend" name="team_member_about" id="team_member_about2"></textarea>
+                                             <span class="text-danger err-mgs" id="team_member_about_err"></span>
                                          </div>
                                      </div>
                                      <script>
@@ -340,23 +342,24 @@
                                          <div class="tab-pane fade" id="epills-{{ $lang->name }}" role="tabpanel"
                                              aria-labelledby="epills-{{ $lang->name }}-tab">
                                              <div class="form-group">
-                                                 <label for="">{{ __('admin_local.member Name') }} (
+                                                 <label for="">{{ __('admin_local.Team Member Name') }} (
                                                      {{ $lang->name }} )</label>
                                                  <input type="text" class="form-control"
-                                                     name="member_name_{{ $lang->lang }}"
-                                                     id="member_name_{{ $lang->lang }}">
+                                                     name="team_member_name_{{ $lang->lang }}"
+                                                     id="team_member_name_{{ $lang->lang }}">
                                              </div>
                                              <div class="form-group">
-                                                 <label for="">{{ __('admin_local.Short Details') }} (
+                                                 <label for="">{{ __('admin_local.Designation') }} (
                                                      {{ $lang->name }} ) </label>
                                                  <input type="text" class="form-control"
-                                                     name="member_short_details_{{ $lang->lang }}"
-                                                     id="member_short_details_{{ $lang->lang }}">
+                                                     name="team_member_desig_{{ $lang->lang }}"
+                                                     id="team_member_desig_{{ $lang->lang }}">
                                              </div>
                                              <div class="form-group">
-                                                 <label for="">{{ __('admin_local.member Details') }} (
+                                                 <label for="">{{ __('admin_local.About Team Member') }} (
                                                      {{ $lang->name }} ) </label>
-                                                 <textarea class="form-control" name="member_details_{{ $lang->lang }}" id="member_details2_{{ $lang->lang }}"></textarea>
+                                                 <textarea class="form-control" name="team_member_about_{{ $lang->lang }}"
+                                                     id="team_member_about2_{{ $lang->lang }}"></textarea>
                                              </div>
                                          </div>
                                      @endforeach
@@ -367,35 +370,105 @@
                              <div class="col-sm-12 col-xl-6">
                                  <div class="row">
                                      <div class="form-group col-md-12">
-                                         <label for="">{{ __('admin_local.member Image') }} (370X267) *</label>
-                                         <input type="file" class="form-control" name="member_image"
-                                             id="member_image"
-                                             onchange="document.getElementById('eprev_member_image').src = window.URL.createObjectURL(this.files[0])">
-                                         <span class="text-danger err-mgs" id="member_image_err"></span>
+                                         <label for="">{{ __('admin_local.Gender') }} *</label>
+                                         <select class="form-control" name="team_member_gender" id="team_member_gender">
+                                             <option value="">{{ __('admin_local.Select Please') }}</option>
+                                             <option value="Male">{{ __('admin_local.Male') }}</option>
+                                             <option value="Female">{{ __('admin_local.Female') }}</option>
+                                         </select>
+                                         <span class="text-danger err-mgs" id="team_member_gender_err"></span>
                                      </div>
                                      <div class="form-group col-md-12">
-                                         <label for="">{{ __('admin_local.Preview member Image') }}
-                                             *</label><br>
-                                         <img src="" id="eprev_member_image" alt="" height="267px"
-                                             width="100%">
+                                         <label for="">{{ __('admin_local.Phone') }} *</label>
+                                         <input type="text" class="form-control" name="team_member_phone"
+                                             id="team_member_phone">
+                                         <span class="text-danger err-mgs" id="team_member_phone_err"></span>
+                                     </div>
+                                     <div class="form-group col-md-12">
+                                         <label for="">{{ __('admin_local.Email') }} *</label>
+                                         <input type="text" class="form-control" name="team_member_email"
+                                             id="team_member_email">
+                                         <span class="text-danger err-mgs" id="team_member_email_err"></span>
+                                     </div>
+                                     <div class="form-group col-md-12">
+                                         <label for="">{{ __('admin_local.Address') }} </label>
+                                         <input type="text" class="form-control" name="team_member_address"
+                                             id="team_member_address">
+                                         <span class="text-danger err-mgs" id="team_member_address_err"></span>
+                                     </div>
+                                     <div class="form-group col-md-12">
+                                         <label for="">{{ __('admin_local.Facebook') }}</label>
+                                         <input type="text" class="form-control" name="team_member_facebook"
+                                             id="team_member_facebook">
+                                         <span class="text-danger err-mgs" id="team_member_facebook_err"></span>
+                                     </div>
+                                     <div class="form-group col-md-12">
+                                         <label for="">{{ __('admin_local.Instagram') }}</label>
+                                         <input type="text" class="form-control" name="team_member_instagram"
+                                             id="team_member_instagram">
+                                         <span class="text-danger err-mgs" id="team_member_instagram_err"></span>
+                                     </div>
+                                     <div class="form-group col-md-12">
+                                         <label for="">{{ __('admin_local.Linked-In') }}</label>
+                                         <input type="text" class="form-control" name="team_member_linkedin"
+                                             id="team_member_linkedin">
+                                         <span class="text-danger err-mgs" id="team_member_linkedin_err"></span>
                                      </div>
                                  </div>
                              </div>
                              <div class="col-sm-12 col-xl-6">
                                  <div class="row">
                                      <div class="form-group col-md-12">
-                                         <label for="">{{ __('admin_local.member Icon') }} (60X60)</label>
-                                         <input type="file" class="form-control" name="member_icon" id="member_icon"
-                                             onchange="document.getElementById('eprev_member_icon').src = window.URL.createObjectURL(this.files[0])">
-                                         <span class="text-danger err-mgs" id="member_icon_err"></span>
+                                         <label for="">{{ __('admin_local.Team Member Image') }} (370X395)
+                                             *</label>
+                                         <input type="file" class="form-control" name="team_member_image"
+                                             id="team_member_image" accept="image/*"
+                                             onchange="document.getElementById('prev_team_member_image2').src = window.URL.createObjectURL(this.files[0])">
+                                         <span class="text-danger err-mgs" id="team_member_image_err"></span>
                                      </div>
                                      <div class="form-group col-md-12">
                                          <label for="">{{ __('admin_local.Preview member Icon') }}
                                              *</label><br>
-                                         <img src="" id="eprev_member_icon" alt="" height="60px">
+                                         <img src="" id="prev_team_member_image2" alt="" height="395px"
+                                             width="100%">
+                                     </div>
+                                     <div class="form-group col-md-12 mt-2">
+                                         <label for="">{{ __('admin_local.Youtube') }}</label>
+                                         <input type="text" class="form-control" name="team_member_youtube"
+                                             id="team_member_youtube">
+                                         <span class="text-danger err-mgs" id="team_member_youtube_err"></span>
                                      </div>
                                  </div>
                              </div>
+                         </div>
+                         <div class="row copy-row">
+                             <div class="col-sm-12 col-xl-10">
+                                 <div class="row">
+                                     <div class="form-group col-md-6">
+                                         <label for="">{{ __('admin_local.Expertise') }}</label>
+                                         <input type="text" class="form-control" name="expertise[]" id="expertise">
+                                         <span class="text-danger err-mgs" id="expertise_err"></span>
+                                     </div>
+                                     <div class="form-group col-md-6">
+                                         <label for="">{{ __('admin_local.Expertise Lavel') }}</label>
+                                         <input type="number" min="1" max="100" class="form-control"
+                                             name="expertiselavel[]" id="expertiselavel" placeholder="1 to 100">
+                                         <span class="text-danger err-mgs" id="expertiselavel_err"></span>
+                                     </div>
+                                 </div>
+                             </div>
+                             <div class="col-sm-12 col-xl-2">
+                                 <div class="row">
+                                     <div class="form-group col-md-12">
+                                         <label for=""> &nbsp; </label><br>
+                                         <button style="float: right" class="btn btn-success" id="copy_row_btn"
+                                             type="button"><i class="fa fa-plus"></i></button>
+                                     </div>
+                                 </div>
+                             </div>
+                         </div>
+                         <div id="append_exp_div">
+
                          </div>
 
                          <div class="row mt-4 mb-2">
@@ -459,7 +532,8 @@
                                          <tr id="trid-{{ $member->id }}" data-id="{{ $member->id }}">
                                              <td>
                                                  @if ($member->team_member_image)
-                                                     <img src="{{ asset($member->team_member_image) }}" alt="">
+                                                     <img height="50px" src="{{ asset($member->team_member_image) }}"
+                                                         alt="">
                                                  @else
                                                      {{ __('admin_local.No File') }}
                                                  @endif
@@ -563,7 +637,7 @@
              });
          </script>
          <script>
-             CKEDITOR.replace('member_details2_' + '{{ $lang->lang }}', {
+             CKEDITOR.replace('team_member_about2_' + '{{ $lang->lang }}', {
                  on: {
                      contentDom: function(evt) {
                          // Allow custom context menu only with table elemnts.
@@ -594,7 +668,7 @@
                  }
              }
          });
-         CKEDITOR.replace('member_details2', {
+         CKEDITOR.replace('team_member_about2', {
              on: {
                  contentDom: function(evt) {
                      // Allow custom context menu only with table elemnts.
@@ -669,17 +743,17 @@
              var count = $(this).closest('.copy-row').next('div').find('.delete-row').length;
              $(this).closest('.copy-row').next('div').slideDown('slow', function() {
                  let newRow = $(`
-                    <div class="row delete-row" style="display:none;">
+                    <div class="row delete-row" >
                         <div class="col-sm-12 col-xl-10">
                             <div class="row">
                                 <div class="form-group col-md-6">
                                     <label>{{ __('admin_local.Expertise') }}</label>
-                                    <input type="text" class="form-control" name="expertise[]" />
+                                    <input type="text" class="form-control" id="expertise" name="expertise[]" />
                                     <span class="text-danger err-mgs expertise_err"></span>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label>{{ __('admin_local.Expertise Lavel') }}</label>
-                                    <input type="number" min="1" max="100" class="form-control" name="expertiselavel[]" />
+                                    <input type="number" min="1" max="100" class="form-control" id="expertiselavel" name="expertiselavel[]" placeholder="1 to 100"/>
                                     <span class="text-danger err-mgs expertiselavel_err"></span>
                                 </div>
                             </div>
@@ -707,6 +781,9 @@
                  $(this).remove();
              });
          })
+
+         var expert = `{{ __('admin_local.Expertise') }}`;
+         var expertLvl = `{{ __('admin_local.Expertise Lavel') }}`;
      </script>
      <script src="{{ asset(env('ASSET_DIRECTORY', 'public') . '/' . 'admin/custom/team/team.js') }}"></script>
      {{-- <script src="{{ asset(env('ASSET_DIRECTORY','public').'/'.'inventory/custom/user/user_list.js') }}"></script> --}}
