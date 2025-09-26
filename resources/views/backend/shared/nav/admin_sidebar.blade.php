@@ -57,27 +57,42 @@
             </ul>
         </li>
     @endif
-    @if (hasPermission(['homepage-index']))
+    @if (hasPermission(['slider-index','aboutus-index','contact-index','service-index']))
         <li class="sidebar-list"><a class="sidebar-link sidebar-title"
                 href="javascript:void(0)"><i data-feather="book-open"></i><span>{{ __('admin_local.Pages') }}</span></a>
             <ul class="sidebar-submenu">
+                @if (hasPermission(['slider-index']))
                 <li>
                     <a class="submenu-title" href="javascript:void(0)" style="margin-bottom:5px;">{{ __('admin_local.Home') }}<span class="sub-arrow"><i
                                 class="fa fa-angle-right"></i></span></a>
 
                     <ul class="nav-sub-childmenu submenu-content">
+                        @if (hasPermission(['slider-index']))
                         <li><a href="{{ route('admin.pages.homepage.main_slider') }}">{{ __('admin_local.Slider') }}</a></li>
+                        @endif
                     </ul>
                 </li>
+                @endif
+                 @if (hasPermission(['aboutus-index']))
                 <li>
                     <a class="sidebar-link" href="{{ route('admin.pages.aboutUs') }}" style="margin-bottom:5px;">{{ __('admin_local.About Us') }}</a>
                 </li>
+                @endif
+                 @if (hasPermission(['contact-index']))
                  <li>
-                    <a class="sidebar-link" href="{{ route('admin.pages.contactUs') }}" style="margin-bottom:5px;">{{ __('admin_local.Contact') }}</a>
+                    <a class="sidebar-link" href="{{ route('admin.pages.contactUs') }}">{{ __('admin_local.Contact') }}</a>
                 </li>
+                @endif
+                @if (hasPermission(['service-index']))
                 <li>
-                    <a class="sidebar-link" href="{{ route('admin.pages.service.index') }}" style="margin-bottom:5px;">{{ __('admin_local.Services') }}</a>
+                    <a class="sidebar-link" href="{{ route('admin.pages.service.index') }}">{{ __('admin_local.Services') }}</a>
                 </li>
+                @endif
+                 @if (hasPermission(['service-index']))
+                <li>
+                    <a class="sidebar-link" href="{{ route('admin.pages.team.index') }}">{{ __('admin_local.Team Members') }}</a>
+                </li>
+                @endif
             </ul>
         </li>
     @endif

@@ -40,11 +40,37 @@ class PermissionSeeder extends Seeder
         // Permission::create(['guard_name'=>'admin','name'=>'backend-api-accesskey','group_name'=>'Backend Language Permissions']);
 
         //backend settings permission
-        Permission::create(['guard_name'=>'admin','name'=>'maintenance-mode-index','group_name'=>'Settings Permissions']);
+        // Permission::create(['guard_name'=>'admin','name'=>'maintenance-mode-index','group_name'=>'Settings Permissions']);
         // Permission::create(['guard_name'=>'admin','name'=>'backend-string-translate','group_name'=>'Backend Language Permissions']);
         // Permission::create(['guard_name'=>'admin','name'=>'backend-string-update','group_name'=>'Backend Language Permissions']);
         // Permission::create(['guard_name'=>'admin','name'=>'backend-string-index','group_name'=>'Backend Language Permissions']);
         // Permission::create(['guard_name'=>'admin','name'=>'backend-api-accesskey','group_name'=>'Backend Language Permissions']);
+
+        //permission for Slider
+        // Permission::create(['guard_name'=>'admin','name'=>'slider-index','group_name'=>'Homepage Slider']);
+        // Permission::create(['guard_name'=>'admin','name'=>'slider-create','group_name'=>'Homepage Slider']);
+        // Permission::create(['guard_name'=>'admin','name'=>'slider-update','group_name'=>'Homepage Slider']);
+        // Permission::create(['guard_name'=>'admin','name'=>'slider-delete','group_name'=>'Homepage Slider']);
+
+        //permission for About Us
+        // Permission::create(['guard_name'=>'admin','name'=>'aboutus-index','group_name'=>'About Us']);
+        // Permission::create(['guard_name'=>'admin','name'=>'aboutus-update','group_name'=>'About Us']);
+
+        //permission for Contact Us
+        // Permission::create(['guard_name'=>'admin','name'=>'contact-index','group_name'=>'Contact Us']);
+        // Permission::create(['guard_name'=>'admin','name'=>'contact-update','group_name'=>'Contact Us']);
+
+         //permission for Service
+        // Permission::create(['guard_name'=>'admin','name'=>'service-index','group_name'=>'Service']);
+        // Permission::create(['guard_name'=>'admin','name'=>'service-create','group_name'=>'Service']);
+        // Permission::create(['guard_name'=>'admin','name'=>'service-update','group_name'=>'Service']);
+        // Permission::create(['guard_name'=>'admin','name'=>'service-delete','group_name'=>'Service']);
+
+        //permission for Team
+        // Permission::create(['guard_name'=>'admin','name'=>'team-index','group_name'=>'Team']);
+        // Permission::create(['guard_name'=>'admin','name'=>'team-create','group_name'=>'Team']);
+        // Permission::create(['guard_name'=>'admin','name'=>'team-update','group_name'=>'Team']);
+        // Permission::create(['guard_name'=>'admin','name'=>'team-delete','group_name'=>'Team']);
 
     }
 }
