@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\HomepageSettingController;
 use App\Http\Controllers\Admin\Localization\BackendLanguageController;
 use App\Http\Controllers\Admin\Localization\ChangeLanguageController;
 use App\Http\Controllers\Admin\Localization\LanguageController;
+use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\Role\RoleAndPermissionController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\Settings\MaintenanceModeController;
@@ -108,6 +109,13 @@ Route::prefix('admin')->name('admin.')->group(function () {
                 Route::get('/update/status/{id}/{status}', 'updateStatus');
             });
             /** Team End */
+
+            /** Project Start */
+            Route::resource('project', ProjectController::class)->except('create', 'show');
+            Route::controller(ProjectController::class)->prefix('project')->group(function () {
+                Route::get('/update/status/{id}/{status}', 'updateStatus');
+            });
+            /** Project End */
         });
     });
 

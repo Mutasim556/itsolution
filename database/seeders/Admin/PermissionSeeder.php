@@ -72,5 +72,12 @@ class PermissionSeeder extends Seeder
         // Permission::create(['guard_name'=>'admin','name'=>'team-update','group_name'=>'Team']);
         // Permission::create(['guard_name'=>'admin','name'=>'team-delete','group_name'=>'Team']);
 
+
+        // permission for Team
+        // Permission::create(['guard_name'=>'admin','name'=>'project-index','group_name'=>'Project']);
+        // Permission::create(['guard_name'=>'admin','name'=>'project-create','group_name'=>'Project']);
+        // Permission::create(['guard_name'=>'admin','name'=>'project-update','group_name'=>'Project']);
+        // Permission::create(['guard_name'=>'admin','name'=>'project-delete','group_name'=>'Project']);
+
     }
 }

@@ -57,7 +57,7 @@
             </ul>
         </li>
     @endif
-    @if (hasPermission(['slider-index','aboutus-index','contact-index','service-index']))
+    @if (hasPermission(['slider-index','aboutus-index','contact-index','service-index','project-index']))
         <li class="sidebar-list"><a class="sidebar-link sidebar-title"
                 href="javascript:void(0)"><i data-feather="book-open"></i><span>{{ __('admin_local.Pages') }}</span></a>
             <ul class="sidebar-submenu">
@@ -91,6 +91,11 @@
                  @if (hasPermission(['service-index']))
                 <li>
                     <a class="sidebar-link" href="{{ route('admin.pages.team.index') }}">{{ __('admin_local.Team Members') }}</a>
+                </li>
+                @endif
+                @if (hasPermission(['project-index']))
+                <li>
+                    <a class="sidebar-link" href="{{ route('admin.pages.project.index') }}">{{ __('admin_local.Projects') }}</a>
                 </li>
                 @endif
             </ul>
