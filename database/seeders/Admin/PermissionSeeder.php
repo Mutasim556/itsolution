@@ -91,5 +91,9 @@ class PermissionSeeder extends Seeder
         // Permission::create(['guard_name'=>'admin','name'=>'comment-update','group_name'=>'Homepage Comments']);
         // Permission::create(['guard_name'=>'admin','name'=>'comment-delete','group_name'=>'Homepage Comments']);
 
+        //permission for Homepage Counter
+        // Permission::create(['guard_name'=>'admin','name'=>'counter-index','group_name'=>'Homepage Counter']);
+        // Permission::create(['guard_name'=>'admin','name'=>'counter-update','group_name'=>'Homepage Counter']);
+
     }
 }

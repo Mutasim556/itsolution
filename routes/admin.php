@@ -94,6 +94,11 @@ Route::prefix('admin')->name('admin.')->group(function () {
                  Route::put('comments/{id}', 'updateComments')->name('updateComments');
                  Route::delete('comments/{id}', 'deleteComments')->name('deleteComments');
                 /** Comments End*/
+
+                /** Counting Start*/
+                Route::get('/counting', 'counting')->name('counting');
+                Route::post('/counting', 'updateCounting')->name('counting');
+                /** Counting End*/
             });
             Route::controller(AboutUsController::class)->prefix('about-us')->group(function () {
                 Route::get('/update/about-us', 'aboutUs')->name('aboutUs');

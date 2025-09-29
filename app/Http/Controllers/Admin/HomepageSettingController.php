@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Comment;
+use App\Models\Admin\Counting;
 use App\Models\Admin\HomepageSilder;
 use App\Models\Admin\Language;
 use App\Models\Admin\Translation;
@@ -414,5 +415,30 @@ class HomepageSettingController extends Controller
             'text'=>__('admin_local.Comments deleted successfully.'),
             'confirmButtonText'=>__('admin_local.Ok'),
         ]);
+    }
+
+    public function counting(){
+        $counting = Counting::first();
+        if(!$counting){
+            $counting = new Counting();
+            $counting->save();
+        }
+        return view('backend.blade.settings.homepage.counting',compact('counting'));
+    }
+
+    public function updateCounting(Request $data){
+
+        $update = Counting::findOrFail(1);
+        $update->counting1_name = $data->counting1_name;
+        $update->counting1_value = $data->counting1_value;
+        $update->counting2_name = $data->counting2_name;
+        $update->counting2_value = $data->counting2_value;
+        $update->counting3_name = $data->counting3_name;
+        $update->counting3_value = $data->counting3_value;
+        $update->counting4_name = $data->counting4_name;
+        $update->counting4_value = $data->counting4_value;
+        $update->save();
+
+        return back();
     }
 }

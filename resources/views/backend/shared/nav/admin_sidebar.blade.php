@@ -57,7 +57,7 @@
             </ul>
         </li>
     @endif
-    @if (hasPermission(['slider-index','comment-index','aboutus-index','contact-index','service-index','project-index']))
+    @if (hasPermission(['slider-index','comment-index','counter-index','aboutus-index','contact-index','service-index','project-index']))
         <li class="sidebar-list"><a class="sidebar-link sidebar-title"
                 href="javascript:void(0)"><i data-feather="book-open"></i><span>{{ __('admin_local.Pages') }}</span></a>
             <ul class="sidebar-submenu">
@@ -72,6 +72,9 @@
                         @endif
                         @if (hasPermission(['comment-index']))
                         <li><a href="{{ route('admin.pages.homepage.comments') }}">{{ __('admin_local.Comments') }}</a></li>
+                        @endif
+                        @if (hasPermission(['counter-index']))
+                        <li><a href="{{ route('admin.pages.homepage.counting') }}">{{ __('admin_local.Counting') }}</a></li>
                         @endif
                     </ul>
                 </li>
