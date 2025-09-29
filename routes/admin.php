@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\HomepageSettingController;
 use App\Http\Controllers\Admin\Localization\BackendLanguageController;
 use App\Http\Controllers\Admin\Localization\ChangeLanguageController;
 use App\Http\Controllers\Admin\Localization\LanguageController;
+use App\Http\Controllers\Admin\PartnerController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\Role\RoleAndPermissionController;
 use App\Http\Controllers\Admin\ServiceController;
@@ -84,6 +85,15 @@ Route::prefix('admin')->name('admin.')->group(function () {
                 Route::get('/other-contents', 'otherContent')->name('otherContent');
                 Route::post('/update-counter', 'updateCounter')->name('updateCounter');
                 Route::post('/update-aboutus', 'updateAboutus')->name('updateAboutus');
+
+                /** Comments Start*/
+                 Route::get('/comments', 'comments')->name('comments');
+                 Route::post('/comments', 'storeComments')->name('comments');
+                 Route::get('comments/update/status/{id}/{status}', 'updateCommentsStatus')->name('updateCommentsStatus');
+                 Route::get('comments/{id}/edit', 'editComments')->name('editComments');
+                 Route::put('comments/{id}', 'updateComments')->name('updateComments');
+                 Route::delete('comments/{id}', 'deleteComments')->name('deleteComments');
+                /** Comments End*/
             });
             Route::controller(AboutUsController::class)->prefix('about-us')->group(function () {
                 Route::get('/update/about-us', 'aboutUs')->name('aboutUs');
@@ -116,19 +126,26 @@ Route::prefix('admin')->name('admin.')->group(function () {
                 Route::get('/update/status/{id}/{status}', 'updateStatus');
             });
             /** Project End */
+
+            /** Partner Start */
+            Route::resource('partner', PartnerController::class)->except('create', 'show');
+            Route::controller(PartnerController::class)->prefix('partner')->group(function () {
+                Route::get('/update/status/{id}/{status}', 'updateStatus');
+            });
+            /** Partner End */
         });
     });
 
-    Route::get('/translate-string',function(){
+    Route::get('/translate-string', function () {
         $data = [];
         $langs = getLangs();
-        foreach($langs as $lang){
+        foreach ($langs as $lang) {
             $darr =  GoogleTranslate::trans(request()->tdata, $lang->lang, 'en');
-            array_push($data,$darr);
+            array_push($data, $darr);
         }
         return [
-            'tdata'=>$data,
-            'langs'=>$langs
+            'tdata' => $data,
+            'langs' => $langs
         ];
     })->name('translateString');
 });

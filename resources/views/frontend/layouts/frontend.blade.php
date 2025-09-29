@@ -45,6 +45,7 @@
   transform: scale(1.2);    /* optional: make active dot bigger */
 }
     </style>
+    @stack('css')
 </head>
 
 <body>

@@ -1,5 +1,13 @@
 @extends('frontend.layouts.frontend')
 
+@push('css')
+    <style>
+        .ns-brand-item{
+            height: 150px !important;
+            width: 180px !important;
+        }
+    </style>
+@endpush
 @section('content')
     <!-- banner area start -->
     <section class="ns-banner-area">
