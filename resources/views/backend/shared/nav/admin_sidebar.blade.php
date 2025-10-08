@@ -59,7 +59,7 @@
     @endif
     @if (hasPermission(['slider-index','comment-index','counter-index','aboutus-index','contact-index','service-index','project-index']))
         <li class="sidebar-list"><a class="sidebar-link sidebar-title"
-                href="javascript:void(0)"><i data-feather="book-open"></i><span>{{ __('admin_local.Pages') }}</span></a>
+                href="javascript:void(0)"><i data-feather="book-open"></i><span> {{ __('admin_local.Pages') }}</span></a>
             <ul class="sidebar-submenu">
                 @if (hasPermission(['slider-index','comment-index']))
                 <li>
@@ -111,6 +111,13 @@
                 @endif
             </ul>
         </li>
+    @endif
+    @if (hasPermission(['work-index']))
+    <li class="sidebar-list">
+        <a class="sidebar-link sidebar-title link-nav" href="{{ route('admin.work.index') }}" aria-expanded="false"><i
+                data-feather="bookmark"></i><span> {{ __('admin_local.Works') }}</span>
+        </a>
+    </li>
     @endif
     @if (hasPermission(['maintenance-mode-index']))
         <li class="sidebar-list">

@@ -95,5 +95,11 @@ class PermissionSeeder extends Seeder
         // Permission::create(['guard_name'=>'admin','name'=>'counter-index','group_name'=>'Homepage Counter']);
         // Permission::create(['guard_name'=>'admin','name'=>'counter-update','group_name'=>'Homepage Counter']);
 
+        //permission for Works
+        // Permission::create(['guard_name'=>'admin','name'=>'work-index','group_name'=>'Works']);
+        // Permission::create(['guard_name'=>'admin','name'=>'work-create','group_name'=>'Works']);
+        // Permission::create(['guard_name'=>'admin','name'=>'work-update','group_name'=>'Works']);
+        // Permission::create(['guard_name'=>'admin','name'=>'work-delete','group_name'=>'Works']);
+
     }
 }

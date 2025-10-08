@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\Settings\MaintenanceModeController;
 use App\Http\Controllers\Admin\TeamController;
 use App\Http\Controllers\Admin\User\UserController;
+use App\Http\Controllers\Admin\WorkController;
 use Illuminate\Support\Facades\Route;
 use Stichoza\GoogleTranslate\GoogleTranslate;
 
@@ -139,6 +140,13 @@ Route::prefix('admin')->name('admin.')->group(function () {
             });
             /** Partner End */
         });
+        
+        /** Work Start */
+        Route::resource('work', WorkController::class)->except('create', 'show');
+        Route::controller(WorkController::class)->prefix('partner')->group(function () {
+            Route::get('/update/status/{id}/{status}', 'updateStatus');
+        });
+        /** Work End */
     });
 
     Route::get('/translate-string', function () {
