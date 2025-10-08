@@ -4,6 +4,8 @@
  @endpush
  @push('css')
      <link rel="stylesheet" href="{{ asset(env('ASSET_DIRECTORY', 'public') . '/' . 'admin/assets/css/custom.css') }}">
+     <link rel="stylesheet" type="text/css"
+         href="{{ asset(env('ASSET_DIRECTORY', 'public') . '/' . 'admin/assets/css/vendors/daterange-picker.css') }}">
  @endpush
  @push('page_css')
      <style>
@@ -46,7 +48,7 @@
              <div class="modal-content">
                  <div class="modal-header d-flex align-items-center" style="border-bottom:1px dashed gray">
                      <h4 class="modal-title" id="myLargeModalLabel">
-                         {{ __('admin_local.Add work') }}
+                         {{ __('admin_local.Post Work') }}
                      </h4>
                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                  </div>
@@ -55,7 +57,7 @@
                      <i>{{ __('admin_local.The field labels marked with * are required input fields.') }}</i>
                  </p>
                  <div class="modal-body" style="margin-top: -20px">
-                     <form method="POSt" action="" id="add_team_work_form" enctype="multipart/form-data">
+                     <form method="POSt" action="" id="post_work_form" enctype="multipart/form-data">
                          @csrf
                          <div class="row">
                              <div class="col-sm-12 col-xl-12">
@@ -82,26 +84,16 @@
                                      <div class="tab-pane fade show active" id="pills-defaultLang" role="tabpanel"
                                          aria-labelledby="pills-defaultLang-tab">
                                          <div class="form-group">
-                                             <label for="">{{ __('admin_local.Team work Name') }} (
+                                             <label for="">{{ __('admin_local.Work Title') }} (
                                                  {{ __('admin_local.Default') }} ) *</label>
-                                             <input type="text" class="form-control" name="team_work_name"
-                                                 id="team_work_name">
-                                             <span class="text-danger err-mgs" id="team_work_name_err"></span>
+                                             <input type="text" class="form-control" name="work_title" id="work_title">
+                                             <span class="text-danger err-mgs" id="work_title_err"></span>
                                          </div>
-
                                          <div class="form-group">
-                                             <label for="">{{ __('admin_local.Designation') }} (
+                                             <label for="">{{ __('admin_local.Work Details') }} (
                                                  {{ __('admin_local.Default') }} ) *</label>
-                                             <input type="text" class="form-control" name="team_work_desig"
-                                                 id="team_work_desig">
-                                             <span class="text-danger err-mgs" id="team_work_desig_err"></span>
-                                         </div>
-
-                                         <div class="form-group">
-                                             <label for="">{{ __('admin_local.About Team work') }} (
-                                                 {{ __('admin_local.Default') }} ) *</label>
-                                             <textarea class="form-control ckeditorappend" name="team_work_about" id="team_work_about"></textarea>
-                                             <span class="text-danger err-mgs" id="team_work_about_err"></span>
+                                             <textarea class="form-control ckeditorappend" name="work_details" id="work_details"></textarea>
+                                             <span class="text-danger err-mgs" id="work_details_err"></span>
                                          </div>
                                      </div>
                                      <script>
@@ -114,23 +106,16 @@
                                          <div class="tab-pane fade" id="pills-{{ $lang->name }}" role="tabpanel"
                                              aria-labelledby="pills-{{ $lang->name }}-tab">
                                              <div class="form-group">
-                                                 <label for="">{{ __('admin_local.Team work Name') }} (
+                                                 <label for="">{{ __('admin_local.Work Title') }} (
                                                      {{ $lang->name }} )</label>
                                                  <input type="text" class="form-control"
-                                                     name="team_work_name_{{ $lang->lang }}"
-                                                     id="team_work_name_{{ $lang->lang }}">
+                                                     name="work_title_{{ $lang->lang }}"
+                                                     id="work_title_{{ $lang->lang }}">
                                              </div>
                                              <div class="form-group">
-                                                 <label for="">{{ __('admin_local.Designation') }} (
+                                                 <label for="">{{ __('admin_local.Work Details') }} (
                                                      {{ $lang->name }} ) </label>
-                                                 <input type="text" class="form-control"
-                                                     name="team_work_desig_{{ $lang->lang }}"
-                                                     id="team_work_desig_{{ $lang->lang }}">
-                                             </div>
-                                             <div class="form-group">
-                                                 <label for="">{{ __('admin_local.About Team work') }} (
-                                                     {{ $lang->name }} ) </label>
-                                                 <textarea class="form-control" name="team_work_about_{{ $lang->lang }}" id="team_work_about_{{ $lang->lang }}"></textarea>
+                                                 <textarea class="form-control" name="work_details_{{ $lang->lang }}" id="work_details_{{ $lang->lang }}"></textarea>
                                              </div>
                                          </div>
                                      @endforeach
@@ -140,7 +125,7 @@
                          <div class="row">
                              <div class="col-sm-12 col-xl-6">
                                  <div class="row">
-                                     <div class="form-group col-md-12">
+                                     {{-- <div class="form-group col-md-12">
                                          <label for="">{{ __('admin_local.Gender') }} *</label>
                                          <select class="form-control" name="team_work_gender" id="team_work_gender">
                                              <option value="">{{ __('admin_local.Select Please') }}</option>
@@ -148,98 +133,94 @@
                                              <option value="Female">{{ __('admin_local.Female') }}</option>
                                          </select>
                                          <span class="text-danger err-mgs" id="team_work_gender_err"></span>
+                                     </div> --}}
+                                     <div class="form-group col-md-12">
+                                         <label for="">{{ __('admin_local.Duration') }} *</label>
+                                         <input type="text" class="form-control" name="duration" id="duration">
+                                         <span class="text-danger err-mgs" id="duration_err"></span>
                                      </div>
                                      <div class="form-group col-md-12">
-                                         <label for="">{{ __('admin_local.Phone') }} *</label>
-                                         <input type="text" class="form-control" name="team_work_phone"
-                                             id="team_work_phone">
-                                         <span class="text-danger err-mgs" id="team_work_phone_err"></span>
+                                         <label for="">{{ __('admin_local.Total Cost') }} *</label>
+                                         <input type="text" class="form-control" name="total_cost" id="total_cost">
+                                         <span class="text-danger err-mgs" id="total_cost_err"></span>
                                      </div>
+
                                      <div class="form-group col-md-12">
-                                         <label for="">{{ __('admin_local.Email') }} *</label>
-                                         <input type="text" class="form-control" name="team_work_email"
-                                             id="team_work_email">
-                                         <span class="text-danger err-mgs" id="team_work_email_err"></span>
+                                         <label for="">{{ __('admin_local.Progress') }} *</label>
+                                         <input type="number" min="0" max="100" class="form-control"
+                                             name="progress" id="progress" placeholder="Ex : 1-100 %">
+                                         <span class="text-danger err-mgs" id="progress_err"></span>
                                      </div>
+
                                      <div class="form-group col-md-12">
-                                         <label for="">{{ __('admin_local.Address') }} </label>
-                                         <input type="text" class="form-control" name="team_work_address"
-                                             id="team_work_address">
-                                         <span class="text-danger err-mgs" id="team_work_address_err"></span>
-                                     </div>
-                                     <div class="form-group col-md-12">
-                                         <label for="">{{ __('admin_local.Facebook') }}</label>
-                                         <input type="text" class="form-control" name="team_work_facebook"
-                                             id="team_work_facebook">
-                                         <span class="text-danger err-mgs" id="team_work_facebook_err"></span>
-                                     </div>
-                                     <div class="form-group col-md-12">
-                                         <label for="">{{ __('admin_local.Instagram') }}</label>
-                                         <input type="text" class="form-control" name="team_work_instagram"
-                                             id="team_work_instagram">
-                                         <span class="text-danger err-mgs" id="team_work_instagram_err"></span>
-                                     </div>
-                                     <div class="form-group col-md-12">
-                                         <label for="">{{ __('admin_local.Linked-In') }}</label>
-                                         <input type="text" class="form-control" name="team_work_linkedin"
-                                             id="team_work_linkedin">
-                                         <span class="text-danger err-mgs" id="team_work_linkedin_err"></span>
+                                         <label for="">{{ __('admin_local.Status') }} *</label>
+                                         <select class="form-control" name="work_status" id="work_status">
+                                             <option value="">{{ __('admin_local.Select Please') }}</option>
+                                             <option value="0">{{ __('admin_local.Inactive') }}</option>
+                                             <option value="1">{{ __('admin_local.Active') }}</option>
+                                         </select>
+                                         <span class="text-danger err-mgs" id="work_status_err"></span>
                                      </div>
                                  </div>
                              </div>
                              <div class="col-sm-12 col-xl-6">
                                  <div class="row">
                                      <div class="form-group col-md-12">
-                                         <label for="">{{ __('admin_local.Team work Image') }} (370X395)
-                                             *</label>
-                                         <input type="file" class="form-control" name="team_work_image"
-                                             id="team_work_image" accept="image/*"
-                                             onchange="document.getElementById('prev_team_work_image').src = window.URL.createObjectURL(this.files[0])">
-                                         <span class="text-danger err-mgs" id="team_work_image_err"></span>
+                                         <label for="">{{ __('admin_local.Project File') }}</label>
+                                         <input type="file" class="form-control" name="project_file"
+                                             id="project_file" accept=".pdf, .doc, .docx">
+                                         <span class="text-danger err-mgs" id="project_file_err"></span>
                                      </div>
                                      <div class="form-group col-md-12">
-                                         <label for="">{{ __('admin_local.Preview work Icon') }}
-                                             *</label><br>
-                                         <img src="" id="prev_team_work_image" alt="" height="395px"
-                                             width="100%">
+                                         <label for="">{{ __('admin_local.Total Paid') }} </label>
+                                         <input type="text" class="form-control" name="total_paid" id="total_paid"
+                                             value="0">
+                                         <span class="text-danger err-mgs" id="total_paid_err"></span>
                                      </div>
-                                     <div class="form-group col-md-12 mt-2">
-                                         <label for="">{{ __('admin_local.Youtube') }}</label>
-                                         <input type="text" class="form-control" name="team_work_youtube"
-                                             id="team_work_youtube">
-                                         <span class="text-danger err-mgs" id="team_work_youtube_err"></span>
+                                     <div class="form-group col-md-12">
+                                         <label for="">{{ __('admin_local.Progress Status') }}</label>
+                                         <select class="form-control" name="progress_status" id="progress_status"
+                                             readonly>
+                                             <option value="0">{{ __('admin_local.Not Started') }}</option>
+                                             <option value="1">{{ __('admin_local.Ongoing') }}</option>
+                                             <option value="2">{{ __('admin_local.Completed') }}</option>
+                                         </select>
+                                         <span class="text-danger err-mgs" id="progress_status_err"></span>
                                      </div>
                                  </div>
                              </div>
                          </div>
-                         <div class="row copy-row">
-                             <div class="col-sm-12 col-xl-10">
-                                 <div class="row">
-                                     <div class="form-group col-md-6">
-                                         <label for="">{{ __('admin_local.Expertise') }}</label>
-                                         <input type="text" class="form-control" name="expertise[]" id="expertise">
-                                         <span class="text-danger err-mgs" id="expertise_err"></span>
-                                     </div>
-                                     <div class="form-group col-md-6">
-                                         <label for="">{{ __('admin_local.Expertise Lavel') }}</label>
-                                         <input type="number" min="1" max="100" class="form-control"
-                                             name="expertiselavel[]" id="expertiselavel" placeholder="1 to 100">
-                                         <span class="text-danger err-mgs" id="expertiselavel_err"></span>
+                         <div class="row">
+                             <u>
+                                 <h5 class="text-center"> {{ __('admin_local.Customer Informations') }}</h5>
+                             </u>
+                             <div class="col-sm-12 col-xl-6">
+                                 <div class="mb-3">
+                                    <label for="">{{ __('admin_local.Customer Phone') }}</label>
+                                     <div class="input-group">
+                                         <input class="form-control" name="customer_phone" id="customer_phone" type="text" placeholder="Ex-01XXXXXXXXX"
+                                             aria-label="Ex-01XXXXXXXXX"><span
+                                             class="input-group-text" id="append_digit_counter">Enter 11 digits</span>
                                      </div>
                                  </div>
+                                 <span class="text-danger err-mgs" id="customer_phone_err"></span>
                              </div>
-                             <div class="col-sm-12 col-xl-2">
-                                 <div class="row">
-                                     <div class="form-group col-md-12">
-                                         <label for=""> &nbsp; </label><br>
-                                         <button style="float: right" class="btn btn-success" id="copy_row_btn"
-                                             type="button"><i class="fa fa-plus"></i></button>
-                                     </div>
-                                 </div>
+                             <div class="col-sm-12 col-xl-6">
+                                 <label for="">{{ __('admin_local.Customer Name') }}</label>
+                                 <input type="text" class="form-control" name="customer_name" id="customer_name">
+                                 <span class="text-danger err-mgs" id="customer_name_err"></span>
                              </div>
-                         </div>
-                         <div>
-
+                             <div class="col-sm-12 col-xl-6 mt-3">
+                                 <label for="">{{ __('admin_local.Customer Email') }}</label>
+                                 <input type="email" class="form-control" name="customer_email" id="customer_email">
+                                 <span class="text-danger err-mgs" id="customer_email_err"></span>
+                             </div>
+                             <div class="col-sm-12 col-xl-6 mt-3">
+                                 <label for="">{{ __('admin_local.Customer Address') }}</label>
+                                 <input type="text" class="form-control" name="customer_address"
+                                     id="customer_address">
+                                 <span class="text-danger err-mgs" id="customer_address_err"></span>
+                             </div>
                          </div>
 
                          <div class="row mt-4 mb-2">
@@ -614,9 +595,18 @@
      <script
          src="{{ asset(env('ASSET_DIRECTORY', 'public') . '/' . 'admin/assets/js/editor/ckeditor/ckeditor.custom.js') }}">
      </script>
+     <script
+         src="{{ asset(env('ASSET_DIRECTORY', 'public') . '/' . 'admin/assets/js/datepicker/daterange-picker/moment.min.js') }}">
+     </script>
+     <script
+         src="{{ asset(env('ASSET_DIRECTORY', 'public') . '/' . 'admin/assets/js/datepicker/daterange-picker/daterangepicker.js') }}">
+     </script>
+     <script
+         src="{{ asset(env('ASSET_DIRECTORY', 'public') . '/' . 'admin/assets/js/datepicker/daterange-picker/daterange-picker.custom.js') }}">
+     </script>
      @foreach (getLangs() as $lang)
          <script>
-             CKEDITOR.replace('team_work_about_' + '{{ $lang->lang }}', {
+             CKEDITOR.replace('work_details_' + '{{ $lang->lang }}', {
                  on: {
                      contentDom: function(evt) {
                          // Allow custom context menu only with table elemnts.
@@ -649,7 +639,7 @@
          </script>
      @endforeach
      <script>
-         CKEDITOR.replace('team_work_about', {
+         CKEDITOR.replace('work_details', {
              on: {
                  contentDom: function(evt) {
                      // Allow custom context menu only with table elemnts.
@@ -716,7 +706,7 @@
              }
          });
 
-         var form_url = "{{ route('admin.pages.team.store') }}";
+         var form_url = "{{ route('admin.work.store') }}";
          var submit_btn_after =
              `<strong>{{ __('admin_local.Saving ') }} &nbsp; <i class="fa fa-rotate-right fa-spin"></i></strong>`;
          var submit_btn_before =
@@ -777,9 +767,8 @@
              });
          })
 
-         var expert = `{{ __('admin_local.Expertise') }}`;
-         var expertLvl = `{{ __('admin_local.Expertise Lavel') }}`;
+         var paid_amount_err = `{{ __('admin_local.Paid amount can not greter then total cost.') }}`;
      </script>
-     <script src="{{ asset(env('ASSET_DIRECTORY', 'public') . '/' . 'admin/custom/team/team.js') }}"></script>
+     <script src="{{ asset(env('ASSET_DIRECTORY', 'public') . '/' . 'admin/custom/work/work.js') }}"></script>
      {{-- <script src="{{ asset(env('ASSET_DIRECTORY','public').'/'.'inventory/custom/user/user_list.js') }}"></script> --}}
  @endpush
