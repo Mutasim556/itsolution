@@ -38,6 +38,42 @@
          .invalid-selec2 {
              border-color: red !important;
          }
+
+         #basic-1 tfoot {
+             background-color: #f2f2f2;
+             /* light gray */
+             color: #000;
+             /* text color */
+             font-weight: bold;
+             /* optional */
+         }
+
+         #basic-1 tfoot th,
+         #basic-1 tfoot td {
+             background-color: #ffeb3b;
+             /* yellow */
+             color: #000;
+         }
+
+         #basic-1,
+         #basic-1 th,
+         #basic-1 td {
+             border: 2px solid #3498db;
+             /* your desired border color */
+         }
+
+         /* Change header background for #basic-1 table */
+         #basic-1 thead {
+             background-color: #3498db;
+             /* your desired color */
+             color: #fff;
+             /* optional: header text color */
+         }
+
+         /* Optional: add bold text */
+         #basic-1 thead th {
+             font-weight: bold;
+         }
      </style>
  @endpush
  @section('content')
@@ -166,10 +202,10 @@
                              <div class="col-sm-12 col-xl-6">
                                  <div class="row">
                                      <div class="form-group col-md-12">
-                                         <label for="">{{ __('admin_local.Project File') }}</label>
-                                         <input type="file" class="form-control" name="project_file"
-                                             id="project_file" accept=".pdf, .doc, .docx">
-                                         <span class="text-danger err-mgs" id="project_file_err"></span>
+                                         <label for="">{{ __('admin_local.Work File') }}</label>
+                                         <input type="file" class="form-control" name="work_file" id="work_file"
+                                             accept=".pdf, .doc, .docx">
+                                         <span class="text-danger err-mgs" id="work_file_err"></span>
                                      </div>
                                      <div class="form-group col-md-12">
                                          <label for="">{{ __('admin_local.Total Paid') }} </label>
@@ -196,17 +232,18 @@
                              </u>
                              <div class="col-sm-12 col-xl-6">
                                  <div class="mb-3">
-                                    <label for="">{{ __('admin_local.Customer Phone') }}</label>
+                                     <label for="">{{ __('admin_local.Customer Phone') }} *</label>
                                      <div class="input-group">
-                                         <input class="form-control" name="customer_phone" id="customer_phone" type="text" placeholder="Ex-01XXXXXXXXX"
-                                             aria-label="Ex-01XXXXXXXXX"><span
-                                             class="input-group-text" id="append_digit_counter">Enter 11 digits</span>
+                                         <input class="form-control" name="customer_phone" id="customer_phone"
+                                             type="text" placeholder="Ex-01XXXXXXXXX"
+                                             aria-label="Ex-01XXXXXXXXX"><span class="input-group-text"
+                                             id="append_digit_counter">Enter 11 digits</span>
                                      </div>
                                  </div>
                                  <span class="text-danger err-mgs" id="customer_phone_err"></span>
                              </div>
                              <div class="col-sm-12 col-xl-6">
-                                 <label for="">{{ __('admin_local.Customer Name') }}</label>
+                                 <label for="">{{ __('admin_local.Customer Name') }} *</label>
                                  <input type="text" class="form-control" name="customer_name" id="customer_name">
                                  <span class="text-danger err-mgs" id="customer_name_err"></span>
                              </div>
@@ -216,7 +253,7 @@
                                  <span class="text-danger err-mgs" id="customer_email_err"></span>
                              </div>
                              <div class="col-sm-12 col-xl-6 mt-3">
-                                 <label for="">{{ __('admin_local.Customer Address') }}</label>
+                                 <label for="">{{ __('admin_local.Customer Address') }} *</label>
                                  <input type="text" class="form-control" name="customer_address"
                                      id="customer_address">
                                  <span class="text-danger err-mgs" id="customer_address_err"></span>
@@ -253,7 +290,7 @@
              <div class="modal-content">
                  <div class="modal-header d-flex align-items-center" style="border-bottom:1px dashed gray">
                      <h4 class="modal-title" id="myLargeModalLabel">
-                         {{ __('admin_local.Edit  work') }}
+                         {{ __('admin_local.Edit Work') }}
                      </h4>
                      <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
                  </div>
@@ -290,26 +327,17 @@
                                      <div class="tab-pane fade show active" id="epills-defaultLang" role="tabpanel"
                                          aria-labelledby="epills-defaultLang-tab">
                                          <div class="form-group">
-                                             <label for="">{{ __('admin_local.Team work Name') }} (
+                                             <label for="">{{ __('admin_local.Work Title') }} (
                                                  {{ __('admin_local.Default') }} ) *</label>
-                                             <input type="text" class="form-control" name="team_work_name"
-                                                 id="team_work_name">
-                                             <span class="text-danger err-mgs" id="team_work_name_err"></span>
+                                             <input type="text" class="form-control" name="work_title"
+                                                 id="work_title">
+                                             <span class="text-danger err-mgs" id="work_title_err"></span>
                                          </div>
-
                                          <div class="form-group">
-                                             <label for="">{{ __('admin_local.Designation') }} (
+                                             <label for="">{{ __('admin_local.Work Details') }} (
                                                  {{ __('admin_local.Default') }} ) *</label>
-                                             <input type="text" class="form-control" name="team_work_desig"
-                                                 id="team_work_desig">
-                                             <span class="text-danger err-mgs" id="team_work_desig_err"></span>
-                                         </div>
-
-                                         <div class="form-group">
-                                             <label for="">{{ __('admin_local.About Team work') }} (
-                                                 {{ __('admin_local.Default') }} ) *</label>
-                                             <textarea class="form-control ckeditorappend" name="team_work_about" id="team_work_about2"></textarea>
-                                             <span class="text-danger err-mgs" id="team_work_about_err"></span>
+                                             <textarea class="form-control ckeditorappend" name="work_details" id="work_details2"></textarea>
+                                             <span class="text-danger err-mgs" id="work_details_err"></span>
                                          </div>
                                      </div>
                                      <script>
@@ -322,24 +350,16 @@
                                          <div class="tab-pane fade" id="epills-{{ $lang->name }}" role="tabpanel"
                                              aria-labelledby="epills-{{ $lang->name }}-tab">
                                              <div class="form-group">
-                                                 <label for="">{{ __('admin_local.Team work Name') }} (
+                                                 <label for="">{{ __('admin_local.Work Title') }} (
                                                      {{ $lang->name }} )</label>
                                                  <input type="text" class="form-control"
-                                                     name="team_work_name_{{ $lang->lang }}"
-                                                     id="team_work_name_{{ $lang->lang }}">
+                                                     name="work_title_{{ $lang->lang }}"
+                                                     id="work_title_{{ $lang->lang }}">
                                              </div>
                                              <div class="form-group">
-                                                 <label for="">{{ __('admin_local.Designation') }} (
+                                                 <label for="">{{ __('admin_local.Work Details') }} (
                                                      {{ $lang->name }} ) </label>
-                                                 <input type="text" class="form-control"
-                                                     name="team_work_desig_{{ $lang->lang }}"
-                                                     id="team_work_desig_{{ $lang->lang }}">
-                                             </div>
-                                             <div class="form-group">
-                                                 <label for="">{{ __('admin_local.About Team work') }} (
-                                                     {{ $lang->name }} ) </label>
-                                                 <textarea class="form-control" name="team_work_about_{{ $lang->lang }}"
-                                                     id="team_work_about2_{{ $lang->lang }}"></textarea>
+                                                 <textarea class="form-control" name="work_details_{{ $lang->lang }}" id="work_details2_{{ $lang->lang }}"></textarea>
                                              </div>
                                          </div>
                                      @endforeach
@@ -349,7 +369,7 @@
                          <div class="row">
                              <div class="col-sm-12 col-xl-6">
                                  <div class="row">
-                                     <div class="form-group col-md-12">
+                                     {{-- <div class="form-group col-md-12">
                                          <label for="">{{ __('admin_local.Gender') }} *</label>
                                          <select class="form-control" name="team_work_gender" id="team_work_gender">
                                              <option value="">{{ __('admin_local.Select Please') }}</option>
@@ -357,98 +377,95 @@
                                              <option value="Female">{{ __('admin_local.Female') }}</option>
                                          </select>
                                          <span class="text-danger err-mgs" id="team_work_gender_err"></span>
+                                     </div> --}}
+                                     <div class="form-group col-md-12">
+                                         <label for="">{{ __('admin_local.Duration') }} *</label>
+                                         <input type="text" class="form-control" name="duration" id="duration">
+                                         <span class="text-danger err-mgs" id="duration_err"></span>
                                      </div>
                                      <div class="form-group col-md-12">
-                                         <label for="">{{ __('admin_local.Phone') }} *</label>
-                                         <input type="text" class="form-control" name="team_work_phone"
-                                             id="team_work_phone">
-                                         <span class="text-danger err-mgs" id="team_work_phone_err"></span>
+                                         <label for="">{{ __('admin_local.Total Cost') }} *</label>
+                                         <input type="text" class="form-control" name="total_cost" id="total_cost">
+                                         <span class="text-danger err-mgs" id="total_cost_err"></span>
                                      </div>
+
                                      <div class="form-group col-md-12">
-                                         <label for="">{{ __('admin_local.Email') }} *</label>
-                                         <input type="text" class="form-control" name="team_work_email"
-                                             id="team_work_email">
-                                         <span class="text-danger err-mgs" id="team_work_email_err"></span>
+                                         <label for="">{{ __('admin_local.Progress') }} *</label>
+                                         <input type="number" min="0" max="100" class="form-control"
+                                             name="progress" id="progress" placeholder="Ex : 1-100 %">
+                                         <span class="text-danger err-mgs" id="progress_err"></span>
                                      </div>
+
                                      <div class="form-group col-md-12">
-                                         <label for="">{{ __('admin_local.Address') }} </label>
-                                         <input type="text" class="form-control" name="team_work_address"
-                                             id="team_work_address">
-                                         <span class="text-danger err-mgs" id="team_work_address_err"></span>
-                                     </div>
-                                     <div class="form-group col-md-12">
-                                         <label for="">{{ __('admin_local.Facebook') }}</label>
-                                         <input type="text" class="form-control" name="team_work_facebook"
-                                             id="team_work_facebook">
-                                         <span class="text-danger err-mgs" id="team_work_facebook_err"></span>
-                                     </div>
-                                     <div class="form-group col-md-12">
-                                         <label for="">{{ __('admin_local.Instagram') }}</label>
-                                         <input type="text" class="form-control" name="team_work_instagram"
-                                             id="team_work_instagram">
-                                         <span class="text-danger err-mgs" id="team_work_instagram_err"></span>
-                                     </div>
-                                     <div class="form-group col-md-12">
-                                         <label for="">{{ __('admin_local.Linked-In') }}</label>
-                                         <input type="text" class="form-control" name="team_work_linkedin"
-                                             id="team_work_linkedin">
-                                         <span class="text-danger err-mgs" id="team_work_linkedin_err"></span>
+                                         <label for="">{{ __('admin_local.Status') }} *</label>
+                                         <select class="form-control" name="work_status" id="work_status">
+                                             <option value="">{{ __('admin_local.Select Please') }}</option>
+                                             <option value="0">{{ __('admin_local.Inactive') }}</option>
+                                             <option value="1">{{ __('admin_local.Active') }}</option>
+                                         </select>
+                                         <span class="text-danger err-mgs" id="work_status_err"></span>
                                      </div>
                                  </div>
                              </div>
                              <div class="col-sm-12 col-xl-6">
                                  <div class="row">
                                      <div class="form-group col-md-12">
-                                         <label for="">{{ __('admin_local.Team work Image') }} (370X395)
-                                             *</label>
-                                         <input type="file" class="form-control" name="team_work_image"
-                                             id="team_work_image" accept="image/*"
-                                             onchange="document.getElementById('prev_team_work_image2').src = window.URL.createObjectURL(this.files[0])">
-                                         <span class="text-danger err-mgs" id="team_work_image_err"></span>
+                                         <label for="">{{ __('admin_local.Work File') }}</label>
+                                         <input type="file" class="form-control" name="work_file" id="work_file"
+                                             accept=".pdf, .doc, .docx">
+                                         <span class="text-danger err-mgs" id="work_file_err"></span>
                                      </div>
                                      <div class="form-group col-md-12">
-                                         <label for="">{{ __('admin_local.Preview work Icon') }}
-                                             *</label><br>
-                                         <img src="" id="prev_team_work_image2" alt="" height="395px"
-                                             width="100%">
+                                         <label for="">{{ __('admin_local.Total Paid') }} </label>
+                                         <input type="text" class="form-control" name="total_paid" id="total_paid"
+                                             value="0">
+                                         <span class="text-danger err-mgs" id="total_paid_err"></span>
                                      </div>
-                                     <div class="form-group col-md-12 mt-2">
-                                         <label for="">{{ __('admin_local.Youtube') }}</label>
-                                         <input type="text" class="form-control" name="team_work_youtube"
-                                             id="team_work_youtube">
-                                         <span class="text-danger err-mgs" id="team_work_youtube_err"></span>
+                                     <div class="form-group col-md-12">
+                                         <label for="">{{ __('admin_local.Progress Status') }}</label>
+                                         <select class="form-control" name="progress_status" id="progress_status"
+                                             readonly>
+                                             <option value="0">{{ __('admin_local.Not Started') }}</option>
+                                             <option value="1">{{ __('admin_local.Ongoing') }}</option>
+                                             <option value="2">{{ __('admin_local.Completed') }}</option>
+                                         </select>
+                                         <span class="text-danger err-mgs" id="progress_status_err"></span>
                                      </div>
                                  </div>
                              </div>
                          </div>
-                         <div class="row copy-row">
-                             <div class="col-sm-12 col-xl-10">
-                                 <div class="row">
-                                     <div class="form-group col-md-6">
-                                         <label for="">{{ __('admin_local.Expertise') }}</label>
-                                         <input type="text" class="form-control" name="expertise[]" id="expertise">
-                                         <span class="text-danger err-mgs" id="expertise_err"></span>
-                                     </div>
-                                     <div class="form-group col-md-6">
-                                         <label for="">{{ __('admin_local.Expertise Lavel') }}</label>
-                                         <input type="number" min="1" max="100" class="form-control"
-                                             name="expertiselavel[]" id="expertiselavel" placeholder="1 to 100">
-                                         <span class="text-danger err-mgs" id="expertiselavel_err"></span>
-                                     </div>
-                                 </div>
-                             </div>
-                             <div class="col-sm-12 col-xl-2">
-                                 <div class="row">
-                                     <div class="form-group col-md-12">
-                                         <label for=""> &nbsp; </label><br>
-                                         <button style="float: right" class="btn btn-success" id="copy_row_btn"
-                                             type="button"><i class="fa fa-plus"></i></button>
+                         <div class="row">
+                             <u>
+                                 <h5 class="text-center"> {{ __('admin_local.Customer Informations') }}</h5>
+                             </u>
+                             <div class="col-sm-12 col-xl-6">
+                                 <div class="mb-3">
+                                     <label for="">{{ __('admin_local.Customer Phone') }} *</label>
+                                     <div class="input-group">
+                                         <input class="form-control" name="customer_phone" id="customer_phone"
+                                             type="text" placeholder="Ex-01XXXXXXXXX"
+                                             aria-label="Ex-01XXXXXXXXX"><span class="input-group-text"
+                                             id="append_digit_counter">Enter 11 digits</span>
                                      </div>
                                  </div>
+                                 <span class="text-danger err-mgs" id="customer_phone_err"></span>
                              </div>
-                         </div>
-                         <div id="append_exp_div">
-
+                             <div class="col-sm-12 col-xl-6">
+                                 <label for="">{{ __('admin_local.Customer Name') }} *</label>
+                                 <input type="text" class="form-control" name="customer_name" id="customer_name">
+                                 <span class="text-danger err-mgs" id="customer_name_err"></span>
+                             </div>
+                             <div class="col-sm-12 col-xl-6 mt-3">
+                                 <label for="">{{ __('admin_local.Customer Email') }}</label>
+                                 <input type="email" class="form-control" name="customer_email" id="customer_email">
+                                 <span class="text-danger err-mgs" id="customer_email_err"></span>
+                             </div>
+                             <div class="col-sm-12 col-xl-6 mt-3">
+                                 <label for="">{{ __('admin_local.Customer Address') }} *</label>
+                                 <input type="text" class="form-control" name="customer_address"
+                                     id="customer_address">
+                                 <span class="text-danger err-mgs" id="customer_address_err"></span>
+                             </div>
                          </div>
 
                          <div class="row mt-4 mb-2">
@@ -500,9 +517,11 @@
                                          <th>{{ __('admin_local.Work Title') }}</th>
                                          <th>{{ __('admin_local.Customer Name') }}</th>
                                          <th>{{ __('admin_local.Customer Phone') }}</th>
+                                         <th>{{ __('admin_local.Work File') }}</th>
                                          <th>{{ __('admin_local.Duration') }}</th>
                                          <th>{{ __('admin_local.Total Cost') }}</th>
                                          <th>{{ __('admin_local.Total Paid') }}</th>
+                                         <th>{{ __('admin_local.Total Due') }}</th>
                                          <th>{{ __('admin_local.Payment Status') }}</th>
                                          <th>{{ __('admin_local.Progress') }}</th>
                                          <th>{{ __('admin_local.Status') }}</th>
@@ -516,10 +535,31 @@
                                              <td>{{ $work->work_title }}</td>
                                              <td>{{ $work->user->name }}</td>
                                              <td>{{ $work->user->phone }}</td>
+                                             <td>
+                                                 @if ($work->work_file)
+                                                     <a target="__blank" class="badge badge-info"
+                                                         href="{{ asset($work->work_file) }}">{{ __('admin_local.View File') }}</a>
+                                                 @else
+                                                     <span
+                                                         class="badge badge-danger">{{ __('admin_local.No File') }}</span>
+                                                 @endif
+                                             </td>
                                              <td>{{ $work->duration }}</td>
                                              <td>{{ $work->total_cost }}</td>
                                              <td>{{ $work->total_paid }}</td>
-                                             <td>{{ $work->payment_status }}</td>
+                                             <td>{{ $work->total_cost - $work->total_paid }}</td>
+                                             <td>
+                                                 @if ($work->payment_status == 0)
+                                                     <span
+                                                         class="badge badge-danger">{{ __('admin_local.Unpaid') }}</span>
+                                                 @elseif($work->payment_status == 1)
+                                                     <span
+                                                         class="badge badge-warning">{{ __('admin_local.Partially Paid') }}</span>
+                                                 @else
+                                                     <span
+                                                         class="badge badge-success">{{ __('admin_local.Paid') }}</span>
+                                                 @endif
+                                             </td>
                                              <td>{{ $work->progress }} %</td>
                                              <td class="text-center">
                                                  @if (hasPermission(['work-update']))
@@ -563,6 +603,16 @@
                                          </tr>
                                      @endforeach
                                  </tbody>
+                                 <tfoot>
+                                     <tr>
+                                         <th colspan="4"></th>
+                                         <th>Total:</th>
+                                         <th></th>
+                                         <th></th>
+                                         <th></th>
+                                         <th colspan="4"></th>
+                                     </tr>
+                                 </tfoot>
                              </table>
                              @csrf
                          </div>
@@ -604,6 +654,30 @@
      <script
          src="{{ asset(env('ASSET_DIRECTORY', 'public') . '/' . 'admin/assets/js/datepicker/daterange-picker/daterange-picker.custom.js') }}">
      </script>
+     <script src="{{ asset('public/admin/assets/js/datatable/datatable-extension/dataTables.buttons.min.js') }}"></script>
+     <script src="{{ asset('public/admin/assets/js/datatable/datatable-extension/jszip.min.js') }}"></script>
+     <script src="{{ asset('public/admin/assets/js/datatable/datatable-extension/buttons.colVis.min.js') }}"></script>
+     <script src="{{ asset('public/admin/assets/js/datatable/datatable-extension/pdfmake.min.js') }}"></script>
+     <script src="{{ asset('public/admin/assets/js/datatable/datatable-extension/vfs_fonts.js') }}"></script>
+     <script src="{{ asset('public/admin/assets/js/datatable/datatable-extension/dataTables.autoFill.min.js') }}"></script>
+     <script src="{{ asset('public/admin/assets/js/datatable/datatable-extension/dataTables.select.min.js') }}"></script>
+     <script src="{{ asset('public/admin/assets/js/datatable/datatable-extension/buttons.bootstrap4.min.js') }}"></script>
+     <script src="{{ asset('public/admin/assets/js/datatable/datatable-extension/buttons.html5.min.js') }}"></script>
+     <script src="{{ asset('public/admin/assets/js/datatable/datatable-extension/buttons.print.min.js') }}"></script>
+     <script src="{{ asset('public/admin/assets/js/datatable/datatable-extension/dataTables.bootstrap4.min.js') }}">
+     </script>
+     <script src="{{ asset('public/admin/assets/js/datatable/datatable-extension/dataTables.responsive.min.js') }}">
+     </script>
+     <script src="{{ asset('public/admin/assets/js/datatable/datatable-extension/responsive.bootstrap4.min.js') }}">
+     </script>
+     <script src="{{ asset('public/admin/assets/js/datatable/datatable-extension/dataTables.keyTable.min.js') }}"></script>
+     <script src="{{ asset('public/admin/assets/js/datatable/datatable-extension/dataTables.colReorder.min.js') }}">
+     </script>
+     <script src="{{ asset('public/admin/assets/js/datatable/datatable-extension/dataTables.fixedHeader.min.js') }}">
+     </script>
+     <script src="{{ asset('public/admin/assets/js/datatable/datatable-extension/dataTables.rowReorder.min.js') }}">
+     </script>
+     <script src="{{ asset('public/admin/assets/js/datatable/datatable-extension/dataTables.scroller.min.js') }}"></script>
      @foreach (getLangs() as $lang)
          <script>
              CKEDITOR.replace('work_details_' + '{{ $lang->lang }}', {
@@ -622,7 +696,7 @@
              });
          </script>
          <script>
-             CKEDITOR.replace('team_work_about2_' + '{{ $lang->lang }}', {
+             CKEDITOR.replace('work_details2_' + '{{ $lang->lang }}', {
                  on: {
                      contentDom: function(evt) {
                          // Allow custom context menu only with table elemnts.
@@ -653,7 +727,7 @@
                  }
              }
          });
-         CKEDITOR.replace('team_work_about2', {
+         CKEDITOR.replace('work_details2', {
              on: {
                  contentDom: function(evt) {
                      // Allow custom context menu only with table elemnts.
@@ -680,6 +754,23 @@
              document.querySelector('.select2-search__field').focus();
          });
          var oTable = $("#basic-1").DataTable({
+             dom: 'Bfltip', // B = Buttons, f = search, l = length menu, t = table, i = info, p = pagination
+             buttons: [{
+                 extend: 'excelHtml5',
+                 text: 'Excel',
+                 className: 'btn btn-info mx-4',
+                 filename: 'work_list', // Excel file name
+                 title: `{{ __('admin_local.Work List') }}`, // Sheet title inside Excel
+                 exportOptions: {
+                     columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], // only export these column indexes (0-based)
+                     footer: true
+                 }
+             }],
+             "lengthMenu": [
+                 [10, 20, 100, 1, -1],
+                 [10, 20, 100, 1, "All"]
+             ],
+             "pageLength": 10, // default page size
              "language": {
                  "decimal": "",
                  "emptyTable": "{{ __('admin_local.No data available in table') }}",
@@ -703,6 +794,48 @@
                      "sortAscending": ": activate to sort column ascending",
                      "sortDescending": ": activate to sort column descending"
                  }
+             },
+             "order": [], // no initial sort
+
+             "footerCallback": function(row, data, start, end, display) {
+                 var api = this.api();
+
+                 // Helper function to parse values
+                 var intVal = function(i) {
+                     return typeof i === 'string' ?
+                         i.replace(/[\$,]/g, '') * 1 :
+                         typeof i === 'number' ? i : 0;
+                 };
+
+                 // Sum over all pages
+                 var total_cost = api
+                     .column(5, {
+                         page: 'current'
+                     }) // index of total_cost column
+                     .data()
+                     .reduce(function(a, b) {
+                         return intVal(a) + intVal(b);
+                     }, 0);
+                 var total_paid = api
+                     .column(6, {
+                         page: 'current'
+                     }) // index of total_cost column
+                     .data()
+                     .reduce(function(a, b) {
+                         return intVal(a) + intVal(b);
+                     }, 0);
+                 var total_due = api
+                     .column(7, {
+                         page: 'current'
+                     }) // index of total_cost column
+                     .data()
+                     .reduce(function(a, b) {
+                         return intVal(a) + intVal(b);
+                     }, 0);
+                 // Update footer
+                 $(api.column(5).footer()).html(total_cost.toFixed(2));
+                 $(api.column(6).footer()).html(total_paid.toFixed(2));
+                 $(api.column(7).footer()).html(total_due.toFixed(2));
              }
          });
 
@@ -719,7 +852,7 @@
          var delete_swal_text =
              `{{ __('admin_local.Once deleted, you will not be able to recover this data') }}`;
          var delete_swal_cancel_text = `{{ __('admin_local.Delete request canceld successfully') }}`;
-         var no_file = `{{ __('admin_local.No file') }}`;
+         var no_file = `<span class="badge badge-danger">{{ __('admin_local.No File') }}</span>`;
          var base_url = `{{ baseUrl() }}`;
          var translate_url = `{{ route('admin.translateString') }}`;
      </script>

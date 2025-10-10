@@ -24,6 +24,18 @@ class Work extends Model
 
         return $value;
     }
+    public function getWorkDetsildAttribute($value)
+    {
+        if (count($this->translations) > 0) {
+            foreach ($this->translations as $translation) {
+                if ($translation['key'] == 'work_details') {
+                    return $translation['value'];
+                }
+            }
+        }
+
+        return $value;
+    }
     protected static function booted()
     {
         static::addGlobalScope('translate', function (Builder $builder) {
@@ -35,5 +47,9 @@ class Work extends Model
 
     public function user(){
         return $this->belongsTo(User::class,'user_id','id');
+    }
+
+    public function payments(){
+        return $this->hasMany(WorkPayment::class,'work_id','id');
     }
 }

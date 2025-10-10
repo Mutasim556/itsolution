@@ -143,7 +143,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
         /** Work Start */
         Route::resource('work', WorkController::class)->except('create');
-        Route::controller(WorkController::class)->prefix('partner')->group(function () {
+        Route::controller(WorkController::class)->prefix('work')->group(function () {
             Route::get('/update/status/{id}/{status}', 'updateStatus');
         });
         /** Work End */
