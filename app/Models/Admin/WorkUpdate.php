@@ -6,18 +6,18 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Database\Query\Builder;
 
-class Work extends Model
+class WorkUpdate extends Model
 {
     protected $guarded = [];
     public function translations()
     {
         return $this->morphMany(Translation::class, 'translationable');
     }
-    public function getWorkTitleAttribute($value)
+    public function getUpdatesDetailsAttribute($value)
     {
         if (count($this->translations) > 0) {
             foreach ($this->translations as $translation) {
-                if ($translation['key'] == 'work_title') {
+                if ($translation['key'] == 'updates_details') {
                     return $translation['value'];
                 }
             }
@@ -25,11 +25,11 @@ class Work extends Model
 
         return $value;
     }
-    public function getWorkDetailsdAttribute($value)
+    public function getUpdatesNoteAttribute($value)
     {
         if (count($this->translations) > 0) {
             foreach ($this->translations as $translation) {
-                if ($translation['key'] == 'work_details') {
+                if ($translation['key'] == 'updates_note') {
                     return $translation['value'];
                 }
             }
@@ -45,16 +45,14 @@ class Work extends Model
             }]);
         });
     }
-
+     public function work(){
+        return $this->belongsTo(Work::class,'work_id','id');
+    }
     public function user(){
         return $this->belongsTo(User::class,'user_id','id');
     }
-
-    public function payments(){
-        return $this->hasMany(WorkPayment::class,'work_id','id');
-    }
-
-    public function workupdates(){
-        return $this->hasMany(WorkUpdate::class,'work_id','id');
+    public function payment()
+    {
+        return $this->belongsTo(WorkPayment::class, 'payment_id', 'id');
     }
 }

@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\Settings\MaintenanceModeController;
 use App\Http\Controllers\Admin\TeamController;
 use App\Http\Controllers\Admin\User\UserController;
 use App\Http\Controllers\Admin\WorkController;
+use App\Http\Controllers\Admin\WorkUpdatesController;
 use Illuminate\Support\Facades\Route;
 use Stichoza\GoogleTranslate\GoogleTranslate;
 
@@ -146,6 +147,12 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::controller(WorkController::class)->prefix('work')->group(function () {
             Route::get('/update/status/{id}/{status}', 'updateStatus');
         });
+
+        Route::resource('work/updates', WorkUpdatesController::class)->except('create','index');
+        Route::controller(WorkUpdatesController::class)->prefix('work/updates')->group(function () {
+            Route::get('/update/status/{id}/{status}', 'updateStatus');
+        });
+
         /** Work End */
     });
 

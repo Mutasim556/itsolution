@@ -74,6 +74,23 @@
          #basic-1 thead th {
              font-weight: bold;
          }
+
+         #basic-2_wrapper {
+             border: 1px solid #ddd;
+             /* border color */
+             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+             /* nice subtle shadow */
+             border-radius: 8px;
+             padding: 10px;
+             background: #fff;
+         }
+
+
+         #edit-updates-modal .modal-content {
+             background-color: #fff89b;
+             border: 1px solid #ddd;
+             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+         }
      </style>
  @endpush
  @section('content')
@@ -488,6 +505,500 @@
 
      {{-- Add User Modal End --}}
 
+     <div class="modal fade" id="work-updates-modal" tabindex="-1" aria-labelledby="bs-example-modal-lg"
+         aria-hidden="true">
+         <div class="modal-dialog modal-xl">
+             <div class="modal-content">
+                 <div class="modal-header d-flex align-items-center" style="border-bottom:1px dashed gray">
+                     <h4 class="modal-title" id="myLargeModalLabel">
+                         {{ __('admin_local.Work Updates') }}
+                     </h4>
+                     <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
+                 </div>
+                 <p class="px-3 text-danger">
+                     <i>{{ __('admin_local.The field labels marked with * are required input fields.') }}</i>
+                 </p>
+                 <div class="modal-body" style="margin-top: -20px">
+                     <div class="row">
+                         <div class="col-sm-12 col-xl-12">
+                             <div class="card">
+                                 <div class="card-body my-0 py-0">
+                                     <ul class="nav nav-tabs nav-right" id="right-tab" role="tablist">
+                                         <li class="nav-item"><a class="nav-link active" id="right-home-tab"
+                                                 data-bs-toggle="tab" href="#right-home" role="tab"
+                                                 aria-controls="right-home" aria-selected="true"><i
+                                                     class="icofont icofont-list"></i>{{ __('admin_local.Previous Updates') }}</a>
+                                         </li>
+                                         <li class="nav-item"><a class="nav-link" id="profile-right-tab"
+                                                 data-bs-toggle="tab" href="#right-profile" role="tab"
+                                                 aria-controls="profile-icon" aria-selected="false"><i
+                                                     class="icofont icofont-contact-add"></i>{{ __('admin_local.New Update') }}</a>
+                                         </li>
+                                         <li class="nav-item"><a class="nav-link" id="contact-right-tab"
+                                                 data-bs-toggle="tab" href="#right-contact" role="tab"
+                                                 aria-controls="contact-icon" aria-selected="false"><i
+                                                     class="icofont icofont-contacts"></i>{{ __('admin_local.Payments') }}</a>
+                                         </li>
+
+                                     </ul>
+                                     <div class="tab-content" id="right-tabContent">
+                                         <div class="tab-pane fade show active" id="right-home" role="tabpanel"
+                                             aria-labelledby="right-home-tab">
+                                             <div class="table-responsive theme-scrollbar py-4">
+                                                 <table id="basic-2" class="display table-bordered py-3">
+                                                     <thead>
+                                                         <tr>
+                                                             <th>S/N</th>
+                                                             <th>{{ __('admin_local.Updates Details') }}</th>
+                                                             <th>{{ __('admin_local.Requested Amount') }}</th>
+                                                             <th>{{ __('admin_local.Requested Date') }}</th>
+                                                             <th>{{ __('admin_local.Received Amount') }}</th>
+                                                             <th>{{ __('admin_local.Received Date') }}</th>
+                                                             <th>{{ __('admin_local.Updates File') }}</th>
+                                                             <th>{{ __('admin_local.Action') }}</th>
+                                                         </tr>
+                                                     </thead>
+                                                     <tbody>
+
+                                                     </tbody>
+                                                     <tfoot>
+                                                         <tr>
+                                                             <th></th>
+                                                             <th>{{ __('admin_local.Total') }}</th>
+                                                             <th></th>
+                                                             <th></th>
+                                                             <th></th>
+                                                             <th></th>
+                                                             <th></th>
+                                                             <th></th>
+                                                         </tr>
+                                                     </tfoot>
+                                                 </table>
+                                             </div>
+                                         </div>
+
+                                         <div class="tab-pane fade" id="right-profile" role="tabpanel"
+                                             aria-labelledby="profile-right-tab">
+                                             <form method="POST" id="add_work_update" enctype="multipart/form-data"
+                                                 action="">
+                                                 @csrf
+                                                 <div class="row mt-3">
+                                                     <div class="col-sm-12 col-xl-12">
+                                                         <ul class="nav nav-pills nav-primary my-0" id="pills-successtab"
+                                                             role="tablist">
+                                                             @php
+                                                                 $lang = \App\Models\Admin\Language::where([
+                                                                     ['status', 1],
+                                                                     ['delete', 0],
+                                                                     ['default', 1],
+                                                                 ])->first();
+                                                             @endphp
+                                                             <li class="nav-item"><a class="nav-link active"
+                                                                     id="wupills-defaultLang-tab" data-bs-toggle="pill"
+                                                                     href="#wupills-defaultLang" role="tab"
+                                                                     aria-controls="wupills-defaultLang"
+                                                                     aria-selected="true">{{ $lang->name }}
+                                                                     ( {{ __('admin_local.Default') }} )</a></li>
+                                                             @foreach (getLangs() as $lang)
+                                                                 <li class="nav-item"><a class="nav-link"
+                                                                         id="wupills-{{ $lang->name }}-tab"
+                                                                         data-bs-toggle="pill"
+                                                                         href="#wupills-{{ $lang->name }}"
+                                                                         role="tab"
+                                                                         aria-controls="wupills-{{ $lang->name }}"
+                                                                         aria-selected="true">{{ $lang->name }}</a>
+                                                                 </li>
+                                                             @endforeach
+                                                         </ul>
+                                                         <div class="tab-content mt-3" id="wupills-successtabContent">
+                                                             <div class="tab-pane fade show active"
+                                                                 id="wupills-defaultLang" role="tabpanel"
+                                                                 aria-labelledby="wupills-defaultLang-tab">
+                                                                 <div class="form-group">
+                                                                     <label
+                                                                         for="">{{ __('admin_local.Updates Note') }}
+                                                                         (
+                                                                         {{ __('admin_local.Default') }} ) *</label>
+                                                                     <input type="text" class="form-control"
+                                                                         name="updates_note" id="updates_note">
+                                                                     <span class="text-danger err-mgs"
+                                                                         id="updates_note_err"></span>
+                                                                 </div>
+                                                                 <div class="form-group">
+                                                                     <label
+                                                                         for="">{{ __('admin_local.Updates Details') }}
+                                                                         (
+                                                                         {{ __('admin_local.Default') }} ) *</label>
+                                                                     <textarea class="form-control ckeditorappend" name="updates_details" id="updates_details"></textarea>
+                                                                     <span class="text-danger err-mgs"
+                                                                         id="updates_details_err"></span>
+                                                                 </div>
+                                                             </div>
+                                                             <script>
+                                                                 var langCode = [];
+                                                             </script>
+                                                             @foreach (getLangs() as $lang)
+                                                                 <script>
+                                                                     langCode.push("{{ $lang->lang }}");
+                                                                 </script>
+                                                                 <div class="tab-pane fade"
+                                                                     id="wupills-{{ $lang->name }}" role="tabpanel"
+                                                                     aria-labelledby="wupills-{{ $lang->name }}-tab">
+                                                                     <div class="form-group">
+                                                                         <label
+                                                                             for="">{{ __('admin_local.Updates Note') }}
+                                                                             ({{ $lang->name }})
+                                                                         </label>
+                                                                         <input type="text" class="form-control"
+                                                                             name="updates_note_{{ $lang->lang }}"
+                                                                             id="updates_note_{{ $lang->lang }}">
+                                                                     </div>
+                                                                     <div class="form-group">
+                                                                         <label
+                                                                             for="">{{ __('admin_local.Updates Details') }}
+                                                                             (
+                                                                             {{ $lang->name }} ) </label>
+                                                                         <textarea class="form-control" name="updates_details_{{ $lang->lang }}"
+                                                                             id="updates_details_{{ $lang->lang }}"></textarea>
+                                                                     </div>
+                                                                 </div>
+                                                             @endforeach
+                                                         </div>
+                                                     </div>
+                                                 </div>
+                                                 <div class="row">
+                                                     <div class="col-md-12">
+                                                         <div class="row">
+                                                             <div class="form-group col-md-3">
+                                                                 <div class="form-check checkbox checkbox-primary mb-0">
+                                                                     <input class="form-check-input"
+                                                                         id="checkbox-primary-1" type="checkbox"
+                                                                         onchange="$(this).is(':checked')?$('#add_work_update #request_amount_div').show():$('#add_work_update #request_amount_div').hide()"
+                                                                         name="add_payment">
+                                                                     <label class="form-check-label"
+                                                                         for="checkbox-primary-1">{{ __('admin_local.Add Payment') }}</label>
+                                                                 </div>
+                                                             </div>
+                                                             <div class="col-md-9" style="display:none"
+                                                                 id="request_amount_div">
+                                                                 <div class="row">
+                                                                     <div class="form-group col-md-4">
+                                                                         <label
+                                                                             for="">{{ __('admin_local.Request Amount') }}
+                                                                             *</label>
+                                                                         <input type="number" class="form-control"
+                                                                             name="request_amount" id="request_amount">
+                                                                         <span class="text-danger err-mgs"
+                                                                             id="request_amount_err"></span>
+                                                                     </div>
+                                                                     <div class="form-group col-md-4">
+                                                                         <label
+                                                                             for="">{{ __('admin_local.Paid Amount') }}
+                                                                         </label>
+                                                                         <input type="number" class="form-control"
+                                                                             name="paid_amount" id="paid_amount">
+                                                                         <span class="text-danger err-mgs"
+                                                                             id="paid_amount_err"></span>
+                                                                     </div>
+                                                                     <div class="form-group col-md-4">
+                                                                         <label
+                                                                             for="">{{ __('admin_local.Payment Last Date') }}
+                                                                         </label>
+                                                                         <input type="date" class="form-control"
+                                                                             name="payment_last_date"
+                                                                             id="payment_last_date">
+                                                                         <span class="text-danger err-mgs"
+                                                                             id="payment_last_date_err"></span>
+                                                                     </div>
+                                                                 </div>
+                                                             </div>
+                                                         </div>
+                                                     </div>
+                                                     <div class="form-group col-md-6">
+                                                         <label
+                                                             for="">{{ __('admin_local.Updates File') }}</label>
+                                                         <input type="file" class="form-control" name="updates_file"
+                                                             id="updates_file" accept=".pdf, .doc, .docx">
+                                                         <span class="text-danger err-mgs" id="updates_file_err"></span>
+                                                     </div>
+                                                     <div class="form-group col-md-6">
+                                                         <input type="hidden" name="work_id" id="work_id">
+                                                         <label for="">{{ __('admin_local.Work Title') }}</label>
+                                                         <input type="text" class="form-control" name="work_title"
+                                                             id="work_title" readonly>
+                                                         <span class="text-danger err-mgs" id="work_title_err"></span>
+                                                     </div>
+                                                     <div class="form-group col-md-6">
+                                                         <input type="hidden" name="customer_id" id="customer_id">
+                                                         <label
+                                                             for="">{{ __('admin_local.Customer Name') }}</label>
+                                                         <input type="text" class="form-control" name="customer_name"
+                                                             id="customer_name" readonly>
+                                                         <span class="text-danger err-mgs" id="customer_name_err"></span>
+                                                     </div>
+                                                     <div class="form-group col-md-6">
+                                                         <label
+                                                             for="">{{ __('admin_local.Customer Phone') }}</label>
+                                                         <input type="text" class="form-control" name="customer_phone"
+                                                             id="customer_phone" readonly>
+                                                         <span class="text-danger err-mgs" id="customer_phone_err"></span>
+                                                     </div>
+                                                 </div>
+                                                 <div class="row mt-4 mb-2">
+                                                     <div class="form-group col-lg-12">
+                                                         <button
+                                                             class="btn btn-danger text-white font-weight-medium waves-effect text-start"
+                                                             data-bs-dismiss="modal" style="float: right"
+                                                             type="button">{{ __('admin_local.Close') }}</button>
+                                                         <button class="btn btn-primary mx-2" style="float: right"
+                                                             type="submit">{{ __('admin_local.Submit') }}</button>
+                                                     </div>
+                                                 </div>
+                                             </form>
+                                         </div>
+                                         <div class="tab-pane fade" id="right-contact" role="tabpanel"
+                                             aria-labelledby="contact-right-tab">
+                                             <div class="table-responsive theme-scrollbar py-4">
+                                                 <table id="basic-55" class="display table-bordered py-3">
+                                                     <thead>
+                                                         <tr>
+                                                             <th>S/N</th>
+                                                             <th>{{ __('admin_local.Work Title') }}</th>
+                                                             <th>{{ __('admin_local.Requested Amount') }}</th>
+                                                             <th>{{ __('admin_local.Requested Date') }}</th>
+                                                             <th>{{ __('admin_local.Received Amount') }}</th>
+                                                             <th>{{ __('admin_local.Received Date') }}</th>
+                                                             <th>{{ __('admin_local.Received By') }}</th>
+                                                         </tr>
+                                                     </thead>
+                                                     <tbody>
+
+                                                     </tbody>
+                                                     <tfoot>
+                                                         <tr>
+                                                             <th></th>
+                                                             <th>{{ __('admin_local.Total') }}</th>
+                                                             <th></th>
+                                                             <th></th>
+                                                             <th></th>
+                                                             <th></th>
+                                                             <th></th>
+                                                         </tr>
+                                                     </tfoot>
+                                                 </table>
+                                             </div>
+                                         </div>
+                                     </div>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+
+             </div>
+             <!-- /.modal-content -->
+         </div>
+         <!-- /.modal-dialog -->
+     </div>
+
+     <div class="modal fade" id="edit-updates-modal" tabindex="-1" aria-labelledby="bs-example-modal-lg"
+         aria-hidden="true">
+         <div class="modal-dialog modal-lg">
+             <div class="modal-content">
+                 <div class="modal-header d-flex align-items-center" style="border-bottom:1px dashed gray">
+                     <h4 class="modal-title" id="myLargeModalLabel">
+                         {{ __('admin_local.Edit Work Updates') }}
+                     </h4>
+                     <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
+                 </div>
+                 <p class="px-3 text-danger">
+                     <i>{{ __('admin_local.The field labels marked with * are required input fields.') }}</i>
+                 </p>
+                 <div class="modal-body" style="margin-top: -20px">
+                     <div class="row">
+                         <div class="col-sm-12 col-xl-12">
+                             <div class="card">
+                                 <div class="card-body my-0 py-0">
+                                     <form method="POST" id="edit_work_update" enctype="multipart/form-data"
+                                         action="">
+                                         @csrf
+                                         <input type="hidden" name="work_updates_id" id="work_updates_id">
+                                         <div class="row mt-3">
+                                             <div class="col-sm-12 col-xl-12">
+                                                 <ul class="nav nav-pills nav-primary my-0" id="pills-successtab"
+                                                     role="tablist">
+                                                     @php
+                                                         $lang = \App\Models\Admin\Language::where([
+                                                             ['status', 1],
+                                                             ['delete', 0],
+                                                             ['default', 1],
+                                                         ])->first();
+                                                     @endphp
+                                                     <li class="nav-item"><a class="nav-link active"
+                                                             id="wuepills-defaultLang-tab" data-bs-toggle="pill"
+                                                             href="#wuepills-defaultLang" role="tab"
+                                                             aria-controls="wuepills-defaultLang"
+                                                             aria-selected="true">{{ $lang->name }}
+                                                             ( {{ __('admin_local.Default') }} )</a></li>
+                                                     @foreach (getLangs() as $lang)
+                                                         <li class="nav-item"><a class="nav-link"
+                                                                 id="wuepills-{{ $lang->name }}-tab"
+                                                                 data-bs-toggle="pill"
+                                                                 href="#wuepills-{{ $lang->name }}" role="tab"
+                                                                 aria-controls="wuepills-{{ $lang->name }}"
+                                                                 aria-selected="true">{{ $lang->name }}</a>
+                                                         </li>
+                                                     @endforeach
+                                                 </ul>
+                                                 <div class="tab-content mt-3" id="wuepills-successtabContent">
+                                                     <div class="tab-pane fade show active" id="wuepills-defaultLang"
+                                                         role="tabpanel" aria-labelledby="wuepills-defaultLang-tab">
+                                                         <div class="form-group">
+                                                             <label for="">{{ __('admin_local.Updates Note') }}
+                                                                 (
+                                                                 {{ __('admin_local.Default') }} ) *</label>
+                                                             <input type="text" class="form-control"
+                                                                 name="updates_note" id="updates_note">
+                                                             <span class="text-danger err-mgs"
+                                                                 id="updates_note_err"></span>
+                                                         </div>
+                                                         <div class="form-group">
+                                                             <label
+                                                                 for="">{{ __('admin_local.Updates Details') }}
+                                                                 (
+                                                                 {{ __('admin_local.Default') }} ) *</label>
+                                                             <textarea class="form-control ckeditorappend" name="updates_details" id="updates_details2"></textarea>
+                                                             <span class="text-danger err-mgs"
+                                                                 id="updates_details_err"></span>
+                                                         </div>
+                                                     </div>
+                                                     <script>
+                                                         var langCode = [];
+                                                     </script>
+                                                     @foreach (getLangs() as $lang)
+                                                         <script>
+                                                             langCode.push("{{ $lang->lang }}");
+                                                         </script>
+                                                         <div class="tab-pane fade" id="wuepills-{{ $lang->name }}"
+                                                             role="tabpanel"
+                                                             aria-labelledby="wuepills-{{ $lang->name }}-tab">
+                                                             <div class="form-group">
+                                                                 <label
+                                                                     for="">{{ __('admin_local.Updates Note') }}
+                                                                     ({{ $lang->name }})
+                                                                 </label>
+                                                                 <input type="text" class="form-control"
+                                                                     name="updates_note_{{ $lang->lang }}"
+                                                                     id="updates_note_{{ $lang->lang }}">
+                                                             </div>
+                                                             <div class="form-group">
+                                                                 <label
+                                                                     for="">{{ __('admin_local.Updates Details') }}
+                                                                     (
+                                                                     {{ $lang->name }} ) </label>
+                                                                 <textarea class="form-control" name="updates_details2_{{ $lang->lang }}"
+                                                                     id="updates_details_{{ $lang->lang }}"></textarea>
+                                                             </div>
+                                                         </div>
+                                                     @endforeach
+                                                 </div>
+                                             </div>
+                                         </div>
+                                         <div class="row">
+                                             <div class="col-md-12">
+                                                 <div class="row">
+                                                     <div class="form-group col-md-3">
+                                                         <div class="form-check checkbox checkbox-primary mb-0">
+                                                             <input class="form-check-input" id="checkbox-primary"
+                                                                 type="checkbox"
+                                                                 onchange="$(this).is(':checked')?$('#edit_work_update #request_amount_div').show():$('#edit_work_update #request_amount_div').hide()"
+                                                                 name="add_payment">
+                                                             <label class="form-check-label"
+                                                                 for="checkbox-primary">{{ __('admin_local.Add Payment') }}</label>
+                                                         </div>
+                                                     </div>
+                                                     <div class="col-md-9" style="display:none" id="request_amount_div">
+                                                         <div class="row">
+                                                             <div class="form-group col-md-4">
+                                                                 <label
+                                                                     for="">{{ __('admin_local.Request Amount') }}
+                                                                     *</label>
+                                                                 <input type="number" class="form-control"
+                                                                     name="request_amount" id="request_amount">
+                                                                 <span class="text-danger err-mgs"
+                                                                     id="request_amount_err"></span>
+                                                             </div>
+                                                             <div class="form-group col-md-4">
+                                                                 <label
+                                                                     for="">{{ __('admin_local.Paid Amount') }}
+                                                                 </label>
+                                                                 <input type="number" class="form-control"
+                                                                     name="paid_amount" id="paid_amount">
+                                                                 <span class="text-danger err-mgs"
+                                                                     id="paid_amount_err"></span>
+                                                             </div>
+                                                             <div class="form-group col-md-4">
+                                                                 <label
+                                                                     for="">{{ __('admin_local.Payment Last Date') }}
+                                                                 </label>
+                                                                 <input type="date" class="form-control"
+                                                                     name="payment_last_date" id="payment_last_date">
+                                                                 <span class="text-danger err-mgs"
+                                                                     id="payment_last_date_err"></span>
+                                                             </div>
+                                                         </div>
+                                                     </div>
+                                                 </div>
+                                             </div>
+                                             <div class="form-group col-md-6">
+                                                 <label for="">{{ __('admin_local.Updates File') }}</label>
+                                                 <input type="file" class="form-control" name="updates_file"
+                                                     id="updates_file" accept=".pdf, .doc, .docx">
+                                                 <span class="text-danger err-mgs" id="updates_file_err"></span>
+                                             </div>
+                                             <div class="form-group col-md-6">
+                                                 <input type="hidden" name="work_id" id="work_id">
+                                                 <label for="">{{ __('admin_local.Work Title') }}</label>
+                                                 <input type="text" class="form-control" name="work_title"
+                                                     id="work_title" readonly>
+                                                 <span class="text-danger err-mgs" id="work_title_err"></span>
+                                             </div>
+                                             <div class="form-group col-md-6">
+                                                 <input type="hidden" name="customer_id" id="customer_id">
+                                                 <label for="">{{ __('admin_local.Customer Name') }}</label>
+                                                 <input type="text" class="form-control" name="customer_name"
+                                                     id="customer_name" readonly>
+                                                 <span class="text-danger err-mgs" id="customer_name_err"></span>
+                                             </div>
+                                             <div class="form-group col-md-6">
+                                                 <label for="">{{ __('admin_local.Customer Phone') }}</label>
+                                                 <input type="text" class="form-control" name="customer_phone"
+                                                     id="customer_phone" readonly>
+                                                 <span class="text-danger err-mgs" id="customer_phone_err"></span>
+                                             </div>
+                                         </div>
+                                         <div class="row mt-4 mb-2">
+                                             <div class="form-group col-lg-12">
+                                                 <button
+                                                     class="btn btn-danger text-white font-weight-medium waves-effect text-start"
+                                                     data-bs-dismiss="modal" style="float: right"
+                                                     type="button">{{ __('admin_local.Close') }}</button>
+                                                 <button class="btn btn-primary mx-2" style="float: right"
+                                                     type="submit">{{ __('admin_local.Submit') }}</button>
+                                             </div>
+                                         </div>
+                                     </form>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+
+             </div>
+             <!-- /.modal-content -->
+         </div>
+         <!-- /.modal-dialog -->
+     </div>
 
 
      <div class="container-fluid">
@@ -592,6 +1103,14 @@
                                                                      style="cursor: pointer;"><i
                                                                          class="fa fa-trash mx-1"></i>
                                                                      {{ __('admin_local.Delete') }}</a>
+                                                             @endif
+                                                             @if (hasPermission(['work-updates-index', 'work-updates-create']))
+                                                                 <a data-bs-toggle="modal" style="cursor: pointer;"
+                                                                     data-bs-target="#work-updates-modal"
+                                                                     class="text-primary" id="work_updates_button"
+                                                                     style="cursor: pointer;"><i
+                                                                         class="fa fa-book mx-1"></i>
+                                                                     {{ __('admin_local.Work Updates') }}</a>
                                                              @endif
                                                          </div>
                                                      </div>
@@ -711,9 +1230,69 @@
                  }
              });
          </script>
+         <script>
+             CKEDITOR.replace('updates_details_' + '{{ $lang->lang }}', {
+                 on: {
+                     contentDom: function(evt) {
+                         // Allow custom context menu only with table elemnts.
+                         evt.editor.editable().on('contextmenu', function(contextEvent) {
+                             var path = evt.editor.elementPath();
+
+                             if (!path.contains('table')) {
+                                 contextEvent.cancel();
+                             }
+                         }, null, null, 5);
+                     }
+                 }
+             });
+         </script>
+         <script>
+             CKEDITOR.replace('updates_details2_' + '{{ $lang->lang }}', {
+                 on: {
+                     contentDom: function(evt) {
+                         // Allow custom context menu only with table elemnts.
+                         evt.editor.editable().on('contextmenu', function(contextEvent) {
+                             var path = evt.editor.elementPath();
+
+                             if (!path.contains('table')) {
+                                 contextEvent.cancel();
+                             }
+                         }, null, null, 5);
+                     }
+                 }
+             });
+         </script>
      @endforeach
      <script>
          CKEDITOR.replace('work_details', {
+             on: {
+                 contentDom: function(evt) {
+                     // Allow custom context menu only with table elemnts.
+                     evt.editor.editable().on('contextmenu', function(contextEvent) {
+                         var path = evt.editor.elementPath();
+
+                         if (!path.contains('table')) {
+                             contextEvent.cancel();
+                         }
+                     }, null, null, 5);
+                 }
+             }
+         });
+         CKEDITOR.replace('updates_details', {
+             on: {
+                 contentDom: function(evt) {
+                     // Allow custom context menu only with table elemnts.
+                     evt.editor.editable().on('contextmenu', function(contextEvent) {
+                         var path = evt.editor.elementPath();
+
+                         if (!path.contains('table')) {
+                             contextEvent.cancel();
+                         }
+                     }, null, null, 5);
+                 }
+             }
+         });
+         CKEDITOR.replace('updates_details2', {
              on: {
                  contentDom: function(evt) {
                      // Allow custom context menu only with table elemnts.
@@ -839,7 +1418,180 @@
              }
          });
 
+         var wuTable = $("#basic-2").DataTable({
+             dom: 'Bfltip', // B = Buttons, f = search, l = length menu, t = table, i = info, p = pagination
+             buttons: [{
+                 extend: 'excelHtml5',
+                 text: 'Excel',
+                 className: 'btn btn-info mx-4',
+                 filename: 'work_updates_list', // Excel file name
+                 title: `{{ __('admin_local.Work Updates') }}`, // Sheet title inside Excel
+                 exportOptions: {
+                     columns: [0, 1, 2, 3, 4, 5, 6, 7, ], // only export these column indexes (0-based)
+                     footer: true
+                 }
+             }],
+             "lengthMenu": [
+                 [10, 20, 100, 1, -1],
+                 [10, 20, 100, 1, "All"]
+             ],
+             "pageLength": 10, // default page size
+             "language": {
+                 "decimal": "",
+                 "emptyTable": "{{ __('admin_local.No data available in table') }}",
+                 "info": "Showing _START_ to _END_ of _TOTAL_ entries",
+                 "infoEmpty": "Showing 0 to 0 of 0 entries",
+                 "infoFiltered": "(filtered from _MAX_ total entries)",
+                 "infoPostFix": "",
+                 "thousands": ",",
+                 "lengthMenu": "Show _MENU_ entries",
+                 "loadingRecords": "Loading...",
+                 "processing": "",
+                 "search": "Search:",
+                 "zeroRecords": "No matching records found",
+                 "paginate": {
+                     "first": "First",
+                     "last": "Last",
+                     "next": "Next",
+                     "previous": "Previous"
+                 },
+                 "aria": {
+                     "sortAscending": ": activate to sort column ascending",
+                     "sortDescending": ": activate to sort column descending"
+                 }
+             },
+             columnDefs: [{
+                 targets: 0, // first column
+                 searchable: false,
+                 orderable: false,
+                 render: function(data, type, row, meta) {
+                     return meta.row + 1; // row index + 1
+                 }
+             }],
+             "order": [], // no initial sort
+
+             "footerCallback": function(row, data, start, end, display) {
+                 var api = this.api();
+
+                 // Helper function to parse values
+                 var intVal = function(i) {
+                     return typeof i === 'string' ?
+                         i.replace(/[\$,]/g, '') * 1 :
+                         typeof i === 'number' ? i : 0;
+                 };
+
+                 // Sum over all pages
+                 var req_amount = api
+                     .column(2, {
+                         page: 'current'
+                     }) // index of total_cost column
+                     .data()
+                     .reduce(function(a, b) {
+                         return intVal(a) + intVal(b);
+                     }, 0);
+                 var rec_amount = api
+                     .column(4, {
+                         page: 'current'
+                     }) // index of total_cost column
+                     .data()
+                     .reduce(function(a, b) {
+                         return intVal(a) + intVal(b);
+                     }, 0);
+
+                 // Update footer
+                 $(api.column(2).footer()).html(req_amount.toFixed(2));
+                 $(api.column(4).footer()).html(rec_amount.toFixed(2));
+             }
+         });
+
+         var paymentTable = $("#basic-55").DataTable({
+             dom: 'Bfltip', // B = Buttons, f = search, l = length menu, t = table, i = info, p = pagination
+             buttons: [{
+                 extend: 'excelHtml5',
+                 text: 'Excel',
+                 className: 'btn btn-info mx-4',
+                 filename: 'payment_list', // Excel file name
+                 title: `{{ __('admin_local.Payments') }}`, // Sheet title inside Excel
+                 exportOptions: {
+                     columns: [0, 1, 2, 3, 4, 5, 6, 7, ], // only export these column indexes (0-based)
+                     footer: true
+                 }
+             }],
+             "lengthMenu": [
+                 [10, 20, 100, 1, -1],
+                 [10, 20, 100, 1, "All"]
+             ],
+             "pageLength": 10, // default page size
+             "language": {
+                 "decimal": "",
+                 "emptyTable": "{{ __('admin_local.No data available in table') }}",
+                 "info": "Showing _START_ to _END_ of _TOTAL_ entries",
+                 "infoEmpty": "Showing 0 to 0 of 0 entries",
+                 "infoFiltered": "(filtered from _MAX_ total entries)",
+                 "infoPostFix": "",
+                 "thousands": ",",
+                 "lengthMenu": "Show _MENU_ entries",
+                 "loadingRecords": "Loading...",
+                 "processing": "",
+                 "search": "Search:",
+                 "zeroRecords": "No matching records found",
+                 "paginate": {
+                     "first": "First",
+                     "last": "Last",
+                     "next": "Next",
+                     "previous": "Previous"
+                 },
+                 "aria": {
+                     "sortAscending": ": activate to sort column ascending",
+                     "sortDescending": ": activate to sort column descending"
+                 }
+             },
+             columnDefs: [{
+                 targets: 0, // first column
+                 searchable: false,
+                 orderable: false,
+                 render: function(data, type, row, meta) {
+                     return meta.row + 1; // row index + 1
+                 }
+             }],
+             "order": [], // no initial sort
+
+             "footerCallback": function(row, data, start, end, display) {
+                 var api = this.api();
+
+                 // Helper function to parse values
+                 var intVal = function(i) {
+                     return typeof i === 'string' ?
+                         i.replace(/[\$,]/g, '') * 1 :
+                         typeof i === 'number' ? i : 0;
+                 };
+
+                 // Sum over all pages
+                 var req_amount = api
+                     .column(2, {
+                         page: 'current'
+                     }) // index of total_cost column
+                     .data()
+                     .reduce(function(a, b) {
+                         return intVal(a) + intVal(b);
+                     }, 0);
+                 var rec_amount = api
+                     .column(4, {
+                         page: 'current'
+                     }) // index of total_cost column
+                     .data()
+                     .reduce(function(a, b) {
+                         return intVal(a) + intVal(b);
+                     }, 0);
+
+                 // Update footer
+                 $(api.column(2).footer()).html(req_amount.toFixed(2));
+                 $(api.column(4).footer()).html(rec_amount.toFixed(2));
+             }
+         });
+
          var form_url = "{{ route('admin.work.store') }}";
+         var form_url2 = "{{ route('admin.updates.store') }}";
          var submit_btn_after =
              `<strong>{{ __('admin_local.Saving ') }} &nbsp; <i class="fa fa-rotate-right fa-spin"></i></strong>`;
          var submit_btn_before =
