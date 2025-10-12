@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\HomepageSettingController;
 use App\Http\Controllers\Admin\Localization\BackendLanguageController;
 use App\Http\Controllers\Admin\Localization\ChangeLanguageController;
 use App\Http\Controllers\Admin\Localization\LanguageController;
+use App\Http\Controllers\Admin\LogoIconController;
 use App\Http\Controllers\Admin\PartnerController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\Role\RoleAndPermissionController;
@@ -72,6 +73,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::get('/server/up', [MaintenanceModeController::class, 'up'])->name('server.up');
             Route::get('/secret-code/delete/{id}', [MaintenanceModeController::class, 'destroy'])->name('secret-code.delete');
             Route::get('/secret-code/delete-all', [MaintenanceModeController::class, 'destroyAll'])->name('secret-code.delete-all');
+
+            /** Logo Start */
+            Route::resource('logo',LogoIconController::class)->except('create','show','store');
+            /** Logo End */
         });
         Route::prefix('pages')->name('pages.')->group(function () {
             Route::controller(HomepageSettingController::class)->prefix('homepage')->name('homepage.')->group(function () {

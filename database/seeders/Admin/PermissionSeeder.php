@@ -103,10 +103,17 @@ class PermissionSeeder extends Seeder
 
 
         //permission for Work Updates
-        Permission::create(['guard_name'=>'admin','name'=>'work-updates-index','group_name'=>'Work Updates']);
-        Permission::create(['guard_name'=>'admin','name'=>'work-updates-create','group_name'=>'Work Updates']);
-        Permission::create(['guard_name'=>'admin','name'=>'work-updates-update','group_name'=>'Work Updates']);
-        Permission::create(['guard_name'=>'admin','name'=>'work-updates-delete','group_name'=>'Work Updates']);
+        // Permission::create(['guard_name'=>'admin','name'=>'work-updates-index','group_name'=>'Work Updates']);
+        // Permission::create(['guard_name'=>'admin','name'=>'work-updates-create','group_name'=>'Work Updates']);
+        // Permission::create(['guard_name'=>'admin','name'=>'work-updates-update','group_name'=>'Work Updates']);
+        // Permission::create(['guard_name'=>'admin','name'=>'work-updates-delete','group_name'=>'Work Updates']);
+
+
+        //permission for Logo
+        // Permission::create(['guard_name'=>'admin','name'=>'logo-index','group_name'=>'Logo and Icon']);
+        // Permission::create(['guard_name'=>'admin','name'=>'logo-create','group_name'=>'Logo and Icon']);
+        // Permission::create(['guard_name'=>'admin','name'=>'logo-update','group_name'=>'Logo and Icon']);
+        // Permission::create(['guard_name'=>'admin','name'=>'logo-delete','group_name'=>'Logo and Icon']);
 
     }
 }

@@ -2,6 +2,9 @@
 <html lang="en">
 
 <head>
+    @php
+        $logo = \App\Models\Admin\Logo::first();
+    @endphp
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,8 +13,8 @@
     <meta name="keywords"
         content="admin template, Tivo admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="pixelstrap">
-    <link rel="icon" href="{{ asset('public/admin/assets/images/favicon/favicon.png') }}" type="image/x-icon">
-    <link rel="shortcut icon" href="{{ asset('public/admin/assets/images/favicon/favicon.png') }}" type="image/x-icon">
+    <link rel="icon" href="{{ asset($logo?$logo->admin_panel_icon:'icon') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset($logo?$logo->admin_panel_icon:'icon') }}" type="image/x-icon">
     <title>{{ env('APP_BACKEND_NAME') }} -@stack('title')</title>
     <link rel="stylesheet" type="text/css" href="{{ asset('public/admin/assets/css/vendors/font-awesome.css') }}">
     <!-- ico-font-->
@@ -57,9 +60,9 @@
                 <div class="header-logo-wrapper col-auto p-0">
                     <div class="toggle-sidebar"><i class="status_toggle middle sidebar-toggle" data-feather="grid"> </i>
                     </div>
-                    <div class="logo-header-main"><a href="index.html"><img class="img-fluid for-light img-100"
-                                src="{{ asset('public/admin/assets/images/logo/logo2.png') }}" alt=""><img
-                                class="img-fluid for-dark" src="{{ asset('public/admin/assets/images/logo/logo.png') }}"
+                    <div class="logo-header-main"><a href="{{ url('/admin/dashboard') }}"><img class="img-fluid for-light img-100"
+                                src="{{ asset($logo?$logo->admin_panel_logo:'public/admin/assets/images/logo/logo2.png') }}" alt=""><img
+                                class="img-fluid for-dark" src="{{ asset($logo?$logo->admin_panel_logo:'public/admin/assets/images/logo/logo.png') }}"
                                 alt=""></a></div>
                 </div>
                 <div class="left-header col horizontal-wrapper ps-0">
@@ -86,7 +89,7 @@
                         <li>
                             <div class="mode"><i class="fa fa-moon-o"></i></div>
                         </li>
-                        <li class="onhover-dropdown">
+                        {{-- <li class="onhover-dropdown">
                             <div class="notification-box"><i data-feather="bell"></i></div>
                             <ul class="notification-dropdown onhover-show-div">
                                 <li><i data-feather="bell"> </i>
@@ -131,7 +134,7 @@
                                 <li><a class="btn btn-primary" href="javascript:void(0)">Check all notification</a>
                                 </li>
                             </ul>
-                        </li>
+                        </li> --}}
 
                         <li class="maximize"><a href="#!" onclick="javascript:toggleFullScreen()"><i
                                     data-feather="maximize-2"></i></a></li>
@@ -180,13 +183,13 @@
             <!-- Page Sidebar Start-->
             <div class="sidebar-wrapper">
                 <div>
-                    <div class="logo-wrapper"><a href="index.html"><img class="img-fluid for-light"
-                                src="{{ asset('public/admin/assets/images/logo/logo.png') }}" alt=""></a>
+                    <div class="logo-wrapper"><a href="{{ url('/admin/dashboard') }}"><img class="img-fluid for-light"
+                                src="{{ asset($logo?$logo->admin_panel_logo:'public/admin/assets/images/logo/logo.png') }}" alt=""></a>
                         <div class="back-btn"><i data-feather="grid"></i></div>
                         <div class="toggle-sidebar icon-box-sidebar"><i class="status_toggle middle sidebar-toggle"
                                 data-feather="grid"> </i></div>
                     </div>
-                    <div class="logo-icon-wrapper"><a href="index.html">
+                    <div class="logo-icon-wrapper"><a href="{{ url('/admin/dashboard') }}">
                             <div class="icon-box-sidebar"><i data-feather="grid"></i></div>
                         </a></div>
                     <nav class="sidebar-main">

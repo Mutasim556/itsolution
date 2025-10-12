@@ -119,7 +119,7 @@
         </a>
     </li>
     @endif
-    @if (hasPermission(['maintenance-mode-index']))
+    @if (hasPermission(['maintenance-mode-index','logo-index']))
         <li class="sidebar-list">
             <a class="sidebar-link sidebar-title" href="javascript:void(0)" aria-expanded="false">
                 <i data-feather="settings"></i>
@@ -130,6 +130,13 @@
                     <li>
                         <a href="{{ route('admin.settings.server.maintenanceMode') }}" class="sidebar-link">
                             <span> {{ __('admin_local.Maintenance Mode') }} </span>
+                        </a>
+                    </li>
+                @endif
+                @if (hasPermission(['logo-index']))
+                    <li>
+                        <a href="{{ route('admin.settings.logo.index') }}" class="sidebar-link">
+                            <span> {{ __('admin_local.Logos and Icons') }} </span>
                         </a>
                     </li>
                 @endif
