@@ -13,6 +13,11 @@ class LogoIconController extends Controller
     /**
      * Display a listing of the resource.
      */
+    public function __construct()
+    {
+        $this->middleware('permission:logo-index,admin');
+        $this->middleware('permission:logo-update,admin')->only(['update']);
+    }
     public function index()
     {
         $logo = Logo::first();

@@ -14,6 +14,13 @@ use Illuminate\Support\Facades\Auth;
 
 class WorkUpdatesController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:work-updates-index,admin');
+        $this->middleware('permission:work-updates-store,admin')->only('store');
+        $this->middleware('permission:work-updates-update,admin')->only(['edit', 'update']);
+        $this->middleware('permission:work-updates-delete,admin')->only('destroy');
+    }
     /**
      * Display a listing of the resource.
      */
