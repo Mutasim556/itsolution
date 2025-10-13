@@ -47,8 +47,10 @@ $('#add_slider_form').submit(function (e) {
 
 
                 let cat_image = data.slider_image?'<img style="height:40px" src="'+asset_url+data.slider_image+'">':no_file;
-                let cat_image2 = data.slider_image2?'<img style="height:40px" src="'+asset_url+data.slider_image2+'">':no_file;
-                $('#basic-1 tbody').append(`<tr id="trid-${data.id}" data-id="${data.id}"><td>${cat_image}</td><td>${cat_image2}</td><td>${data.slider_title?data.slider_title:'N/A'}</td><td>${data.slider_short_description?data.slider_short_description:'N/A'}</td><td>${data.slider_button_text?data.slider_button_text:'N/A'}</td>
+                let slider_video = data.slider_video?`<a target="__blank"  href="https://www.youtube.com/watch?v=${ data.slider.slider_video }" class="btn btn-danger px-2 py-1" type="button">View</a>`:'';
+
+
+                $('#basic-1 tbody').append(`<tr id="trid-${data.id}" data-id="${data.id}"><td>${cat_image}</td><td>${slider_video}</td><td>${data.slider_title?data.slider_title:'N/A'}</td><td>${data.slider_short_description?data.slider_short_description:'N/A'}</td><td>${data.slider_button_text?data.slider_button_text:'N/A'}</td>
                 <td class="text-center">${update_status_btn}</td>
                 <td>${action_option}</td></tr>`);
 
@@ -177,10 +179,12 @@ $('#edit_slider_form').submit(function (e) {
             console.log(data);
             $('button[type=submit]', '#edit_slider_form').html(submit_btn_before);
             $('button[type=submit]', '#edit_slider_form').removeClass('disabled');
-            $('td:nth-child(2)',trid).html(data.slider.slider_title);
-            $('td:nth-child(3)',trid).html(data.slider.slider_short_description?data.slider.slider_short_description:'N/A');
             $('td:nth-child(1)',trid).html(data.slider.slider_image?`<img style="height:40px" src="${asset_url+data.slider.slider_image}">`:no_file);
-            $('td:nth-child(4)',trid).html(data.slider.slider_button_text);
+            $('td:nth-child(2)',trid).html(data.slider.slider_video?`<a target="__blank"  href="https://www.youtube.com/watch?v=${ data.slider.slider_video }" class="btn btn-danger px-2 py-1" type="button">View</a>`:'');
+            $('td:nth-child(3)',trid).html(data.slider.slider_title);
+            $('td:nth-child(4)',trid).html(data.slider.slider_short_description?data.slider.slider_short_description:'N/A');
+
+            $('td:nth-child(5)',trid).html(data.slider.slider_button_text);
             swal({
                 icon: "success",
                 title: data.title,

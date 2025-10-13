@@ -174,7 +174,7 @@
                                 <input type="text" class="form-control" name="video_link" id="video_link" placeholder="{{ __('admin_local.Youtube video link') }}">
                                 <span class="text-danger err-mgs"></span>
                             </div>
-                            
+
                         </div>
 
                         <div class="row mt-4 mb-2">
@@ -243,11 +243,8 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                @if ($slider->slider_image2)
-                                                    <img height="40px" src="{{ asset(env('ASSET_DIRECTORY').'/'.$slider->slider_image2) }}" alt=""
-                                                        style="height:">
-                                                @else
-                                                    {{ __('admin_local.No File') }}
+                                                @if ($slider->slider_video)
+                                                    <a target="__blank"  href="https://www.youtube.com/watch?v={{ $slider->slider_video }}" class="btn btn-danger px-2 py-1" type="button">View</a>
                                                 @endif
                                             </td>
                                             <td>{{ $slider->slider_title }}</td>

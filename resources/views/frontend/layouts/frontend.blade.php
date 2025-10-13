@@ -10,7 +10,8 @@
     <title>Shared on THEMELOCK.COM - Nosei - It Solution And Business HTML5 Template</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset($logo?$logo->main_site_icon:'assets/img/favicon.png') }}">
+    <link rel="shortcut icon" type="image/x-icon"
+        href="{{ asset($logo ? $logo->main_site_icon : 'assets/img/favicon.png') }}">
     <!-- Place favicon.ico in the root directory -->
 
     <!-- CSS here -->
@@ -27,26 +28,38 @@
 
     <style>
         .ns-slide-pagination {
-  position: relative;   /* or absolute if you want bottom aligned */
-  z-index: 10;          /* make sure it's above the slides */
-  margin-top: 15px;     /* avoid negative margin */
-  text-align: center;
-}
-.swiper-pagination-bullet {
-  width: 14px;              /* dot width */
-  height: 14px;             /* dot height */
-  background: #ccc;         /* inactive dot color */
-  opacity: 1;               /* make sure it’s visible */
-  margin: 0 6px !important; /* spacing between dots */
-  transition: background 0.3s;
-  border-radius: 50%;       /* keep them round */
-}
+            position: relative;
+            /* or absolute if you want bottom aligned */
+            z-index: 10;
+            /* make sure it's above the slides */
+            margin-top: 15px;
+            /* avoid negative margin */
+            text-align: center;
+        }
 
-/* Active dot */
-.swiper-pagination-bullet-active {
-  background: #fda610;      /* your custom color */
-  transform: scale(1.2);    /* optional: make active dot bigger */
-}
+        .swiper-pagination-bullet {
+            width: 14px;
+            /* dot width */
+            height: 14px;
+            /* dot height */
+            background: #ccc;
+            /* inactive dot color */
+            opacity: 1;
+            /* make sure it’s visible */
+            margin: 0 6px !important;
+            /* spacing between dots */
+            transition: background 0.3s;
+            border-radius: 50%;
+            /* keep them round */
+        }
+
+        /* Active dot */
+        .swiper-pagination-bullet-active {
+            background: #fda610;
+            /* your custom color */
+            transform: scale(1.2);
+            /* optional: make active dot bigger */
+        }
     </style>
     @stack('css')
 </head>
@@ -58,7 +71,8 @@
             <div class="row align-items-center">
                 <div class="col-xl-6 col-8">
                     <div class="sidebar-logo">
-                        <a href="index.html"><img src="{{ asset('public/frontend/assets/img/logo/logo.png') }}"
+                        <a href="index.html"><img
+                                src="{{ asset($logo ? $logo->main_site_header_logo : 'public/frontend/assets/img/logo/logo.png') }}"
                                 alt="logo-img"></a>
                     </div>
                 </div>
@@ -72,19 +86,29 @@
 
         <div class="sidebar-menu-wrapper fix text-center">
             <div class="mobile-menu-2">
-                <a href="contact.html" class="ns-header-btn ns-theme-btn">Login / Register<i
-                        class="fal fa-arrow-right"></i></a>
+                <a href="contact.html" class="ns-header-btn ns-theme-btn">{{ __('admin_local.Login') }} /
+                    {{ __('admin_local.Register') }}<i class="fal fa-arrow-right"></i></a>
             </div>
         </div>
 
         <div class="sidebar-contact-wrapper mt-40">
+            @php
+                $contact = \App\Models\Admin\Contact::first();
+            @endphp
             <div class="sidebar-contact mb-40">
-                <h4 class="sidebar-contact-title">Contact Info</h4>
-                <span class="sidebar-address"><i class="fal fa-map-marker-alt"></i><span> 27 Division St, Berakuti, NY
-                        121102, USA</span> </span>
-                <a href="tel:+1(251)410-1010"><i class="fal fa-phone"></i><span>+1 (251) 410-1010</span></a>
+                <h4 class="sidebar-contact-title">{{ __('admin-local.Contact Info') }}</h4>
+                @if ($contact && $contact->address)
+                    <span class="sidebar-address"><i class="fal fa-map-marker-alt"></i><span>
+                        {{ $contact->address }}
+                        </span> </span>
+                @endif
+                @if ($contact && $contact->phone)
+                <a href="tel:+1(251)410-1010"><i class="fal fa-phone"></i><span>{{ $contact->phone }}</span></a>
+                @endif
+                @if ($contact && $contact->email)
                 <a href="mailto:example@gmail.com" class="theme-3"><i
-                        class="fal fa-envelope"></i><span><span>example@gmail.com</span></span></a>
+                        class="fal fa-envelope"></i><span><span>{{ $contact->email }}</span></span></a>
+                @endif
             </div>
         </div>
     </div>
@@ -98,7 +122,7 @@
                 <div class="ns-header-logo">
                     <img src="{{ asset('public/frontend/assets/img/logo/logo-bg.png') }}" alt="Not Found">
                     <div class="ns-header-logo-img">
-                        <a href="index.html"><img src="{{ asset('public/frontend/assets/img/logo/logo.png') }}"
+                        <a href="index.html"><img src="{{ asset($logo ? $logo->main_site_header_logo : 'public/frontend/assets/img/logo/logo.png') }}"
                                 alt="Not Found"></a>
                     </div>
                 </div>
@@ -106,25 +130,35 @@
                     <div class="ns-header-topbar d-none d-md-block">
                         <div class="ns-header-topbar-wrap">
                             <div class="ns-header-topbar-left">
-                                <span>Visit our social pages:</span>
+                                <span>{{ __('admin_local.Visit our social pages') }}:</span>
                                 <div class="ns-header-topbar-social">
-                                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                    <a href="#"><i class="fab fa-twitter"></i></a>
-                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                                    <a href="#"><i class="fab fa-behance"></i></a>
+                                    @if ($contact && $contact->facebook)
+                                    <a target="__blank" href="{{  $contact->facebook }}"><i class="fab fa-facebook-f"></i></a>
+                                    @endif
+                                    @if ($contact && $contact->twitter)
+                                    <a target="__blank" href="{{ $contact->twitter }}"><i class="fab fa-twitter"></i></a>
+                                    @endif
+                                    @if ($contact && $contact->linkedin)
+                                    <a target="__blank" href="{{ $contact->linkedin }}"><i class="fab fa-linkedin-in"></i></a>
+                                    @endif
+                                    @if ($contact && $contact->youtube)
+                                    <a target="__blank" href="{{ $contact->youtube }}"><i class="fab fa-youtube"></i></a>
+                                    @endif
                                 </div>
                             </div>
                             <div class="ns-header-topbar-right">
                                 <div class="ns-header-topbar-lan-img">
                                     {{-- <img src="{{ asset('public/frontend/assets/img/bg/flag.png')}}" alt="Not Found"> --}}
-                                    Language :
+                                    {{ __('admin_local.Language') }} :
                                 </div>
                                 <div class="ns-header-topbar-lan ns-topbar-lan-1">
                                     <select name="Language" class="has-nice-select">
-                                        <option value="1">Arabic</option>
-                                        <option value="2">Bangla</option>
-                                        <option value="3">Turkish</option>
-                                        <option value="4">English</option>
+                                        @php
+                                            $languages = \App\Models\Admin\Language::where([['status',1],['delete',0]])->get();
+                                        @endphp
+                                        @foreach ($languages as $language)
+                                            <option value="{{ $language->lang }}">{{ $language->name }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
@@ -134,9 +168,9 @@
                         <div class="ns-header-menu">
                             <nav class="ns-header-main-menu mobile-menu-2  d-none d-xl-block" id="mobile-menu-2">
                                 <ul>
-                                    <li><a href="index.html">Home</a></li>
+                                    <li><a href="{{ url('/') }}">{{ __('admin_local.Home') }}</a></li>
 
-                                    <li><a href="about.html">About</a></li>
+                                    <li><a href="">{{ __('admin_local.About') }}</a></li>
                                     <li><a href="about.html">Services</a></li>
                                     <li><a href="about.html">Projects</a></li>
                                     <li class="menu-has-child">
