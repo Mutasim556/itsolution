@@ -378,7 +378,8 @@
     @endphp
     @if (count($projects) > 0)
         <section class="ns-project-area pt-110 pb-115">
-            <img class="ns-project-bg" src="{{ asset('public/frontend/assets/img/project/bg-project.jpg')}}" alt="Not Found">
+            <img class="ns-project-bg" src="{{ asset('public/frontend/assets/img/project/bg-project.jpg') }}"
+                alt="Not Found">
             <div class="container">
                 <div class="row">
                     <div class="col-12">
@@ -429,29 +430,32 @@
     <!-- project area end -->
 
     <!-- cta area start -->
-    <div class="ns-cta-area bg-default pt-275 pb-115" >
+    <div class="ns-cta-area bg-default pt-275 pb-115">
         <span class="ns-cta-shape-1 d-none d-md-block"></span>
-        <span class="ns-cta-shape-2 d-none d-md-block"><img src="{{ asset('public/frontend/assets/img/cta/shape-2.png')}}"
-                alt="Not Found"></span>
+        <span class="ns-cta-shape-2 d-none d-md-block"><img
+                src="{{ asset('public/frontend/assets/img/cta/shape-2.png') }}" alt="Not Found"></span>
         <div class="ns-cta-play-btn">
             <a href="https://www.youtube.com/watch?v=SopsEuNKyPo" class="popup-video">
-                <img class="ns-cta-play-bg" src="{{ asset('public/frontend/assets/img/cta/cta-play-bg.png')}}" alt="Not Found">
-                <img class="ns-btn-img" src="{{ asset('public/frontend/assets/img/cta/play-btn.png')}}" alt="Not Found">
+                <img class="ns-cta-play-bg" src="{{ asset('public/frontend/assets/img/cta/cta-play-bg.png') }}"
+                    alt="Not Found">
+                <img class="ns-btn-img" src="{{ asset('public/frontend/assets/img/cta/play-btn.png') }}"
+                    alt="Not Found">
             </a>
         </div>
-        <img class="ns-cta-map" src="{{ asset('public/frontend/assets/img/cta/cta-map.png')}}" alt="Not Found">
+        <img class="ns-cta-map" src="{{ asset('public/frontend/assets/img/cta/cta-map.png') }}" alt="Not Found">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-xl-8">
                     <div class="ns-cta-content">
-                        <span class="ns-cta-content-subtitle">{{__('admin_local.Call To Action')}}</span>
+                        <span class="ns-cta-content-subtitle">{{ __('admin_local.Call To Action') }}</span>
                         {{-- <h2 class="ns-cta-content-title">Contact Some Easy To Steps</h2> --}}
                         @php
                             $contact = \App\Models\Admin\Contact::first();
                         @endphp
-                        <span class="ns-cta-contact">{{__('admin_local.Get Your Quote or Call')}}: <a
+                        <span class="ns-cta-contact">{{ __('admin_local.Get Your Quote or Call') }}: <a
                                 href="tel:+895400555">{{ $contact->phone }}</a></span>
-                        <a href="contact.html" class="ns-theme-btn">{{__('admin_local.Contact Us')}}<i class="fal fa-arrow-right"></i></a>
+                        <a href="contact.html" class="ns-theme-btn">{{ __('admin_local.Contact Us') }}<i
+                                class="fal fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -460,44 +464,32 @@
     <!-- cta area end -->
 
     <!-- brand area start -->
+    @php
+        $partners = \App\Models\Admin\Partner::where([['status', 1], ['delete', 0]])->get();
+    @endphp
+    @if (count($partners)>0)
     <div class="ns-brand-area pt-80 pb-80">
         <div class="container">
             <div class="brand-active swiper-container">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <div class="ns-brand-item">
-                            <img class="ns-brand-item-img" src="assets/img/brand/brand.png" alt="Not Found">
-                            <img class="ns-brand-item-img-hover" src="assets/img/brand/brand-hover.png" alt="Not Found">
+
+                    @foreach ($partners as $partner)
+                        <div class="swiper-slide">
+                            <div class="ns-brand-item">
+                                <img class="ns-brand-item-img"
+                                    src="{{ asset($partner->partner_image ?? 'public/frontend/assets/img/brand/brand.png') }}"
+                                    alt="Not Found">
+                                <img class="ns-brand-item-img-hover"
+                                    src="{{ asset($partner->partner_image ?? 'assets/img/brand/brand-hover.png') }}"
+                                    alt="Not Found">
+                            </div>
                         </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="ns-brand-item">
-                            <img class="ns-brand-item-img" src="assets/img/brand/brand.png" alt="Not Found">
-                            <img class="ns-brand-item-img-hover" src="assets/img/brand/brand-hover.png" alt="Not Found">
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="ns-brand-item">
-                            <img class="ns-brand-item-img" src="assets/img/brand/brand.png" alt="Not Found">
-                            <img class="ns-brand-item-img-hover" src="assets/img/brand/brand-hover.png" alt="Not Found">
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="ns-brand-item">
-                            <img class="ns-brand-item-img" src="assets/img/brand/brand.png" alt="Not Found">
-                            <img class="ns-brand-item-img-hover" src="assets/img/brand/brand-hover.png" alt="Not Found">
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="ns-brand-item">
-                            <img class="ns-brand-item-img" src="assets/img/brand/brand.png" alt="Not Found">
-                            <img class="ns-brand-item-img-hover" src="assets/img/brand/brand-hover.png" alt="Not Found">
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
     </div>
+    @endif
     <!-- brand area end -->
 
     <!-- counter area start -->
@@ -505,8 +497,12 @@
     <!-- counter area end -->
 
     <!-- testimonial area start -->
+    @php
+        $comments = \App\Models\Admin\Comment::where([['status', 1], ['delete', 0]])->get();
+    @endphp
+    @if (count($comments)>0)
     <div class="ns-testimonial-area">
-        <img class="ns-testimonial-bg d-none d-xl-block" src="assets/img/testimonial/testimonial-shape.png"
+        <img class="ns-testimonial-bg d-none d-xl-block" src="{{ asset('public/frontend/assets/img/testimonial/testimonial-shape.png') }}"
             alt="Not Found">
         <div class="ns-testimonial-container container">
             <div class="ns-inner-wrap">
@@ -515,21 +511,13 @@
                         <div class="ns-testimonial-thumb">
                             <div class="swiper-container testimonial-thumb">
                                 <div class="swiper-wrapper">
+                                    @foreach ($comments as $comment)
                                     <div class="swiper-slide">
                                         <div class="ns-testimonial-img w_img">
-                                            <img src="assets/img/testimonial/testimonial-1.png" alt="Not Found">
+                                            <img src="{{ asset($comment->image??'public/frontend/assets/img/testimonial/testimonial-1.png') }}" alt="Not Found">
                                         </div>
                                     </div>
-                                    <div class="swiper-slide">
-                                        <div class="ns-testimonial-img w_img">
-                                            <img src="assets/img/testimonial/testimonial-2.png" alt="Not Found">
-                                        </div>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <div class="ns-testimonial-img w_img">
-                                            <img src="assets/img/testimonial/testimonial-3.png" alt="Not Found">
-                                        </div>
-                                    </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
@@ -537,49 +525,20 @@
                             <div class="ns-testimonial-wrap">
                                 <div class="swiper-container testimonial-active">
                                     <div class="swiper-wrapper">
+                                        @foreach ($comments as $comment)
                                         <div class="swiper-slide">
                                             <div class="ns-testimonial-content">
-                                                <img src="assets/img/testimonial/qoute.png" alt="Not Found">
-                                                <p>We understand the important of to approaching <br> work
-                                                    integrallysand believe in the power simple <br> and we easy
-                                                    cation growth always act like <br> adipisicing elit, sed do
-                                                    eiusmod.</p>
+                                                <img src="{{ asset('public/frontend/assets/img/testimonial/qoute.png')}}" alt="Not Found">
+                                                <p>{!! $comment->comments !!}</p>
                                                 <div class="ns-testimonial-admin">
                                                     <h4 class="ns-testimonial-admin-title">
-                                                        Romes Barson
+                                                        {{ $comment->name }}
                                                     </h4>
-                                                    <span>Manager</span>
+                                                    <span>{{ $comment->designation }}</span>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="swiper-slide">
-                                            <div class="ns-testimonial-content">
-                                                <img src="assets/img/testimonial/qoute.png" alt="Not Found">
-                                                <p>We understand the important of to approaching work integrallysand
-                                                    believe in the power simple and we easy cation growth always act
-                                                    like adipisicing elit, sed do eiusmod.</p>
-                                                <div class="ns-testimonial-admin">
-                                                    <h4 class="ns-testimonial-admin-title">
-                                                        Sergio Ramos
-                                                    </h4>
-                                                    <span>Director</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="ns-testimonial-content">
-                                                <img src="assets/img/testimonial/qoute.png" alt="Not Found">
-                                                <p>We understand the important of to approaching work integrallysand
-                                                    believe in the power simple and we easy cation growth always act
-                                                    like adipisicing elit, sed do eiusmod.</p>
-                                                <div class="ns-testimonial-admin">
-                                                    <h4 class="ns-testimonial-admin-title">
-                                                        Robert Clive
-                                                    </h4>
-                                                    <span>CEO</span>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        @endforeach
                                     </div>
                                     <div class="ns-testimonial-pagination mt-30"></div>
                                 </div>
@@ -590,6 +549,7 @@
             </div>
         </div>
     </div>
+    @endif
     <!-- testimonial area end -->
 
     <!-- contact area start -->

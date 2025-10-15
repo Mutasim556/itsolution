@@ -137,7 +137,7 @@
                              <div class="col-sm-12 col-xl-6">
                                  <div class="row">
                                      <div class="form-group col-md-12">
-                                         <label for="">{{ __('admin_local.Image') }} (180X150)
+                                         <label for="">{{ __('admin_local.Image') }} (470 X 670)
                                              *</label>
                                          <input type="file" class="form-control" name="image"
                                              id="image" accept="image/*"
