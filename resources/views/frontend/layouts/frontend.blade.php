@@ -4,10 +4,11 @@
 <head>
     @php
         $logo = \App\Models\Admin\Logo::first();
+        $aboutus = \App\Models\Admin\AboutUs::first();
     @endphp
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Shared on THEMELOCK.COM - Nosei - It Solution And Business HTML5 Template</title>
+    <title>{{ $aboutus?$aboutus->company_name:env('APP_FRONTEND_NAME') }} -@stack('title')</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/x-icon"
@@ -170,7 +171,7 @@
                                 <ul>
                                     <li><a href="{{ url('/') }}">{{ __('admin_local.Home') }}</a></li>
 
-                                    <li><a href="">{{ __('admin_local.About') }}</a></li>
+                                    <li><a href="{{ route('frontEnd.aboutUs') }}">{{ __('admin_local.About') }}</a></li>
                                     <li><a href="about.html">Services</a></li>
                                     <li><a href="about.html">Projects</a></li>
                                     <li class="menu-has-child">
@@ -225,26 +226,36 @@
         @yield('content')
     </main>
     <!-- footer area start -->
-    <footer class="ns-footer-area bg-default" data-background="assets/img/footer/footer-bg.png">
-        <img src="assets/img/footer/footer-shape-1.png" alt="Not Found" class="ns-footer-shape-1 ns-footer-shape">
-        <img src="assets/img/footer/footer-map.png" alt="Not Found" class="ns-footer-shape-2 ns-footer-shape">
+    <footer class="ns-footer-area bg-default" data-background="">
+        <img src="{{ asset('public/frontend/assets/img/footer/footer-shape-1.png')}}" alt="Not Found" class="ns-footer-shape-1 ns-footer-shape">
+        <img src="{{ asset('public/frontend/assets/img/footer/footer-map.png')}}" alt="Not Found" class="ns-footer-shape-2 ns-footer-shape">
         <div class="ns-footer-top pt-95 pb-55">
             <div class="container">
                 <div class="row justify-content-between">
                     <div class="col-xl-3 col-lg-5 col-md-6">
                         <div class="ns-footer-widget mb-40">
                             <div class="ns-footer-logo">
-                                <a href="index.html"><img src="assets/img/logo/logo.png" alt="Not Found"></a>
+                                <a href="index.html"><img src="{{ asset($logo ? $logo->main_site_header_logo : 'public/frontend/assets/img/logo/logo.png')}}" alt="Not Found"></a>
                             </div>
-                            <p class="ns-footer-widget-text">Nemo enim ipsam voluptate quia
-                                voluptas sit aspernatur aut odit
-                                aut fugit, sed quia magni this
-                                dolores eos qui ratione .</p>
+                            <p class="ns-footer-widget-text">{{ __('admin_local.Find us on') }}</p>
                             <div class="ns-footer-social">
-                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                {{-- <a href="#"><i class="fab fa-facebook-f"></i></a>
                                 <a href="#"><i class="fab fa-twitter"></i></a>
                                 <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                                <a href="#"><i class="fab fa-behance"></i></a>
+                                <a href="#"><i class="fab fa-behance"></i></a> --}}
+
+                                @if ($contact && $contact->facebook)
+                                    <a target="__blank" href="{{  $contact->facebook }}"><i class="fab fa-facebook-f"></i></a>
+                                    @endif
+                                    @if ($contact && $contact->twitter)
+                                    <a target="__blank" href="{{ $contact->twitter }}"><i class="fab fa-twitter"></i></a>
+                                    @endif
+                                    @if ($contact && $contact->linkedin)
+                                    <a target="__blank" href="{{ $contact->linkedin }}"><i class="fab fa-linkedin-in"></i></a>
+                                    @endif
+                                    @if ($contact && $contact->youtube)
+                                    <a target="__blank" href="{{ $contact->youtube }}"><i class="fab fa-youtube"></i></a>
+                                    @endif
                             </div>
                         </div>
                     </div>
@@ -284,7 +295,7 @@
                             <h3 class="ns-footer-widget-title">Recent Post</h3>
                             <div class="ns-footer-widget-post mb-20">
                                 <div class="ns-footer-widget-post-img w_img">
-                                    <a href="blog-details.html"><img src="assets/img/footer/post-1.png"
+                                    <a href="blog-details.html"><img src="{{ asset('public/frontend/assets/img/footer/post-1.png')}}"
                                             alt="Not Found"></a>
                                 </div>
                                 <div class="ns-footer-widget-post-content">
@@ -296,7 +307,7 @@
                             </div>
                             <div class="ns-footer-widget-post">
                                 <div class="ns-footer-widget-post-img w_img">
-                                    <a href="blog-details.html"><img src="assets/img/footer/post-2.png"
+                                    <a href="blog-details.html"><img src="{{ asset('public/frontend/assets/img/footer/post-2.png')}}"
                                             alt="Not Found"></a>
                                 </div>
                                 <div class="ns-footer-widget-post-content">

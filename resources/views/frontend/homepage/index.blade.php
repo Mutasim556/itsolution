@@ -1,5 +1,7 @@
 @extends('frontend.layouts.frontend')
-
+@push('title')
+    {{ __('admin_local.Home') }}
+@endpush
 @push('css')
     <style>
         .ns-brand-item {
@@ -122,20 +124,21 @@
         </div>
     </section> --}}
     <!-- feature area end -->
-    <section class="ns-service-area pt-110 pb-110">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="ns-section mb-50 text-center">
-                        <span class="ns-section-subtitle">{{ __('admin_local.What We Do') }}</span>
-                        <h2 class="ns-section-title mb-0">{{ __('admin_local.Our Popular Services') }}</h2>
+    @php
+        $services = \App\Models\Admin\Service::where([['status', 1], ['delete', 0]])->get();
+    @endphp
+    @if (count($services) > 0)
+        <section class="ns-service-area pt-110 pb-110">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="ns-section mb-50 text-center">
+                            <span class="ns-section-subtitle">{{ __('admin_local.What We Do') }}</span>
+                            <h2 class="ns-section-title mb-0">{{ __('admin_local.Our Popular Services') }}</h2>
+                        </div>
                     </div>
                 </div>
-            </div>
-            @php
-                $services = \App\Models\Admin\Service::where([['status', 1], ['delete', 0]])->get();
-            @endphp
-            @if (count($services) > 0)
+
                 <div class="ns-service-wrap">
                     <div class="swiper-container service-active">
                         <div class="swiper-wrapper">
@@ -176,9 +179,10 @@
                     <div class="ns-service-pagination"></div>
                 </div> --}}
                 </div>
-            @endif
-        </div>
-    </section>
+
+            </div>
+        </section>
+    @endif
     @php
         $counting = \App\Models\Admin\Counting::first();
     @endphp
@@ -467,80 +471,169 @@
     @php
         $partners = \App\Models\Admin\Partner::where([['status', 1], ['delete', 0]])->get();
     @endphp
-    @if (count($partners)>0)
-    <div class="ns-brand-area pt-80 pb-80">
-        <div class="container">
-            <div class="brand-active swiper-container">
-                <div class="swiper-wrapper">
+    @if (count($partners) > 0)
+        <div class="ns-brand-area pt-80 pb-80">
+            <div class="container">
+                <div class="brand-active swiper-container">
+                    <div class="swiper-wrapper">
 
-                    @foreach ($partners as $partner)
-                        <div class="swiper-slide">
-                            <div class="ns-brand-item">
-                                <img class="ns-brand-item-img"
-                                    src="{{ asset($partner->partner_image ?? 'public/frontend/assets/img/brand/brand.png') }}"
-                                    alt="Not Found">
-                                <img class="ns-brand-item-img-hover"
-                                    src="{{ asset($partner->partner_image ?? 'assets/img/brand/brand-hover.png') }}"
-                                    alt="Not Found">
+                        @foreach ($partners as $partner)
+                            <div class="swiper-slide">
+                                <div class="ns-brand-item">
+                                    <img class="ns-brand-item-img"
+                                        src="{{ asset($partner->partner_image ?? 'public/frontend/assets/img/brand/brand.png') }}"
+                                        alt="Not Found">
+                                    <img class="ns-brand-item-img-hover"
+                                        src="{{ asset($partner->partner_image ?? 'assets/img/brand/brand-hover.png') }}"
+                                        alt="Not Found">
+                                </div>
                             </div>
-                        </div>
-                    @endforeach
+                        @endforeach
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
     @endif
-    <!-- brand area end -->
-
-    <!-- counter area start -->
-
-    <!-- counter area end -->
-
-    <!-- testimonial area start -->
+    @php
+        $teams = \App\Models\Admin\Team::where([['status', 1], ['delete', 0]])->get();
+    @endphp
+    @if (count($teams) > 0)
+        <section class="ns-team-area pt-110 pb-110">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="ns-section mb-50 text-center">
+                            <span class="ns-section-subtitle">{{ __('admin_local.Team Members') }}</span>
+                            <h2 class="ns-section-title mb-0">{{ __('admin_local.Amazing Team Members') }}</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-container team-active">
+                    <div class="swiper-wrapper">
+                        @foreach ($teams as $team)
+                            <div class="swiper-slide">
+                                <div class="ns-team-item">
+                                    <div class="ns-team-item-img w_img">
+                                        <a href="team-details.html"><img
+                                                src="{{ asset($team->team_member_image ?? 'public/frontend/assets/img/team/team-1.jpg') }}"
+                                                alt=""></a>
+                                    </div>
+                                    <div class="ns-team-item-content">
+                                        <div class="ns-team-social">
+                                            <div class="ns-team-social-btn">
+                                                <span class="ns-team-social-plus ns-team-social-btn-icon"><i
+                                                        class="fal fa-plus"></i></span>
+                                                <span class="ns-team-social-minus ns-team-social-btn-icon"><i
+                                                        class="fal fa-minus"></i></span>
+                                            </div>
+                                            <div class="ns-team-social-btn d-none">
+                                                <span class="ns-team-social-plus ns-team-social-btn-icon"><i
+                                                        class="icofont-plus"></i></span>
+                                                <span class="ns-team-social-minus ns-team-social-btn-icon"><i
+                                                        class="icofont-minus"></i></span>
+                                            </div>
+                                            <div class="ns-team-social-icon">
+                                                <ul>
+                                                    @if ($team->team_member_facebook)
+                                                        <li><a target="__blank"
+                                                                href="{{ $team->team_member_facebook }}"><i
+                                                                    class="fab fa-facebook-f"></i></a></li>
+                                                    @endif
+                                                    @if ($team->team_member_linkedin)
+                                                        <li><a target="__blank"
+                                                                href="{{ $team->team_member_linkedin }}"><i
+                                                                    class="fab fa-linkedin"></i></a></li>
+                                                    @endif
+                                                    @if ($team->team_member_instagram)
+                                                        <li><a target="__blank"
+                                                                href="{{ $team->team_member_instagram }}"><i
+                                                                    class="fab fa-instagram"></i></a></li>
+                                                    @endif
+                                                    @if ($team->team_member_youtube)
+                                                        <li><a target="__blank"
+                                                                href="{{ $team->team_member_youtube }}"><i
+                                                                    class="fab fa-youtube"></i></a></li>
+                                                    @endif
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="ns-team-item-info">
+                                            <h5 class="ns-team-info-title"><a
+                                                    href="team-details.html">{{ $team->team_member_name }}</a></h5>
+                                            <span>{{ $team->team_member_desig }}</span>
+                                        </div>
+                                        <div class="ns-team-item-contact px-1">
+                                            @if ($team->team_member_phone)
+                                                <a href="tel:{{ $team->team_member_phone }}" style="font-size: 14px"><i
+                                                        class="icofont-phone"></i>{{ $team->team_member_phone }}</a>
+                                            @endif
+                                            @if ($team->team_member_phone)
+                                                <a href="mailto:{{ $team->team_member_email }}"
+                                                    style="font-size: 14px"><i
+                                                        class="icofont-envelope-open"></i>{{ $team->team_member_email }}</a>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <span class="ns-team-shape-1 ns-team-shape"></span>
+                                    <span class="ns-team-shape-2 ns-team-shape"></span>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                    <div class="ns-team-bottom mt-50">
+                        <div class="ns-team-pagination"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    @endif
     @php
         $comments = \App\Models\Admin\Comment::where([['status', 1], ['delete', 0]])->get();
     @endphp
-    @if (count($comments)>0)
-    <div class="ns-testimonial-area">
-        <img class="ns-testimonial-bg d-none d-xl-block" src="{{ asset('public/frontend/assets/img/testimonial/testimonial-shape.png') }}"
-            alt="Not Found">
-        <div class="ns-testimonial-container container">
-            <div class="ns-inner-wrap">
-                <div class="ns-testimonial-space">
-                    <div class="ns-has-space">
-                        <div class="ns-testimonial-thumb">
-                            <div class="swiper-container testimonial-thumb">
-                                <div class="swiper-wrapper">
-                                    @foreach ($comments as $comment)
-                                    <div class="swiper-slide">
-                                        <div class="ns-testimonial-img w_img">
-                                            <img src="{{ asset($comment->image??'public/frontend/assets/img/testimonial/testimonial-1.png') }}" alt="Not Found">
-                                        </div>
-                                    </div>
-                                    @endforeach
-                                </div>
-                            </div>
-                        </div>
-                        <div class="ns-testimonial-single">
-                            <div class="ns-testimonial-wrap">
-                                <div class="swiper-container testimonial-active">
+    @if (count($comments) > 0)
+        <div class="ns-testimonial-area">
+            <img class="ns-testimonial-bg d-none d-xl-block"
+                src="{{ asset('public/frontend/assets/img/testimonial/testimonial-shape.png') }}" alt="Not Found">
+            <div class="ns-testimonial-container container">
+                <div class="ns-inner-wrap">
+                    <div class="ns-testimonial-space">
+                        <div class="ns-has-space">
+                            <div class="ns-testimonial-thumb">
+                                <div class="swiper-container testimonial-thumb">
                                     <div class="swiper-wrapper">
                                         @foreach ($comments as $comment)
-                                        <div class="swiper-slide">
-                                            <div class="ns-testimonial-content">
-                                                <img src="{{ asset('public/frontend/assets/img/testimonial/qoute.png')}}" alt="Not Found">
-                                                <p>{!! $comment->comments !!}</p>
-                                                <div class="ns-testimonial-admin">
-                                                    <h4 class="ns-testimonial-admin-title">
-                                                        {{ $comment->name }}
-                                                    </h4>
-                                                    <span>{{ $comment->designation }}</span>
+                                            <div class="swiper-slide">
+                                                <div class="ns-testimonial-img w_img">
+                                                    <img src="{{ asset($comment->image ?? 'public/frontend/assets/img/testimonial/testimonial-1.png') }}"
+                                                        alt="Not Found">
                                                 </div>
                                             </div>
-                                        </div>
                                         @endforeach
                                     </div>
-                                    <div class="ns-testimonial-pagination mt-30"></div>
+                                </div>
+                            </div>
+                            <div class="ns-testimonial-single">
+                                <div class="ns-testimonial-wrap">
+                                    <div class="swiper-container testimonial-active">
+                                        <div class="swiper-wrapper">
+                                            @foreach ($comments as $comment)
+                                                <div class="swiper-slide">
+                                                    <div class="ns-testimonial-content">
+                                                        <img src="{{ asset('public/frontend/assets/img/testimonial/qoute.png') }}"
+                                                            alt="Not Found">
+                                                        <p>{!! $comment->comments !!}</p>
+                                                        <div class="ns-testimonial-admin">
+                                                            <h4 class="ns-testimonial-admin-title">
+                                                                {{ $comment->name }}
+                                                            </h4>
+                                                            <span>{{ $comment->designation }}</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                        <div class="ns-testimonial-pagination mt-30"></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -548,228 +641,115 @@
                 </div>
             </div>
         </div>
-    </div>
     @endif
     <!-- testimonial area end -->
 
     <!-- contact area start -->
-    <section class="pt-110 pb-115">
-        <div class="ns-contact-container container">
-            <div class="ns-inner-wrap">
-                <div class="ns-contact-space">
-                    <div class="ns-contact-wrap">
-                        <div class="ns-contact-left">
-                            <div class="ns-section mb-35">
-                                <span class="ns-section-subtitle">Contact Now</span>
-                                <h2 class="ns-section-title mb-15">Live Sports This Contacts Us</h2>
-                                <p class="ns-section-text mb-0">Promote your blog posts, case udie, and product
-                                    ouncems <br> with the the branded videoscustomers coming back for <br> services
-                                    Makes best effort.</p>
-                            </div>
-                            <div class="ns-contact-form">
-                                <form action="#">
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <input type="text" placeholder="Your Name">
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <input type="email" placeholder="Your Email">
-                                        </div>
-                                        <div class="col-12">
-                                            <textarea name="message" cols="30" rows="10" placeholder="Message"></textarea>
-                                        </div>
-                                        <div class="col-12">
-                                            <button type="submit" class="ns-theme-btn ns-contact-btn">Send
-                                                Request</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                        <div class="ns-contact-right">
-                            <div class="ns-contact-info">
-                                <span class="ns-contact-circle-1"></span>
-                                <span class="ns-contact-circle-2"></span>
-                                <img src="assets/img/contact/contact.jpg" alt="Not Found" class="ns-contact-bg-img">
-                                <img class="ns-contact-shape ns-contact-shape-1" src="assets/img/contact/contact-map.png"
-                                    alt="Not Found">
-                                <img class="ns-contact-shape ns-contact-shape-2" src="assets/img/contact/contact-map.png"
-                                    alt="Not Found">
-                                <img class="ns-contact-shape ns-contact-shape-3" src="assets/img/contact/contact-map.png"
-                                    alt="Not Found">
-                                <div class="ns-contact-item ns-phone">
-                                    <div class="ns-contact-item-icon">
-                                        <i class="icofont-ui-call"></i>
-                                    </div>
-                                    <div class="ns-contact-item-details">
-                                        <span>Call Me</span>
-                                        <div>
-                                            <a href="tel:+880254615566">+880254615566</a>
-                                            <a href="tel:+826542556455">+826542556455</a>
-                                        </div>
-                                    </div>
+    @if ($contact)
+        <section class="pt-110 pb-115">
+            <div class="ns-contact-container container">
+                <div class="ns-inner-wrap">
+                    <div class="ns-contact-space">
+                        <div class="ns-contact-wrap">
+                            <div class="ns-contact-left">
+                                <div class="ns-section mb-35">
+                                    <span class="ns-section-subtitle">Contact Now</span>
+                                    <h2 class="ns-section-title mb-15">Live Sports This Contacts Us</h2>
+                                    <p class="ns-section-text mb-0">Promote your blog posts, case udie, and product
+                                        ouncems <br> with the the branded videoscustomers coming back for <br> services
+                                        Makes best effort.</p>
                                 </div>
-                                <div class="ns-contact-item ns-mail">
-                                    <div class="ns-contact-item-icon">
-                                        <i class="icofont-envelope"></i>
-                                    </div>
-                                    <div class="ns-contact-item-details">
-                                        <span>Mail Us</span>
-                                        <div>
-                                            <a
-                                                href="mailto:rubel@eobi.com
-                                                    ">rubel@eobi.com
-                                            </a>
-                                            <a
-                                                href="mailto:moraty@bara.com
-                                                    ">moraty@bara.com
-                                            </a>
+                                <div class="ns-contact-form">
+                                    <form action="#">
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <input type="text" placeholder="Your Name">
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <input type="email" placeholder="Your Email">
+                                            </div>
+                                            <div class="col-12">
+                                                <textarea name="message" cols="30" rows="10" placeholder="Message"></textarea>
+                                            </div>
+                                            <div class="col-12">
+                                                <button type="submit" class="ns-theme-btn ns-contact-btn">Send
+                                                    Request</button>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="ns-contact-item ns-address">
-                                    <div class="ns-contact-item-icon">
-                                        <i class="icofont-location-pin"></i>
-                                    </div>
-                                    <div class="ns-contact-item-details">
-                                        <span>Address</span>
-                                        <p>20, 25 Dhaka,0123 <br>
-                                            Ratrba baraj,20</p>
-                                    </div>
+                                    </form>
                                 </div>
                             </div>
-                            <div class="ns-contact-map">
-                                <iframe
-                                    src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d12677670.27170986!2d26.611266975183028!3d49.282320776259766!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sbd!4v1646059574165!5m2!1sen!2sbd"></iframe>
+                            <div class="ns-contact-right">
+                                <div class="ns-contact-info">
+                                    <span class="ns-contact-circle-1"></span>
+                                    <span class="ns-contact-circle-2"></span>
+                                    <img src="assets/img/contact/contact.jpg" alt="Not Found" class="ns-contact-bg-img">
+                                    <img class="ns-contact-shape ns-contact-shape-1"
+                                        src="{{ asset('public/frontend/assets/img/contact/contact-map.png') }}"
+                                        alt="Not Found">
+                                    <img class="ns-contact-shape ns-contact-shape-2"
+                                        src="{{ asset('public/frontend/assets/img/contact/contact-map.png') }}"
+                                        alt="Not Found">
+                                    <img class="ns-contact-shape ns-contact-shape-3"
+                                        src="{{ asset('public/frontend/assets/img/contact/contact-map.png') }}"
+                                        alt="Not Found">
+                                    <div class="ns-contact-item ns-phone">
+                                        <div class="ns-contact-item-icon">
+                                            <i class="icofont-ui-call"></i>
+                                        </div>
+                                        <div class="ns-contact-item-details">
+                                            <span>{{ __('admin_local.Call Us') }}</span>
+                                            <div>
+                                                @php
+                                                    $cPhone = explode(',', $contact->phone);
+                                                @endphp
+                                                @foreach ($cPhone as $phone)
+                                                    <a href="tel:{{ $phone }}">{{ $phone }}</a>
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @if ($contact->email)
+                                        <div class="ns-contact-item ns-mail">
+                                            <div class="ns-contact-item-icon">
+                                                <i class="icofont-envelope"></i>
+                                            </div>
+                                            <div class="ns-contact-item-details">
+                                                <span>{{ __('admin_local.Mail Us') }}</span>
+                                                <div>
+                                                    <a
+                                                        href="mailto:{{ $contact->email }}
+                                                    ">{{ $contact->email }}
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endif
+                                    @if ($contact->address)
+                                        <div class="ns-contact-item ns-address">
+                                            <div class="ns-contact-item-icon">
+                                                <i class="icofont-location-pin"></i>
+                                            </div>
+                                            <div class="ns-contact-item-details">
+                                                <span>{{ __('admin_local.Address') }}</span>
+                                                <p>{{ $contact->address }}</p>
+                                            </div>
+                                        </div>
+                                    @endif
+                                </div>
+                                @if ($contact->location)
+                                    <div class="ns-contact-map">
+                                        <iframe
+                                            src="https://www.google.com/maps/embed?pb={{ $contact->location }}"></iframe>
+                                    </div>
+                                @endif
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-    </section>
-    <!-- contact area end -->
+        </section>
+    @endif
 
-    <!-- blog area start -->
-    <section class="ns-blog-area pt-110 pb-115">
-        <img src="assets/img/blog/blog-shape-1.png" alt="Not Found" class="ns-blog-bg-shape-1 ns-blog-shape-bg">
-        <img src="assets/img/blog/blog-shape-2.png" alt="Not Found" class="ns-blog-bg-shape-2 ns-blog-shape-bg">
-        <img src="assets/img/blog/blog-shape-3.png" alt="Not Found" class="ns-blog-bg-shape-3 ns-blog-shape-bg">
-        <img src="assets/img/blog/blog-shape-4.png" alt="Not Found" class="ns-blog-bg-shape-4 ns-blog-shape-bg">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="ns-section mb-50 text-center">
-                        <span class="ns-section-subtitle">Largest Blog</span>
-                        <h2 class="ns-section-title mb-0">Our largest News Blog</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="swiper-container blog-active">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <div class="ns-blog-item">
-                            <div class="ns-blog-img w_img">
-                                <a href="blog-details.html"><img src="assets/img/blog/blog-1.jpg" alt="Not Found"></a>
-                                <span class="ns-blog-tag">Business</span>
-                                <span class="ns-blog-img-shape-1"></span>
-                                <span class="ns-blog-img-shape-2"></span>
-                            </div>
-                            <div class="ns-blog-content">
-                                <div class="ns-blog-content-meta"><span class="ns-blog-admin">By: <a
-                                            href="#">Admin</a></span><span class="ns-blog-date">January 6,
-                                        2022</span></div>
-                                <h3 class="ns-blog-content-title"><a href="blog-details.html">We are best It
-                                        solution company</a></h3>
-                                <p>World’s best organizations, for 19+
-                                    years and runninh...</p>
-                                <a href="blog-details.html" class="ns-blog-btn">Read More<i class="icofont-plus"></i></a>
-                                <span class="ns-blog-shape-1"></span>
-                                <span class="ns-blog-shape-2"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="ns-blog-item">
-                            <div class="ns-blog-img w_img">
-                                <a href="blog-details.html"><img src="assets/img/blog/blog-2.jpg" alt="Not Found"></a>
-                                <span class="ns-blog-tag">Business</span>
-                                <span class="ns-blog-img-shape-1"></span>
-                                <span class="ns-blog-img-shape-2"></span>
-                            </div>
-                            <div class="ns-blog-content">
-                                <div class="ns-blog-content-meta"><span class="ns-blog-admin">By: <a
-                                            href="#">Admin</a></span><span class="ns-blog-date">January 6,
-                                        2022</span></div>
-                                <h3 class="ns-blog-content-title"><a href="blog-details.html">5 Ways Technology
-                                        Has Improved Today</a></h3>
-                                <p>World’s best organizations, for 19+
-                                    years and runninh...</p>
-                                <a href="blog-details.html" class="ns-blog-btn">Read More<i class="icofont-plus"></i></a>
-                                <span class="ns-blog-shape-1"></span>
-                                <span class="ns-blog-shape-2"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="ns-blog-item">
-                            <div class="ns-blog-img w_img">
-                                <a href="blog-details.html"><img src="assets/img/blog/blog-3.jpg" alt="Not Found"></a>
-                                <span class="ns-blog-tag">Business</span>
-                                <span class="ns-blog-img-shape-1"></span>
-                                <span class="ns-blog-img-shape-2"></span>
-                            </div>
-                            <div class="ns-blog-content">
-                                <div class="ns-blog-content-meta"><span class="ns-blog-admin">By: <a
-                                            href="#">Admin</a></span><span class="ns-blog-date">January 6,
-                                        2022</span></div>
-                                <h3 class="ns-blog-content-title"><a href="blog-details.html">Wireless Technology
-                                        is Change Business</a></h3>
-                                <p>World’s best organizations, for 19+
-                                    years and runninh...</p>
-                                <a href="blog-details.html" class="ns-blog-btn">Read More<i class="icofont-plus"></i></a>
-                                <span class="ns-blog-shape-1"></span>
-                                <span class="ns-blog-shape-2"></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="ns-blog-pagination mt-50"></div>
-            </div>
-        </div>
-    </section>
-    <!-- blog area end -->
-
-    <!-- newsletter area start -->
-    <div class="ns-newsletter-area pt-155 pb-115">
-        <div class="container">
-            <div class="ns-newsletter-wrap">
-                <div class="ns-newsletter-icon">
-                    <img src="assets/img/newsletter/newsletter-icon.png" alt="Not Found">
-                </div>
-                <div class="ns-newsletter-inner">
-                    <img src="assets/img/newsletter/map.png" alt="Not Found" class="ns-newsletter-shape-3">
-                    <img src="assets/img/newsletter/shape-1.png" alt="Not Found" class="ns-newsletter-shape-1">
-                    <img src="assets/img/newsletter/shape-2.png" alt="Not Found" class="ns-newsletter-shape-2">
-                    <div class="row align-items-center">
-                        <div class="col-xl-6 col-lg-6">
-                            <div class="ns-newsletter-content mb-30">
-                                <h3 class="ns-newsletter-title">
-                                    News Latter to connect our services in your area
-                                </h3>
-                            </div>
-                        </div>
-                        <div class="col-xl-6 col-lg-6">
-                            <div class="ns-newsletter-input mb-30">
-                                <input type="email" placeholder="Your Email">
-                                <button class="ns-newsletter-btn" type="submit">Subscribe</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- newsletter area end -->
 @endsection

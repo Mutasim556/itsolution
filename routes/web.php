@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FrontEnd\FrontEndController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -16,6 +17,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/',[HomeController::class,'index']);
+
+Route::controller(FrontEndController::class)->name('frontEnd.')->group(function(){
+    Route::get('/about-us','aboutUs')->name('aboutUs');
+});
 
 Route::get('/dashboard', function () {
     return view('dashboard');
