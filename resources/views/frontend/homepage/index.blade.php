@@ -153,9 +153,9 @@
                                         <div class="ns-service-content">
                                             <h4 class="ns-service-content-title"><a
                                                     href="project-details.html">{{ $service->service_name }}</a></h4>
-                                            <p>{{ $service->service_short_details }}
+                                            <p>{!! $service->service_short_details !!}
                                             </p>
-                                            <a href="project-details.html"
+                                            <a href="{{ route('frontEnd.serviceDetails', [\Str::slug($service->service_name) . '?service=' . \Vinkla\Hashids\Facades\Hashids::encode($service->id)]) }}"
                                                 class="ns-service-btn">{{ __('admin_local.Read More') }}<i
                                                     class="icofont-plus"></i></a>
                                             <div class="ns-service-content-icon">
@@ -411,11 +411,11 @@
                                         <div class="ns-project-content">
                                             <div class="ns-project-content-info">
                                                 <h4 class="ns-project-content-title"><a
-                                                        href="project-details.html">{{ $project->project_name }}</a></h4>
+                                                        href="{{ route('frontEnd.projectDetails',[\Str::slug($project->project_name)."?project=".\Vinkla\Hashids\Facades\Hashids::encode($project->id)]) }}">{{ $project->project_name }}</a></h4>
                                                 <span>{{ $project->project_category }}</span>
                                             </div>
                                             <div class="ns-project-content-btn">
-                                                <a href="project-details.html"><i
+                                                <a href="{{ route('frontEnd.projectDetails',[\Str::slug($project->project_name)."?project=".\Vinkla\Hashids\Facades\Hashids::encode($project->id)]) }}"><i
                                                         class="fas fa-chevron-circle-right"></i></a>
                                             </div>
                                         </div>
@@ -514,7 +514,7 @@
                             <div class="swiper-slide">
                                 <div class="ns-team-item">
                                     <div class="ns-team-item-img w_img">
-                                        <a href="team-details.html"><img
+                                        <a href="{{ route('frontEnd.teamMemberDetails',[\Str::slug($team->team_member_name)."?team=".\Vinkla\Hashids\Facades\Hashids::encode($team->id)]) }}"><img
                                                 src="{{ asset($team->team_member_image ?? 'public/frontend/assets/img/team/team-1.jpg') }}"
                                                 alt=""></a>
                                     </div>
@@ -559,7 +559,7 @@
                                         </div>
                                         <div class="ns-team-item-info">
                                             <h5 class="ns-team-info-title"><a
-                                                    href="team-details.html">{{ $team->team_member_name }}</a></h5>
+                                                    href="{{ route('frontEnd.teamMemberDetails',[\Str::slug($team->team_member_name)."?team=".\Vinkla\Hashids\Facades\Hashids::encode($team->id)]) }}">{{ $team->team_member_name }}</a></h5>
                                             <span>{{ $team->team_member_desig }}</span>
                                         </div>
                                         <div class="ns-team-item-contact px-1">

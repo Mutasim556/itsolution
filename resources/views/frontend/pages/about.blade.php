@@ -165,7 +165,7 @@
                                                     href="project-details.html">{{ $service->service_name }}</a></h4>
                                             <p>{{ $service->service_short_details }}
                                             </p>
-                                            <a href="project-details.html"
+                                            <a href="{{ route('frontEnd.serviceDetails',[\Str::slug($service->service_name)."?service=".\Vinkla\Hashids\Facades\Hashids::encode($service->id)]) }}"
                                                 class="ns-service-btn">{{ __('admin_local.Read More') }}<i
                                                     class="icofont-plus"></i></a>
                                             <div class="ns-service-content-icon">

@@ -172,9 +172,10 @@
                                     <li><a href="{{ url('/') }}">{{ __('admin_local.Home') }}</a></li>
 
                                     <li><a href="{{ route('frontEnd.aboutUs') }}">{{ __('admin_local.About') }}</a></li>
-                                    <li><a href="about.html">Services</a></li>
-                                    <li><a href="about.html">Projects</a></li>
-                                    <li class="menu-has-child">
+                                    <li><a href="{{ route('frontEnd.services') }}">{{ __("admin_local.Services") }}</a></li>
+                                    <li><a href="{{ route('frontEnd.projects') }}">{{ __('admin_local.Projects') }}</a></li>
+                                    <li><a href="{{ route('frontEnd.teamMembers') }}">{{ __('admin_local.Team') }}</a></li>
+                                    {{-- <li class="menu-has-child">
                                         <a href="#">Others</a>
                                         <ul class="submenu">
                                             <li><a href="service.html">Service</a></li>
@@ -184,7 +185,7 @@
                                             <li><a href="team-details.html">Team Details</a></li>
                                             <li><a href="error.html">404</a></li>
                                         </ul>
-                                    </li>
+                                    </li> --}}
                                     <li><a href="about.html">Contact Us</a></li>
                                 </ul>
                             </nav>

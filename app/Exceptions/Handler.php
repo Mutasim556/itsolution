@@ -27,4 +27,27 @@ class Handler extends ExceptionHandler
             //
         });
     }
+
+    public function render($request, Throwable $exception)
+{
+    // Check if it's an HTTP error (like 404, 500, etc.)
+    if ($this->isHttpException($exception)) {
+        $status = $exception->getStatusCode();
+
+        // Detect admin area by URL prefix, guard, or route name
+        if ($request->is('admin/*')) {
+            // Admin error pages
+            if (view()->exists("errors.admin.$status")) {
+                return response()->view("errors.admin.$status", ['exception' => $exception], $status);
+            }
+        } else {
+            // Frontend error pages
+            if (view()->exists("errors.frontend.$status")) {
+                return response()->view("errors.frontend.$status", ['exception' => $exception], $status);
+            }
+        }
+    }
+
+    return parent::render($request, $exception);
+}
 }

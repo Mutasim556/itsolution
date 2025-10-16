@@ -20,6 +20,15 @@ Route::get('/',[HomeController::class,'index']);
 
 Route::controller(FrontEndController::class)->name('frontEnd.')->group(function(){
     Route::get('/about-us','aboutUs')->name('aboutUs');
+
+    Route::get('/services','services')->name('services');
+    Route::get('/service-details/{slug}','serviceDetails')->name('serviceDetails');
+
+    Route::get('/projects','projects')->name('projects');
+    Route::get('/project-details/{slug}','projectDetails')->name('projectDetails');
+
+    Route::get('/team-members','teamMembers')->name('teamMembers');
+    Route::get('/team-member-details/{slug}','teamMemberDetails')->name('teamMemberDetails');
 });
 
 Route::get('/dashboard', function () {
@@ -62,14 +71,14 @@ Route::get('modulec',function(){
                 }else{
                     $zz = $zz."        '$dkey'=>'$dd',\n";
                 }
-                
+
                }
             }
-    
+
             $tt = $tt."\n    '$key'=>[\n$zz\n    ],";
         }
     }
-    
+
     $tt = $tt."\n    'subscription'=>[       $content],";
     $phpArray = "<?php\n\nreturn [  $tt \n];";
     file_put_contents(config_path('modules.php'), $phpArray);
