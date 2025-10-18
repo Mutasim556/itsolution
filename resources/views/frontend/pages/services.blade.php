@@ -30,7 +30,7 @@
                         <div class="col-xl-4 col-lg-4 col-md-6">
                             <div class="ns-service-item ns-service-item-2 mb-30">
                                 <div class="ns-service-img ns-service-img-2 w_img">
-                                    <a href="service.html"><img
+                                    <a href="{{ route('frontEnd.serviceDetails',[\Str::slug($service->service_name)."?service=".\Vinkla\Hashids\Facades\Hashids::encode($service->id)]) }}"><img
                                             src="{{ asset($service->service_image ? $service->service_image : 'public/admin/images/images.png') }}"
                                             alt="Not Found"></a>
                                     <div class="ns-service-content-icon ns-service-content-icon-2">
@@ -41,7 +41,7 @@
                                 </div>
                                 <div class="ns-service-content ns-service-content-2">
                                     <h4 class="ns-service-content-title ns-service-content-title-2"><a
-                                            href="project-details.html">{{ $service->service_name }}</a></h4>
+                                            href="{{ route('frontEnd.serviceDetails',[\Str::slug($service->service_name)."?service=".\Vinkla\Hashids\Facades\Hashids::encode($service->id)]) }}">{{ $service->service_name }}</a></h4>
                                     <p>{!! $service->service_short_details !!} {{  \Str::slug($service->service_name) }}</p>
                                     <a href="{{ route('frontEnd.serviceDetails',[\Str::slug($service->service_name)."?service=".\Vinkla\Hashids\Facades\Hashids::encode($service->id)]) }}" class="ns-service-btn ns-service-btn-2">{{ __('admin_local.Read More') }}<i
                                             class="icofont-plus"></i></a>

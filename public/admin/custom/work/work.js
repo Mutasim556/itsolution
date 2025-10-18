@@ -626,7 +626,7 @@ $(document).on('click', '#work_updates_button', function () {
                     action_option = action_option + `</div></div>`;
                 }
                 let updatesFile =val.updates_file;
-                newRow = newRow + `<tr id="trid-${val.id}" data-id="${val.id}"><td></td><td>${val.updates_details}</td><td>${val.payment?val.payment.asking_payment ?? 0:0}</td><td>${val.payment?val.payment.asking_payment_date:''}</td><td>${val.payment?val.payment.actual_payment ?? 0:0}</td><td>${val.payment?val.payment.actual_payment_date:''}</td><td>${updatesFile}</td>
+                newRow = newRow + `<tr id="trid-${val.id}" data-id="${val.id}"><td></td><td>${val.updates_details}</td><td>${val.payment?val.payment.asking_payment ?? 0:0}</td><td>${val.payment?val.payment.asking_payment_date:''}</td><td>${val.payment?val.payment.actual_payment ?? 0:0}</td><td>${val.payment?val.payment.actual_payment_date:''}</td><td>${val.customer_feedback??''}</td><td>${updatesFile}</td>
                 <td>${action_option}</td></tr>`;
             })
 

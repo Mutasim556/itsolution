@@ -67,22 +67,22 @@
                                 <span class="text-danger err-mgs"></span>
                             </div>
                             <div class="col-lg-12 mt-2">
-                                <label for="slider_name"><strong>{{ __('admin_local.Slider Short Description') }} *</strong></label>
+                                <label for="slider_name"><strong>{{ __('admin_local.Slider Short Description') }} </strong></label>
                                 <input type="text" class="form-control" name="slider_short_description" id="slider_short_description">
                                 <span class="text-danger err-mgs"></span>
                             </div>
                             <div class="col-lg-12 mt-2">
-                                <label for="slider_name"><strong>{{ __('admin_local.Slider Link ( If Any )') }} *</strong></label>
+                                <label for="slider_name"><strong>{{ __('admin_local.Slider Link ( If Any )') }} </strong></label>
                                 <input type="text" class="form-control" name="slider_link" id="slider_link">
                                 <span class="text-danger err-mgs"></span>
                             </div>
                             <div class="col-lg-12 mt-2">
-                                <label for="slider_name"><strong>{{ __('admin_local.Slider Button Text') }} *</strong></label>
+                                <label for="slider_name"><strong>{{ __('admin_local.Slider Button Text') }} </strong></label>
                                 <input type="text" class="form-control" name="slider_button_text" id="slider_button_text">
                                 <span class="text-danger err-mgs"></span>
                             </div>
                             <div class="col-lg-12 mt-2">
-                                <label for="slider_image"><strong>{{ __('admin_local.Slider Image') }} ( 1920px x 896px )
+                                <label for="slider_image"><strong>{{ __('admin_local.Slider Image') }} ( 1920px x 896px ) *
                                     </strong></label>
                                 <input type="file" class="form-control" name="slider_image" id="slider_image" onchange="document.getElementById('preview_image2').src = window.URL.createObjectURL(this.files[0])">
                                 <span class="text-danger err-mgs"></span>

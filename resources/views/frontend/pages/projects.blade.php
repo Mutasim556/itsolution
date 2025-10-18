@@ -20,8 +20,8 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="ns-section mb-50 text-center">
-                            <span class="ns-section-subtitle">Our Projects</span>
-                            <h2 class="ns-section-title mb-0">We Case Studies Best Work</h2>
+                            <span class="ns-section-subtitle">{{ __('admin_local.Our Projects') }}</span>
+                            <h2 class="ns-section-title mb-0">{{ __('admin_local.Here is some best projects') }}</h2>
                         </div>
                     </div>
                 </div>

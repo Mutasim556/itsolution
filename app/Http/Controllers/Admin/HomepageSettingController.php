@@ -29,8 +29,8 @@ class HomepageSettingController extends Controller
         // dd($data->all());
         $data->validate([
             'slider_title' => 'required',
-            'slider_short_description' => 'required',
-            'slider_button_text' => 'required',
+            // 'slider_short_description' => 'required',
+            // 'slider_button_text' => 'required',
             'slider_image' => 'required|mimes:png,jpg,jpeg',
         ]);
         $slider = new HomepageSilder();
@@ -70,26 +70,28 @@ class HomepageSettingController extends Controller
                 'value'                 =>  GoogleTranslate::trans($data->slider_title, $lang->lang, 'en'),
                 'updated_at'            => Carbon::now(),
             ]);
-
-            Translation::updateOrInsert([
-                'translationable_type'  => 'App\Models\Admin\HomepageSilder',
-                'translationable_id'    => $slider->id,
-                'locale'                => $lang->lang,
-                'key'                   => 'slider_short_description',
-            ], [
-                'value'                 =>  GoogleTranslate::trans($data->slider_short_description, $lang->lang, 'en'),
-                'updated_at'            => Carbon::now(),
-            ]);
-
-            Translation::updateOrInsert([
-                'translationable_type'  => 'App\Models\Admin\HomepageSilder',
-                'translationable_id'    => $slider->id,
-                'locale'                => $lang->lang,
-                'key'                   => 'slider_button_text',
-            ], [
-                'value'                 =>  GoogleTranslate::trans($data->slider_button_text, $lang->lang, 'en'),
-                'updated_at'            => Carbon::now(),
-            ]);
+            if ($data->slider_short_description) {
+                Translation::updateOrInsert([
+                    'translationable_type'  => 'App\Models\Admin\HomepageSilder',
+                    'translationable_id'    => $slider->id,
+                    'locale'                => $lang->lang,
+                    'key'                   => 'slider_short_description',
+                ], [
+                    'value'                 =>  GoogleTranslate::trans($data->slider_short_description, $lang->lang, 'en'),
+                    'updated_at'            => Carbon::now(),
+                ]);
+            }
+            if ($data->slider_button_text) {
+                Translation::updateOrInsert([
+                    'translationable_type'  => 'App\Models\Admin\HomepageSilder',
+                    'translationable_id'    => $slider->id,
+                    'locale'                => $lang->lang,
+                    'key'                   => 'slider_button_text',
+                ], [
+                    'value'                 =>  GoogleTranslate::trans($data->slider_button_text, $lang->lang, 'en'),
+                    'updated_at'            => Carbon::now(),
+                ]);
+            }
         }
 
         return response([
@@ -135,8 +137,8 @@ class HomepageSettingController extends Controller
     {
         $data->validate([
             'slider_title' => 'required',
-            'slider_short_description' => 'required',
-            'slider_button_text' => 'required',
+            // 'slider_short_description' => 'required',
+            // 'slider_button_text' => 'required',
             'slider_image' => 'mimes:png,jpg,jpeg',
             // 'slider_image'=>'mimes:png,jpg,jpeg|dimensions:min_width=2376,min_height=807',
         ]);
@@ -176,25 +178,28 @@ class HomepageSettingController extends Controller
                 'updated_at'            => Carbon::now(),
             ]);
 
-            Translation::updateOrInsert([
-                'translationable_type'  => 'App\Models\Admin\HomepageSilder',
-                'translationable_id'    => $slider->id,
-                'locale'                => $lang->lang,
-                'key'                   => 'slider_short_description',
-            ], [
-                'value'                 =>  GoogleTranslate::trans($data->slider_short_description, $lang->lang, 'en'),
-                'updated_at'            => Carbon::now(),
-            ]);
-
-            Translation::updateOrInsert([
-                'translationable_type'  => 'App\Models\Admin\HomepageSilder',
-                'translationable_id'    => $slider->id,
-                'locale'                => $lang->lang,
-                'key'                   => 'slider_button_text',
-            ], [
-                'value'                 =>  GoogleTranslate::trans($data->slider_button_text, $lang->lang, 'en'),
-                'updated_at'            => Carbon::now(),
-            ]);
+            if ($data->slider_short_description) {
+                Translation::updateOrInsert([
+                    'translationable_type'  => 'App\Models\Admin\HomepageSilder',
+                    'translationable_id'    => $slider->id,
+                    'locale'                => $lang->lang,
+                    'key'                   => 'slider_short_description',
+                ], [
+                    'value'                 =>  GoogleTranslate::trans($data->slider_short_description, $lang->lang, 'en'),
+                    'updated_at'            => Carbon::now(),
+                ]);
+            }
+            if ($data->slider_button_text) {
+                Translation::updateOrInsert([
+                    'translationable_type'  => 'App\Models\Admin\HomepageSilder',
+                    'translationable_id'    => $slider->id,
+                    'locale'                => $lang->lang,
+                    'key'                   => 'slider_button_text',
+                ], [
+                    'value'                 =>  GoogleTranslate::trans($data->slider_button_text, $lang->lang, 'en'),
+                    'updated_at'            => Carbon::now(),
+                ]);
+            }
         }
 
         return response([
@@ -314,8 +319,9 @@ class HomepageSettingController extends Controller
     }
 
 
-    public function updateComments(Request $data, string $id){
-         $data->validate([
+    public function updateComments(Request $data, string $id)
+    {
+        $data->validate([
             'name' => 'required',
             'designation' => 'required',
             'comments' => 'required',
@@ -342,7 +348,7 @@ class HomepageSettingController extends Controller
             $imageName = 'commentsImg' . time() . '.' . $image->getClientOriginalExtension();
             $manager = new ImageManager(new Driver());
             $imageName  =  $dir . '/' . $imageName;
-            $manager->read($image)->resize(470,670)->save($imageName);
+            $manager->read($image)->resize(470, 670)->save($imageName);
             $updatecomments->image = $imageName;
         }
 
@@ -369,7 +375,7 @@ class HomepageSettingController extends Controller
                     'updated_at'            => Carbon::now(),
                 ]);
             }
-            
+
             if ($data->$designation != null) {
                 Translation::updateOrInsert([
                     'translationable_type'  => 'App\Models\Admin\Comment',
@@ -393,7 +399,6 @@ class HomepageSettingController extends Controller
                     'updated_at'            => Carbon::now(),
                 ]);
             }
-            
         }
 
         return response([
@@ -407,26 +412,28 @@ class HomepageSettingController extends Controller
     public function deleteComments(string $id)
     {
         $comments = Comment::findOrFail($id);
-        $comments->delete=1;
-        $comments->updated_at=Carbon::now();
+        $comments->delete = 1;
+        $comments->updated_at = Carbon::now();
         $comments->save();
         return response([
-            'title'=>__('admin_local.Congratulations !'),
-            'text'=>__('admin_local.Comments deleted successfully.'),
-            'confirmButtonText'=>__('admin_local.Ok'),
+            'title' => __('admin_local.Congratulations !'),
+            'text' => __('admin_local.Comments deleted successfully.'),
+            'confirmButtonText' => __('admin_local.Ok'),
         ]);
     }
 
-    public function counting(){
+    public function counting()
+    {
         $counting = Counting::first();
-        if(!$counting){
+        if (!$counting) {
             $counting = new Counting();
             $counting->save();
         }
-        return view('backend.blade.settings.homepage.counting',compact('counting'));
+        return view('backend.blade.settings.homepage.counting', compact('counting'));
     }
 
-    public function updateCounting(Request $data){
+    public function updateCounting(Request $data)
+    {
 
         $update = Counting::findOrFail(1);
         $update->counting1_name = $data->counting1_name;

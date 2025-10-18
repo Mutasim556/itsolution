@@ -15,6 +15,10 @@ class WorkPayment extends Model
     {
         return $this->belongsTo(Admin::class, 'updated_by', 'id');
     }
+    public function work()
+    {
+        return $this->belongsTo(Work::class, 'work_id', 'id');
+    }
     public function getAdminNameAttribute()
     {
         return $this->admin ? $this->admin->name : null;

@@ -554,6 +554,7 @@
                                                              <th>{{ __('admin_local.Requested Date') }}</th>
                                                              <th>{{ __('admin_local.Received Amount') }}</th>
                                                              <th>{{ __('admin_local.Received Date') }}</th>
+                                                             <th>{{ __('admin_local.Feedback') }}</th>
                                                              <th>{{ __('admin_local.Updates File') }}</th>
                                                              <th>{{ __('admin_local.Action') }}</th>
                                                          </tr>
@@ -565,6 +566,7 @@
                                                          <tr>
                                                              <th></th>
                                                              <th>{{ __('admin_local.Total') }}</th>
+                                                             <th></th>
                                                              <th></th>
                                                              <th></th>
                                                              <th></th>

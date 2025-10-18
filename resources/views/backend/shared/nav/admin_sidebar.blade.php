@@ -109,6 +109,11 @@
                     <a class="sidebar-link" href="{{ route('admin.pages.partner.index') }}">{{ __('admin_local.Partner') }}</a>
                 </li>
                 @endif
+                @if (hasPermission(['message-index']))
+                <li>
+                    <a class="sidebar-link" href="{{ route('admin.pages.contactUsMessages') }}">{{ __('admin_local.Messages') }}</a>
+                </li>
+                @endif
             </ul>
         </li>
     @endif

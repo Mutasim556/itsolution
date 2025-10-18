@@ -20,8 +20,8 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="ns-section mb-50 text-center">
-                            <span class="ns-section-subtitle">Team Member</span>
-                            <h2 class="ns-section-title mb-0">Amazing Team Members</h2>
+                            <span class="ns-section-subtitle">{{ __('admin_local.Team Members') }}</span>
+                            <h2 class="ns-section-title mb-0">{{ __("admin_local.Amazing Team Members") }}</h2>
                         </div>
                     </div>
                 </div>

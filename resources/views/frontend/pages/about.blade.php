@@ -70,7 +70,7 @@
                                                 <h5 class="ns-about-content-tab-title"><a
                                                         href="#">{{ __('admin_local.About Us') }}</a></h5>
                                                 <div>
-                                                    <a class="ns-about-content-tab-icon" href="#"><i
+                                                    <a class="ns-about-content-tab-icon" href="{{ route('frontEnd.aboutUs') }}"><i
                                                             class="icofont-life-ring"></i></a>
                                                 </div>
                                             </div>
@@ -78,7 +78,7 @@
                                                 <h5 class="ns-about-content-tab-title"><a
                                                         href="#">{{ __('admin_local.Contact Us') }}</a></h5>
                                                 <div>
-                                                    <a class="ns-about-content-tab-icon" href="#"><i
+                                                    <a class="ns-about-content-tab-icon" href="{{ route('frontEnd.contactUs') }}"><i
                                                             class="icofont-live-support"></i></a>
                                                 </div>
                                             </div>
@@ -100,7 +100,7 @@
                                             <div class="ns-about-info-inner">
                                                 <p><span></span>{{ $aboutus->project_line ?? '' }}
                                                 </p>
-                                                <a class="ns-about-info-inner-btn" href="project-details.html"><i
+                                                <a class="ns-about-info-inner-btn" href="{{ route('frontEnd.projects') }}"><i
                                                         class="fas fa-chevron-circle-right"></i></a>
                                             </div>
                                         </div>
@@ -115,7 +115,7 @@
                                             </div>
                                             <div class="ns-about-content-admin-info">
                                                 <h4 class="ns-about-admin-title"><a
-                                                        href="about.html">{{ $aboutus->resp_person_name }}</a></h4>
+                                                href="{{ route('frontEnd.aboutUs') }}">{{ $aboutus->resp_person_name }}</a></h4>
                                                 <span>{{ $aboutus->resp_person_desig }}</span>
                                             </div>
                                         </div>
@@ -156,13 +156,13 @@
                                 <div class="swiper-slide">
                                     <div class="ns-service-item">
                                         <div class="ns-service-img w_img">
-                                            <a href="project-details.html"><img
+                                            <a href="{{ route('frontEnd.serviceDetails',[\Str::slug($service->service_name)."?service=".\Vinkla\Hashids\Facades\Hashids::encode($service->id)]) }}"><img
                                                     src="{{ asset($service->service_image ? $service->service_image : 'public/admin/images/images.png') }}"
                                                     alt="Not Found"></a>
                                         </div>
                                         <div class="ns-service-content">
                                             <h4 class="ns-service-content-title"><a
-                                                    href="project-details.html">{{ $service->service_name }}</a></h4>
+                                                    href="{{ route('frontEnd.serviceDetails',[\Str::slug($service->service_name)."?service=".\Vinkla\Hashids\Facades\Hashids::encode($service->id)]) }}">{{ $service->service_name }}</a></h4>
                                             <p>{{ $service->service_short_details }}
                                             </p>
                                             <a href="{{ route('frontEnd.serviceDetails',[\Str::slug($service->service_name)."?service=".\Vinkla\Hashids\Facades\Hashids::encode($service->id)]) }}"

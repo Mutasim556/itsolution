@@ -66,7 +66,7 @@
                         <div class="col-12">
                             <div class="ns-section mb-50 text-center">
                                 <span class="ns-section-subtitle">{{ __('admin_local.What we do?') }}</span>
-                                <h2 class="ns-section-title mb-0">{{ __('This is the numbers , that we have done') }}</h2>
+                                <h2 class="ns-section-title mb-0">{{ __('admin_local.This is the numbers , that we have done') }}</h2>
                             </div>
                         </div>
                     </div>

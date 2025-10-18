@@ -70,17 +70,27 @@ class WorkController extends Controller
         $user = User::where('phone', $data->customer_phone)->first();
 
         if ($user) {
+            $data->validate([
+                'customer_email' => 'unique:users,email,'.$user->id,
+            ], [
+                'customer_email.unique' => __('admin_local.This email already used'),
+            ]);
             $user->update([
                 'name'    => $data->customer_name,
-                'username'    => $data->customer_name,
+                // 'username'    => \Str::slug($data->customer_name).rand(10000,99999),
                 'email'   => $data->customer_email,
                 'address' => $data->customer_address,
             ]);
         } else {
+            $data->validate([
+                'customer_email' => 'unique:users,email',
+            ], [
+                'customer_email.unique' => __('admin_local.This email already used'),
+            ]);
             $user = User::create([
                 'phone'    => $data->customer_phone,
                 'name'     => $data->customer_name,
-                'username'     => $data->customer_name,
+                'username'     => \Str::slug($data->customer_name) . rand(10000, 99999),
                 'email'    => $data->customer_email,
                 'address'  => $data->customer_address,
                 'password' => Hash::make('123456'),
@@ -121,6 +131,7 @@ class WorkController extends Controller
             $newWorkPayment->actual_payment = $data->total_paid;
             $newWorkPayment->actual_payment_date = date('Y-m-d');
             $newWorkPayment->created_by = Auth::guard('admin')->user()->id;
+            $newWorkPayment->updated_by = Auth::guard('admin')->user()->id;
 
             $newWorkPayment->save();
         }
@@ -225,7 +236,7 @@ class WorkController extends Controller
         if ($user) {
             $user->update([
                 'name'    => $data->customer_name,
-                'username'    => $data->customer_name,
+                // 'username'    => \Str::slug($data->customer_name).rand(10000,99999),
                 'email'   => $data->customer_email,
                 'address' => $data->customer_address,
             ]);
@@ -233,7 +244,7 @@ class WorkController extends Controller
             $user = User::create([
                 'phone'    => $data->customer_phone,
                 'name'     => $data->customer_name,
-                'username'     => $data->customer_name,
+                'username'     => \Str::slug($data->customer_name) . rand(10000, 99999),
                 'email'    => $data->customer_email,
                 'address'  => $data->customer_address,
                 'password' => Hash::make('123456'),
@@ -309,9 +320,9 @@ class WorkController extends Controller
         }
 
         $updatedWork = Work::with('user')->findOrFail($id);
-        $updatedWork->work_file = $updatedWork->work_file?'<a target="__blank" class="badge badge-info" href="'.asset($updatedWork->work_file).'">'.__('admin_local.View File').'</a>':'<span class="badge badge-danger"'.__('admin_local.>No File').'</span>';
+        $updatedWork->work_file = $updatedWork->work_file ? '<a target="__blank" class="badge badge-info" href="' . asset($updatedWork->work_file) . '">' . __('admin_local.View File') . '</a>' : '<span class="badge badge-danger"' . __('admin_local.No File') . '</span>';
 
-        $updatedWork->payment_status =  $updatedWork->payment_status==0?'<span class="badge badge-danger">'.__('admin_local.Unpaid').'</span>':( $updatedWork->payment_status==1?'<span class="badge badge-warning">'.__('admin_local.Partially Paid').'</span>':'<span class="badge badge-success">'. __('admin_local.Paid').'</span>');
+        $updatedWork->payment_status =  $updatedWork->payment_status == 0 ? '<span class="badge badge-danger">' . __('admin_local.Unpaid') . '</span>' : ($updatedWork->payment_status == 1 ? '<span class="badge badge-warning">' . __('admin_local.Partially Paid') . '</span>' : '<span class="badge badge-success">' . __('admin_local.Paid') . '</span>');
 
         return response([
             'work' => $updatedWork,
@@ -327,13 +338,13 @@ class WorkController extends Controller
     public function destroy(string $id)
     {
         $work = Work::findOrFail($id);
-        $work->delete=1;
-        $work->updated_at=Carbon::now();
+        $work->delete = 1;
+        $work->updated_at = Carbon::now();
         $work->save();
         return response([
-            'title'=>__('admin_local.Congratulations !'),
-            'text'=>__('admin_local.Work deleted successfully.'),
-            'confirmButtonText'=>__('admin_local.Ok'),
+            'title' => __('admin_local.Congratulations !'),
+            'text' => __('admin_local.Work deleted successfully.'),
+            'confirmButtonText' => __('admin_local.Ok'),
         ]);
     }
 

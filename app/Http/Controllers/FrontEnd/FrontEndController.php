@@ -3,10 +3,13 @@
 namespace App\Http\Controllers\FrontEnd;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin\Message;
 use App\Models\Admin\Project;
 use App\Models\Admin\Service;
 use App\Models\Admin\Team;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Mews\Purifier\Facades\Purifier;
 use Vinkla\Hashids\Facades\Hashids;
 
 class FrontEndController extends Controller
@@ -67,5 +70,56 @@ class FrontEndController extends Controller
             return response()->view('errors.frontend.404', ['message'=>__('admin_local.We are not able to find this team member.Please select our team from the menu.')], 404);
         }
 
+    }
+
+    public function contactUs(){
+        return view('frontend.pages.contact');
+    }
+
+    public function contactUsStore(Request $data)
+    {
+        $data->merge([
+            'phone' => Purifier::clean(preg_replace('/\D/', '', $data->phone), [
+                'HTML.Allowed' => ''
+            ]),
+            'email' =>  Purifier::clean(strtolower(trim($data->email)), [
+                'HTML.Allowed' => ''
+            ]),
+            'name' => Purifier::clean($data->name, [
+                'HTML.Allowed' => ''
+            ]),
+            'message' => Purifier::clean($data->message, [
+                'HTML.Allowed' => ''
+            ]),
+        ]);
+        $data->validate([
+            'name' => 'required|max:49',
+            'email' => 'email|max:49',
+            'phone' => 'required|digits_between:10,15',
+            'message' => 'required',
+        ], [
+            'name.required' => __('admin_local.Name field is required'),
+            'name.max' => __('admin_local.Maximum 49 letters are allowed'),
+            'email.required' => __('admin_local.Email field is required'),
+            'email.email' => __('admin_local.Invalid email'),
+            'email.max' => __('admin_local.Email shoul not greater then 49 letters'),
+            'phone.required' => __('admin_local.Phone number is required'),
+            'phone.digits_between' => __('admin_local.The phone field must be between 10 and 15 digits'),
+            'message.required' => __('admin_local.Message is required'),
+        ]);
+
+        $message = new Message();
+        $message->user_id = Auth::check()?Auth::user()->id:'';
+        $message->name = $data->name;
+        $message->email = $data->email;
+        $message->phone = $data->phone;
+        $message->message = $data->message;
+
+
+        if ($message->save()) {
+            return redirect()->to(url()->previous() . '#message_form')
+                 ->with('success', __('admin_local.Thanks for messaging. We will contact you within a short time'));
+
+        }
     }
 }

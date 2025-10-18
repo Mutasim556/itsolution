@@ -146,13 +146,13 @@
                                 <div class="swiper-slide">
                                     <div class="ns-service-item">
                                         <div class="ns-service-img w_img">
-                                            <a href="project-details.html"><img
+                                            <a href="{{ route('frontEnd.serviceDetails',[\Str::slug($service->service_name)."?service=".\Vinkla\Hashids\Facades\Hashids::encode($service->id)]) }}"><img
                                                     src="{{ asset($service->service_image ? $service->service_image : 'public/admin/images/images.png') }}"
                                                     alt="Not Found"></a>
                                         </div>
                                         <div class="ns-service-content">
                                             <h4 class="ns-service-content-title"><a
-                                                    href="project-details.html">{{ $service->service_name }}</a></h4>
+                                                    href="{{ route('frontEnd.serviceDetails',[\Str::slug($service->service_name)."?service=".\Vinkla\Hashids\Facades\Hashids::encode($service->id)]) }}">{{ $service->service_name }}</a></h4>
                                             <p>{!! $service->service_short_details !!}
                                             </p>
                                             <a href="{{ route('frontEnd.serviceDetails', [\Str::slug($service->service_name) . '?service=' . \Vinkla\Hashids\Facades\Hashids::encode($service->id)]) }}"
@@ -193,7 +193,8 @@
                     <div class="col-12">
                         <div class="ns-section mb-50 text-center">
                             <span class="ns-section-subtitle">{{ __('admin_local.What we do?') }}</span>
-                            <h2 class="ns-section-title mb-0">{{ __('This is the numbers , that we have done') }}</h2>
+                            <h2 class="ns-section-title mb-0">
+                                {{ __('admin_local.This is the numbers , that we have done') }}</h2>
                         </div>
                     </div>
                 </div>
@@ -345,7 +346,7 @@
                                             <div class="ns-about-info-inner">
                                                 <p><span></span>{{ $aboutus->project_line ?? '' }}
                                                 </p>
-                                                <a class="ns-about-info-inner-btn" href="project-details.html"><i
+                                                <a class="ns-about-info-inner-btn" href="{{ route('frontEnd.projects') }}"><i
                                                         class="fas fa-chevron-circle-right"></i></a>
                                             </div>
                                         </div>
@@ -360,7 +361,7 @@
                                             </div>
                                             <div class="ns-about-content-admin-info">
                                                 <h4 class="ns-about-admin-title"><a
-                                                        href="about.html">{{ $aboutus->resp_person_name }}</a></h4>
+                                                        href="{{ route('frontEnd.aboutUs') }}">{{ $aboutus->resp_person_name }}</a></h4>
                                                 <span>{{ $aboutus->resp_person_desig }}</span>
                                             </div>
                                         </div>
@@ -411,11 +412,13 @@
                                         <div class="ns-project-content">
                                             <div class="ns-project-content-info">
                                                 <h4 class="ns-project-content-title"><a
-                                                        href="{{ route('frontEnd.projectDetails',[\Str::slug($project->project_name)."?project=".\Vinkla\Hashids\Facades\Hashids::encode($project->id)]) }}">{{ $project->project_name }}</a></h4>
+                                                        href="{{ route('frontEnd.projectDetails', [\Str::slug($project->project_name) . '?project=' . \Vinkla\Hashids\Facades\Hashids::encode($project->id)]) }}">{{ $project->project_name }}</a>
+                                                </h4>
                                                 <span>{{ $project->project_category }}</span>
                                             </div>
                                             <div class="ns-project-content-btn">
-                                                <a href="{{ route('frontEnd.projectDetails',[\Str::slug($project->project_name)."?project=".\Vinkla\Hashids\Facades\Hashids::encode($project->id)]) }}"><i
+                                                <a
+                                                    href="{{ route('frontEnd.projectDetails', [\Str::slug($project->project_name) . '?project=' . \Vinkla\Hashids\Facades\Hashids::encode($project->id)]) }}"><i
                                                         class="fas fa-chevron-circle-right"></i></a>
                                             </div>
                                         </div>
@@ -458,7 +461,7 @@
                         @endphp
                         <span class="ns-cta-contact">{{ __('admin_local.Get Your Quote or Call') }}: <a
                                 href="tel:+895400555">{{ $contact->phone }}</a></span>
-                        <a href="contact.html" class="ns-theme-btn">{{ __('admin_local.Contact Us') }}<i
+                        <a href="{{ route('frontEnd.contactUs') }}" class="ns-theme-btn">{{ __('admin_local.Contact Us') }}<i
                                 class="fal fa-arrow-right"></i></a>
                     </div>
                 </div>
@@ -514,7 +517,8 @@
                             <div class="swiper-slide">
                                 <div class="ns-team-item">
                                     <div class="ns-team-item-img w_img">
-                                        <a href="{{ route('frontEnd.teamMemberDetails',[\Str::slug($team->team_member_name)."?team=".\Vinkla\Hashids\Facades\Hashids::encode($team->id)]) }}"><img
+                                        <a
+                                            href="{{ route('frontEnd.teamMemberDetails', [\Str::slug($team->team_member_name) . '?team=' . \Vinkla\Hashids\Facades\Hashids::encode($team->id)]) }}"><img
                                                 src="{{ asset($team->team_member_image ?? 'public/frontend/assets/img/team/team-1.jpg') }}"
                                                 alt=""></a>
                                     </div>
@@ -559,7 +563,8 @@
                                         </div>
                                         <div class="ns-team-item-info">
                                             <h5 class="ns-team-info-title"><a
-                                                    href="{{ route('frontEnd.teamMemberDetails',[\Str::slug($team->team_member_name)."?team=".\Vinkla\Hashids\Facades\Hashids::encode($team->id)]) }}">{{ $team->team_member_name }}</a></h5>
+                                                    href="{{ route('frontEnd.teamMemberDetails', [\Str::slug($team->team_member_name) . '?team=' . \Vinkla\Hashids\Facades\Hashids::encode($team->id)]) }}">{{ $team->team_member_name }}</a>
+                                            </h5>
                                             <span>{{ $team->team_member_desig }}</span>
                                         </div>
                                         <div class="ns-team-item-contact px-1">
@@ -647,43 +652,80 @@
     <!-- contact area start -->
     @if ($contact)
         <section class="pt-110 pb-115">
-            <div class="ns-contact-container container">
+            <div class="ns-contact-container container" id="message_form">
                 <div class="ns-inner-wrap">
                     <div class="ns-contact-space">
                         <div class="ns-contact-wrap">
-                            <div class="ns-contact-left">
+                            <div class="ns-contact-left" >
                                 <div class="ns-section mb-35">
-                                    <span class="ns-section-subtitle">Contact Now</span>
-                                    <h2 class="ns-section-title mb-15">Live Sports This Contacts Us</h2>
-                                    <p class="ns-section-text mb-0">Promote your blog posts, case udie, and product
-                                        ouncems <br> with the the branded videoscustomers coming back for <br> services
-                                        Makes best effort.</p>
+                                    <span class="ns-section-subtitle">{{ __('admin_local.Contact Now') }}</span>
+                                    <h3 class="ns-section-title mb-15">
+                                        {{ __('admin_local.For Live Sports , Contacts Us') }}</h3>
+                                    <p class="ns-section-text mb-0">
+                                        {{ __('admin_local.Have questions or need assistance with our live sports coverage? Our team is always ready to help you with any inquiries, technical issues, or partnership opportunities. Stay connected with us to ensure you never miss a moment of your favorite live matches and sporting events.') }}
+                                    </p>
                                 </div>
-                                <div class="ns-contact-form">
-                                    <form action="#">
+                                <div class="ns-contact-form" >
+                                    @if (session('success'))
+                                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                            {{ session('success') }}
+                                            <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                                aria-label="Close"></button>
+                                        </div>
+                                    @endif
+                                    <form  action="{{ route('frontEnd.contactUsStore') }}" method="POST">
+                                        @csrf
                                         <div class="row">
-                                            <div class="col-sm-6">
-                                                <input type="text" placeholder="Your Name">
+                                            <div class="col-sm-4 mb-3">
+                                                <input type="text" name="name"
+                                                    class="form-control @error('name') is-invalid @enderror"
+                                                    placeholder="{{ __('admin_local.Your Name') }} *"
+                                                    value="{{ old('name') }}" required>
+                                                @error('name')
+                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                @enderror
                                             </div>
-                                            <div class="col-sm-6">
-                                                <input type="email" placeholder="Your Email">
+
+                                            <div class="col-sm-4 mb-3">
+                                                <input type="tel" name="phone"
+                                                    class="form-control @error('phone') is-invalid @enderror"
+                                                    placeholder="{{ __('admin_local.Your Phone') }} *" value="{{ old('phone') }}" required>
+                                                @error('phone')
+                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                @enderror
                                             </div>
+
+                                            <div class="col-sm-4 mb-3">
+                                                <input type="email" name="email"
+                                                    class="form-control @error('email') is-invalid @enderror"
+                                                    placeholder="{{ __('admin_local.Your Email') }}" value="{{ old('email') }}" >
+                                                @error('email')
+                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+
+                                            <div class="col-12 mb-3">
+                                                <textarea name="message" rows="5" class="form-control @error('message') is-invalid @enderror"
+                                                    placeholder="{{ __('admin_local.Message') }} *" required>{{ old('message') }}</textarea>
+                                                @error('message')
+                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+
                                             <div class="col-12">
-                                                <textarea name="message" cols="30" rows="10" placeholder="Message"></textarea>
-                                            </div>
-                                            <div class="col-12">
-                                                <button type="submit" class="ns-theme-btn ns-contact-btn">Send
-                                                    Request</button>
+                                                <button type="submit"
+                                                    class="btn ns-theme-btn ns-contact-btn float-end">{{ __('admin_local.Send Request') }}</button>
                                             </div>
                                         </div>
                                     </form>
+
                                 </div>
                             </div>
                             <div class="ns-contact-right">
                                 <div class="ns-contact-info">
                                     <span class="ns-contact-circle-1"></span>
                                     <span class="ns-contact-circle-2"></span>
-                                    <img src="assets/img/contact/contact.jpg" alt="Not Found" class="ns-contact-bg-img">
+                                    {{-- <img src="assets/img/contact/contact.jpg" alt="Not Found" class="ns-contact-bg-img"> --}}
                                     <img class="ns-contact-shape ns-contact-shape-1"
                                         src="{{ asset('public/frontend/assets/img/contact/contact-map.png') }}"
                                         alt="Not Found">

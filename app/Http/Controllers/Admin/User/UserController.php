@@ -33,7 +33,7 @@ class UserController extends Controller
     public function index() : View
     {
         $users = Admin::where('delete','0')->get();
-        $roles = Role::all();
+        $roles = Role::where('id','!=',1)->get();
         return view('backend.blade.user.index',compact('users','roles'));
     }
 
@@ -50,6 +50,10 @@ class UserController extends Controller
      */
     public function store(Request $data) : Response
     {
+        $data->validate([
+            'user_email'=>'required|unique:admins,email',
+            'user_phone'=>'required|unique:admins,phone',
+        ]);
         $user = new Admin();
         $user->name = $data->user_name;
         $user->email = $data->user_email;
@@ -59,7 +63,7 @@ class UserController extends Controller
         $user->save();
         $user->assignRole($data->user_role);
 
-        Mail::to($data->user_email)->send(new CreateUserMail($data->user_email,$data->user_password));
+        // Mail::to($data->user_email)->send(new CreateUserMail($data->user_email,$data->user_password));
 
         if($user){
             $user = Admin::where('id',$user->id)->first();
@@ -136,7 +140,7 @@ class UserController extends Controller
                 'username' => $data->username,
             ]);
             $user = Admin::findOrFail($id);
-            $user->syncRoles($data->user_role); 
+            $user->syncRoles($data->user_role);
         }
 
         if($update){
@@ -170,10 +174,10 @@ class UserController extends Controller
         ]);
     }
 
-     
-    public function updateStatus(string $id,string $status) 
+
+    public function updateStatus(string $id,string $status)
     {
-       
+
         try {
             $user = Admin::findOrfail($id);
             $user->status = $status;

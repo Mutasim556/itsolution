@@ -115,5 +115,9 @@ class PermissionSeeder extends Seeder
         // Permission::create(['guard_name'=>'admin','name'=>'logo-update','group_name'=>'Logo and Icon']);
         // Permission::create(['guard_name'=>'admin','name'=>'logo-delete','group_name'=>'Logo and Icon']);
 
+        //permission for Messages
+        // Permission::create(['guard_name'=>'admin','name'=>'messages-index','group_name'=>'Messages']);
+        // Permission::create(['guard_name'=>'admin','name'=>'messages-create','group_name'=>'Messages']);
+
     }
 }

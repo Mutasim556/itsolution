@@ -83,9 +83,9 @@
                             <div class="serchbox"> <a href="" class="btn btn-primary">POS</a></div>
 
                         </li> --}}
-                        <li>
+                        {{-- <li>
                             <div><a href="" class="btn btn-primary">POS</a></div>
-                        </li>
+                        </li> --}}
                         <li>
                             <div class="mode"><i class="fa fa-moon-o"></i></div>
                         </li>
