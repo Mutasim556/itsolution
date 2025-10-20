@@ -128,10 +128,10 @@
                     @enderror
                 </div>
 
-                {{-- <div class="form-group d-flex justify-content-between align-items-center mb-3">
-                    <a href="{{ route('password.request') }}"
+                <div class="form-group d-flex justify-content-between align-items-center mb-3">
+                    <a href="{{ route('user.forgetPassword') }}"
                         class="forgot-link">{{ __('admin_local.Forgot Password?') }}</a>
-                </div> --}}
+                </div>
 
                 <div class="form-group">
                     <button class="btn btn-theme w-100" type="submit">{{ __('admin_local.Login') }}</button>

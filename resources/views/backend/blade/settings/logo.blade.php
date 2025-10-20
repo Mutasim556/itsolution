@@ -46,7 +46,7 @@
                                     <input type="file" class="form-control" name="admin_panel_logo" id="admin_panel_logo" onchange="document.getElementById('prev_admin_panel_logo').src = window.URL.createObjectURL(this.files[0])">
                                 </div>
                                 <div class="col-md-4">
-                                    <img src="{{ asset($logo->admin_panel_logo) }}" id="prev_admin_panel_logo" style="float: right;" alt="" height="60px" width="92px">
+                                    <img src="{{ asset($logo->admin_panel_logo??'') }}" id="prev_admin_panel_logo" style="float: right;" alt="" height="60px" width="92px">
                                 </div>
                             </div>
                             {{-- <div class="row">
@@ -68,7 +68,7 @@
                                     <input type="file" class="form-control" name="admin_panel_icon" id="admin_panel_icon" onchange="document.getElementById('prev_admin_panel_icon').src = window.URL.createObjectURL(this.files[0])">
                                 </div>
                                 <div class="col-md-4">
-                                    <img src="{{ asset($logo->admin_panel_icon) }}" id="prev_admin_panel_icon" style="float: right;" alt="">
+                                    <img src="{{ asset($logo->admin_panel_icon??'') }}" id="prev_admin_panel_icon" style="float: right;" alt="">
                                 </div>
                             </div>
                             <div class="row mt-3">
@@ -79,7 +79,7 @@
                                     <input type="file" class="form-control" name="main_site_header_logo" id="main_site_header_logo" onchange="document.getElementById('prev_main_site_header_logo').src = window.URL.createObjectURL(this.files[0])">
                                 </div>
                                 <div class="col-md-4">
-                                    <img src="{{ asset($logo->main_site_header_logo) }}" id="prev_main_site_header_logo" style="float: right;" height="46px" width="193" alt="">
+                                    <img src="{{ asset($logo->main_site_header_logo??'') }}" id="prev_main_site_header_logo" style="float: right;" height="46px" width="193" alt="">
                                 </div>
                             </div>
                             <div class="row mt-3">
@@ -90,7 +90,7 @@
                                     <input type="file" class="form-control" name="main_site_footer_logo" id="main_site_footer_logo" onchange="document.getElementById('prev_main_site_footer_logo').src = window.URL.createObjectURL(this.files[0])">
                                 </div>
                                 <div class="col-md-4">
-                                    <img src="{{ asset($logo->main_site_footer_logo) }}" id="prev_main_site_footer_logo" style="float: right;" height="40px" width="165px" alt="">
+                                    <img src="{{ asset($logo->main_site_footer_logo??'') }}" id="prev_main_site_footer_logo" style="float: right;" height="40px" width="165px" alt="">
                                 </div>
                             </div>
                             <div class="row mt-3">
@@ -101,7 +101,7 @@
                                     <input type="file" class="form-control" name="main_site_icon" id="main_site_icon" onchange="document.getElementById('prev_main_site_icon').src = window.URL.createObjectURL(this.files[0])">
                                 </div>
                                 <div class="col-md-4">
-                                    <img src="{{ asset($logo->main_site_icon) }}" id="prev_main_site_icon" style="float: right;" alt="">
+                                    <img src="{{ asset($logo->main_site_icon??'') }}" id="prev_main_site_icon" style="float: right;" alt="">
                                 </div>
                             </div>
                             <div class="row mt-3">

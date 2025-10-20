@@ -110,6 +110,13 @@ Route::middleware('frontLang')->group(function () {
         Route::get('/logout','attemptLogout')->name('attemptLogout')->middleware('auth');
         Route::post('/register','register')->name('register')->middleware('guest');
         Route::post('/change-password','changePassword')->name('changePassword')->middleware('auth');
+
+        /** Forget Password Start */
+        Route::get('/forget-password','forgetPassword')->name('forgetPassword')->middleware('guest');
+        Route::post('/forget-password','forgetPasswordLink')->name('forgetPasswordLink')->middleware('guest');
+        Route::get('/reset-password','resetPassword')->name('resetPassword')->middleware('guest');
+        Route::post('/reset-change-password','resetChangePassword')->name('resetChangePassword')->middleware('guest');
+        /** Forget Password End */
     });
 
     Route::controller(UserProfileController::class)->prefix('user')->name('user.')->middleware('auth')->group(function(){
