@@ -4,7 +4,7 @@
 	// meanmenu
 	$('#mobile-menu-2').meanmenu({
 		meanMenuContainer: '.mobile-menu-2',
-		meanScreenWidth: "1199"
+		meanScreenWidth: "2499"
 	});
 	$('#mobile-menu').meanmenu({
 		meanMenuContainer: '.mobile-menu',
@@ -150,33 +150,29 @@
 
 	// service active 
 	const serviceActive = new Swiper(".service-active", {
-		slidesPerView: 3,
-		spaceBetween: 30,
-		loop: true,
-		navigation: {
-			nextEl: ".ns-service-prev",
-			prevEl: ".ns-service-next",
+		slidesPerView: 3,          // 3 slides per row
+		spaceBetween: 30,          // gap between slides
+		grid: {
+			rows: 2,               // ✅ 2 rows
+			fill: "row",           // fill left to right, then wrap
 		},
-		pagination: {
-			el: ".ns-service-pagination",
-			clickable: true,
-		},
+		allowTouchMove: false,     // disable dragging/sliding
+		loop: false,               // disable loop
+		navigation: false,         // hide arrows
+		pagination: false,         // hide dots
 		breakpoints: {
 			0: {
 				slidesPerView: 1,
-			},
-			576: {
-				slidesPerView: 1,
+				grid: { rows: 2 },
 			},
 			768: {
 				slidesPerView: 2,
+				grid: { rows: 2 },
 			},
 			992: {
 				slidesPerView: 3,
+				grid: { rows: 2 },
 			},
-			1200: {
-				slidesPerView: 3
-			}
 		}
 	});
 	function initVideoPopup() {

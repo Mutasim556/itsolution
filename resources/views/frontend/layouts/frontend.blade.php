@@ -77,6 +77,20 @@
             min-width: 100%;
             /* ensures dropdown is at least the width of button */
         }
+
+        /* @media(max-width:600px){
+            .mean-container .mean-nav ul li a{
+                text-align: center;
+            }
+        } */
+        .ns-header-wrap {
+            padding-top: 25px;
+            padding-bottom: 25px;
+        }
+
+        /* @media(max-width:601px){
+           
+        } */
     </style>
     @stack('css')
 </head>
@@ -87,9 +101,9 @@
         <div class="sidebar-logo-wrapper">
             <div class="row align-items-center">
                 <div class="col-xl-6 col-8">
-                    <div class="sidebar-logo">
+                    <div class="sidebar-logo" style="float: right">
                         <a href="{{ url('/') }}"><img
-                                src="{{ asset($logo ? $logo->main_site_header_logo : 'public/frontend/assets/img/logo/logo.png') }}"
+                                src="{{ asset($logo ? $logo->main_site_footer_logo : 'public/frontend/assets/img/logo/logo.png') }}"
                                 alt="logo-img"></a>
                     </div>
                 </div>
@@ -115,7 +129,8 @@
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="userDropdown">
                             <li>
-                                <a class="dropdown-item" href="{{ route('user.userProfile') }}">{{ __('admin_local.Profile') }}</a>
+                                <a class="dropdown-item"
+                                    href="{{ route('user.userProfile') }}">{{ __('admin_local.Profile') }}</a>
                             </li>
                             <li>
                                 <hr class="dropdown-divider">
@@ -152,7 +167,7 @@
                             class="fal fa-phone"></i><span>{{ $contact->phone }}</span></a>
                 @endif
                 @if ($contact && $contact->email)
-                    <a href="mailto:{{ $contact->email }}" class="theme-3 px-2"><i
+                    <a href="mailto:{{ $contact->email }}" class="theme-3"><i
                             class="fal fa-envelope"></i><span><span>{{ $contact->email }}</span></span></a>
                 @endif
             </div>
@@ -166,7 +181,6 @@
         <div class="ns-header-area">
             <div class="ns-header-wrap">
                 <div class="ns-header-logo">
-                    <img src="{{ asset('public/frontend/assets/img/logo/logo-bg.png') }}" alt="Not Found">
                     <div class="ns-header-logo-img">
                         <a href="{{ url('/') }}"><img
                                 src="{{ asset($logo ? $logo->main_site_header_logo : 'public/frontend/assets/img/logo/logo.png') }}"
@@ -174,27 +188,27 @@
                     </div>
                 </div>
                 <div class="ns-header-right">
-                    <div class="ns-header-topbar d-none d-md-block">
+                    <!--<div class="ns-header-topbar d-none d-md-block">
                         <div class="ns-header-topbar-wrap">
                             <div class="ns-header-topbar-left">
                                 <span>{{ __('admin_local.Visit our social pages') }}:</span>
                                 <div class="ns-header-topbar-social">
                                     @if ($contact && $contact->facebook)
-                                        <a target="__blank" href="{{ $contact->facebook }}"><i
+<a target="__blank" href="{{ $contact->facebook }}"><i
                                                 class="fab fa-facebook-f"></i></a>
-                                    @endif
+@endif
                                     @if ($contact && $contact->twitter)
-                                        <a target="__blank" href="{{ $contact->twitter }}"><i
+<a target="__blank" href="{{ $contact->twitter }}"><i
                                                 class="fab fa-twitter"></i></a>
-                                    @endif
+@endif
                                     @if ($contact && $contact->linkedin)
-                                        <a target="__blank" href="{{ $contact->linkedin }}"><i
+<a target="__blank" href="{{ $contact->linkedin }}"><i
                                                 class="fab fa-linkedin-in"></i></a>
-                                    @endif
+@endif
                                     @if ($contact && $contact->youtube)
-                                        <a target="__blank" href="{{ $contact->youtube }}"><i
+<a target="__blank" href="{{ $contact->youtube }}"><i
                                                 class="fab fa-youtube"></i></a>
-                                    @endif
+@endif
                                 </div>
                             </div>
                             <div class="ns-header-topbar-right">
@@ -212,19 +226,19 @@
                                             ])->get();
                                         @endphp
                                         @foreach ($languages as $language)
-                                            <option value="{{ $language->lang }}"
+<option value="{{ $language->lang }}"
                                                 {{ app()->getLocale() == $language->lang ? 'selected' : '' }}>
                                                 {{ $language->name }}
                                             </option>
-                                        @endforeach
+@endforeach
                                     </select>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div>-->
                     <div class="ns-header-navbar">
                         <div class="ns-header-menu">
-                            <nav class="ns-header-main-menu mobile-menu-2  d-none d-xl-block" id="mobile-menu-2">
+                            <nav class="ns-header-main-menu mobile-menu-2" id="mobile-menu-2">
                                 <ul>
                                     <li><a href="{{ url('/') }}">{{ __('admin_local.Home') }}</a></li>
 
@@ -239,17 +253,6 @@
                                     <li><a
                                             href="{{ route('frontEnd.teamMembers') }}">{{ __('admin_local.Team') }}</a>
                                     </li>
-                                    {{-- <li class="menu-has-child">
-                                        <a href="#">Others</a>
-                                        <ul class="submenu">
-                                            <li><a href="service.html">Service</a></li>
-                                            <li><a href="project.html">Project</a></li>
-                                            <li><a href="project-details.html">Project Details</a></li>
-                                            <li><a href="team.html">Team</a></li>
-                                            <li><a href="team-details.html">Team Details</a></li>
-                                            <li><a href="error.html">404</a></li>
-                                        </ul>
-                                    </li> --}}
                                     <li><a
                                             href="{{ route('frontEnd.contactUs') }}">{{ __('admin_local.Contact Us') }}</a>
                                     </li>
@@ -259,14 +262,12 @@
                                 {{-- <div class="ns-header-menu-action">
                                         <a href="#" class="ns-header-action-search"><i class="fal fa-search"></i></a>
                                     </div> --}}
-                                <div class="ns-header-menu-btn d-none d-md-block">
+                                {{-- <div class="ns-header-menu-btn d-none d-md-block">
                                     @if (!Auth::check())
                                         <a href="{{ route('user.loginIndex') }}"
                                             class="ns-header-btn ns-theme-btn">{{ __('admin_local.Login') }} /
                                             {{ __('admin_local.Register') }}<i class="fal fa-arrow-right"></i></a>
                                     @else
-                                        {{-- <a class="ns-header-btn ns-theme-btn px-2">{{ Auth::user()->name }}<i
-                                                class="fal fa-arrow-right"></i></a> --}}
                                         <div class="dropdown">
                                             <button class="btn btn-theme dropdown-toggle" type="button"
                                                 id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
@@ -293,8 +294,8 @@
                                             </ul>
                                         </div>
                                     @endif
-                                </div>
-                                <div class="menu-bar d-xl-none ml-25">
+                                </div> --}}
+                                <div class="menu-bar ml-25">
                                     <span class="navbar-sign side-toggle ">
                                         <i class="fal fa-bars"></i>
                                     </span>

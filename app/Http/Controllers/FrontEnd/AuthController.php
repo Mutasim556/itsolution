@@ -233,9 +233,9 @@ class AuthController extends Controller
         $user->save();
 
         // 6️⃣ Delete password reset record to prevent reuse
-        DB::table('password_resets')->where('email', $data->email)->delete();
+        DB::table('password_reset_tokens')->where('email', $data->email)->delete();
 
         // 7️⃣ Redirect to login with success message
-        return redirect()->route('login')->with('status', "Your password has been successfully reset! You can now log in.");
+        return redirect()->route('user.loginIndex')->with('status', "Your password has been successfully reset! You can now log in.");
     }
 }

@@ -1937,7 +1937,7 @@ input:focus::placeholder, textarea:focus::placeholder {
   right: 10px;
   bottom: 0;
   content: "";
-  background: var(--clr-theme-primary);
+  /* background: var(--clr-theme-primary); */
   height: 144px;
   width: 11px;
   transform: skewX(-15deg);
@@ -2359,13 +2359,14 @@ input:focus::placeholder, textarea:focus::placeholder {
   line-height: 50px;
   width: 50px;
   border-radius: 50%;
-  border: 1px solid #8d8d8d;
+  /* border: 1px solid #8d8d8d; */
   display: inline-block;
   text-align: center;
-  font-size: 16px;
+  font-size: 30px;
   cursor: pointer;
-  color: #8d8d8d;
+  color: #303030;
   transition: all 0.3s linear 0s;
+  /* margin-top: 30px; */
 }
 @media (max-width: 767px) {
   .navbar-sign:is(.ml-20) {

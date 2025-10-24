@@ -8,6 +8,80 @@
             height: 150px !important;
             width: 180px !important;
         }
+
+        .ns-team-item {
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            text-align: center;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .ns-team-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .ns-team-item-img img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .ns-team-info-title a {
+            color: #000;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .ns-team-info-title a:hover {
+            color: #ffab17;
+            /* theme color */
+        }
+
+        .ns-team-social-icon ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            padding: 0;
+            margin: 10px 0;
+        }
+
+        .ns-team-social-icon ul li a {
+            background: #ffab17;
+            color: #fff;
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .ns-team-social-icon ul li a:hover {
+            background: #000;
+        }
+
+        .ns-contact-map {
+            width: 100%;
+            min-height: 500px;
+            /* Minimum height for mobile */
+            height: 100%;
+            /* Full height on desktop */
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .ns-contact-map iframe {
+            width: 100%;
+            height: 500px;
+            border: 0;
+        }
     </style>
 @endpush
 @section('content')
@@ -22,7 +96,7 @@
                     <div class="swiper-slide">
                         <div class="ns-banner-single bg-default"
                             data-background="{{ asset('public/' . $slider->slider_image) }}">
-                            <img class="ns-banner-shape-1 ns-shape-img d-none d-md-block"
+                            {{-- <img class="ns-banner-shape-1 ns-shape-img d-none d-md-block"
                                 src="{{ asset('public/frontend/assets/img/banner/shape-1.png') }}" alt="Not Found">
                             <img class="ns-banner-shape-2 ns-shape-img d-none d-xxl-block"
                                 src="{{ asset('public/frontend/assets/img/banner/shape-2.png') }}" alt="Not Found">
@@ -31,12 +105,12 @@
                             <img class="ns-banner-shape-4 ns-shape-img d-none d-md-block"
                                 src="{{ asset('public/frontend/assets/img/banner/shape-4.png') }}" alt="Not Found">
                             <img class="ns-banner-shape-5 ns-shape-img"
-                                src="{{ asset('public/frontend/assets/img/banner/shape-5.png') }}" alt="Not Found">
+                                src="{{ asset('public/frontend/assets/img/banner/shape-5.png') }}" alt="Not Found"> --}}
                             <div class="container">
                                 <div class="row">
-                                    <div class="col-xl-7">
+                                    <div class="col-xl-7 ">
                                         <div class="ns-banner-content">
-                                            <span class="ns-banner-content-subtitle">Welcome To Nosei</span>
+                                            {{-- <span class="ns-banner-content-subtitle">Welcome To Nosei</span> --}}
                                             @if ($slider->slider_title != '')
                                                 <h2 class="ns-banner-content-title">
                                                     {{ $slider->slider_title }}
@@ -125,7 +199,10 @@
     </section> --}}
     <!-- feature area end -->
     @php
-        $services = \App\Models\Admin\Service::where([['status', 1], ['delete', 0]])->get();
+        $services = \App\Models\Admin\Service::where([['status', 1], ['delete', 0]])
+            ->orderBy('id', 'DESC')
+            ->limit(6)
+            ->get();
     @endphp
     @if (count($services) > 0)
         <section class="ns-service-area pt-110 pb-110">
@@ -133,57 +210,58 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="ns-section mb-50 text-center">
-                            <span class="ns-section-subtitle">{{ __('admin_local.What We Do') }}</span>
+                            {{-- <span class="ns-section-subtitle">{{ __('admin_local.What We Do') }}</span> --}}
                             <h2 class="ns-section-title mb-0">{{ __('admin_local.Our Popular Services') }}</h2>
                         </div>
                     </div>
                 </div>
 
                 <div class="ns-service-wrap">
-                    <div class="swiper-container service-active">
-                        <div class="swiper-wrapper">
+                    <div class="container">
+                        <div class="row g-4"> <!-- g-4 = Bootstrap gap -->
                             @foreach ($services as $service)
-                                <div class="swiper-slide">
+                                <div class="col-12 col-md-6 col-lg-4">
                                     <div class="ns-service-item">
                                         <div class="ns-service-img w_img">
-                                            <a href="{{ route('frontEnd.serviceDetails',[\Str::slug($service->service_name)."?service=".\Vinkla\Hashids\Facades\Hashids::encode($service->id)]) }}"><img
-                                                    src="{{ asset($service->service_image ? $service->service_image : 'public/admin/images/images.png') }}"
-                                                    alt="Not Found"></a>
+                                            <a
+                                                href="{{ route('frontEnd.serviceDetails', [\Str::slug($service->service_name) . '?service=' . \Vinkla\Hashids\Facades\Hashids::encode($service->id)]) }}">
+                                                <img src="{{ asset($service->service_image ? $service->service_image : 'public/admin/images/images.png') }}"
+                                                    alt="Not Found">
+                                            </a>
                                         </div>
                                         <div class="ns-service-content">
-                                            <h4 class="ns-service-content-title"><a
-                                                    href="{{ route('frontEnd.serviceDetails',[\Str::slug($service->service_name)."?service=".\Vinkla\Hashids\Facades\Hashids::encode($service->id)]) }}">{{ $service->service_name }}</a></h4>
-                                            <p>{!! $service->service_short_details !!}
-                                            </p>
+                                            <h4 class="ns-service-content-title">
+                                                <a
+                                                    href="{{ route('frontEnd.serviceDetails', [\Str::slug($service->service_name) . '?service=' . \Vinkla\Hashids\Facades\Hashids::encode($service->id)]) }}">
+                                                    {{ $service->service_name }}
+                                                </a>
+                                            </h4>
+                                            <p>{!! $service->service_short_details !!}</p>
+
                                             <a href="{{ route('frontEnd.serviceDetails', [\Str::slug($service->service_name) . '?service=' . \Vinkla\Hashids\Facades\Hashids::encode($service->id)]) }}"
-                                                class="ns-service-btn">{{ __('admin_local.Read More') }}<i
-                                                    class="icofont-plus"></i></a>
+                                                class="ns-service-btn">
+                                                {{ __('admin_local.Read More') }}<i class="icofont-plus"></i>
+                                            </a>
+
                                             <div class="ns-service-content-icon">
                                                 <img height="60px" width="60px"
                                                     src="{{ asset($service->service_icon ? $service->service_icon : 'public/admin/images/images.png') }}"
                                                     alt="Not Found">
                                             </div>
+
                                             <span class="ns-service-shape-1"></span>
                                             <span class="ns-service-shape-2"></span>
                                         </div>
                                     </div>
                                 </div>
                             @endforeach
-
                         </div>
                     </div>
-                    {{-- <div class="ns-service-bottom mt-50">
-                    <div class="ns-service-tagline">
-                        <p><span>Service:</span>We best service it-solution for business.</p>
-                    </div>
-                    <div class="ns-service-pagination"></div>
-                </div> --}}
                 </div>
-
             </div>
         </section>
     @endif
-    @php
+    {{-- @php
         $counting = \App\Models\Admin\Counting::first();
     @endphp
     @if ($counting)
@@ -192,7 +270,6 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="ns-section mb-50 text-center">
-                            <span class="ns-section-subtitle">{{ __('admin_local.What we do?') }}</span>
                             <h2 class="ns-section-title mb-0">
                                 {{ __('admin_local.This is the numbers , that we have done') }}</h2>
                         </div>
@@ -254,9 +331,9 @@
                 </div>
             </div>
         </div>
-    @endif
+    @endif --}}
     <!-- about area start -->
-    @php
+    {{-- @php
         $aboutus = \App\Models\Admin\AboutUs::first();
     @endphp
     @if ($aboutus)
@@ -346,7 +423,8 @@
                                             <div class="ns-about-info-inner">
                                                 <p><span></span>{{ $aboutus->project_line ?? '' }}
                                                 </p>
-                                                <a class="ns-about-info-inner-btn" href="{{ route('frontEnd.projects') }}"><i
+                                                <a class="ns-about-info-inner-btn"
+                                                    href="{{ route('frontEnd.projects') }}"><i
                                                         class="fas fa-chevron-circle-right"></i></a>
                                             </div>
                                         </div>
@@ -361,7 +439,8 @@
                                             </div>
                                             <div class="ns-about-content-admin-info">
                                                 <h4 class="ns-about-admin-title"><a
-                                                        href="{{ route('frontEnd.aboutUs') }}">{{ $aboutus->resp_person_name }}</a></h4>
+                                                        href="{{ route('frontEnd.aboutUs') }}">{{ $aboutus->resp_person_name }}</a>
+                                                </h4>
                                                 <span>{{ $aboutus->resp_person_desig }}</span>
                                             </div>
                                         </div>
@@ -377,7 +456,7 @@
                 </div>
             </div>
         </section>
-    @endif
+    @endif --}}
     @php
         $projects = \App\Models\Admin\Project::where([['status', 1], ['delete', 0]])->get();
     @endphp
@@ -389,7 +468,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="ns-section mb-50 text-center">
-                            <span class="ns-section-subtitle">{{ __('admin_local.Our Project') }}</span>
+                            {{-- <span class="ns-section-subtitle">{{ __('admin_local.Our Project') }}</span> --}}
                             <h2 class="ns-section-title mb-0">{{ __('admin_local.Here is some of the best work') }}</h2>
                         </div>
                     </div>
@@ -437,7 +516,10 @@
     <!-- project area end -->
 
     <!-- cta area start -->
-    <div class="ns-cta-area bg-default pt-275 pb-115">
+    @php
+        $contact = \App\Models\Admin\Contact::first();
+    @endphp
+    {{-- <div class="ns-cta-area bg-default pt-275 pb-115">
         <span class="ns-cta-shape-1 d-none d-md-block"></span>
         <span class="ns-cta-shape-2 d-none d-md-block"><img
                 src="{{ asset('public/frontend/assets/img/cta/shape-2.png') }}" alt="Not Found"></span>
@@ -455,19 +537,16 @@
                 <div class="col-xl-8">
                     <div class="ns-cta-content">
                         <span class="ns-cta-content-subtitle">{{ __('admin_local.Call To Action') }}</span>
-                        {{-- <h2 class="ns-cta-content-title">Contact Some Easy To Steps</h2> --}}
-                        @php
-                            $contact = \App\Models\Admin\Contact::first();
-                        @endphp
+
                         <span class="ns-cta-contact">{{ __('admin_local.Get Your Quote or Call') }}: <a
                                 href="tel:+895400555">{{ $contact->phone }}</a></span>
-                        <a href="{{ route('frontEnd.contactUs') }}" class="ns-theme-btn">{{ __('admin_local.Contact Us') }}<i
-                                class="fal fa-arrow-right"></i></a>
+                        <a href="{{ route('frontEnd.contactUs') }}"
+                            class="ns-theme-btn">{{ __('admin_local.Contact Us') }}<i class="fal fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- cta area end -->
 
     <!-- brand area start -->
@@ -498,7 +577,10 @@
         </div>
     @endif
     @php
-        $teams = \App\Models\Admin\Team::where([['status', 1], ['delete', 0]])->get();
+        $teams = \App\Models\Admin\Team::where([['status', 1], ['delete', 0]])
+            ->orderBy('id', 'DESC')
+            ->limit(6)
+            ->get();
     @endphp
     @if (count($teams) > 0)
         <section class="ns-team-area pt-110 pb-110">
@@ -506,84 +588,91 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="ns-section mb-50 text-center">
-                            <span class="ns-section-subtitle">{{ __('admin_local.Team Members') }}</span>
+                            {{-- <span class="ns-section-subtitle">{{ __('admin_local.Team Members') }}</span> --}}
                             <h2 class="ns-section-title mb-0">{{ __('admin_local.Amazing Team Members') }}</h2>
                         </div>
                     </div>
                 </div>
-                <div class="swiper-container team-active">
+                <div class="swiper-container ">
                     <div class="swiper-wrapper">
-                        @foreach ($teams as $team)
-                            <div class="swiper-slide">
-                                <div class="ns-team-item">
-                                    <div class="ns-team-item-img w_img">
-                                        <a
-                                            href="{{ route('frontEnd.teamMemberDetails', [\Str::slug($team->team_member_name) . '?team=' . \Vinkla\Hashids\Facades\Hashids::encode($team->id)]) }}"><img
-                                                src="{{ asset($team->team_member_image ?? 'public/frontend/assets/img/team/team-1.jpg') }}"
-                                                alt=""></a>
+                        <div class="container">
+                            <div class="row g-4">
+                                @foreach ($teams as $team)
+                                    <div class="col-12 col-md-6 col-lg-4">
+                                        <div class="swiper-slide">
+                                            <div class="ns-team-item">
+                                                <div class="ns-team-item-img w_img">
+                                                    <a
+                                                        href="{{ route('frontEnd.teamMemberDetails', [\Str::slug($team->team_member_name) . '?team=' . \Vinkla\Hashids\Facades\Hashids::encode($team->id)]) }}"><img
+                                                            src="{{ asset($team->team_member_image ?? 'public/frontend/assets/img/team/team-1.jpg') }}"
+                                                            alt=""></a>
+                                                </div>
+                                                <div class="ns-team-item-content">
+                                                    <div class="ns-team-social">
+                                                        <div class="ns-team-social-btn">
+                                                            <span class="ns-team-social-plus ns-team-social-btn-icon"><i
+                                                                    class="fal fa-plus"></i></span>
+                                                            <span class="ns-team-social-minus ns-team-social-btn-icon"><i
+                                                                    class="fal fa-minus"></i></span>
+                                                        </div>
+                                                        <div class="ns-team-social-btn d-none">
+                                                            <span class="ns-team-social-plus ns-team-social-btn-icon"><i
+                                                                    class="icofont-plus"></i></span>
+                                                            <span class="ns-team-social-minus ns-team-social-btn-icon"><i
+                                                                    class="icofont-minus"></i></span>
+                                                        </div>
+                                                        <div class="ns-team-social-icon">
+                                                            <ul>
+                                                                @if ($team->team_member_facebook)
+                                                                    <li><a target="__blank"
+                                                                            href="{{ $team->team_member_facebook }}"><i
+                                                                                class="fab fa-facebook-f"></i></a></li>
+                                                                @endif
+                                                                @if ($team->team_member_linkedin)
+                                                                    <li><a target="__blank"
+                                                                            href="{{ $team->team_member_linkedin }}"><i
+                                                                                class="fab fa-linkedin"></i></a></li>
+                                                                @endif
+                                                                @if ($team->team_member_instagram)
+                                                                    <li><a target="__blank"
+                                                                            href="{{ $team->team_member_instagram }}"><i
+                                                                                class="fab fa-instagram"></i></a></li>
+                                                                @endif
+                                                                @if ($team->team_member_youtube)
+                                                                    <li><a target="__blank"
+                                                                            href="{{ $team->team_member_youtube }}"><i
+                                                                                class="fab fa-youtube"></i></a></li>
+                                                                @endif
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <div class="ns-team-item-info">
+                                                        <h5 class="ns-team-info-title"><a
+                                                                href="{{ route('frontEnd.teamMemberDetails', [\Str::slug($team->team_member_name) . '?team=' . \Vinkla\Hashids\Facades\Hashids::encode($team->id)]) }}">{{ $team->team_member_name }}</a>
+                                                        </h5>
+                                                        <span>{{ $team->team_member_desig }}</span>
+                                                    </div>
+                                                    <div class="ns-team-item-contact px-1 text-center">
+                                                        @if ($team->team_member_phone)
+                                                            <a href="tel:{{ $team->team_member_phone }}"
+                                                                style="font-size: 13px"><i
+                                                                    class="icofont-phone"></i>{{ $team->team_member_phone }}</a>
+                                                        @endif
+                                                        @if ($team->team_member_phone)
+                                                            <a href="mailto:{{ $team->team_member_email }}"
+                                                                style="font-size: 13px"><i
+                                                                    class="icofont-envelope-open"></i>{{ $team->team_member_email }}</a>
+                                                        @endif
+                                                    </div>
+                                                </div>
+                                                <span class="ns-team-shape-1 ns-team-shape"></span>
+                                                <span class="ns-team-shape-2 ns-team-shape"></span>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="ns-team-item-content">
-                                        <div class="ns-team-social">
-                                            <div class="ns-team-social-btn">
-                                                <span class="ns-team-social-plus ns-team-social-btn-icon"><i
-                                                        class="fal fa-plus"></i></span>
-                                                <span class="ns-team-social-minus ns-team-social-btn-icon"><i
-                                                        class="fal fa-minus"></i></span>
-                                            </div>
-                                            <div class="ns-team-social-btn d-none">
-                                                <span class="ns-team-social-plus ns-team-social-btn-icon"><i
-                                                        class="icofont-plus"></i></span>
-                                                <span class="ns-team-social-minus ns-team-social-btn-icon"><i
-                                                        class="icofont-minus"></i></span>
-                                            </div>
-                                            <div class="ns-team-social-icon">
-                                                <ul>
-                                                    @if ($team->team_member_facebook)
-                                                        <li><a target="__blank"
-                                                                href="{{ $team->team_member_facebook }}"><i
-                                                                    class="fab fa-facebook-f"></i></a></li>
-                                                    @endif
-                                                    @if ($team->team_member_linkedin)
-                                                        <li><a target="__blank"
-                                                                href="{{ $team->team_member_linkedin }}"><i
-                                                                    class="fab fa-linkedin"></i></a></li>
-                                                    @endif
-                                                    @if ($team->team_member_instagram)
-                                                        <li><a target="__blank"
-                                                                href="{{ $team->team_member_instagram }}"><i
-                                                                    class="fab fa-instagram"></i></a></li>
-                                                    @endif
-                                                    @if ($team->team_member_youtube)
-                                                        <li><a target="__blank"
-                                                                href="{{ $team->team_member_youtube }}"><i
-                                                                    class="fab fa-youtube"></i></a></li>
-                                                    @endif
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="ns-team-item-info">
-                                            <h5 class="ns-team-info-title"><a
-                                                    href="{{ route('frontEnd.teamMemberDetails', [\Str::slug($team->team_member_name) . '?team=' . \Vinkla\Hashids\Facades\Hashids::encode($team->id)]) }}">{{ $team->team_member_name }}</a>
-                                            </h5>
-                                            <span>{{ $team->team_member_desig }}</span>
-                                        </div>
-                                        <div class="ns-team-item-contact px-1">
-                                            @if ($team->team_member_phone)
-                                                <a href="tel:{{ $team->team_member_phone }}" style="font-size: 14px"><i
-                                                        class="icofont-phone"></i>{{ $team->team_member_phone }}</a>
-                                            @endif
-                                            @if ($team->team_member_phone)
-                                                <a href="mailto:{{ $team->team_member_email }}"
-                                                    style="font-size: 14px"><i
-                                                        class="icofont-envelope-open"></i>{{ $team->team_member_email }}</a>
-                                            @endif
-                                        </div>
-                                    </div>
-                                    <span class="ns-team-shape-1 ns-team-shape"></span>
-                                    <span class="ns-team-shape-2 ns-team-shape"></span>
-                                </div>
+                                @endforeach
                             </div>
-                        @endforeach
+                        </div>
                     </div>
                     <div class="ns-team-bottom mt-50">
                         <div class="ns-team-pagination"></div>
@@ -652,145 +741,91 @@
     <!-- contact area start -->
     @if ($contact)
         <section class="pt-110 pb-115">
-            <div class="ns-contact-container container" id="message_form">
-                <div class="ns-inner-wrap">
-                    <div class="ns-contact-space">
-                        <div class="ns-contact-wrap">
-                            <div class="ns-contact-left" >
-                                <div class="ns-section mb-35">
-                                    <span class="ns-section-subtitle">{{ __('admin_local.Contact Now') }}</span>
-                                    <h3 class="ns-section-title mb-15">
-                                        {{ __('admin_local.For Live Sports , Contacts Us') }}</h3>
-                                    <p class="ns-section-text mb-0">
-                                        {{ __('admin_local.Have questions or need assistance with our live sports coverage? Our team is always ready to help you with any inquiries, technical issues, or partnership opportunities. Stay connected with us to ensure you never miss a moment of your favorite live matches and sporting events.') }}
-                                    </p>
-                                </div>
-                                <div class="ns-contact-form" >
-                                    @if (session('success'))
-                                        <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                            {{ session('success') }}
-                                            <button type="button" class="btn-close" data-bs-dismiss="alert"
-                                                aria-label="Close"></button>
-                                        </div>
-                                    @endif
-                                    <form  action="{{ route('frontEnd.contactUsStore') }}" method="POST">
-                                        @csrf
-                                        <div class="row">
-                                            <div class="col-sm-4 mb-3">
-                                                <input type="text" name="name"
-                                                    class="form-control @error('name') is-invalid @enderror"
-                                                    placeholder="{{ __('admin_local.Your Name') }} *"
-                                                    value="{{ old('name') }}" required>
-                                                @error('name')
-                                                    <div class="invalid-feedback">{{ $message }}</div>
-                                                @enderror
-                                            </div>
-
-                                            <div class="col-sm-4 mb-3">
-                                                <input type="tel" name="phone"
-                                                    class="form-control @error('phone') is-invalid @enderror"
-                                                    placeholder="{{ __('admin_local.Your Phone') }} *" value="{{ old('phone') }}" required>
-                                                @error('phone')
-                                                    <div class="invalid-feedback">{{ $message }}</div>
-                                                @enderror
-                                            </div>
-
-                                            <div class="col-sm-4 mb-3">
-                                                <input type="email" name="email"
-                                                    class="form-control @error('email') is-invalid @enderror"
-                                                    placeholder="{{ __('admin_local.Your Email') }}" value="{{ old('email') }}" >
-                                                @error('email')
-                                                    <div class="invalid-feedback">{{ $message }}</div>
-                                                @enderror
-                                            </div>
-
-                                            <div class="col-12 mb-3">
-                                                <textarea name="message" rows="5" class="form-control @error('message') is-invalid @enderror"
-                                                    placeholder="{{ __('admin_local.Message') }} *" required>{{ old('message') }}</textarea>
-                                                @error('message')
-                                                    <div class="invalid-feedback">{{ $message }}</div>
-                                                @enderror
-                                            </div>
-
-                                            <div class="col-12">
-                                                <button type="submit"
-                                                    class="btn ns-theme-btn ns-contact-btn float-end">{{ __('admin_local.Send Request') }}</button>
-                                            </div>
-                                        </div>
-                                    </form>
-
-                                </div>
-                            </div>
-                            <div class="ns-contact-right">
-                                <div class="ns-contact-info">
-                                    <span class="ns-contact-circle-1"></span>
-                                    <span class="ns-contact-circle-2"></span>
-                                    {{-- <img src="assets/img/contact/contact.jpg" alt="Not Found" class="ns-contact-bg-img"> --}}
-                                    <img class="ns-contact-shape ns-contact-shape-1"
-                                        src="{{ asset('public/frontend/assets/img/contact/contact-map.png') }}"
-                                        alt="Not Found">
-                                    <img class="ns-contact-shape ns-contact-shape-2"
-                                        src="{{ asset('public/frontend/assets/img/contact/contact-map.png') }}"
-                                        alt="Not Found">
-                                    <img class="ns-contact-shape ns-contact-shape-3"
-                                        src="{{ asset('public/frontend/assets/img/contact/contact-map.png') }}"
-                                        alt="Not Found">
-                                    <div class="ns-contact-item ns-phone">
-                                        <div class="ns-contact-item-icon">
-                                            <i class="icofont-ui-call"></i>
-                                        </div>
-                                        <div class="ns-contact-item-details">
-                                            <span>{{ __('admin_local.Call Us') }}</span>
-                                            <div>
-                                                @php
-                                                    $cPhone = explode(',', $contact->phone);
-                                                @endphp
-                                                @foreach ($cPhone as $phone)
-                                                    <a href="tel:{{ $phone }}">{{ $phone }}</a>
-                                                @endforeach
-                                            </div>
-                                        </div>
-                                    </div>
-                                    @if ($contact->email)
-                                        <div class="ns-contact-item ns-mail">
-                                            <div class="ns-contact-item-icon">
-                                                <i class="icofont-envelope"></i>
-                                            </div>
-                                            <div class="ns-contact-item-details">
-                                                <span>{{ __('admin_local.Mail Us') }}</span>
-                                                <div>
-                                                    <a
-                                                        href="mailto:{{ $contact->email }}
-                                                    ">{{ $contact->email }}
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    @endif
-                                    @if ($contact->address)
-                                        <div class="ns-contact-item ns-address">
-                                            <div class="ns-contact-item-icon">
-                                                <i class="icofont-location-pin"></i>
-                                            </div>
-                                            <div class="ns-contact-item-details">
-                                                <span>{{ __('admin_local.Address') }}</span>
-                                                <p>{{ $contact->address }}</p>
-                                            </div>
-                                        </div>
-                                    @endif
-                                </div>
-                                @if ($contact->location)
-                                    <div class="ns-contact-map">
-                                        <iframe
-                                            src="https://www.google.com/maps/embed?pb={{ $contact->location }}"></iframe>
-                                    </div>
-                                @endif
-                            </div>
+            <div class="container">
+                <div class="row g-5 align-items-start">
+                    <!-- Contact Form Column -->
+                    <div class="col-lg-6">
+                        <div class="ns-section mb-35 text-center">
+                            <span class="ns-section-subtitle">{{ __('admin_local.Contact Now') }}</span>
+                            {{-- <h3 class="ns-section-title mb-15">
+                                {{ __('admin_local.For Live Sports , Contacts Us') }}
+                            </h3>
+                            <p class="ns-section-text mb-4">
+                                {{ __('admin_local.Have questions or need assistance with our live sports coverage? Our team is always ready to help you with any inquiries, technical issues, or partnership opportunities. Stay connected with us to ensure you never miss a moment of your favorite live matches and sporting events.') }}
+                            </p> --}}
                         </div>
+
+                        <div class="ns-contact-form">
+                            @if (session('success'))
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    {{ session('success') }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                        aria-label="Close"></button>
+                                </div>
+                            @endif
+
+                            <form action="{{ route('frontEnd.contactUsStore') }}" method="POST">
+                                @csrf
+                                <div class="row">
+                                    <div class="col-12 mb-3">
+                                        <input type="text" name="name"
+                                            class="form-control @error('name') is-invalid @enderror"
+                                            placeholder="{{ __('admin_local.Your Name') }} *"
+                                            value="{{ old('name') }}" required>
+                                        @error('name')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+
+                                    <div class="col-12 mb-3">
+                                        <input type="tel" name="phone"
+                                            class="form-control @error('phone') is-invalid @enderror"
+                                            placeholder="{{ __('admin_local.Your Phone') }} *"
+                                            value="{{ old('phone') }}" required>
+                                        @error('phone')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+
+                                    <div class="col-12 mb-3">
+                                        <input type="email" name="email"
+                                            class="form-control @error('email') is-invalid @enderror"
+                                            placeholder="{{ __('admin_local.Your Email') }}"
+                                            value="{{ old('email') }}">
+                                        @error('email')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+
+                                    <div class="col-12 mb-3">
+                                        <textarea name="message" rows="5" class="form-control @error('message') is-invalid @enderror"
+                                            placeholder="{{ __('admin_local.Message') }} *" required>{{ old('message') }}</textarea>
+                                        @error('message')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+
+                                    <div class="col-12">
+                                        <button type="submit"
+                                            class="btn ns-theme-btn ns-contact-btn float-end">{{ __('admin_local.Send Request') }}</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Map Column -->
+                    <div class="col-lg-6">
+                        @if ($contact->location)
+                            <div class="ns-contact-map">
+                                <iframe src="https://www.google.com/maps/embed?pb={{ $contact->location }}"
+                                    frameborder="0" allowfullscreen="" loading="lazy">
+                                </iframe>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>
-
         </section>
     @endif
 

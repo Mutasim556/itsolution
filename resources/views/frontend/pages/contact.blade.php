@@ -198,13 +198,15 @@
                                 <div class="swiper-slide">
                                     <div class="ns-service-item">
                                         <div class="ns-service-img w_img">
-                                            <a href="{{ route('frontEnd.serviceDetails',[\Str::slug($service->service_name)."?service=".\Vinkla\Hashids\Facades\Hashids::encode($service->id)]) }}"><img
+                                            <a
+                                                href="{{ route('frontEnd.serviceDetails', [\Str::slug($service->service_name) . '?service=' . \Vinkla\Hashids\Facades\Hashids::encode($service->id)]) }}"><img
                                                     src="{{ asset($service->service_image ? $service->service_image : 'public/admin/images/images.png') }}"
                                                     alt="Not Found"></a>
                                         </div>
                                         <div class="ns-service-content">
                                             <h4 class="ns-service-content-title"><a
-                                                    href="{{ route('frontEnd.serviceDetails',[\Str::slug($service->service_name)."?service=".\Vinkla\Hashids\Facades\Hashids::encode($service->id)]) }}">{{ $service->service_name }}</a></h4>
+                                                    href="{{ route('frontEnd.serviceDetails', [\Str::slug($service->service_name) . '?service=' . \Vinkla\Hashids\Facades\Hashids::encode($service->id)]) }}">{{ $service->service_name }}</a>
+                                            </h4>
                                             <p>{{ $service->service_short_details }}
                                             </p>
                                             <a href="{{ route('frontEnd.serviceDetails', [\Str::slug($service->service_name) . '?service=' . \Vinkla\Hashids\Facades\Hashids::encode($service->id)]) }}"
