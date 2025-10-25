@@ -87,7 +87,7 @@ class TeamController extends Controller
             $imageName = 'teamMember' . time() . '.' . $image->getClientOriginalExtension();
             $manager = new ImageManager(new Driver());
             $imageName  =  $dir . '/' . $imageName;
-            $manager->read($image)->resize(370, 267)->save($imageName);
+            $manager->read($image)->resize(370, 395)->save($imageName);
             $newMember->team_member_image = $imageName;
         }
 
@@ -213,7 +213,7 @@ class TeamController extends Controller
             $imageName = 'teamMember' . time() . '.' . $image->getClientOriginalExtension();
             $manager = new ImageManager(new Driver());
             $imageName  =  $dir . '/' . $imageName;
-            $manager->read($image)->resize(370, 267)->save($imageName);
+            $manager->read($image)->resize(370, 395)->save($imageName);
             $updateMember->team_member_image = $imageName;
         }
 

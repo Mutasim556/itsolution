@@ -5,8 +5,19 @@
 @push('css')
     <style>
         .ns-brand-item {
-            height: 150px !important;
+            height: 139px !important;
             width: 180px !important;
+            /* border: 1px solid red; */
+        }
+
+        .ns-brand-item-img {
+            height: 100%;
+            width: 100%;
+        }
+
+        .ns-brand-item-img-hover {
+            height: 100%;
+            width: 100%;
         }
 
         .ns-team-item {
@@ -82,6 +93,241 @@
             height: 500px;
             border: 0;
         }
+
+        /* Remove grey overlay on slider */
+        .ns-banner-single::before,
+        .ns-banner-single::after,
+        .ns-banner-overlay {
+            background: none !important;
+            opacity: 0 !important;
+        }
+
+        #aboutus_details p {
+            color: #fff;
+        }
+
+        .ns-cta-play-btn {
+            position: absolute;
+            left: 0;
+            top: -245px;
+            width: 210px;
+            height: 363px;
+            right: 0;
+            margin: 0 auto;
+        }
+
+        .ns-cta-play-btn a .ns-btn-img {
+            bottom: 50px !important;
+        }
+
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            padding: 100px 120px;
+            background-color: #f9f9f9;
+            box-sizing: border-box;
+        }
+
+        .card {
+            position: relative;
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.4s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.75);
+            /* 👈 reduced opacity for lighter image */
+            transition: background-color 0.3s ease;
+            z-index: 1;
+        }
+
+        .card:hover::before {
+            background-color: rgba(0, 0, 0, 0.6);
+            /* slightly darker on hover */
+        }
+
+
+        .card:hover {
+            transform: scale(1.03);
+        }
+
+
+
+        .overlay {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: #fff;
+        }
+
+        .overlay h3 {
+            font-size: 24px;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .overlay button {
+            background-color: transparent;
+            /* transparent background */
+            border: 2px solid #fff;
+            /* white border */
+            padding: 7px 20px;
+            border-radius: 6px;
+            color: #fff;
+            /* white text */
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            /* smooth hover transition */
+        }
+
+        .overlay button:hover {
+            background-color: #ffab17;
+            /* your theme color on hover */
+            border-color: #ffab17;
+            /* match border to background */
+            color: #fff;
+            /* keep text white */
+        }
+
+        /* Responsive layout */
+        @media (max-width: 992px) {
+            .image-grid {
+                grid-template-columns: repeat(2, 1fr);
+                padding: 40px 30px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .image-grid {
+                grid-template-columns: 1fr;
+                padding: 30px 20px;
+            }
+        }
+
+
+        .ns-section-title {
+            font-size: 25px;
+            font-weight: 700;
+            color: #222;
+            position: relative;
+            display: inline-block;
+            text-transform: uppercase;
+            padding: 0 20px;
+            /* spacing between lines and text */
+        }
+
+        .ns-section-title::before,
+        .ns-section-title::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            width: 80px;
+            /* length of the line */
+            height: 3px;
+            /* thickness */
+            background-color: #ffab17;
+            /* your theme color */
+            transform: translateY(-50%);
+        }
+
+        .ns-section-title::before {
+            left: -75px;
+            /* move line to the left of text */
+        }
+
+        .ns-section-title::after {
+            right: -75px;
+            /* move line to the right of text */
+        }
+
+        /* Responsive tweak: shorter lines on small screens */
+        @media (max-width: 600px) {
+
+            .ns-section-title::before,
+            .ns-section-title::after {
+                width: 50px;
+            }
+
+            .ns-section-title::before {
+                left: -35px;
+                /* move line to the left of text */
+            }
+
+            .ns-section-title::after {
+                right: -35px;
+                /* move line to the right of text */
+            }
+
+            .ns-section-title {
+                font-size: 20px !important;
+            }
+        }
+
+
+        @media (max-width: 991.98px) {
+
+            .ns-banner-area .swiper-container,
+            .ns-banner-area .swiper-slide {
+                height: 60vh;
+                /* adjust as needed */
+            }
+
+            /* Optional: adjust content vertical alignment */
+            .ns-banner-content {
+                padding-top: 50px;
+                /* reduce padding from top */
+            }
+
+            .ns-banner-single {
+                background-size: cover;
+                /* cover the entire slide */
+                background-position: center;
+                /* center the image */
+                background-repeat: no-repeat;
+                /* prevent tiling */
+                width: 100%;
+                height: 100%;
+                /* will take parent height */
+            }
+        }
+
+        .news-logo-box {
+            background: #fff;
+            height: 130px;
+            /* same height for every box */
+            padding-left: 10px;
+            padding-right: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .news-logo-box img {
+            height: 55px;
+            width: auto;
+            object-fit: contain;
+            display: block;
+        }
+
+        .news-logo-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
     </style>
 @endpush
 @section('content')
@@ -96,21 +342,10 @@
                     <div class="swiper-slide">
                         <div class="ns-banner-single bg-default"
                             data-background="{{ asset('public/' . $slider->slider_image) }}">
-                            {{-- <img class="ns-banner-shape-1 ns-shape-img d-none d-md-block"
-                                src="{{ asset('public/frontend/assets/img/banner/shape-1.png') }}" alt="Not Found">
-                            <img class="ns-banner-shape-2 ns-shape-img d-none d-xxl-block"
-                                src="{{ asset('public/frontend/assets/img/banner/shape-2.png') }}" alt="Not Found">
-                            <img class="ns-banner-shape-3 ns-shape-img"
-                                src="{{ asset('public/frontend/assets/img/banner/shape-3.png') }}" alt="Not Found">
-                            <img class="ns-banner-shape-4 ns-shape-img d-none d-md-block"
-                                src="{{ asset('public/frontend/assets/img/banner/shape-4.png') }}" alt="Not Found">
-                            <img class="ns-banner-shape-5 ns-shape-img"
-                                src="{{ asset('public/frontend/assets/img/banner/shape-5.png') }}" alt="Not Found"> --}}
                             <div class="container">
                                 <div class="row">
                                     <div class="col-xl-7 ">
                                         <div class="ns-banner-content">
-                                            {{-- <span class="ns-banner-content-subtitle">Welcome To Nosei</span> --}}
                                             @if ($slider->slider_title != '')
                                                 <h2 class="ns-banner-content-title">
                                                     {{ $slider->slider_title }}
@@ -142,62 +377,7 @@
             <div class="swiper-pagination ns-slide-pagination" style="margin-top: -20px;"></div>
         </div>
     </section>
-    <!-- banner area end -->
 
-    <!-- feature area start -->
-    {{-- <section class="ns-feature-area">
-        <div class="ns-feature-single pt-95 pb-150 bg-default" data-background="assets/img/feature/feature-map.png">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="ns-section text-center">
-                            <span class="ns-section-subtitle">Best features</span>
-                            <h2 class="ns-section-title ns-section-title-white mb-0">We Are Business Features</h2>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="ns-feature-wrap pb-40">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
-                        <div class="ns-feature-item mb-70">
-                            <img class="ns-feature-item-img" src="assets/img/feature/feature-bg-1.jpg" alt="Not Found">
-                            <h4 class="ns-feature-item-title">Business Network</h4>
-                            <p>Nullam vitae tempor molestie exthe.</p>
-                            <div class="ns-feature-item-icon"><i class="icofont-network"></i></div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
-                        <div class="ns-feature-item mb-70">
-                            <img class="ns-feature-item-img" src="assets/img/feature/feature-bg-2.jpg" alt="Not Found">
-                            <h4 class="ns-feature-item-title">60 For Mobiles</h4>
-                            <p>Nullam vitae tempor molestie exthe.</p>
-                            <div class="ns-feature-item-icon"><i class="icofont-contrast"></i></div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
-                        <div class="ns-feature-item mb-70">
-                            <img class="ns-feature-item-img" src="assets/img/feature/feature-bg-3.jpg" alt="Not Found">
-                            <h4 class="ns-feature-item-title">Line Streaming</h4>
-                            <p>Nullam vitae tempor molestie exthe.</p>
-                            <div class="ns-feature-item-icon"><i class="icofont-signal"></i></div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
-                        <div class="ns-feature-item mb-70">
-                            <img class="ns-feature-item-img" src="assets/img/feature/feature-bg-4.jpg" alt="Not Found">
-                            <h4 class="ns-feature-item-title">Fiber Broads</h4>
-                            <p>Nullam vitae tempor molestie exthe.</p>
-                            <div class="ns-feature-item-icon"><i class="icofont-network-tower"></i></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> --}}
-    <!-- feature area end -->
     @php
         $services = \App\Models\Admin\Service::where([['status', 1], ['delete', 0]])
             ->orderBy('id', 'DESC')
@@ -210,16 +390,21 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="ns-section mb-50 text-center">
-                            {{-- <span class="ns-section-subtitle">{{ __('admin_local.What We Do') }}</span> --}}
-                            <h2 class="ns-section-title mb-0">{{ __('admin_local.Our Popular Services') }}</h2>
+                            <h2 class="ns-section-title mb-0" style="font-size:25px;">{{ __('admin_local.Capabilities') }}
+                            </h2>
                         </div>
                     </div>
                 </div>
 
                 <div class="ns-service-wrap">
                     <div class="container">
-                        <div class="row g-4"> <!-- g-4 = Bootstrap gap -->
-                            @foreach ($services as $service)
+                        <div class="row g-4">
+                            @foreach ($services as $key => $service)
+                                @if ($key == 3)
+                                    <div class="col-12 col-md-3 col-lg-2">
+
+                                    </div>
+                                @endif
                                 <div class="col-12 col-md-6 col-lg-4">
                                     <div class="ns-service-item">
                                         <div class="ns-service-img w_img">
@@ -254,6 +439,11 @@
                                         </div>
                                     </div>
                                 </div>
+                                @if ($key == 4)
+                                    <div class="col-12 col-md-3 col-lg-2">
+
+                                    </div>
+                                @endif
                             @endforeach
                         </div>
                     </div>
@@ -261,301 +451,81 @@
             </div>
         </section>
     @endif
-    {{-- @php
-        $counting = \App\Models\Admin\Counting::first();
-    @endphp
-    @if ($counting)
-        <div class="ns-counter-area pt-110 pb-85">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="ns-section mb-50 text-center">
-                            <h2 class="ns-section-title mb-0">
-                                {{ __('admin_local.This is the numbers , that we have done') }}</h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="row justify-content-center">
-                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
-                        <div class="ns-counter-item mb-65">
-                            <div class="ns-counter-item-content">
-                                <h2 class="ns-counter-title"><span class="odometer counter_count"
-                                        data-count="{{ $counting->counting1_value }}">00</span><span
-                                        class="ns-counter-plus">+</span></h2>
-                                <span class="ns-counter-subtitle">{{ $counting->counting1_name }}</span>
-                                <div class="ns-counter-icon">
-                                    <i class="icofont-life-ring"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
-                        <div class="ns-counter-item mb-65">
-                            <div class="ns-counter-item-content">
-                                <h2 class="ns-counter-title"><span class="odometer counter_count"
-                                        data-count="{{ $counting->counting2_value }}">00</span><span
-                                        class="ns-counter-plus">+</span></h2>
-                                <span class="ns-counter-subtitle">{{ $counting->counting2_name }}</span>
-                                <div class="ns-counter-icon">
-                                    <i class="icofont-site-map"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
-                        <div class="ns-counter-item mb-65">
-                            <div class="ns-counter-item-content">
-                                <h2 class="ns-counter-title"><span class="odometer counter_count"
-                                        data-count="{{ $counting->counting3_value }}">00</span><span
-                                        class="ns-counter-plus">+</span></h2>
-                                <span class="ns-counter-subtitle">{{ $counting->counting3_name }}</span>
-                                <div class="ns-counter-icon">
-                                    <i class="icofont-institution"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
-                        <div class="ns-counter-item mb-65">
-                            <div class="ns-counter-item-content">
-                                <h2 class="ns-counter-title"><span class="odometer counter_count"
-                                        data-count="{{ $counting->counting4_value }}">00</span><span
-                                        class="ns-counter-plus">+</span></h2>
-                                <span class="ns-counter-subtitle">{{ $counting->counting4_name }}</span>
-                                <div class="ns-counter-icon">
-                                    <i class="icofont-live-support"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    @endif --}}
-    <!-- about area start -->
-    {{-- @php
+    @php
         $aboutus = \App\Models\Admin\AboutUs::first();
     @endphp
     @if ($aboutus)
-        <section class="ns-about-area pt-35 pb-70">
+        <div class="ns-cta-area bg-default pt-115 pb-115">
+            <span class="ns-cta-shape-1 d-none d-md-block"></span>
+            @if ($aboutus->video_link)
+                <div class="ns-cta-play-btn">
+                    <a href="https://www.youtube.com/watch?v={{ $aboutus->video_link }}" class="popup-video">
+                        <img class="ns-cta-play-bg" src="{{ asset('public/frontend/assets/img/cta/cta-play-bg.png') }}"
+                            alt="Not Found">
+                        <img class="ns-btn-img" src="{{ asset('public/frontend/assets/img/cta/play-btn.png') }}"
+                            alt="Not Found">
+                    </a>
+                </div>
+            @endif
             <div class="container">
-                <div class="row">
-                    <div class="col-xl-6 col-lg-6">
-                        <div class="ns-about-left bg-default mb-40"
-                            data-background="{{ asset('public/frontend/assets/img/about/shape-2.png') }}">
-                            <div class="ns-about-img-1 mb-10">
-                                <div class="ns-about-img-inner">
-                                    <img class="inner-img-1"
-                                        src="{{ asset($aboutus->image1 ?? 'assets/img/about/about-1.jpg') }}"
-                                        alt="Not Found">
-                                    @if ($aboutus->video_link)
-                                        <a class="ns-about-play-btn popup-video"
-                                            href="https://www.youtube.com/watch?v={{ $aboutus->video_link }}"><img
-                                                src="{{ asset('public/frontend/assets/img/about/play-btn.png') }}"
-                                                alt="Not Found"></a>
-                                    @endif
-                                </div>
-                                @if ($aboutus->experience)
-                                    <div class="ns-about-img-content">
-                                        <h4 class="ns-about-inner-title">{{ __('admin_local.Experince') }}</h4>
-                                        <h5 class="ns-about-count">
-                                            <span class="odometer about_count"
-                                                data-count="{{ $aboutus->experience }}">00</span><span
-                                                class="ns-about-plus">+</span>
-                                        </h5>
-                                    </div>
-                                @endif
-                            </div>
-                            <div class="ns-about-img-wrap-2">
-                                <div class="ns-about-img-inner-2">
-                                    <img class="inner-img-2"
-                                        src="{{ asset($aboutus->image2 ?? 'assets/img/about/about-2.jpg') }}"
-                                        alt="Not Found">
-                                    <img class="ns-about-shape"
-                                        src="{{ asset('public/frontend/assets/img/about/shape-1.png') }}"
-                                        alt="Not Found">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-6 col-lg-6">
-                        <div class="ns-about-wrap mb-40">
-                            <div class="ns-section mb-25">
-                                <span class="ns-section-subtitle">{{ __('admin_local.About Our Company') }}</span>
-                                <h2 class="ns-section-title mb-15">{{ $aboutus->about_us_title ?? '' }}</h2>
-                                <p class="ns-section-text mb-0">{{ $aboutus->short_details ?? '' }}</p>
-                            </div>
-                            <div class="ns-about-content">
-                                <div class="row row-20">
-                                    <div class="col-xl-8 col-lg-8 col-md-7 col-sm-8">
-                                        <div class="ns-about-content-info mb-55">
-                                            <div class="ns-about-content-tab">
-                                                <h5 class="ns-about-content-tab-title"><a
-                                                        href="#">{{ __('admin_local.About Us') }}</a></h5>
-                                                <div>
-                                                    <a class="ns-about-content-tab-icon" href="#"><i
-                                                            class="icofont-life-ring"></i></a>
-                                                </div>
-                                            </div>
-                                            <div class="ns-about-content-tab">
-                                                <h5 class="ns-about-content-tab-title"><a
-                                                        href="#">{{ __('admin_local.Contact Us') }}</a></h5>
-                                                <div>
-                                                    <a class="ns-about-content-tab-icon" href="#"><i
-                                                            class="icofont-live-support"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="ns-about-content-list">
-                                            <ul>
-                                                @php
-                                                    $afterExplode = explode('||', $aboutus->points);
-                                                @endphp
-                                                @foreach ($afterExplode as $point)
-                                                    <li><i class="icofont-tick-boxed"></i>{{ $point }}</li>
-                                                @endforeach
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-4 col-lg-4 col-md-5 col-sm-4">
-                                        <div class="ns-about-content-info-right mb-50">
-                                            <h5 class="inner-title">{{ __('admin_local.Projects') }}</h5>
-                                            <div class="ns-about-info-inner">
-                                                <p><span></span>{{ $aboutus->project_line ?? '' }}
-                                                </p>
-                                                <a class="ns-about-info-inner-btn"
-                                                    href="{{ route('frontEnd.projects') }}"><i
-                                                        class="fas fa-chevron-circle-right"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                @if ($aboutus->resp_person_name)
-                                    <div class="ns-about-content-bottom">
-                                        <div class="ns-about-content-admin">
-                                            <div class="ns-about-content-admin-img">
-                                                <img src="{{ asset($aboutus->resp_person_image ?? 'assets/img/about/about-admin.png') }}"
-                                                    alt="Not Found">
-                                            </div>
-                                            <div class="ns-about-content-admin-info">
-                                                <h4 class="ns-about-admin-title"><a
-                                                        href="{{ route('frontEnd.aboutUs') }}">{{ $aboutus->resp_person_name }}</a>
-                                                </h4>
-                                                <span>{{ $aboutus->resp_person_desig }}</span>
-                                            </div>
-                                        </div>
-                                        <div class="ns-about-content-admin-signature">
-                                            <img src="{{ asset($aboutus->resp_person_signature ?? 'assets/img/about/signature.png') }}"
-                                                alt="Not Found">
-                                        </div>
-                                    </div>
-                                @endif
-                            </div>
+                <div class="row justify-content-center">
+                    <div class="col-xl-12">
+                        <div class="ns-cta-content">
+                            <span class="ns-cta-content-subtitle"
+                                style="font-size:40px">{{ $aboutus->company_name }}</span>
+                            @php
+                                $contact = \App\Models\Admin\Contact::first();
+                            @endphp
+                            <span class="ns-cta-contact" id="aboutus_details">{!! $aboutus->details !!}</span>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
-    @endif --}}
-    @php
-        $projects = \App\Models\Admin\Project::where([['status', 1], ['delete', 0]])->get();
-    @endphp
-    @if (count($projects) > 0)
-        <section class="ns-project-area pt-110 pb-115">
-            <img class="ns-project-bg" src="{{ asset('public/frontend/assets/img/project/bg-project.jpg') }}"
-                alt="Not Found">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="ns-section mb-50 text-center">
-                            {{-- <span class="ns-section-subtitle">{{ __('admin_local.Our Project') }}</span> --}}
-                            <h2 class="ns-section-title mb-0">{{ __('admin_local.Here is some of the best work') }}</h2>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class=" container-custom-1 container">
-                <div class="ns-project-wrap">
-                    <div class="project-active swiper-container">
-                        <div class="swiper-wrapper">
-                            @foreach ($projects as $project)
-                                @php
-                                    $projectImages = json_decode($project->project_images);
-                                @endphp
-                                <div class="swiper-slide">
-                                    <div class="ns-project-item">
-                                        <div class="ns-project-img w_img">
-                                            <img src="{{ asset($projectImages[0] ?? 'assets/img/project/project-1.jpg') }}"
-                                                alt="Not Found">
-                                        </div>
-                                        <div class="ns-project-content">
-                                            <div class="ns-project-content-info">
-                                                <h4 class="ns-project-content-title"><a
-                                                        href="{{ route('frontEnd.projectDetails', [\Str::slug($project->project_name) . '?project=' . \Vinkla\Hashids\Facades\Hashids::encode($project->id)]) }}">{{ $project->project_name }}</a>
-                                                </h4>
-                                                <span>{{ $project->project_category }}</span>
-                                            </div>
-                                            <div class="ns-project-content-btn">
-                                                <a
-                                                    href="{{ route('frontEnd.projectDetails', [\Str::slug($project->project_name) . '?project=' . \Vinkla\Hashids\Facades\Hashids::encode($project->id)]) }}"><i
-                                                        class="fas fa-chevron-circle-right"></i></a>
-                                            </div>
-                                        </div>
-                                        <span class="ns-project-shape-1 ns-project-shape"></span>
-                                        <span class="ns-project-shape-2 ns-project-shape"></span>
-                                    </div>
-                                </div>
-                            @endforeach
-                        </div>
-                        <div class="ns-project-pagination mt-50"></div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        </div>
     @endif
-    <!-- project area end -->
-
-    <!-- cta area start -->
-    @php
-        $contact = \App\Models\Admin\Contact::first();
-    @endphp
-    {{-- <div class="ns-cta-area bg-default pt-275 pb-115">
-        <span class="ns-cta-shape-1 d-none d-md-block"></span>
-        <span class="ns-cta-shape-2 d-none d-md-block"><img
-                src="{{ asset('public/frontend/assets/img/cta/shape-2.png') }}" alt="Not Found"></span>
-        <div class="ns-cta-play-btn">
-            <a href="https://www.youtube.com/watch?v=SopsEuNKyPo" class="popup-video">
-                <img class="ns-cta-play-bg" src="{{ asset('public/frontend/assets/img/cta/cta-play-bg.png') }}"
-                    alt="Not Found">
-                <img class="ns-btn-img" src="{{ asset('public/frontend/assets/img/cta/play-btn.png') }}"
-                    alt="Not Found">
-            </a>
-        </div>
-        <img class="ns-cta-map" src="{{ asset('public/frontend/assets/img/cta/cta-map.png') }}" alt="Not Found">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-xl-8">
-                    <div class="ns-cta-content">
-                        <span class="ns-cta-content-subtitle">{{ __('admin_local.Call To Action') }}</span>
-
-                        <span class="ns-cta-contact">{{ __('admin_local.Get Your Quote or Call') }}: <a
-                                href="tel:+895400555">{{ $contact->phone }}</a></span>
-                        <a href="{{ route('frontEnd.contactUs') }}"
-                            class="ns-theme-btn">{{ __('admin_local.Contact Us') }}<i class="fal fa-arrow-right"></i></a>
-                    </div>
-                </div>
+    <section class="image-grid">
+        <div class="card" style="background-image: url({{ asset('public/frontend/assets/img/ppp/2.jpg') }});">
+            <div class="overlay">
+                <h3>{{ __('admin_local.Branding') }}</h3>
+                <button>{{ __('admin_local.Read More') }}</button>
             </div>
         </div>
-    </div> --}}
-    <!-- cta area end -->
 
-    <!-- brand area start -->
+        <div class="card" style="background-image: url({{ asset('public/frontend/assets/img/ppp/3.jpg') }});">
+            <div class="overlay">
+                <h3>{{ __('admin_local.Campaign') }}</h3>
+                <button>{{ __('admin_local.Read More') }}</button>
+            </div>
+        </div>
+
+        <div class="card" style="background-image: url({{ asset('public/frontend/assets/img/ppp/1.jpg') }});">
+            <div class="overlay">
+                <h3>{{ __('admin_local.Tech') }}</h3>
+                <button>{{ __('admin_local.Read More') }}</button>
+            </div>
+        </div>
+
+        <div class="card" style="background-image: url({{ asset('public/frontend/assets/img/ppp/4.jpg') }});">
+            <div class="overlay">
+                <h3>{{ __('admin_local.Event') }}</h3>
+                <button>{{ __('admin_local.Read More') }}</button>
+            </div>
+        </div>
+    </section>
     @php
         $partners = \App\Models\Admin\Partner::where([['status', 1], ['delete', 0]])->get();
     @endphp
     @if (count($partners) > 0)
         <div class="ns-brand-area pt-80 pb-80">
             <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="ns-section mb-50 text-center">
+                            <h2 class="ns-section-title mb-0" style="font-size:25px;">{{ __('admin_local.Our Brands') }}
+                            </h2>
+                        </div>
+                    </div>
+                </div>
                 <div class="brand-active swiper-container">
                     <div class="swiper-wrapper">
 
@@ -576,170 +546,103 @@
             </div>
         </div>
     @endif
+
     @php
-        $teams = \App\Models\Admin\Team::where([['status', 1], ['delete', 0]])
-            ->orderBy('id', 'DESC')
-            ->limit(6)
-            ->get();
+        $contact = \App\Models\Admin\Contact::first();
     @endphp
-    @if (count($teams) > 0)
-        <section class="ns-team-area pt-110 pb-110">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="ns-section mb-50 text-center">
-                            {{-- <span class="ns-section-subtitle">{{ __('admin_local.Team Members') }}</span> --}}
-                            <h2 class="ns-section-title mb-0">{{ __('admin_local.Amazing Team Members') }}</h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-container ">
-                    <div class="swiper-wrapper">
-                        <div class="container">
-                            <div class="row g-4">
-                                @foreach ($teams as $team)
-                                    <div class="col-12 col-md-6 col-lg-4">
-                                        <div class="swiper-slide">
-                                            <div class="ns-team-item">
-                                                <div class="ns-team-item-img w_img">
-                                                    <a
-                                                        href="{{ route('frontEnd.teamMemberDetails', [\Str::slug($team->team_member_name) . '?team=' . \Vinkla\Hashids\Facades\Hashids::encode($team->id)]) }}"><img
-                                                            src="{{ asset($team->team_member_image ?? 'public/frontend/assets/img/team/team-1.jpg') }}"
-                                                            alt=""></a>
-                                                </div>
-                                                <div class="ns-team-item-content">
-                                                    <div class="ns-team-social">
-                                                        <div class="ns-team-social-btn">
-                                                            <span class="ns-team-social-plus ns-team-social-btn-icon"><i
-                                                                    class="fal fa-plus"></i></span>
-                                                            <span class="ns-team-social-minus ns-team-social-btn-icon"><i
-                                                                    class="fal fa-minus"></i></span>
-                                                        </div>
-                                                        <div class="ns-team-social-btn d-none">
-                                                            <span class="ns-team-social-plus ns-team-social-btn-icon"><i
-                                                                    class="icofont-plus"></i></span>
-                                                            <span class="ns-team-social-minus ns-team-social-btn-icon"><i
-                                                                    class="icofont-minus"></i></span>
-                                                        </div>
-                                                        <div class="ns-team-social-icon">
-                                                            <ul>
-                                                                @if ($team->team_member_facebook)
-                                                                    <li><a target="__blank"
-                                                                            href="{{ $team->team_member_facebook }}"><i
-                                                                                class="fab fa-facebook-f"></i></a></li>
-                                                                @endif
-                                                                @if ($team->team_member_linkedin)
-                                                                    <li><a target="__blank"
-                                                                            href="{{ $team->team_member_linkedin }}"><i
-                                                                                class="fab fa-linkedin"></i></a></li>
-                                                                @endif
-                                                                @if ($team->team_member_instagram)
-                                                                    <li><a target="__blank"
-                                                                            href="{{ $team->team_member_instagram }}"><i
-                                                                                class="fab fa-instagram"></i></a></li>
-                                                                @endif
-                                                                @if ($team->team_member_youtube)
-                                                                    <li><a target="__blank"
-                                                                            href="{{ $team->team_member_youtube }}"><i
-                                                                                class="fab fa-youtube"></i></a></li>
-                                                                @endif
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <div class="ns-team-item-info">
-                                                        <h5 class="ns-team-info-title"><a
-                                                                href="{{ route('frontEnd.teamMemberDetails', [\Str::slug($team->team_member_name) . '?team=' . \Vinkla\Hashids\Facades\Hashids::encode($team->id)]) }}">{{ $team->team_member_name }}</a>
-                                                        </h5>
-                                                        <span>{{ $team->team_member_desig }}</span>
-                                                    </div>
-                                                    <div class="ns-team-item-contact px-1 text-center">
-                                                        @if ($team->team_member_phone)
-                                                            <a href="tel:{{ $team->team_member_phone }}"
-                                                                style="font-size: 13px"><i
-                                                                    class="icofont-phone"></i>{{ $team->team_member_phone }}</a>
-                                                        @endif
-                                                        @if ($team->team_member_phone)
-                                                            <a href="mailto:{{ $team->team_member_email }}"
-                                                                style="font-size: 13px"><i
-                                                                    class="icofont-envelope-open"></i>{{ $team->team_member_email }}</a>
-                                                        @endif
-                                                    </div>
-                                                </div>
-                                                <span class="ns-team-shape-1 ns-team-shape"></span>
-                                                <span class="ns-team-shape-2 ns-team-shape"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endforeach
-                            </div>
-                        </div>
-                    </div>
-                    <div class="ns-team-bottom mt-50">
-                        <div class="ns-team-pagination"></div>
+
+    <section class="py-5 bg-light my-5" >
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="ns-section mb-50 text-center">
+                        <h2 class="ns-section-title mb-0" style="font-size:25px;">{{ __('admin_local.MEMEBER OF') }}
+                        </h2>
                     </div>
                 </div>
             </div>
-        </section>
-    @endif
-    @php
-        $comments = \App\Models\Admin\Comment::where([['status', 1], ['delete', 0]])->get();
-    @endphp
-    @if (count($comments) > 0)
-        <div class="ns-testimonial-area">
-            <img class="ns-testimonial-bg d-none d-xl-block"
-                src="{{ asset('public/frontend/assets/img/testimonial/testimonial-shape.png') }}" alt="Not Found">
-            <div class="ns-testimonial-container container">
-                <div class="ns-inner-wrap">
-                    <div class="ns-testimonial-space">
-                        <div class="ns-has-space">
-                            <div class="ns-testimonial-thumb">
-                                <div class="swiper-container testimonial-thumb">
-                                    <div class="swiper-wrapper">
-                                        @foreach ($comments as $comment)
-                                            <div class="swiper-slide">
-                                                <div class="ns-testimonial-img w_img">
-                                                    <img src="{{ asset($comment->image ?? 'public/frontend/assets/img/testimonial/testimonial-1.png') }}"
-                                                        alt="Not Found">
-                                                </div>
-                                            </div>
-                                        @endforeach
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="ns-testimonial-single">
-                                <div class="ns-testimonial-wrap">
-                                    <div class="swiper-container testimonial-active">
-                                        <div class="swiper-wrapper">
-                                            @foreach ($comments as $comment)
-                                                <div class="swiper-slide">
-                                                    <div class="ns-testimonial-content">
-                                                        <img src="{{ asset('public/frontend/assets/img/testimonial/qoute.png') }}"
-                                                            alt="Not Found">
-                                                        <p>{!! $comment->comments !!}</p>
-                                                        <div class="ns-testimonial-admin">
-                                                            <h4 class="ns-testimonial-admin-title">
-                                                                {{ $comment->name }}
-                                                            </h4>
-                                                            <span>{{ $comment->designation }}</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            @endforeach
-                                        </div>
-                                        <div class="ns-testimonial-pagination mt-30"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+            <div class="row g-4 justify-content-center align-items-center">
+                <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+                    <div class="news-logo-box">
+                        <img src="{{ asset('public/frontend/assets/img/pub_dip/bbc.png') }}" class="img-fluid"
+                            alt="BBC">
+                    </div>
+                </div>
+
+                <!-- News Channel 2 -->
+                <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+                    <div class="news-logo-box">
+                        <img src="{{ asset('public/frontend/assets/img/pub_dip/cnn.png') }}" style="height: 100%"
+                            class="img-fluid" alt="CNN">
+                    </div>
+                </div>
+
+                <!-- News Channel 3 -->
+                <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+                    <div class="news-logo-box">
+                        <img src="{{ asset('public/frontend/assets/img/pub_dip/aljazeera.png') }}" style="height: 100%"
+                            class="img-fluid" alt="Al Jazeera">
                     </div>
                 </div>
             </div>
         </div>
-    @endif
-    <!-- testimonial area end -->
+    </section>
+    <section class="py-5 bg-white mb-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="ns-section mb-50 text-center">
+                        <h2 class="ns-section-title mb-0" style="font-size:25px;">
+                            {{ __('admin_local.COUNTRY REPRESENTATION') }}
+                        </h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row g-4 justify-content-center align-items-center">
+                <!-- News Channel 1 -->
+                <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+                    <div class="news-logo-box">
+                        <img src="{{ asset('public/frontend/assets/img/pub_dip/bbc.png') }}" class="img-fluid"
+                            alt="BBC">
+                    </div>
+                </div>
 
-    <!-- contact area start -->
-    @if ($contact)
+                <!-- News Channel 2 -->
+                <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+                    <div class="news-logo-box">
+                        <img src="{{ asset('public/frontend/assets/img/pub_dip/cnn.png') }}" style="height: 100%"
+                            class="img-fluid" alt="CNN">
+                    </div>
+                </div>
+
+                <!-- News Channel 3 -->
+                <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+                    <div class="news-logo-box">
+                        <img src="{{ asset('public/frontend/assets/img/pub_dip/aljazeera.png') }}" style="height: 100%"
+                            class="img-fluid" alt="Al Jazeera">
+                    </div>
+                </div>
+
+                <!-- News Channel 4 -->
+                <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+                    <div class="news-logo-box">
+                        <img src="{{ asset('public/frontend/assets/img/pub_dip/bloomberg.png') }}" style="height: 100%"
+                            class="img-fluid" alt="bloomberg">
+                    </div>
+                </div>
+
+                <!-- News Channel 5 -->
+                <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+                    <div class="news-logo-box">
+                        <img src="{{ asset('public/frontend/assets/img/pub_dip/euronews.png') }}" style="height: 100%"
+                            class="img-fluid" alt="euronews">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {{-- @if ($contact)
         <section class="pt-110 pb-115">
             <div class="container">
                 <div class="row g-5 align-items-start">
@@ -747,12 +650,6 @@
                     <div class="col-lg-6">
                         <div class="ns-section mb-35 text-center">
                             <span class="ns-section-subtitle">{{ __('admin_local.Contact Now') }}</span>
-                            {{-- <h3 class="ns-section-title mb-15">
-                                {{ __('admin_local.For Live Sports , Contacts Us') }}
-                            </h3>
-                            <p class="ns-section-text mb-4">
-                                {{ __('admin_local.Have questions or need assistance with our live sports coverage? Our team is always ready to help you with any inquiries, technical issues, or partnership opportunities. Stay connected with us to ensure you never miss a moment of your favorite live matches and sporting events.') }}
-                            </p> --}}
                         </div>
 
                         <div class="ns-contact-form">
@@ -827,6 +724,6 @@
                 </div>
             </div>
         </section>
-    @endif
+    @endif --}}
 
 @endsection
