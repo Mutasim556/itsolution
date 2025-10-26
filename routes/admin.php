@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AboutUsController;
 use App\Http\Controllers\Admin\Auth\AdminAuthController;
 use App\Http\Controllers\Admin\Auth\AdminLoginController;
+use App\Http\Controllers\Admin\BrandingController;
 use App\Http\Controllers\Admin\ContactUsController;
 use App\Http\Controllers\Admin\HomepageSettingController;
 use App\Http\Controllers\Admin\Localization\BackendLanguageController;
@@ -75,7 +76,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::get('/secret-code/delete-all', [MaintenanceModeController::class, 'destroyAll'])->name('secret-code.delete-all');
 
             /** Logo Start */
-            Route::resource('logo',LogoIconController::class)->except('create','show','store');
+            Route::resource('logo', LogoIconController::class)->except('create', 'show', 'store');
             /** Logo End */
         });
         Route::prefix('pages')->name('pages.')->group(function () {
@@ -94,12 +95,12 @@ Route::prefix('admin')->name('admin.')->group(function () {
                 Route::post('/update-aboutus', 'updateAboutus')->name('updateAboutus');
 
                 /** Comments Start*/
-                 Route::get('/comments', 'comments')->name('comments');
-                 Route::post('/comments', 'storeComments')->name('comments');
-                 Route::get('comments/update/status/{id}/{status}', 'updateCommentsStatus')->name('updateCommentsStatus');
-                 Route::get('comments/{id}/edit', 'editComments')->name('editComments');
-                 Route::put('comments/{id}', 'updateComments')->name('updateComments');
-                 Route::delete('comments/{id}', 'deleteComments')->name('deleteComments');
+                Route::get('/comments', 'comments')->name('comments');
+                Route::post('/comments', 'storeComments')->name('comments');
+                Route::get('comments/update/status/{id}/{status}', 'updateCommentsStatus')->name('updateCommentsStatus');
+                Route::get('comments/{id}/edit', 'editComments')->name('editComments');
+                Route::put('comments/{id}', 'updateComments')->name('updateComments');
+                Route::delete('comments/{id}', 'deleteComments')->name('deleteComments');
                 /** Comments End*/
 
                 /** Counting Start*/
@@ -139,6 +140,13 @@ Route::prefix('admin')->name('admin.')->group(function () {
             });
             /** Project End */
 
+            /** Branding Start */
+            // Route::resource('branding', BrandingController::class)->except('create', 'show');
+            // Route::controller(BrandingController::class)->prefix('branding')->group(function () {
+            //     Route::get('/update/status/{id}/{status}', 'updateStatus');
+            // });
+            /** Branding End */
+
             /** Partner Start */
             Route::resource('partner', PartnerController::class)->except('create', 'show');
             Route::controller(PartnerController::class)->prefix('partner')->group(function () {
@@ -153,7 +161,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::get('/update/status/{id}/{status}', 'updateStatus');
         });
 
-        Route::resource('work/updates', WorkUpdatesController::class)->except('create','index');
+        Route::resource('work/updates', WorkUpdatesController::class)->except('create', 'index');
         Route::controller(WorkUpdatesController::class)->prefix('work/updates')->group(function () {
             Route::get('/update/status/{id}/{status}', 'updateStatus');
         });

@@ -57,74 +57,96 @@
             </ul>
         </li>
     @endif
-    @if (hasPermission(['slider-index','comment-index','counter-index','aboutus-index','contact-index','service-index','project-index']))
-        <li class="sidebar-list"><a class="sidebar-link sidebar-title"
-                href="javascript:void(0)"><i data-feather="book-open"></i><span> {{ __('admin_local.Pages') }}</span></a>
+    @if (hasPermission([
+            'slider-index',
+            'comment-index',
+            'counter-index',
+            'aboutus-index',
+            'contact-index',
+            'service-index',
+            'project-index',
+        ]))
+        <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="javascript:void(0)"><i
+                    data-feather="book-open"></i><span> {{ __('admin_local.Pages') }}</span></a>
             <ul class="sidebar-submenu">
-                @if (hasPermission(['slider-index','comment-index']))
-                <li>
-                    <a class="submenu-title" href="javascript:void(0)" style="margin-bottom:5px;">{{ __('admin_local.Home') }}<span class="sub-arrow"><i
-                                class="fa fa-angle-right"></i></span></a>
+                @if (hasPermission(['slider-index', 'comment-index']))
+                    <li>
+                        <a class="submenu-title" href="javascript:void(0)"
+                            style="margin-bottom:5px;">{{ __('admin_local.Home') }}<span class="sub-arrow"><i
+                                    class="fa fa-angle-right"></i></span></a>
 
-                    <ul class="nav-sub-childmenu submenu-content">
-                        @if (hasPermission(['slider-index']))
-                        <li><a href="{{ route('admin.pages.homepage.main_slider') }}">{{ __('admin_local.Slider') }}</a></li>
-                        @endif
-                        @if (hasPermission(['comment-index']))
-                        <li><a href="{{ route('admin.pages.homepage.comments') }}">{{ __('admin_local.Comments') }}</a></li>
-                        @endif
-                        @if (hasPermission(['counter-index']))
-                        <li><a href="{{ route('admin.pages.homepage.counting') }}">{{ __('admin_local.Counting') }}</a></li>
-                        @endif
-                    </ul>
-                </li>
+                        <ul class="nav-sub-childmenu submenu-content">
+                            @if (hasPermission(['slider-index']))
+                                <li><a
+                                        href="{{ route('admin.pages.homepage.main_slider') }}">{{ __('admin_local.Slider') }}</a>
+                                </li>
+                            @endif
+                            @if (hasPermission(['comment-index']))
+                                <li><a
+                                        href="{{ route('admin.pages.homepage.comments') }}">{{ __('admin_local.Comments') }}</a>
+                                </li>
+                            @endif
+                            @if (hasPermission(['counter-index']))
+                                <li><a
+                                        href="{{ route('admin.pages.homepage.counting') }}">{{ __('admin_local.Counting') }}</a>
+                                </li>
+                            @endif
+                        </ul>
+                    </li>
                 @endif
-                 @if (hasPermission(['aboutus-index']))
-                <li>
-                    <a class="sidebar-link" href="{{ route('admin.pages.aboutUs') }}" style="margin-bottom:5px;">{{ __('admin_local.About Us') }}</a>
-                </li>
+                @if (hasPermission(['aboutus-index']))
+                    <li>
+                        <a class="sidebar-link" href="{{ route('admin.pages.aboutUs') }}"
+                            style="margin-bottom:5px;">{{ __('admin_local.About Us') }}</a>
+                    </li>
                 @endif
-                 @if (hasPermission(['contact-index']))
-                 <li>
-                    <a class="sidebar-link" href="{{ route('admin.pages.contactUs') }}">{{ __('admin_local.Contact') }}</a>
-                </li>
+                @if (hasPermission(['contact-index']))
+                    <li>
+                        <a class="sidebar-link"
+                            href="{{ route('admin.pages.contactUs') }}">{{ __('admin_local.Contact') }}</a>
+                    </li>
                 @endif
                 @if (hasPermission(['service-index']))
-                <li>
-                    <a class="sidebar-link" href="{{ route('admin.pages.service.index') }}">{{ __('admin_local.Services') }}</a>
-                </li>
+                    <li>
+                        <a class="sidebar-link"
+                            href="{{ route('admin.pages.service.index') }}">{{ __('admin_local.Capabilities') }}</a>
+                    </li>
                 @endif
-                 @if (hasPermission(['service-index']))
-                <li>
-                    <a class="sidebar-link" href="{{ route('admin.pages.team.index') }}">{{ __('admin_local.Team Members') }}</a>
-                </li>
+                @if (hasPermission(['service-index']))
+                    <li>
+                        <a class="sidebar-link"
+                            href="{{ route('admin.pages.team.index') }}">{{ __('admin_local.Team Members') }}</a>
+                    </li>
                 @endif
                 @if (hasPermission(['project-index']))
-                <li>
-                    <a class="sidebar-link" href="{{ route('admin.pages.project.index') }}">{{ __('admin_local.Projects') }}</a>
-                </li>
+                    <li>
+                        <a class="sidebar-link"
+                            href="{{ route('admin.pages.project.index') }}">{{ __('admin_local.Projects') }}</a>
+                    </li>
                 @endif
                 @if (hasPermission(['partner-index']))
-                <li>
-                    <a class="sidebar-link" href="{{ route('admin.pages.partner.index') }}">{{ __('admin_local.Partner') }}</a>
-                </li>
+                    <li>
+                        <a class="sidebar-link"
+                            href="{{ route('admin.pages.partner.index') }}">{{ __('admin_local.Brands') }}</a>
+                    </li>
                 @endif
                 @if (hasPermission(['message-index']))
-                <li>
-                    <a class="sidebar-link" href="{{ route('admin.pages.contactUsMessages') }}">{{ __('admin_local.Messages') }}</a>
-                </li>
+                    <li>
+                        <a class="sidebar-link"
+                            href="{{ route('admin.pages.contactUsMessages') }}">{{ __('admin_local.Messages') }}</a>
+                    </li>
                 @endif
             </ul>
         </li>
     @endif
     @if (hasPermission(['work-index']))
-    <li class="sidebar-list">
-        <a class="sidebar-link sidebar-title link-nav" href="{{ route('admin.work.index') }}" aria-expanded="false"><i
-                data-feather="bookmark"></i><span> {{ __('admin_local.Works') }}</span>
-        </a>
-    </li>
+        <li class="sidebar-list">
+            <a class="sidebar-link sidebar-title link-nav" href="{{ route('admin.work.index') }}"
+                aria-expanded="false"><i data-feather="bookmark"></i><span> {{ __('admin_local.Works') }}</span>
+            </a>
+        </li>
     @endif
-    @if (hasPermission(['maintenance-mode-index','logo-index']))
+    @if (hasPermission(['maintenance-mode-index', 'logo-index']))
         <li class="sidebar-list">
             <a class="sidebar-link sidebar-title" href="javascript:void(0)" aria-expanded="false">
                 <i data-feather="settings"></i>

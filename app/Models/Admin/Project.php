@@ -11,10 +11,10 @@ class Project extends Model
     {
         return $this->morphMany(Translation::class, 'translationable');
     }
-    public function getProjectNameAttribute($value){
+    public function getTitleAttribute($value){
         if (count($this->translations) > 0) {
             foreach ($this->translations as $translation) {
-                if ($translation['key'] == 'project_name') {
+                if ($translation['key'] == 'title') {
                     return $translation['value'];
                 }
             }
@@ -23,46 +23,11 @@ class Project extends Model
         return $value;
     }
 
-    public function getProjectCategoryAttribute($value){
+   
+    public function getDetailsAttribute($value){
         if (count($this->translations) > 0) {
             foreach ($this->translations as $translation) {
-                if ($translation['key'] == 'project_category') {
-                    return $translation['value'];
-                }
-            }
-        }
-
-        return $value;
-    }
-
-    public function getProjectQuotesAttribute($value){
-        if (count($this->translations) > 0) {
-            foreach ($this->translations as $translation) {
-                if ($translation['key'] == 'project_quotes') {
-                    return $translation['value'];
-                }
-            }
-        }
-
-        return $value;
-    }
-
-    public function getProjectPointsAttribute($value){
-        if (count($this->translations) > 0) {
-            foreach ($this->translations as $translation) {
-                if ($translation['key'] == 'project_points') {
-                    return $translation['value'];
-                }
-            }
-        }
-
-        return $value;
-    }
-
-    public function getProjectDetailsAttribute($value){
-        if (count($this->translations) > 0) {
-            foreach ($this->translations as $translation) {
-                if ($translation['key'] == 'project_details') {
+                if ($translation['key'] == 'details') {
                     return $translation['value'];
                 }
             }

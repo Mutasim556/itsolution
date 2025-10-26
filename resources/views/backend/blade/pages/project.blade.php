@@ -82,44 +82,11 @@
                                      <div class="tab-pane fade show active" id="pills-defaultLang" role="tabpanel"
                                          aria-labelledby="pills-defaultLang-tab">
                                          <div class="form-group">
-                                             <label for="">{{ __('admin_local.Project Name') }} (
+                                             <label for="">{{ __('admin_local.Project Title') }} (
                                                  {{ __('admin_local.Default') }} ) *</label>
-                                             <input type="text" class="form-control" name="project_name"
-                                                 id="project_name">
-                                             <span class="text-danger err-mgs" id="project_name_err"></span>
-                                         </div>
-
-                                         <div class="form-group">
-                                             <label for="">{{ __('admin_local.Project Category') }} (
-                                                 {{ __('admin_local.Default') }} ) *</label>
-                                             <input type="text" class="form-control" name="project_category"
-                                                 id="project_category">
-                                             <span class="text-danger err-mgs" id="project_category_err"></span>
-                                         </div>
-
-                                         <div class="form-group">
-                                             <label for="">{{ __('admin_local.Project Quotes') }} (
-                                                 {{ __('admin_local.Default') }} )</label>
-                                             <input type="text" class="form-control" name="project_quotes"
-                                                 id="project_quotes">
-                                             <span class="text-danger err-mgs" id="project_quotes_err"></span>
-                                         </div>
-                                         <div class="row">
-                                             <div class="form-group col-md-10">
-                                                 <label for="">{{ __('admin_local.Project Points') }} (
-                                                     {{ __('admin_local.Default') }} )</label>
-                                                 <input type="text" class="form-control" name="project_points[]"
-                                                     id="project_points">
-                                                 <span class="text-danger err-mgs" id="project_points_err"></span>
-                                             </div>
-                                             <div class="form-group col-md-2">
-                                                 <label for=""> &nbsp;</label><br>
-                                                 <button style="float:right" type="button" id="add_more_point_btn"
-                                                     class="btn btn-success">+</button>
-                                             </div>
-                                         </div>
-                                         <div>
-
+                                             <input type="text" class="form-control" name="project_title"
+                                                 id="project_title">
+                                             <span class="text-danger err-mgs" id="project_title_err"></span>
                                          </div>
                                          <div class="form-group">
                                              <label for="">{{ __('admin_local.Project Details') }} (
@@ -138,43 +105,11 @@
                                          <div class="tab-pane fade" id="pills-{{ $lang->name }}" role="tabpanel"
                                              aria-labelledby="pills-{{ $lang->name }}-tab">
                                              <div class="form-group">
-                                                 <label for="">{{ __('admin_local.Project Name') }} (
+                                                 <label for="">{{ __('admin_local.Project Title') }} (
                                                      {{ $lang->name }} )</label>
                                                  <input type="text" class="form-control"
-                                                     name="project_name_{{ $lang->lang }}"
-                                                     id="project_name_{{ $lang->lang }}">
-                                             </div>
-                                             <div class="form-group">
-                                                 <label for="">{{ __('admin_local.Project Category') }} (
-                                                     {{ $lang->name }} ) </label>
-                                                 <input type="text" class="form-control"
-                                                     name="project_category_{{ $lang->lang }}"
-                                                     id="project_category_{{ $lang->lang }}">
-                                             </div>
-                                             <div class="form-group">
-                                                 <label for="">{{ __('admin_local.Project Quotes') }} (
-                                                     {{ $lang->name }} ) </label>
-                                                 <input type="text" class="form-control"
-                                                     name="project_quotes_{{ $lang->lang }}"
-                                                     id="project_quotes_{{ $lang->lang }}">
-                                             </div>
-                                             <div class="row">
-                                                 <div class="form-group col-md-10">
-                                                     <label for="">{{ __('admin_local.Project Points') }} (
-                                                         {{ $lang->name }} ) *</label>
-                                                     <input type="text" class="form-control"
-                                                         name="project_points_{{ $lang->lang }}[]" id="project_points">
-                                                     <span class="text-danger err-mgs" id="project_points_err"></span>
-                                                 </div>
-                                                 <div class="form-group col-md-2">
-                                                     <label for="">&nbsp;
-                                                     </label><br>
-                                                     <button type="button" style="float:right" data-lang_name='{{ $lang->name }}' data-lang='{{ $lang->lang }}'
-                                                         id="add_more_point_btn2" class="btn btn-success">+</button>
-                                                 </div>
-                                             </div>
-                                             <div>
-
+                                                     name="project_title_{{ $lang->lang }}"
+                                                     id="project_title_{{ $lang->lang }}">
                                              </div>
                                              <div class="form-group">
                                                  <label for="">{{ __('admin_local.Project Details') }} (
@@ -190,36 +125,35 @@
                              <div class="col-sm-12 col-xl-6">
                                  <div class="row">
                                      <div class="form-group col-md-12">
-                                         <label for="">{{ __('admin_local.Project Image') }} (399X529)
-                                             *</label>
-                                         <input type="file" class="form-control" name="project_image"
-                                             id="project_image" accept="image/*"
-                                             onchange="document.getElementById('prev_project_image').src = window.URL.createObjectURL(this.files[0])">
-                                         <span class="text-danger err-mgs" id="project_image_err"></span>
-                                     </div>
-                                     <div class="form-group col-md-12">
-                                         <label for="">{{ __('admin_local.Preview project Icon') }}
-                                             *</label><br>
-                                         <img src="" id="prev_project_image" alt="" height="529px"
-                                             width="100%">
+                                         <label for="">{{ __('admin_local.Video Link') }}</label>
+                                         <input type="text" class="form-control" name="video_link" id="video_link">
+                                         <span class="text-danger err-mgs" id="project_type_err"></span>
                                      </div>
                                  </div>
                              </div>
                              <div class="col-sm-12 col-xl-6">
                                  <div class="row">
                                      <div class="form-group col-md-12">
-                                         <label for="">{{ __('admin_local.Project Image') }} 2 (770X435)
+                                         <label for="">{{ __('admin_local.Project Type') }}
                                              *</label>
-                                         <input type="file" class="form-control" name="project_image_2"
-                                             id="project_image_2" accept="image/*"
-                                             onchange="document.getElementById('prev_project_image_2').src = window.URL.createObjectURL(this.files[0])">
-                                         <span class="text-danger err-mgs" id="project_image_2_err"></span>
+                                         <select class="form-control" name="project_type" id="project_type">
+                                             <option value="Branding">Branding</option>
+                                             <option value="Campaign">Campaign</option>
+                                             <option value="Tech">Tech</option>
+                                             <option value="Event">Event</option>
+                                         </select>
+                                         <span class="text-danger err-mgs" id="project_type_err"></span>
                                      </div>
+                                 </div>
+                             </div>
+                             <div class="col-sm-12 col-xl-6">
+                                 <div class="row">
                                      <div class="form-group col-md-12">
-                                         <label for="">{{ __('admin_local.Preview project Icon') }}
-                                             *</label><br>
-                                         <img src="" id="prev_project_image_2" alt="" height="435px"
-                                             width="100%">
+                                         <label for="">{{ __('admin_local.Project Images') }} ( 400X300 )
+                                             *</label>
+                                         <input type="file" class="form-control" name="project_images[]" multiple
+                                             id="project_images" accept="image/*">
+                                         <span class="text-danger err-mgs" id="project_images_err"></span>
                                      </div>
                                  </div>
                              </div>
@@ -291,44 +225,11 @@
                                      <div class="tab-pane fade show active" id="epills-defaultLang" role="tabpanel"
                                          aria-labelledby="epills-defaultLang-tab">
                                          <div class="form-group">
-                                             <label for="">{{ __('admin_local.Project Name') }} (
+                                             <label for="">{{ __('admin_local.Project Title') }} (
                                                  {{ __('admin_local.Default') }} ) *</label>
-                                             <input type="text" class="form-control" name="project_name"
-                                                 id="project_name">
-                                             <span class="text-danger err-mgs" id="project_name_err"></span>
-                                         </div>
-
-                                         <div class="form-group">
-                                             <label for="">{{ __('admin_local.Project Category') }} (
-                                                 {{ __('admin_local.Default') }} ) *</label>
-                                             <input type="text" class="form-control" name="project_category"
-                                                 id="project_category">
-                                             <span class="text-danger err-mgs" id="project_category_err"></span>
-                                         </div>
-
-                                         <div class="form-group">
-                                             <label for="">{{ __('admin_local.Project Quotes') }} (
-                                                 {{ __('admin_local.Default') }} )</label>
-                                             <input type="text" class="form-control" name="project_quotes"
-                                                 id="project_quotes">
-                                             <span class="text-danger err-mgs" id="project_quotes_err"></span>
-                                         </div>
-                                         <div class="row">
-                                             <div class="form-group col-md-10">
-                                                 <label for="">{{ __('admin_local.Project Points') }} (
-                                                     {{ __('admin_local.Default') }} )</label>
-                                                 <input type="text" class="form-control" name="project_points[]"
-                                                     id="project_points">
-                                                 <span class="text-danger err-mgs" id="project_points_err"></span>
-                                             </div>
-                                             <div class="form-group col-md-2">
-                                                 <label for=""> &nbsp;</label><br>
-                                                 <button style="float:right" type="button" id="add_more_point_btn"
-                                                     class="btn btn-success">+</button>
-                                             </div>
-                                         </div>
-                                         <div>
-
+                                             <input type="text" class="form-control" name="project_title"
+                                                 id="project_title">
+                                             <span class="text-danger err-mgs" id="project_title_err"></span>
                                          </div>
                                          <div class="form-group">
                                              <label for="">{{ __('admin_local.Project Details') }} (
@@ -347,48 +248,17 @@
                                          <div class="tab-pane fade" id="epills-{{ $lang->name }}" role="tabpanel"
                                              aria-labelledby="epills-{{ $lang->name }}-tab">
                                              <div class="form-group">
-                                                 <label for="">{{ __('admin_local.Project Name') }} (
+                                                 <label for="">{{ __('admin_local.Project Title') }} (
                                                      {{ $lang->name }} )</label>
                                                  <input type="text" class="form-control"
-                                                     name="project_name_{{ $lang->lang }}"
-                                                     id="project_name_{{ $lang->lang }}">
-                                             </div>
-                                             <div class="form-group">
-                                                 <label for="">{{ __('admin_local.Project Category') }} (
-                                                     {{ $lang->name }} ) </label>
-                                                 <input type="text" class="form-control"
-                                                     name="project_category_{{ $lang->lang }}"
-                                                     id="project_category_{{ $lang->lang }}">
-                                             </div>
-                                             <div class="form-group">
-                                                 <label for="">{{ __('admin_local.Project Quotes') }} (
-                                                     {{ $lang->name }} ) </label>
-                                                 <input type="text" class="form-control"
-                                                     name="project_quotes_{{ $lang->lang }}"
-                                                     id="project_quotes_{{ $lang->lang }}">
-                                             </div>
-                                             <div class="row">
-                                                 <div class="form-group col-md-10">
-                                                     <label for="">{{ __('admin_local.Project Points') }} (
-                                                         {{ $lang->name }} ) *</label>
-                                                     <input type="text" class="form-control"
-                                                         name="project_points_{{ $lang->lang }}[]" id="project_points_{{ $lang->lang }}">
-                                                     <span class="text-danger err-mgs" id="project_points_err"></span>
-                                                 </div>
-                                                 <div class="form-group col-md-2">
-                                                     <label for="">&nbsp;
-                                                     </label><br>
-                                                     <button type="button" style="float:right" data-lang_name='{{ $lang->name }}' data-lang='{{ $lang->lang }}'
-                                                         id="add_more_point_btn3" class="btn btn-success">+</button>
-                                                 </div>
-                                             </div>
-                                             <div id="append_lang_points_{{ $lang->lang }}">
-
+                                                     name="project_title_{{ $lang->lang }}"
+                                                     id="project_title_{{ $lang->lang }}">
                                              </div>
                                              <div class="form-group">
                                                  <label for="">{{ __('admin_local.Project Details') }} (
                                                      {{ $lang->name }} ) </label>
-                                                 <textarea class="form-control" name="project_details_{{ $lang->lang }}" id="project_details2_{{ $lang->lang }}"></textarea>
+                                                 <textarea class="form-control" name="project_details_{{ $lang->lang }}"
+                                                     id="project_details2_{{ $lang->lang }}"></textarea>
                                              </div>
                                          </div>
                                      @endforeach
@@ -399,36 +269,35 @@
                              <div class="col-sm-12 col-xl-6">
                                  <div class="row">
                                      <div class="form-group col-md-12">
-                                         <label for="">{{ __('admin_local.Project Image') }} (399X529)
-                                             *</label>
-                                         <input type="file" class="form-control" name="project_image"
-                                             id="project_image" accept="image/*"
-                                             onchange="document.getElementById('eprev_project_image').src = window.URL.createObjectURL(this.files[0])">
-                                         <span class="text-danger err-mgs" id="project_image_err"></span>
-                                     </div>
-                                     <div class="form-group col-md-12">
-                                         <label for="">{{ __('admin_local.Preview project Icon') }}
-                                             *</label><br>
-                                         <img src="" id="eprev_project_image" alt="" height="529px"
-                                             width="100%">
+                                         <label for="">{{ __('admin_local.Video Link') }}</label>
+                                         <input type="text" class="form-control" name="video_link" id="video_link">
+                                         <span class="text-danger err-mgs" id="project_type_err"></span>
                                      </div>
                                  </div>
                              </div>
                              <div class="col-sm-12 col-xl-6">
                                  <div class="row">
                                      <div class="form-group col-md-12">
-                                         <label for="">{{ __('admin_local.Project Image') }} 2 (770X435)
+                                         <label for="">{{ __('admin_local.Project Type') }}
                                              *</label>
-                                         <input type="file" class="form-control" name="project_image_2"
-                                             id="project_image_2" accept="image/*"
-                                             onchange="document.getElementById('eprev_project_image_2').src = window.URL.createObjectURL(this.files[0])">
-                                         <span class="text-danger err-mgs" id="project_image_2_err"></span>
+                                         <select class="form-control" name="project_type" id="project_type">
+                                             <option value="Branding">Branding</option>
+                                             <option value="Campaign">Campaign</option>
+                                             <option value="Tech">Tech</option>
+                                             <option value="Event">Event</option>
+                                         </select>
+                                         <span class="text-danger err-mgs" id="project_type_err"></span>
                                      </div>
+                                 </div>
+                             </div>
+                             <div class="col-sm-12 col-xl-6">
+                                 <div class="row">
                                      <div class="form-group col-md-12">
-                                         <label for="">{{ __('admin_local.Preview project Icon') }}
-                                             *</label><br>
-                                         <img src="" id="eprev_project_image_2" alt="" height="435px"
-                                             width="100%">
+                                         <label for="">{{ __('admin_local.Project Images') }} ( 400X300 )
+                                             *</label>
+                                         <input type="file" class="form-control" name="project_images[]" multiple
+                                             id="project_images" accept="image/*">
+                                         <span class="text-danger err-mgs" id="project_images_err"></span>
                                      </div>
                                  </div>
                              </div>
@@ -479,11 +348,10 @@
                              <table id="basic-1" class="display table-bordered">
                                  <thead>
                                      <tr>
-                                         <th>{{ __('admin_local.Image') }}</th>
-                                         <th>{{ __('admin_local.Name') }}</th>
-                                         <th>{{ __('admin_local.Category') }}</th>
-                                         <th>{{ __('admin_local.Quotes') }}</th>
-                                         <th>{{ __('admin_local.Points') }}</th>
+                                         <th>{{ __('admin_local.Images') }}</th>
+                                         <th>{{ __('admin_local.Title') }}</th>
+                                         <th>{{ __('admin_local.Details') }}</th>
+                                         <th>{{ __('admin_local.Type') }}</th>
                                          <th>{{ __('admin_local.Status') }}</th>
                                          <th>{{ __('admin_local.Action') }}</th>
                                      </tr>
@@ -492,31 +360,21 @@
                                      @foreach ($projects as $project)
                                          <tr id="trid-{{ $project->id }}" data-id="{{ $project->id }}">
                                              <td>
-                                                 @if ($project->project_images)
-                                                 @php
-                                                     $pImages = json_decode($project->project_images)
-                                                 @endphp
-                                                     <img height="50px" src="{{ asset($pImages[0]) }}"
-                                                         alt="">
+                                                 @if ($project->images)
+                                                     @php
+                                                         $pImages = json_decode($project->images);
+                                                     @endphp
+                                                     @foreach ($pImages as $pImage)
+                                                         <img height="50px" style="border: 1px solid black"
+                                                             src="{{ asset($pImage) }}" alt="">
+                                                     @endforeach
                                                  @else
                                                      {{ __('admin_local.No File') }}
                                                  @endif
                                              </td>
-                                             <td>{{ $project->project_name }}</td>
-                                             <td>{{ $project->project_category }}</td>
-                                             <td>{{ $project->project_quotes }}</td>
-                                             <td>
-                                                <ul>
-                                                 @php
-                                                     $points = $project->project_points
-                                                         ? json_decode($project->project_points)
-                                                         : '';
-                                                     foreach ($points as $key => $point) {
-                                                         echo "<li>".($key+1).". ".$point."</li>";
-                                                     }
-                                                 @endphp
-                                                 </ul>
-                                             </td>
+                                             <td>{{ $project->title }}</td>
+                                             <td>{{ \Illuminate\Support\Str::limit(strip_tags($project->details), 50) }}</td>
+                                             <td>{{ $project->type }}</td>
 
 
                                              <td class="text-center">

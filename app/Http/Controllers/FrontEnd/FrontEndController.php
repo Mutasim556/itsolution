@@ -38,6 +38,10 @@ class FrontEndController extends Controller
     }
 
     public function projects(){
+        if(request()->has('type')){
+            $projects = Project::where([['status',1],['delete',0],['type',request()->get('type')]])->get();
+            return view('frontend.pages.projectsbytype',compact('projects'));
+        }
         return view('frontend.pages.projects');
     }
 
@@ -46,7 +50,8 @@ class FrontEndController extends Controller
         $projectId = Hashids::decode(request()->get('project'))?Hashids::decode(request()->get('project'))[0]:'';
         $projectSlug = explode('?',$slug)[0];
         $project = Project::where([['id',$projectId],['status',1],['delete',0]])->first();
-        if($project && $projectId && \Str::slug($project->project_name)==$projectSlug){
+        // dd($projectSlug);
+        if($project && $projectId && \Str::slug($project->title)==$projectSlug){
             return view('frontend.pages.subpages.project_details',compact('project'));
         }else{
             return response()->view('errors.frontend.404', ['message'=>__('admin_local.We are not able to find this project.Please select our projects from the menu.')], 404);

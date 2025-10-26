@@ -58,7 +58,7 @@ class ServiceController extends Controller
             $imageName = 'service'.time().'.'.$image->getClientOriginalExtension();
             $manager = new ImageManager(new Driver());
             $imageName  =  $dir . '/' . $imageName;
-            $manager->read($image)->resize(370,267)->save($imageName);
+            $manager->read($image)->resize(370,267)->save($imageName,100);
             $service->service_image = $imageName;
         }
 
@@ -171,7 +171,7 @@ class ServiceController extends Controller
             $imageName = 'service'.time().'.'.$image->getClientOriginalExtension();
             $manager = new ImageManager(new Driver());
             $imageName  =  $dir . '/' . $imageName;
-            $manager->read($image)->resize(370,267)->save($imageName);
+            $manager->read($image)->resize(370,267)->save($imageName,100);
             $service->service_image = $imageName;
         }
 

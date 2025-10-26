@@ -8,167 +8,152 @@
             height: 150px !important;
             width: 180px !important;
         }
+
+        img.img-fluid {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        img.img-fluid:hover {
+            transform: scale(1.05);
+        }
+
+        .breadcrumb-section {
+            min-height: 250px;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .fw-bold {
+            color: #fff
+        }
+
+        .breadcrumb-section h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .breadcrumb-section .breadcrumb {
+            background: transparent;
+            padding: 0;
+            margin-bottom: 0;
+        }
+
+        .breadcrumb-section .breadcrumb a {
+            color: #ffab17;
+            /* accent color */
+            text-decoration: none;
+        }
+
+        .breadcrumb-section .breadcrumb-item.active {
+            color: #fff;
+        }
+
+        #p_details ul {
+            list-style: square !important;
+            margin-left: 20px !important;
+        }
+
+        #p_details table {
+            border-collapse: collapse !important;
+            font-family: Arial, sans-serif !important;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;
+        }
+
+        #p_details tbody {
+            background-color: #ffab17 !important;
+            color: #fff !important;
+        }
+
+        #p_details th,
+        #p_details td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        #p_details tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        #p_details tbody tr {
+            color: #343a40
+        }
+
+        #p_details tbody tr:hover {
+            /* background-color: #ffe0a3; */
+            /* hover effect */
+        }
+
+        #p_details th:first-child,
+        #p_details td:first-child {
+            text-align: center;
+        }
+
+        .project-image {
+            width: 400px;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+        }
+    </style>
+
     </style>
 @endpush
 @section('content')
-    <main>
-        <div class="ns-project-details-area pt-115 pb-70">
-            <div class="container">
-                <div class="row">
-
-                    {{-- <div class="col-xl-5 col-lg-5">
-                        @php
-                            $projects = \App\Models\Admin\Project::where([
-                                ['status', 1],
-                                ['delete', 0],
-                                // ['id', '!=', $project->id],
-                            ])
-                                ->orderBy('id', 'desc')
-                                ->limit(5)
-                                ->get();
-                        @endphp
-                        @if (count($projects) > 0)
-                            <div class="ns-project-details-tab pb-15 pt-10" style="border: 1px solid lightgrey">
-                                <u>
-                                    <h4 class="text-center">{{ __('admin_local.Other Projects') }}</h4>
-                                </u>
-                                <ul>
-
-                                    @foreach ($projects as $value)
-                                        <li><a style="font-size: 18px"
-                                                href="#"><span></span>{{ $value->project_name }}</a>
-                                        </li>
-                                    @endforeach
-
-                                </ul>
-                            </div>
-                        @endif
-                    </div> --}}
-
-                    <div class="col-12">
-                        <u>
-                            <h3 class="text-center">{{ $project->project_name }}</h3>
-                        </u>
-                    </div>
-                    <div class="col-8">
-                        <p class="ns-project-details-text">{!! $project->project_details !!}</p>
-                    </div>
-                    <div class="col-xl-4 col-lg-4">
-                        <div class="ns-project-details-img pb-50">
-                            @php
-                                $projectImages = json_decode($project->project_images);
-                            @endphp
-                            <img style="float:right"
-                                src="{{ asset($projectImages[0] ?? 'assets/img/project/project-details-1.jpg') }}"
-                                alt="">
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-xl-4 col-lg-5 col-md-5">
-                        <div class="ns-project-details-img-2 w_img mb-40">
-                            <img src="{{ asset($projectImages[1] ?? 'assets/img/project/project-details-1.jpg') }}"
-                                alt="">
-                        </div>
-                    </div>
-                    <div class="col-xl-8 col-lg-7 col-md-7">
-                        <div class="ns-project-details-content mb-40">
-                            {{-- <p class="ns-project-details-content-text">In job gives you handcrafted options such as front
-                                adm in psum, you need to be sure
-                                the middle of text. All the Lorem Ipsum generators on the Internet tend to
-                                repeat looking at its layout.</p> --}}
-                            <blockquote class="ns-project-details-quote mt-3" style="max-width: 100%">
-                                <i class="icofont-quote-left"></i>
-                                <p>{{ $project->project_quotes }}</p>
-                            </blockquote>
-                            @php
-                                $projectPoints = json_decode($project->project_points);
-                            @endphp
-                            @if (count($projectPoints) > 0)
-                                <div class="ns-project-details-list">
-                                    <ul>
-
-                                        @foreach ($projectPoints as $projectPoint)
-                                            <li><i class="icofont-tick-boxed"></i>{{ $projectPoint }}</li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                            @endif
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <section class="breadcrumb-section text-white d-flex align-items-center"
+        style="background-color: #343a40; min-height: 250px;">
+        <div class="container text-center">
+            <h1 class="fw-bold mb-2">{{ $project->title ?? 'Project Title' }}</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb justify-content-center bg-transparent mb-0">
+                    <li class="breadcrumb-item active text-white" aria-current="page">
+                        {{ $project->type ?? 'Project Type' }}</li>
+                </ol>
+            </nav>
         </div>
-        @php
-            $counting = \App\Models\Admin\Counting::first();
-        @endphp
-        @if ($counting)
-            <div class="ns-counter-area pt-10 pb-85">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="ns-section mb-50 text-center">
-                                <span class="ns-section-subtitle">{{ __('admin_local.What we do?') }}</span>
-                                <h2 class="ns-section-title mb-0">{{ __('admin_local.This is the numbers , that we have done') }}</h2>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row justify-content-center">
-                        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
-                            <div class="ns-counter-item mb-65">
-                                <div class="ns-counter-item-content">
-                                    <h2 class="ns-counter-title"><span class="odometer counter_count"
-                                            data-count="{{ $counting->counting1_value }}">00</span><span
-                                            class="ns-counter-plus">+</span></h2>
-                                    <span class="ns-counter-subtitle">{{ $counting->counting1_name }}</span>
-                                    <div class="ns-counter-icon">
-                                        <i class="icofont-life-ring"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
-                            <div class="ns-counter-item mb-65">
-                                <div class="ns-counter-item-content">
-                                    <h2 class="ns-counter-title"><span class="odometer counter_count"
-                                            data-count="{{ $counting->counting2_value }}">00</span><span
-                                            class="ns-counter-plus">+</span></h2>
-                                    <span class="ns-counter-subtitle">{{ $counting->counting2_name }}</span>
-                                    <div class="ns-counter-icon">
-                                        <i class="icofont-site-map"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
-                            <div class="ns-counter-item mb-65">
-                                <div class="ns-counter-item-content">
-                                    <h2 class="ns-counter-title"><span class="odometer counter_count"
-                                            data-count="{{ $counting->counting3_value }}">00</span><span
-                                            class="ns-counter-plus">+</span></h2>
-                                    <span class="ns-counter-subtitle">{{ $counting->counting3_name }}</span>
-                                    <div class="ns-counter-icon">
-                                        <i class="icofont-institution"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
-                            <div class="ns-counter-item mb-65">
-                                <div class="ns-counter-item-content">
-                                    <h2 class="ns-counter-title"><span class="odometer counter_count"
-                                            data-count="{{ $counting->counting4_value }}">00</span><span
-                                            class="ns-counter-plus">+</span></h2>
-                                    <span class="ns-counter-subtitle">{{ $counting->counting4_name }}</span>
-                                    <div class="ns-counter-icon">
-                                        <i class="icofont-live-support"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+    </section>
+
+
+    <section class="py-3 bg-light">
+        <div class="container">
+            <div class="mb-4" id="p_details">
+                <div id="p_details" class="ck-content">
+                    <div class="table-responsive">
+                        {!! $project->details !!}
                     </div>
                 </div>
+
             </div>
-        @endif
-    </main>
+            <div class="row g-3 my-5 ">
+                @php
+                    $pImages = json_decode($project->images, true);
+                @endphp
+
+                @if (!empty($pImages))
+                    @foreach ($pImages as $image)
+                        <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
+                            <img src="{{ asset($image) }}" class="project-image rounded" alt="Project Image">
+                        </div>
+                    @endforeach
+                @endif
+            </div>
+
+            <!-- YouTube Video -->
+            @if (!empty($project->video_link))
+                <div class="ratio ratio-16x9 mb-5">
+                        {!! $project->video_link !!}
+                </div>
+            @endif
+
+        </div>
+    </section>
+
 @endsection

@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="{{ asset('public/frontend/assets/css/meanmenu.css') }}">
     <link rel="stylesheet" href="{{ asset('public/frontend/assets/css/swipper.css') }}">
     <link rel="stylesheet" href="{{ asset('public/frontend/assets/css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/frontend/assets/css/style.css') }}">
 
     <style>
         .ns-slide-pagination {
@@ -280,25 +281,7 @@
         </div>
 
         <div class="sidebar-contact-wrapper mt-40">
-            {{-- @php
-                $contact = \App\Models\Admin\Contact::first();
-            @endphp
-            <div class="sidebar-contact mb-40">
-                <h4 class="sidebar-contact-title">{{ __('admin_local.Contact Info') }}</h4>
-                @if ($contact && $contact->address)
-                    <span class="sidebar-address"><i class="fal fa-map-marker-alt"></i><span>
-                            {{ $contact->address }}
-                        </span> </span>
-                @endif
-                @if ($contact && $contact->phone)
-                    <a href="tel:{{ $contact->phone }}"><i
-                            class="fal fa-phone"></i><span>{{ $contact->phone }}</span></a>
-                @endif
-                @if ($contact && $contact->email)
-                    <a href="mailto:{{ $contact->email }}" class="theme-3"><i
-                            class="fal fa-envelope"></i><span><span>{{ $contact->email }}</span></span></a>
-                @endif --}}
-            </div>
+
         </div>
     </div>
     <div class="offcanvas-overlay"></div>
@@ -329,8 +312,15 @@
                                     <li><a
                                             href="{{ route('frontEnd.projects') }}">{{ __('admin_local.Innovation and Tech') }}</a>
                                     </li>
-                                    <li><a
-                                            href="{{ route('frontEnd.teamMembers') }}">{{ __('admin_local.Projects') }}</a>
+                                    <li class="menu-has-child">
+                                        <a href="{{ route('frontEnd.projects') }}"
+                                            class="">{{ __('admin_local.Projects') }}</a>
+                                        <ul class="submenu">
+                                            <li><a href="{{ route('frontEnd.projects')."?type=Branding" }}">{{ __('admin_local.Branding') }}</a></li>
+                                            <li><a href="{{ route('frontEnd.projects')."?type=Campaign" }}">{{ __('admin_local.Campaign') }}</a></li>
+                                            <li><a href="{{ route('frontEnd.projects')."?type=Tech" }}">{{ __('admin_local.Tech') }}</a></li>
+                                            <li><a href="{{ route('frontEnd.projects')."?type=Event" }}">{{ __('admin_local.Event') }}</a></li>
+                                        </ul>
                                     </li>
                                     <li><a href="{{ route('frontEnd.contactUs') }}">{{ __('admin_local.Brands') }}</a>
                                     </li>
@@ -375,6 +365,9 @@
         @yield('content')
     </main>
     <!-- footer area start -->
+    @php
+        $contact = \App\Models\Admin\Contact::first();
+    @endphp
     <footer class="ns-footer-area bg-default" data-background="">
         {{-- <img src="{{ asset('public/frontend/assets/img/footer/footer-shape-1.png') }}" alt="Not Found"
             class="ns-footer-shape-1 ns-footer-shape">

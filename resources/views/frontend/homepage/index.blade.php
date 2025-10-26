@@ -3,332 +3,6 @@
     {{ __('admin_local.Home') }}
 @endpush
 @push('css')
-    <style>
-        .ns-brand-item {
-            height: 139px !important;
-            width: 180px !important;
-            /* border: 1px solid red; */
-        }
-
-        .ns-brand-item-img {
-            height: 100%;
-            width: 100%;
-        }
-
-        .ns-brand-item-img-hover {
-            height: 100%;
-            width: 100%;
-        }
-
-        .ns-team-item {
-            background: #fff;
-            border-radius: 15px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            text-align: center;
-            position: relative;
-            transition: all 0.3s ease;
-        }
-
-        .ns-team-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-        }
-
-        .ns-team-item-img img {
-            width: 100%;
-            height: auto;
-            border-radius: 10px;
-        }
-
-        .ns-team-info-title a {
-            color: #000;
-            font-weight: 600;
-            text-decoration: none;
-        }
-
-        .ns-team-info-title a:hover {
-            color: #ffab17;
-            /* theme color */
-        }
-
-        .ns-team-social-icon ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            padding: 0;
-            margin: 10px 0;
-        }
-
-        .ns-team-social-icon ul li a {
-            background: #ffab17;
-            color: #fff;
-            border-radius: 50%;
-            width: 35px;
-            height: 35px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s;
-        }
-
-        .ns-team-social-icon ul li a:hover {
-            background: #000;
-        }
-
-        .ns-contact-map {
-            width: 100%;
-            min-height: 500px;
-            /* Minimum height for mobile */
-            height: 100%;
-            /* Full height on desktop */
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .ns-contact-map iframe {
-            width: 100%;
-            height: 500px;
-            border: 0;
-        }
-
-        /* Remove grey overlay on slider */
-        .ns-banner-single::before,
-        .ns-banner-single::after,
-        .ns-banner-overlay {
-            background: none !important;
-            opacity: 0 !important;
-        }
-
-        #aboutus_details p {
-            color: #fff;
-        }
-
-        .ns-cta-play-btn {
-            position: absolute;
-            left: 0;
-            top: -245px;
-            width: 210px;
-            height: 363px;
-            right: 0;
-            margin: 0 auto;
-        }
-
-        .ns-cta-play-btn a .ns-btn-img {
-            bottom: 50px !important;
-        }
-
-        .image-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-            padding: 100px 120px;
-            background-color: #f9f9f9;
-            box-sizing: border-box;
-        }
-
-        .card {
-            position: relative;
-            height: 250px;
-            background-size: cover;
-            background-position: center;
-            border-radius: 12px;
-            overflow: hidden;
-            transition: transform 0.4s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .card::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background-color: rgba(0, 0, 0, 0.75);
-            /* 👈 reduced opacity for lighter image */
-            transition: background-color 0.3s ease;
-            z-index: 1;
-        }
-
-        .card:hover::before {
-            background-color: rgba(0, 0, 0, 0.6);
-            /* slightly darker on hover */
-        }
-
-
-        .card:hover {
-            transform: scale(1.03);
-        }
-
-
-
-        .overlay {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            color: #fff;
-        }
-
-        .overlay h3 {
-            font-size: 24px;
-            color: #fff;
-            margin-bottom: 20px;
-        }
-
-        .overlay button {
-            background-color: transparent;
-            /* transparent background */
-            border: 2px solid #fff;
-            /* white border */
-            padding: 7px 20px;
-            border-radius: 6px;
-            color: #fff;
-            /* white text */
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            /* smooth hover transition */
-        }
-
-        .overlay button:hover {
-            background-color: #ffab17;
-            /* your theme color on hover */
-            border-color: #ffab17;
-            /* match border to background */
-            color: #fff;
-            /* keep text white */
-        }
-
-        /* Responsive layout */
-        @media (max-width: 992px) {
-            .image-grid {
-                grid-template-columns: repeat(2, 1fr);
-                padding: 40px 30px;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .image-grid {
-                grid-template-columns: 1fr;
-                padding: 30px 20px;
-            }
-        }
-
-
-        .ns-section-title {
-            font-size: 25px;
-            font-weight: 700;
-            color: #222;
-            position: relative;
-            display: inline-block;
-            text-transform: uppercase;
-            padding: 0 20px;
-            /* spacing between lines and text */
-        }
-
-        .ns-section-title::before,
-        .ns-section-title::after {
-            content: "";
-            position: absolute;
-            top: 50%;
-            width: 80px;
-            /* length of the line */
-            height: 3px;
-            /* thickness */
-            background-color: #ffab17;
-            /* your theme color */
-            transform: translateY(-50%);
-        }
-
-        .ns-section-title::before {
-            left: -75px;
-            /* move line to the left of text */
-        }
-
-        .ns-section-title::after {
-            right: -75px;
-            /* move line to the right of text */
-        }
-
-        /* Responsive tweak: shorter lines on small screens */
-        @media (max-width: 600px) {
-
-            .ns-section-title::before,
-            .ns-section-title::after {
-                width: 50px;
-            }
-
-            .ns-section-title::before {
-                left: -35px;
-                /* move line to the left of text */
-            }
-
-            .ns-section-title::after {
-                right: -35px;
-                /* move line to the right of text */
-            }
-
-            .ns-section-title {
-                font-size: 20px !important;
-            }
-        }
-
-
-        @media (max-width: 991.98px) {
-
-            .ns-banner-area .swiper-container,
-            .ns-banner-area .swiper-slide {
-                height: 60vh;
-                /* adjust as needed */
-            }
-
-            /* Optional: adjust content vertical alignment */
-            .ns-banner-content {
-                padding-top: 50px;
-                /* reduce padding from top */
-            }
-
-            .ns-banner-single {
-                background-size: cover;
-                /* cover the entire slide */
-                background-position: center;
-                /* center the image */
-                background-repeat: no-repeat;
-                /* prevent tiling */
-                width: 100%;
-                height: 100%;
-                /* will take parent height */
-            }
-        }
-
-        .news-logo-box {
-            background: #fff;
-            height: 130px;
-            /* same height for every box */
-            padding-left: 10px;
-            padding-right: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 10px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s ease;
-        }
-
-        .news-logo-box img {
-            height: 55px;
-            width: auto;
-            object-fit: contain;
-            display: block;
-        }
-
-        .news-logo-box:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-        }
-    </style>
 @endpush
 @section('content')
     <!-- banner area start -->
@@ -487,28 +161,28 @@
         <div class="card" style="background-image: url({{ asset('public/frontend/assets/img/ppp/2.jpg') }});">
             <div class="overlay">
                 <h3>{{ __('admin_local.Branding') }}</h3>
-                <button>{{ __('admin_local.Read More') }}</button>
+                <a href="{{ route('frontEnd.projects') . '?type=Branding' }}">{{ __('admin_local.Read More') }}</a>
             </div>
         </div>
 
         <div class="card" style="background-image: url({{ asset('public/frontend/assets/img/ppp/3.jpg') }});">
             <div class="overlay">
                 <h3>{{ __('admin_local.Campaign') }}</h3>
-                <button>{{ __('admin_local.Read More') }}</button>
+                <a href="{{ route('frontEnd.projects') . '?type=Campaign' }}">{{ __('admin_local.Read More') }}</a>
             </div>
         </div>
 
         <div class="card" style="background-image: url({{ asset('public/frontend/assets/img/ppp/1.jpg') }});">
             <div class="overlay">
                 <h3>{{ __('admin_local.Tech') }}</h3>
-                <button>{{ __('admin_local.Read More') }}</button>
+                <a href="{{ route('frontEnd.projects') . '?type=Tech' }}">{{ __('admin_local.Read More') }}</a>
             </div>
         </div>
 
         <div class="card" style="background-image: url({{ asset('public/frontend/assets/img/ppp/4.jpg') }});">
             <div class="overlay">
                 <h3>{{ __('admin_local.Event') }}</h3>
-                <button>{{ __('admin_local.Read More') }}</button>
+                <a href="{{ route('frontEnd.projects') . '?type=Event' }}">{{ __('admin_local.Read More') }}</a>
             </div>
         </div>
     </section>
@@ -551,7 +225,7 @@
         $contact = \App\Models\Admin\Contact::first();
     @endphp
 
-    <section class="py-5 bg-light my-5" >
+    <section class="py-5 bg-light my-5">
         <div class="container">
             <div class="row">
                 <div class="col-12">

@@ -44,20 +44,13 @@ $(document).on('submit', '#add_project_form', function (e) {
                     action_option = action_option + `</div></div>`;
                 }
 
-                var projectImgs = JSON.parse(data.project_images);
+                var projectImgs = JSON.parse(data.images);
+                var projectM_image =``;
+                $.each(projectImgs,function(key,val){
+                    projectM_image += val ? '<img  height="50px" style="border: 1px solid black;margin-right:2px;" src="' + base_url + '/' + val + '">' : '';
+                })
 
-                let projectM_image = projectImgs[0] ? '<img style="height: 50px;width:50px;" src="' + base_url + '/' + projectImgs[0] + '">' : no_file;
-
-                var projectPoints = '';
-                if (data.project_points != '') {
-                    projectPoints = projectPoints + `<ul>`;
-                    $.each(JSON.parse(data.project_points), function (key, val) {
-                        projectPoints = projectPoints + `<li>${(key + 1) + ". " + val}</li>`;
-                    })
-                    projectPoints = projectPoints + `</ul>`;
-                }
-
-                $('#basic-1 tbody').append(`<tr id="trid-${data.id}" data-id="${data.id}"><td>${projectM_image}</td><td>${data.project_name}</td><td>${data.project_category}</td><td>${data.project_quotes}</td><td>${projectPoints}</td>
+                $('#basic-1 tbody').append(`<tr id="trid-${data.id}" data-id="${data.id}"><td>${projectM_image}</td><td>${data.title}</td><td>${data.details}</td><td>${data.type}</td>
                 <td class="text-center">${update_status_btn}</td>
                 <td>${action_option}</td></tr>`);
 
@@ -156,81 +149,23 @@ $(document).on('click', '#edit_button', function () {
         },
         success: function (data) {
             $('#edit_project_form #project_id').val(data.id);
-            $('#edit_project_form #project_name').val(data.project_name);
-            $('#edit_project_form #project_category').val(data.project_category);
-            $('#edit_project_form #project_quotes').val(data.project_quotes);
+            $('#edit_project_form #project_title').val(data.title);
+            $('#edit_project_form #project_type').val(data.type);
+            $('#edit_project_form #video_link').val(data.video_link);
 
-            if (data.project_points != '') {
-                 $("#edit_project_form #project_points").first().closest('.row').next('div').empty();
-                $.each(JSON.parse(data.project_points), function (key, val) {
-                    if (key == 0) {
-                        $("#edit_project_form #project_points").first().val(val);
-                    } else {
-                        $("#edit_project_form #project_points").first().closest('.row').next('div').append(`
-                            <div class="row">
-                                <div class="form-group col-md-10">
-                                    <label for="">${projPoint}  ( ${defa} )</label>
-                                    <input type="text" class="form-control" name="project_points[]"
-                                        id="project_points" value="${val}">
-                                    <span class="text-danger err-mgs" id="project_points_err"></span>
-                                </div>
-                                <div class="form-group col-md-2">
-                                    <label for=""> &nbsp;</label><br>
-                                    <button style="float:right;" type="button" id="remove_point_btn"
-                                        class="btn btn-danger">-</button>
-                                </div>
-                            </div>
-                        `);
-                        // $("#edit_project_form #project_points").eq(key).val(val);
-                    }
-                })
-            }
-            CKEDITOR.instances['project_details2'].setData(data.project_details);
+           
+            CKEDITOR.instances['project_details2'].setData(data.details);
 
-            var projectImgs = JSON.parse(data.project_images);
-            $('#edit_project_form #eprev_project_image').prop('src', base_url + "/" + projectImgs[0]);
-            $('#edit_project_form #eprev_project_image_2').prop('src', base_url + "/" + projectImgs[1]);
-
+            var projectImgs = JSON.parse(data.images);
+            
             $.each(data.translations, function (key, val) {
                 if (val.locale == 'en') {
                 } else {
-                    if (val.key == 'project_name') {
-                        $('#edit_project_form #project_name_' + val.locale).val(val.value);
+                    if (val.key == 'title') {
+                        $('#edit_project_form #project_title_' + val.locale).val(val.value);
                     }
-                    if (val.key == 'project_category') {
-                        $('#edit_project_form #project_category_' + val.locale).val(val.value);
-                    }
-                    if (val.key == 'project_quotes') {
-                        $('#edit_project_form #project_quotes_' + val.locale).val(val.value);
-                    }
-                    if (val.key == 'project_details') {
+                    if (val.key == 'details') {
                         CKEDITOR.instances['project_details2_' + val.locale].setData(val.value);
-                    }
-                    if (val.key == 'project_points') {
-                        if (val.value != '') {
-                            $("#edit_project_form #project_points_" + val.locale).first().closest('.row').next('#append_lang_points_'+val.locale).empty();
-                            $.each(JSON.parse(val.value), function (keyyy, vallll) {
-                                if (keyyy == 0) {
-                                    $('#edit_project_form #project_points_' + val.locale).first().val(vallll);
-                                } else {
-                                    $("#edit_project_form #project_points_" + val.locale).first().closest('.row').next('#append_lang_points_'+val.locale).append(`
-                                        <div class="row">
-                                            <div class="form-group col-md-10">
-                                                <label for="">${projPoint}  ( ${val.LangName} )</label>
-                                                <input type="text" class="form-control" name="project_points_${val.locale}[]"
-                                                    id="project_points_${val.locale}" value="${vallll}">
-                                                <span class="text-danger err-mgs" id="project_points_err"></span>
-                                            </div>
-                                            <div class="form-group col-md-2">
-                                                <label for=""> &nbsp;</label><br>
-                                                <button style="float:right;" type="button" id="remove_point_btn"
-                                                    class="btn btn-danger">-</button>
-                                            </div>
-                                        </div>
-                                    `);
-                                }
-                            });
-                        }
                     }
                 }
             })
@@ -291,21 +226,16 @@ $('#edit_project_form').submit(function (e) {
         success: function (data) {
             $('button[type=submit]', '#edit_project_form').html(submit_btn_before);
             $('button[type=submit]', '#edit_project_form').removeClass('disabled');
-            var projectImgs = JSON.parse(data.project.project_images);
-            $('td:nth-child(1)', trid).html(projectImgs[0] ? `<img style="height: 50px;" src="${base_url + '/' + projectImgs[0]}">` : no_file);
-            $('td:nth-child(2)', trid).html(data.project.project_name);
-            $('td:nth-child(3)', trid).html(data.project.project_category);
-            $('td:nth-child(4)', trid).html(data.project.quotes);
-            var projectPoints = '';
-            if (data.project.project_points != '') {
-                projectPoints = projectPoints + `<ul>`;
-                $.each(JSON.parse(data.project.project_points), function (key, val) {
-                    projectPoints = projectPoints + `<li>${(key + 1) + ". " + val}</li>`;
-                })
-                projectPoints = projectPoints + `</ul>`;
-            }
-            $('td:nth-child(5)', trid).html(projectPoints);
-            // $('td:nth-child(6)', trid).html(data.team.team_member_address);
+            var projectImgs = JSON.parse(data.project.images);
+            var pImages = ``;
+            $.each(projectImgs,function(key,val){
+                pImages += `<img  height="50px" style="border: 1px solid black;margin-right:2px;" src="${base_url + '/' + projectImgs[0]}">`
+            });
+            $('td:nth-child(1)', trid).html(pImages);
+            $('td:nth-child(2)', trid).html(data.project.title);
+            $('td:nth-child(3)', trid).html(data.project.details);
+            $('td:nth-child(4)', trid).html(data.project.type);
+            
             swal({
                 icon: "success",
                 title: data.title,

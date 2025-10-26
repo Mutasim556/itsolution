@@ -12,45 +12,74 @@
 @endpush
 @section('content')
     @php
-        $services = \App\Models\Admin\Service::where([['status', 1], ['delete', 0]])->get();
+        $services = \App\Models\Admin\Service::where([['status', 1], ['delete', 0]])
+            ->orderBy('id', 'DESC')
+            ->limit(6)
+            ->get();
     @endphp
-    @if (count($services)>0)
-        <section class="ns-service-area-2 pt-110 pb-25 p-relative">
+    @if (count($services) > 0)
+        <section class="ns-service-area pt-110 pb-110">
             <div class="container">
                 <div class="row">
                     <div class="col-12">
                         <div class="ns-section mb-50 text-center">
-                            <span class="ns-section-subtitle">{{ __('admin_local.What We Do') }}</span>
-                            <h2 class="ns-section-title mb-0">{{ __('admin_local.Here is our best services') }}</h2>
+                            <h2 class="ns-section-title mb-0" style="font-size:25px;">{{ __('admin_local.Capabilities') }}
+                            </h2>
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    @foreach ($services as $service)
-                        <div class="col-xl-4 col-lg-4 col-md-6">
-                            <div class="ns-service-item ns-service-item-2 mb-30">
-                                <div class="ns-service-img ns-service-img-2 w_img">
-                                    <a href="{{ route('frontEnd.serviceDetails',[\Str::slug($service->service_name)."?service=".\Vinkla\Hashids\Facades\Hashids::encode($service->id)]) }}"><img
-                                            src="{{ asset($service->service_image ? $service->service_image : 'public/admin/images/images.png') }}"
-                                            alt="Not Found"></a>
-                                    <div class="ns-service-content-icon ns-service-content-icon-2">
-                                        <img height="60px" width="60px"
-                                            src="{{ asset($service->service_icon ? $service->service_icon : 'public/admin/images/images.png') }}"
-                                            alt="Not Found">
+
+                <div class="ns-service-wrap">
+                    <div class="container">
+                        <div class="row g-4">
+                            @foreach ($services as $key => $service)
+                                @if ($key == 3)
+                                    <div class="col-12 col-md-3 col-lg-2">
+
+                                    </div>
+                                @endif
+                                <div class="col-12 col-md-6 col-lg-4">
+                                    <div class="ns-service-item">
+                                        <div class="ns-service-img w_img">
+                                            <a
+                                                href="{{ route('frontEnd.serviceDetails', [\Str::slug($service->service_name) . '?service=' . \Vinkla\Hashids\Facades\Hashids::encode($service->id)]) }}">
+                                                <img src="{{ asset($service->service_image ? $service->service_image : 'public/admin/images/images.png') }}"
+                                                    alt="Not Found">
+                                            </a>
+                                        </div>
+                                        <div class="ns-service-content">
+                                            <h4 class="ns-service-content-title">
+                                                <a
+                                                    href="{{ route('frontEnd.serviceDetails', [\Str::slug($service->service_name) . '?service=' . \Vinkla\Hashids\Facades\Hashids::encode($service->id)]) }}">
+                                                    {{ $service->service_name }}
+                                                </a>
+                                            </h4>
+                                            <p>{!! $service->service_short_details !!}</p>
+
+                                            <a href="{{ route('frontEnd.serviceDetails', [\Str::slug($service->service_name) . '?service=' . \Vinkla\Hashids\Facades\Hashids::encode($service->id)]) }}"
+                                                class="ns-service-btn">
+                                                {{ __('admin_local.Read More') }}<i class="icofont-plus"></i>
+                                            </a>
+
+                                            <div class="ns-service-content-icon">
+                                                <img height="60px" width="60px"
+                                                    src="{{ asset($service->service_icon ? $service->service_icon : 'public/admin/images/images.png') }}"
+                                                    alt="Not Found">
+                                            </div>
+
+                                            <span class="ns-service-shape-1"></span>
+                                            <span class="ns-service-shape-2"></span>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="ns-service-content ns-service-content-2">
-                                    <h4 class="ns-service-content-title ns-service-content-title-2"><a
-                                            href="{{ route('frontEnd.serviceDetails',[\Str::slug($service->service_name)."?service=".\Vinkla\Hashids\Facades\Hashids::encode($service->id)]) }}">{{ $service->service_name }}</a></h4>
-                                    <p>{!! $service->service_short_details !!} {{  \Str::slug($service->service_name) }}</p>
-                                    <a href="{{ route('frontEnd.serviceDetails',[\Str::slug($service->service_name)."?service=".\Vinkla\Hashids\Facades\Hashids::encode($service->id)]) }}" class="ns-service-btn ns-service-btn-2">{{ __('admin_local.Read More') }}<i
-                                            class="icofont-plus"></i></a>
-                                    <span class="ns-service-shape-1 ns-service-shape-21"></span>
-                                    <span class="ns-service-shape-2 ns-service-shape-22"></span>
-                                </div>
-                            </div>
+                                @if ($key == 4)
+                                    <div class="col-12 col-md-3 col-lg-2">
+
+                                    </div>
+                                @endif
+                            @endforeach
                         </div>
-                    @endforeach
+                    </div>
                 </div>
             </div>
         </section>
