@@ -224,43 +224,36 @@
     @php
         $contact = \App\Models\Admin\Contact::first();
     @endphp
-
-    <section class="py-5 bg-light my-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="ns-section mb-50 text-center">
-                        <h2 class="ns-section-title mb-0" style="font-size:25px;">{{ __('admin_local.MEMEBER OF') }}
-                        </h2>
+    @php
+        $members = \App\Models\Admin\Member::where([['delete', 0], ['status', 1]])->get();
+    @endphp
+    @if (count($members) > 0)
+        <section class="py-5 bg-light my-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="ns-section mb-50 text-center">
+                            <h2 class="ns-section-title mb-0" style="font-size:25px;">{{ __('admin_local.MEMEBER OF') }}
+                            </h2>
+                        </div>
                     </div>
+                </div>
+                <div class="row g-4 justify-content-center align-items-center">
+                    @foreach ($members as $member)
+                    <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="news-logo-box">
+                            <img src="{{ asset($member->logo??'public/frontend/assets/img/pub_dip/bbc.png') }}" style="height: 100%" class="img-fluid"
+                                alt="BBC">
+                        </div>
+                    </div>
+                    @endforeach
                 </div>
             </div>
-            <div class="row g-4 justify-content-center align-items-center">
-                <div class="col-6 col-sm-4 col-md-3 col-lg-2">
-                    <div class="news-logo-box">
-                        <img src="{{ asset('public/frontend/assets/img/pub_dip/bbc.png') }}" class="img-fluid"
-                            alt="BBC">
-                    </div>
-                </div>
-
-                <!-- News Channel 2 -->
-                <div class="col-6 col-sm-4 col-md-3 col-lg-2">
-                    <div class="news-logo-box">
-                        <img src="{{ asset('public/frontend/assets/img/pub_dip/cnn.png') }}" style="height: 100%"
-                            class="img-fluid" alt="CNN">
-                    </div>
-                </div>
-
-                <!-- News Channel 3 -->
-                <div class="col-6 col-sm-4 col-md-3 col-lg-2">
-                    <div class="news-logo-box">
-                        <img src="{{ asset('public/frontend/assets/img/pub_dip/aljazeera.png') }}" style="height: 100%"
-                            class="img-fluid" alt="Al Jazeera">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
+    @endif
+    @php
+        $countries = \App\Models\Admin\CountryRepresentation::where([['delete', 0], ['status', 1]])->get();
+    @endphp
     <section class="py-5 bg-white mb-5">
         <div class="container">
             <div class="row">
@@ -273,131 +266,16 @@
                 </div>
             </div>
             <div class="row g-4 justify-content-center align-items-center">
-                <!-- News Channel 1 -->
-                <div class="col-6 col-sm-4 col-md-3 col-lg-2">
-                    <div class="news-logo-box">
-                        <img src="{{ asset('public/frontend/assets/img/pub_dip/bbc.png') }}" class="img-fluid"
-                            alt="BBC">
+                @foreach ($countries as $country)
+                    <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="news-logo-box">
+                            <img src="{{ asset($country->logo ?? 'public/frontend/assets/img/pub_dip/bbc.png') }}"
+                                style="height: 100%" class="img-fluid" alt="BBC">
+                        </div>
                     </div>
-                </div>
-
-                <!-- News Channel 2 -->
-                <div class="col-6 col-sm-4 col-md-3 col-lg-2">
-                    <div class="news-logo-box">
-                        <img src="{{ asset('public/frontend/assets/img/pub_dip/cnn.png') }}" style="height: 100%"
-                            class="img-fluid" alt="CNN">
-                    </div>
-                </div>
-
-                <!-- News Channel 3 -->
-                <div class="col-6 col-sm-4 col-md-3 col-lg-2">
-                    <div class="news-logo-box">
-                        <img src="{{ asset('public/frontend/assets/img/pub_dip/aljazeera.png') }}" style="height: 100%"
-                            class="img-fluid" alt="Al Jazeera">
-                    </div>
-                </div>
-
-                <!-- News Channel 4 -->
-                <div class="col-6 col-sm-4 col-md-3 col-lg-2">
-                    <div class="news-logo-box">
-                        <img src="{{ asset('public/frontend/assets/img/pub_dip/bloomberg.png') }}" style="height: 100%"
-                            class="img-fluid" alt="bloomberg">
-                    </div>
-                </div>
-
-                <!-- News Channel 5 -->
-                <div class="col-6 col-sm-4 col-md-3 col-lg-2">
-                    <div class="news-logo-box">
-                        <img src="{{ asset('public/frontend/assets/img/pub_dip/euronews.png') }}" style="height: 100%"
-                            class="img-fluid" alt="euronews">
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
-
-    {{-- @if ($contact)
-        <section class="pt-110 pb-115">
-            <div class="container">
-                <div class="row g-5 align-items-start">
-                    <!-- Contact Form Column -->
-                    <div class="col-lg-6">
-                        <div class="ns-section mb-35 text-center">
-                            <span class="ns-section-subtitle">{{ __('admin_local.Contact Now') }}</span>
-                        </div>
-
-                        <div class="ns-contact-form">
-                            @if (session('success'))
-                                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                    {{ session('success') }}
-                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
-                                        aria-label="Close"></button>
-                                </div>
-                            @endif
-
-                            <form action="{{ route('frontEnd.contactUsStore') }}" method="POST">
-                                @csrf
-                                <div class="row">
-                                    <div class="col-12 mb-3">
-                                        <input type="text" name="name"
-                                            class="form-control @error('name') is-invalid @enderror"
-                                            placeholder="{{ __('admin_local.Your Name') }} *"
-                                            value="{{ old('name') }}" required>
-                                        @error('name')
-                                            <div class="invalid-feedback">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-
-                                    <div class="col-12 mb-3">
-                                        <input type="tel" name="phone"
-                                            class="form-control @error('phone') is-invalid @enderror"
-                                            placeholder="{{ __('admin_local.Your Phone') }} *"
-                                            value="{{ old('phone') }}" required>
-                                        @error('phone')
-                                            <div class="invalid-feedback">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-
-                                    <div class="col-12 mb-3">
-                                        <input type="email" name="email"
-                                            class="form-control @error('email') is-invalid @enderror"
-                                            placeholder="{{ __('admin_local.Your Email') }}"
-                                            value="{{ old('email') }}">
-                                        @error('email')
-                                            <div class="invalid-feedback">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-
-                                    <div class="col-12 mb-3">
-                                        <textarea name="message" rows="5" class="form-control @error('message') is-invalid @enderror"
-                                            placeholder="{{ __('admin_local.Message') }} *" required>{{ old('message') }}</textarea>
-                                        @error('message')
-                                            <div class="invalid-feedback">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-
-                                    <div class="col-12">
-                                        <button type="submit"
-                                            class="btn ns-theme-btn ns-contact-btn float-end">{{ __('admin_local.Send Request') }}</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-
-                    <!-- Map Column -->
-                    <div class="col-lg-6">
-                        @if ($contact->location)
-                            <div class="ns-contact-map">
-                                <iframe src="https://www.google.com/maps/embed?pb={{ $contact->location }}"
-                                    frameborder="0" allowfullscreen="" loading="lazy">
-                                </iframe>
-                            </div>
-                        @endif
-                    </div>
-                </div>
-            </div>
-        </section>
-    @endif --}}
 
 @endsection

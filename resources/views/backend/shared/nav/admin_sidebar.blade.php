@@ -130,6 +130,33 @@
                             href="{{ route('admin.pages.partner.index') }}">{{ __('admin_local.Brands') }}</a>
                     </li>
                 @endif
+                @if (hasPermission(['country-index', 'comment-index']))
+                    <li>
+                        <a class="submenu-title" href="javascript:void(0)"
+                            style="margin-bottom:5px;">{{ __('admin_local.Public Diplomacy') }}<span class="sub-arrow"><i
+                                    class="fa fa-angle-right"></i></span></a>
+
+                        <ul class="nav-sub-childmenu submenu-content">
+                            @if (hasPermission(['country-index']))
+                                <li><a
+                                        href="{{ route('admin.pages.country.index') }}">{{ __('admin_local.Country Rep.') }}</a>
+                                </li>
+                            @endif
+                            @if (hasPermission(['comment-index']))
+                                <li><a
+                                        href="{{ route('admin.pages.homepage.comments') }}">{{ __('admin_local.Create') }} / {{ __('admin_local.Vew') }}</a>
+                                </li>
+                            @endif
+
+                        </ul>
+                    </li>
+                @endif
+                @if (hasPermission(['message-index']))
+                    <li>
+                        <a class="sidebar-link"
+                            href="{{ route('admin.pages.memberof.index') }}">{{ __('admin_local.Member Of') }}</a>
+                    </li>
+                @endif
                 @if (hasPermission(['message-index']))
                     <li>
                         <a class="sidebar-link"

@@ -37,6 +37,9 @@ Route::middleware('frontLang')->group(function () {
 
         Route::get('/contact-us', 'contactUs')->name('contactUs');
         Route::post('/contact-us', 'contactUsStore')->name('contactUsStore')->middleware('throttle:3,1');
+
+        Route::get('/brands', 'brands')->name('brands');
+        Route::get('/public-diplomacy', 'publicDiplomacy')->name('publicDiplomacy');
     });
     Route::get('/change-front-lang/{lang}', function () {
         try {

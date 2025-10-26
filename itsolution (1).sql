@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 17, 2025 at 08:30 PM
+-- Generation Time: Oct 26, 2025 at 08:26 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.2.0
 
@@ -56,7 +56,7 @@ CREATE TABLE `about_us` (
 --
 
 INSERT INTO `about_us` (`id`, `company_name`, `about_us_title`, `short_details`, `details`, `points`, `project_line`, `resp_person_name`, `resp_person_desig`, `resp_person_image`, `resp_person_signature`, `experience`, `image1`, `image2`, `video_link`, `status`, `delete`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(1, 'BIPEBD', 'Empowering Businesses with Smart IT Solutions', 'BIPEBD is a trusted IT solutions company helping businesses embrace digital transformation. We deliver software, web, mobile, cloud, and IT consultancy tailored to client needs. With innovation and reliability, BIPEBD empowers organizations to grow smarter and faster.', '<p><strong>BIPEBD</strong> is a leading IT solutions company dedicated to helping businesses embrace digital transformation. We specialize in providing innovative software development, web solutions, mobile applications, cloud services, and IT consultancy tailored to meet the unique needs of our clients. With a focus on reliability, innovation, and customer success, BIPEBD empowers organizations to grow smarter and operate more efficiently in today&rsquo;s fast-paced digital world.</p>', 'BIPEBD is a leading IT solutions company driving digital transformation for businesses.||We provide software, web, mobile, cloud, and IT consultancy tailored to client needs.||With innovation and reliability, we help organizations grow smarter and faster.', 'BIPEBD successfully delivers innovative IT projects that drive business growth and efficiency', 'BACCHA RABBI', 'CEO', 'public/admin/file/aboutus/aboutus-images/aboutusRespPerson1758640300.png', 'public/admin/file/aboutus/aboutus-images/aboutusRespPersonSig1758640300.png', 6, 'public/admin/file/aboutus/aboutus-images/aboutus11758640300.JPG', 'public/admin/file/aboutus/aboutus-images/aboutus21758640301.JPG', 'Pq5r3GKBP34', 1, 0, NULL, NULL, '2025-09-23 14:09:12', '2025-10-13 15:11:29');
+(1, 'BIPEBD', 'Empowering Businesses with Smart IT Solutions', 'BIPEBD is a trusted IT solutions company helping businesses embrace digital transformation. We deliver software, web, mobile, cloud, and IT consultancy tailored to client needs. With innovation and reliability, BIPEBD empowers organizations to grow smarter and faster.', '<p><strong>BIPEBD</strong> is a leading IT solutions company dedicated to helping businesses embrace digital transformation. We specialize in providing innovative software development, web solutions, mobile applications, cloud services, and IT consultancy tailored to meet the unique needs of our clients. With a focus on reliability, innovation, and customer success, BIPEBD empowers organizations to grow smarter and operate more efficiently in today&rsquo;s fast-paced digital world.</p>', 'BIPEBD is a leading IT solutions company driving digital transformation for businesses.||We provide software, web, mobile, cloud, and IT consultancy tailored to client needs.||With innovation and reliability, we help organizations grow smarter and faster.', 'BIPEBD successfully delivers innovative IT projects that drive business growth and efficiency', 'BACCHA RABBI', 'CEO', 'public/admin/file/aboutus/aboutus-images/aboutusRespPerson1758640300.png', 'public/admin/file/aboutus/aboutus-images/aboutusRespPersonSig1758640300.png', 6, 'public/admin/file/aboutus/aboutus-images/aboutus11758640300.JPG', 'public/admin/file/aboutus/aboutus-images/aboutus21758640301.JPG', 'B_6d3RBiEN0', 1, 0, NULL, NULL, '2025-09-23 14:09:12', '2025-10-13 15:11:29');
 
 -- --------------------------------------------------------
 
@@ -117,7 +117,8 @@ INSERT INTO `admins` (`id`, `name`, `email`, `phone`, `username`, `image`, `emai
 (1, 'Mutasim', 'admin@admin.com', '01724698392', 'mutasim', NULL, NULL, '$2y$12$HLtGGizRif/tkCXGwEBvXuAn6Z7nku05xQ6aIi65xZYQ8yZbhNPjC', 1, 0, 'HLdy2G8WVKGsNKB4vvYf2Q6EzFDDaqsh9HVUPVMemIctyVuuliXUE7FujHMY', '2023-12-27 21:23:43', '2024-01-01 03:35:27'),
 (2, 'Admin', 'ad@ad.com', '01724698393', 'ad', NULL, NULL, '$2y$12$j0lXSaKyr/SMfajg6sUMw.yNiX0a5b02NbCsqsSttuGB.erujxR3C', 1, 0, '302326', '2023-12-28 04:26:30', '2024-02-04 09:50:05'),
 (3, 'Test', 'test@gmail.com', '32165498778', 'test123', NULL, NULL, '$2y$12$aQCUleyTP3eV0iZfW4DJTeCmecThDtauS4Ju9pUls2/vKcSFtUFRy', 1, 0, '803426', '2023-12-30 21:12:48', '2024-01-11 04:34:22'),
-(4, 'Test2', 'test2@gmail.com', '32145678985', 'test2', NULL, NULL, '$2y$12$zS91mUSExngJkXSXeeFR2.OjeyF9rCntzn1nWzYfYuyqPHSI8of1W', 0, 1, NULL, '2023-12-31 08:59:38', '2023-12-31 09:34:37');
+(4, 'Test2', 'test2@gmail.com', '32145678985', 'test2', NULL, NULL, '$2y$12$zS91mUSExngJkXSXeeFR2.OjeyF9rCntzn1nWzYfYuyqPHSI8of1W', 0, 1, NULL, '2023-12-31 08:59:38', '2023-12-31 09:34:37'),
+(8, 'tttt', 'mutasimstore@gmail.com', '01724698394', 'ttt@admin.com', NULL, NULL, '$2y$12$ECNXkDfuhKdYZnKbPwqTUOEtW.PXmsg1CcgpxJ82ydFqSkrQeCR3G', 1, 0, NULL, '2025-10-18 03:48:16', '2025-10-18 03:48:26');
 
 -- --------------------------------------------------------
 
@@ -279,6 +280,35 @@ INSERT INTO `countings` (`id`, `counting1_name`, `counting1_value`, `counting2_n
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `country_representations`
+--
+
+CREATE TABLE `country_representations` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `logo` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT 1,
+  `delete` tinyint(1) NOT NULL DEFAULT 0,
+  `created_by` bigint(20) UNSIGNED DEFAULT NULL,
+  `updated_by` bigint(20) UNSIGNED DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `country_representations`
+--
+
+INSERT INTO `country_representations` (`id`, `name`, `logo`, `status`, `delete`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
+(1, 'Aljazeera', 'public/admin/file/public-diplomacy/country/countryImg1761502915.png', 1, 0, NULL, NULL, '2025-10-26 17:37:39', '2025-10-26 18:21:55'),
+(2, 'CNN', 'public/admin/file/public-diplomacy/country/countryImg1761503010.png', 1, 0, NULL, NULL, '2025-10-26 18:23:30', '2025-10-26 18:23:30'),
+(3, 'Euronews', 'public/admin/file/public-diplomacy/country/countryImg1761503025.png', 1, 0, NULL, NULL, '2025-10-26 18:23:45', '2025-10-26 18:23:45'),
+(4, 'BBC', 'public/admin/file/public-diplomacy/country/countryImg1761503037.png', 1, 0, NULL, NULL, '2025-10-26 18:23:57', '2025-10-26 18:23:57'),
+(5, 'Bloomberg', 'public/admin/file/public-diplomacy/country/countryImg1761503052.png', 1, 0, NULL, NULL, '2025-10-26 18:24:13', '2025-10-26 18:24:13');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `failed_jobs`
 --
 
@@ -319,7 +349,9 @@ CREATE TABLE `homepage_silders` (
 --
 
 INSERT INTO `homepage_silders` (`id`, `slider_title`, `slider_short_description`, `slider_link`, `slider_button_text`, `slider_image`, `slider_video`, `status`, `delete`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(1, 'Best IT-Solution And Businessdd', 'Nullam eu nibh vitae est tempor molestie id sed exthe. Quisque dignissim maximus ipsum metus ipsum.', 'xxxx', 'Contact Us', 'itsolution/files/settings/homepage/slider/1760363882img1.jpg', 'JoIvmDtXalI', 1, 0, 1, 1, '2025-10-13 13:58:05', '2025-10-17 18:13:57');
+(1, 'Best IT-Solution And Businessdd', 'Nullam eu nibh vitae est tempor molestie id sed exthe. Quisque dignissim maximus ipsum metus ipsum.', 'xxxx', 'Contact Us', 'itsolution/files/settings/homepage/slider/1760363882img1.jpg', 'JoIvmDtXalI', 0, 0, 1, 1, '2025-10-13 13:58:05', '2025-10-24 15:56:49'),
+(2, NULL, NULL, NULL, NULL, 'itsolution/files/settings/homepage/slider/1761323853img1.jpg', NULL, 1, 0, 1, 1, '2025-10-18 07:24:26', '2025-10-24 16:37:35'),
+(3, 'Test', NULL, NULL, NULL, 'itsolution/files/settings/homepage/slider/1760772784img1.png', NULL, 0, 0, 1, 1, '2025-10-18 07:33:05', '2025-10-24 15:56:50');
 
 -- --------------------------------------------------------
 
@@ -374,7 +406,7 @@ CREATE TABLE `logos` (
 --
 
 INSERT INTO `logos` (`id`, `admin_panel_logo`, `admin_panel_mobile_logo`, `admin_panel_icon`, `main_site_header_logo`, `main_site_header_mobile_logo`, `main_site_footer_logo`, `main_site_footer_mobile_logo`, `main_site_icon`, `created_at`, `updated_at`) VALUES
-(1, 'public/admin/file/logos/adminPanelLogo1760725196.jpg', NULL, 'public/admin/file/logos/adminPanelIcon1760284951.png', 'public/admin/file/logos/mainSiteHeaderLogo1760284756.png', NULL, 'public/admin/file/logos/mainSiteFooterLogo1760284756.png', NULL, 'public/admin/file/logos/mainSiteIcon1760284756.png', '2025-10-12 15:39:01', '2025-10-17 18:19:59');
+(1, 'public/admin/file/logos/adminPanelLogo1760725196.jpg', NULL, 'public/admin/file/logos/adminPanelIcon1760284951.png', 'public/admin/file/logos/mainSiteHeaderLogo1761320119.png', NULL, 'public/admin/file/logos/mainSiteFooterLogo1760284756.png', NULL, 'public/admin/file/logos/mainSiteIcon1760284756.png', '2025-10-12 15:39:01', '2025-10-24 15:35:22');
 
 -- --------------------------------------------------------
 
@@ -393,6 +425,36 @@ CREATE TABLE `maintenances` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `members`
+--
+
+CREATE TABLE `members` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `logo` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT 1,
+  `delete` tinyint(1) NOT NULL DEFAULT 0,
+  `created_by` bigint(20) UNSIGNED DEFAULT NULL,
+  `updated_by` bigint(20) UNSIGNED DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `members`
+--
+
+INSERT INTO `members` (`id`, `name`, `logo`, `status`, `delete`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
+(1, 'Amcham Bangladesh', 'public/admin/file/memberof/member/memberImg1761506444.png', 1, 1, NULL, NULL, '2025-10-26 19:16:22', '2025-10-26 19:21:11'),
+(2, 'AAAB', 'public/admin/file/memberof/member/memberImg1761506272.png', 1, 1, NULL, NULL, '2025-10-26 19:17:52', '2025-10-26 19:21:17'),
+(3, 'AAAB', 'public/admin/file/memberof/member/memberImg1761506288.png', 1, 0, NULL, NULL, '2025-10-26 19:18:08', '2025-10-26 19:18:08'),
+(4, 'Amcham Bangladesh', 'public/admin/file/memberof/member/memberImg1761506337.png', 1, 0, NULL, NULL, '2025-10-26 19:18:57', '2025-10-26 19:18:57'),
+(5, 'Amcham Bangladesh', 'public/admin/file/memberof/member/memberImg1761506347.png', 1, 1, NULL, NULL, '2025-10-26 19:19:07', '2025-10-26 19:21:20'),
+(6, 'Amcham Bangladesh', 'public/admin/file/memberof/member/memberImg1761506430.png', 1, 1, NULL, NULL, '2025-10-26 19:20:30', '2025-10-26 19:21:25');
 
 -- --------------------------------------------------------
 
@@ -433,7 +495,10 @@ INSERT INTO `messages` (`id`, `user_id`, `name`, `phone`, `email`, `message`, `s
 (11, 5, 'Tanvir Islam', '01729067060', 'bipebddomain@gmail.com', 'asdas', 1, 0, NULL, NULL, '2025-10-17 16:44:04', '2025-10-17 16:44:04'),
 (12, 5, 'MD. MUTASIM NAIB', '01724698392', 'mutasimstore@gmail.com', 'rrr', 1, 0, NULL, NULL, '2025-10-17 18:22:14', '2025-10-17 18:22:14'),
 (13, 5, 'Tanvir Islam', '01729067060', 'bipebddomain@gmail.com', 'qwewq', 1, 0, NULL, NULL, '2025-10-17 18:22:22', '2025-10-17 18:22:22'),
-(14, 5, 'MD. MUTASIM NAIB', '01724698392', 'mutasimstore@gmail.com', 'qweqwe', 1, 0, NULL, NULL, '2025-10-17 18:22:26', '2025-10-17 18:22:26');
+(14, 5, 'MD. MUTASIM NAIB', '01724698392', 'mutasimstore@gmail.com', 'qweqwe', 1, 0, NULL, NULL, '2025-10-17 18:22:26', '2025-10-17 18:22:26'),
+(15, NULL, 'MD. MUTASIM NAIB', '01724698392', 'mutasimstore@gmail.com', 'ASDD', 1, 0, NULL, NULL, '2025-10-26 15:49:07', '2025-10-26 15:49:07'),
+(16, NULL, 'MD. MUTASIM NAIB', '01724698392', 'mutasimstore@gmail.com', 'asdas', 1, 0, NULL, NULL, '2025-10-26 15:49:14', '2025-10-26 15:49:14'),
+(17, NULL, 'MD. MUTASIM NAIBas', '01724698392', 'mutasimstore@gmail.com', 'asdas', 1, 0, NULL, NULL, '2025-10-26 15:49:19', '2025-10-26 15:49:19');
 
 -- --------------------------------------------------------
 
@@ -481,7 +546,6 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (34, '2025_07_19_122821_add_service_name_slug_to_services_table', 20),
 (35, '2025_09_24_220747_add_service_icon_to_services', 21),
 (36, '2025_09_26_091739_create_teams_table', 22),
-(37, '2025_09_27_135535_create_projects_table', 23),
 (38, '2025_09_28_100751_create_partners_table', 24),
 (39, '2025_09_29_133042_create_comments_table', 24),
 (40, '2025_09_29_163146_create_countings_table', 24),
@@ -492,7 +556,12 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (45, '2025_10_09_094606_create_work_payments_table', 28),
 (46, '2025_10_10_102215_create_work_updates_table', 29),
 (47, '2025_10_12_203532_create_logos_table', 30),
-(49, '2025_08_06_193340_create_messages_table', 31);
+(49, '2025_08_06_193340_create_messages_table', 31),
+(50, '2025_10_18_101132_add_customer_feedback_to_work_updates_table', 32),
+(51, '2025_09_27_135535_create_projects_table', 33),
+(52, '2025_10_26_121423_add_video_link_to_projects_table', 33),
+(53, '2025_10_26_231100_create_country_representations_table', 34),
+(54, '2025_10_27_010303_create_members_table', 35);
 
 -- --------------------------------------------------------
 
@@ -526,7 +595,10 @@ INSERT INTO `model_has_roles` (`role_id`, `model_type`, `model_id`) VALUES
 (1, 'App\\Models\\Admin', 1),
 (2, 'App\\Models\\Admin', 2),
 (2, 'App\\Models\\Admin', 3),
-(2, 'App\\Models\\Admin', 4);
+(2, 'App\\Models\\Admin', 4),
+(2, 'App\\Models\\Admin', 6),
+(2, 'App\\Models\\Admin', 7),
+(2, 'App\\Models\\Admin', 8);
 
 -- --------------------------------------------------------
 
@@ -576,7 +648,12 @@ CREATE TABLE `partners` (
 --
 
 INSERT INTO `partners` (`id`, `partner_name`, `partner_details`, `partner_image`, `status`, `delete`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(1, 'Bangladesh', '<p>asdfad</p>', 'public/admin/file/partner/partner-images/partnerImg1760546790.jpg', 1, 0, NULL, NULL, '2025-10-15 16:46:33', '2025-10-15 16:46:33');
+(1, 'Bangladesh', '<p>asdfad</p>', 'public/admin/file/partner/partner-images/partnerImg1761379777.jpg', 1, 0, NULL, NULL, '2025-10-15 16:46:33', '2025-10-26 17:11:32'),
+(2, 'Bangladesh', '<p>sddsfds</p>', 'public/admin/file/partner/partner-images/partnerImg1761379835.jpg', 1, 0, NULL, NULL, '2025-10-25 08:10:36', '2025-10-25 08:10:36'),
+(3, 'Bangladesh', '<p>sddsfds</p>', 'public/admin/file/partner/partner-images/partnerImg1761379852.jpg', 1, 0, NULL, NULL, '2025-10-25 08:10:52', '2025-10-25 08:10:52'),
+(4, 'Bangladesh', '<p>sddsfds</p>', 'public/admin/file/partner/partner-images/partnerImg1761379864.jpg', 1, 0, NULL, NULL, '2025-10-25 08:11:04', '2025-10-25 08:11:04'),
+(5, 'Bangladesh', '<p>sddsfds</p>', 'public/admin/file/partner/partner-images/partnerImg1761379902.jpg', 1, 0, NULL, NULL, '2025-10-25 08:11:42', '2025-10-25 08:11:42'),
+(6, 'Bangladesh', '<p>sddsfds</p>', 'public/admin/file/partner/partner-images/partnerImg1761379911.jpg', 1, 0, NULL, NULL, '2025-10-25 08:11:51', '2025-10-25 08:11:51');
 
 -- --------------------------------------------------------
 
@@ -697,7 +774,15 @@ INSERT INTO `permissions` (`id`, `name`, `guard_name`, `group_name`, `created_at
 (79, 'logo-update', 'admin', 'Logo and Icon', '2025-10-12 14:56:24', '2025-10-12 14:56:24'),
 (80, 'logo-delete', 'admin', 'Logo and Icon', '2025-10-12 14:56:24', '2025-10-12 14:56:24'),
 (81, 'messages-index', 'admin', 'Messages', '2025-10-17 17:45:39', '2025-10-17 17:45:39'),
-(82, 'messages-create', 'admin', 'Messages', '2025-10-17 17:45:39', '2025-10-17 17:45:39');
+(82, 'messages-create', 'admin', 'Messages', '2025-10-17 17:45:39', '2025-10-17 17:45:39'),
+(83, 'country-index', 'admin', 'Country Representation', '2025-10-26 17:10:15', '2025-10-26 17:10:15'),
+(84, 'country-create', 'admin', 'Country Representation', '2025-10-26 17:10:15', '2025-10-26 17:10:15'),
+(85, 'country-update', 'admin', 'Country Representation', '2025-10-26 17:10:15', '2025-10-26 17:10:15'),
+(86, 'country-delete', 'admin', 'Country Representation', '2025-10-26 17:10:15', '2025-10-26 17:10:15'),
+(87, 'memberof-index', 'admin', 'Member Of', '2025-10-26 19:14:30', '2025-10-26 19:14:30'),
+(88, 'memberof-create', 'admin', 'Member Of', '2025-10-26 19:14:30', '2025-10-26 19:14:30'),
+(89, 'memberof-update', 'admin', 'Member Of', '2025-10-26 19:14:30', '2025-10-26 19:14:30'),
+(90, 'memberof-delete', 'admin', 'Member Of', '2025-10-26 19:14:30', '2025-10-26 19:14:30');
 
 -- --------------------------------------------------------
 
@@ -848,12 +933,12 @@ INSERT INTO `product_variants` (`id`, `product_id`, `variant_id`, `position`, `i
 
 CREATE TABLE `projects` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `project_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `project_category` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `project_details` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `project_images` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `project_quotes` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `project_points` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `title` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `details` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `images` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `video` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `video_link` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `status` tinyint(1) NOT NULL DEFAULT 1,
   `delete` tinyint(1) NOT NULL DEFAULT 0,
   `created_by` bigint(20) UNSIGNED DEFAULT NULL,
@@ -866,8 +951,8 @@ CREATE TABLE `projects` (
 -- Dumping data for table `projects`
 --
 
-INSERT INTO `projects` (`id`, `project_name`, `project_category`, `project_details`, `project_images`, `project_quotes`, `project_points`, `status`, `delete`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(2, 'Business Network', 'Design Business', '<p>The majority have suffered alteration in some form, by injected humour, or randomised words which don&#39;t look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn&#39;t anything embarr assing hidden in ge editors now the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunk readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using &#39; Content here, content here&#39;, making it look like readable English.</p>', '[\"public\\/admin\\/file\\/project\\/project-images\\/projectImg1758964389.png\",\"public\\/admin\\/file\\/project\\/project-images\\/projectImg2-1758964389.jpeg\"]', 'There are many variations of passages of Fasts by injected humour, or randomised ere we must-have solution to satisfy most.', '[\"Business ndisse suscipit sagittis leo.\",\"We gives employer management\",\"Media in this area of the solution\"]', 1, 0, NULL, NULL, '2025-09-27 09:13:09', '2025-10-13 16:53:35');
+INSERT INTO `projects` (`id`, `title`, `details`, `images`, `video`, `type`, `video_link`, `status`, `delete`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
+(1, 'Bangladesh Business Summit 2023', '<h2>Detailed description of the project</h2>\r\n\r\n<p>Bangladesh Business Summit 2023 is an international trade and investment promotion event. The summit, envisaged to become Bangladesh&rsquo;s flagship business promotion bi-annual event, seeks to highlight Bangladesh&rsquo;s economic and market strengths, and concrete trade and investment opportunities in Bangladesh by convening national and global businesses leaders, investors, policymakers, practitioners, policy and market analysts, academia, and innovators.</p>\r\n\r\n<p>The summit was organised under patronage and supervision of:</p>\r\n\r\n<ul>\r\n	<li>Ministry of Foreign Affairs, Bangladesh</li>\r\n	<li>Ministry of Commerce, Bangladesh</li>\r\n	<li>Bangladesh Investment Development Authority</li>\r\n</ul>\r\n\r\n<p>Objectives of the summit:</p>\r\n\r\n<ul>\r\n	<li>Highlight the success story that has set the foundations for sustainable growth trajectory of Bangladesh</li>\r\n	<li>Showcase the dynamic business /investment opportunities in Bangladesh</li>\r\n	<li>Showcase the improvements and business environment reforms</li>\r\n	<li>Gain insights of investment priorities of the global investors to improve policy</li>\r\n	<li>Facilitate exchange of investment success stories and good practices among investors</li>\r\n	<li>Seek investors&rsquo; views and suggestions to create more partnership opportunities</li>\r\n	<li>Secure concrete investment interest/proposals and develop a solid investment pipeline for important sectors</li>\r\n	<li>Facilitate effective networking, dialogue and partnership opportunities among national and international investors, policy makers and broader group of stakeholders</li>\r\n</ul>\r\n\r\n<table style=\"width:929px\">\r\n	<tbody>\r\n		<tr>\r\n			<td><strong>Name of legal entity</strong></td>\r\n			<td><strong>Country</strong></td>\r\n			<td><strong>Proportion carried out by candidate (%)</strong></td>\r\n			<td><strong>No of staff provided</strong></td>\r\n			<td><strong>Origin of funding</strong></td>\r\n			<td><strong>Dates (start/end)</strong></td>\r\n		</tr>\r\n		<tr>\r\n			<td><strong>Spellbound Communications Limited</strong></td>\r\n			<td>Bangladesh</td>\r\n			<td>100 input base</td>\r\n			<td>10</td>\r\n			<td>Private</td>\r\n			<td>01.01.2023-\r\n			<p>&nbsp;</p>\r\n\r\n			<p>01.06.2023</p>\r\n			</td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<h2>Type and scope of services provided</h2>\r\n\r\n<ol>\r\n	<li><strong>Management and implementation of the project:</strong>\r\n\r\n	<ul>\r\n		<li>Planning and Strategy</li>\r\n		<li>Project Timeline</li>\r\n		<li>Manage day-to-day activities</li>\r\n		<li>Secretariat Support</li>\r\n		<li>Provision of media coverage of activities and events organised</li>\r\n		<li>Guest management</li>\r\n		<li>Hospitality Coordination with Hotels</li>\r\n		<li>Coordination with Partners and Committee of FBCCI</li>\r\n	</ul>\r\n	</li>\r\n	<li><strong>Event organisation support:</strong>&nbsp;press conferences, panel discussions, breakout session, media briefings, exhibition, B2B matchmaking</li>\r\n	<li><strong>Provision of technical and logistical support</strong></li>\r\n	<li><strong>Media support:</strong>\r\n	<ul>\r\n		<li>Arrange CNN Experience</li>\r\n		<li>CNN Insight Session</li>\r\n		<li>Panel Discussion with Richard Quest</li>\r\n		<li>CNN Create&rsquo;s Interview-based shooting of Sponsor</li>\r\n		<li>Facilitation to CNN Editorial Team</li>\r\n		<li>Press coverage and monitoring services of Local and International Media</li>\r\n		<li>Press clipping reports</li>\r\n		<li>Social media reports</li>\r\n		<li>Coverage of events organised at the EUIC or upon request of the Contracting Authority</li>\r\n	</ul>\r\n	</li>\r\n	<li><strong>Design and Printing of publication Materials</strong></li>\r\n	<li><strong>Graphic design services</strong></li>\r\n	<li><strong>Production of promotional materials</strong></li>\r\n	<li><strong>Video production</strong></li>\r\n	<li><strong>Translation and proofreading services</strong></li>\r\n	<li><strong>Digital Platform Development, Maintenance and Promotion</strong></li>\r\n</ol>', '[\"public\\/admin\\/file\\/project\\/project-images\\/projectImg01761503248.jpg\",\"public\\/admin\\/file\\/project\\/project-images\\/projectImg11761503248.jpg\",\"public\\/admin\\/file\\/project\\/project-images\\/projectImg21761503248.jpg\"]', NULL, 'Event', '<iframe width=\"1250\" height=\"703\" src=\"https://www.youtube.com/embed/5MLnLL8TnIQ?list=RD5MLnLL8TnIQ\" title=\"Pahar Jabo | পাহাড় যাবো | Tasrif Khan | Jisan Khan Shuvo | Official Music Video | Kureghor Band\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>', 1, 0, NULL, NULL, '2025-10-26 18:27:28', '2025-10-26 18:28:46');
 
 -- --------------------------------------------------------
 
@@ -3041,7 +3126,11 @@ CREATE TABLE `services` (
 --
 
 INSERT INTO `services` (`id`, `service_name`, `service_name_slug`, `service_short_details`, `service_details`, `service_image`, `service_icon`, `status`, `delete`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(1, 'Nikah Service', 'nikah-service', 'A Nikah service facilitates the Islamic marriage ceremony, known as Nikah, in accordance with Islamic laws.', '<p>asdasdas sad asd&nbsp; asd sad asdas asda dsa</p>', 'public/admin/file/services/service-images/service1758731384.jpg', 'public/admin/file/services/service-images/serviceIcon1758730344.png', 1, 0, NULL, NULL, '2025-09-24 16:12:26', '2025-09-24 16:37:10');
+(1, 'Nikah Service', 'nikah-service', 'A Nikah service facilitates the Islamic marriage ceremony, known as Nikah, in accordance with Islamic laws.', '<p>asdasdas sad asd&nbsp; asd sad asdas asda dsa</p>', 'public/admin/file/services/service-images/service1758731384.jpg', 'public/admin/file/services/service-images/serviceIcon1758730344.png', 1, 0, NULL, NULL, '2025-09-24 16:12:26', '2025-09-24 16:37:10'),
+(2, 'Nikah Service2', 'nikah-service2', 'A Nikah service facilitates the Islamic marriage ceremony, known as Nikah, in accordance with Islamic laws.', '<p>asdasdsa</p>', 'public/admin/file/services/service-images/service1761378556.jpg', 'public/admin/file/services/service-images/serviceIcon1761378558.jpg', 1, 0, NULL, NULL, '2025-10-25 07:49:18', '2025-10-25 07:49:18'),
+(3, 'Nikah Service3', 'nikah-service3', 'A Nikah service facilitates the Islamic marriage ceremony, known as Nikah, in accordance with Islamic laws.', '<p>asdadasdsa</p>', 'public/admin/file/services/service-images/service1761378607.jpg', 'public/admin/file/services/service-images/serviceIcon1761378608.jpg', 1, 0, NULL, NULL, '2025-10-25 07:50:08', '2025-10-25 07:50:08'),
+(4, 'Nikah Service4', 'nikah-service4', 'A Nikah service facilitates the Islamic marriage ceremony, known as Nikah, in accordance with Islamic laws.', '<p>sddfds</p>', 'public/admin/file/services/service-images/service1761378624.jpg', 'public/admin/file/services/service-images/serviceIcon1761378624.jpg', 1, 0, NULL, NULL, '2025-10-25 07:50:24', '2025-10-25 07:50:24'),
+(5, 'Nikah Service5', 'nikah-service5', 'A Nikah service facilitates the Islamic marriage ceremony, known as Nikah, in accordance with Islamic laws.', '<p>sdfsdf</p>', 'public/admin/file/services/service-images/service1761378655.jpg', 'public/admin/file/services/service-images/serviceIcon1761378655.jpg', 1, 0, NULL, NULL, '2025-10-25 07:50:55', '2025-10-25 07:50:55');
 
 -- --------------------------------------------------------
 
@@ -3123,7 +3212,11 @@ CREATE TABLE `teams` (
 --
 
 INSERT INTO `teams` (`id`, `team_member_name`, `team_member_desig`, `team_member_gender`, `team_member_phone`, `team_member_email`, `team_member_image`, `team_member_address`, `team_member_about`, `team_member_expertise`, `team_member_exp_lavel`, `team_member_facebook`, `team_member_instagram`, `team_member_linkedin`, `team_member_youtube`, `status`, `delete`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(1, 'SUMITB', 'CEO', 'Male', '01724698392', 'mutasimstore@gmail.com', 'public/admin/file/team/team-members/teamMember1758897586.png', 'ZORABARI,MIRZAGONJ,DOMAR,NILPHAMARI', '<p><strong>ddddddddddddddddddddddd</strong></p>', '[\"WEB DWVWLOPMEN\",\"PHP\"]', '[\"90\",\"100\"]', 'sdfsdfsd', 'sdfsdfsd', 'fsdfsdfsdfsd', 'yyyyyyy', 1, 0, NULL, NULL, '2025-09-26 14:39:46', '2025-09-27 13:46:01');
+(1, 'SUMITB', 'CEO', 'Male', '01724698392', 'mutasimstore@gmail.com', 'public/admin/file/team/team-members/teamMember1761382907.jpg', 'ZORABARI,MIRZAGONJ,DOMAR,NILPHAMARI', '<p><strong>ddddddddddddddddddddddd</strong></p>', '[null,null]', '[null,null]', 'sdfsdfsd', 'sdfsdfsd', 'fsdfsdfsdfsd', 'yyyyyyy', 1, 0, NULL, NULL, '2025-09-26 14:39:46', '2025-10-25 09:01:47'),
+(2, 'MD SUMIT', 'MD', 'Male', '01724698392', 'mutasimstore@gmail.com', 'public/admin/file/team/team-members/teamMember1761382844.jpeg', 'ZORABARI,MIRZAGONJ,DOMAR,NILPHAMARI', '<p>asdsadsadsad</p>', '[null]', '[null]', NULL, NULL, NULL, NULL, 1, 0, NULL, NULL, '2025-10-25 08:52:59', '2025-10-25 09:00:44'),
+(3, 'MD MUTASIM NAIB SUMIT', 'Sr.Executive', 'Male', '01724698392', 'mutasimstore@gmail.com', 'public/admin/file/team/team-members/teamMember1761382863.jpg', 'ZORABARI,MIRZAGONJ,DOMAR,NILPHAMARI', '<p>asdasdasd</p>', '[null]', '[null]', NULL, NULL, NULL, NULL, 1, 0, NULL, NULL, '2025-10-25 08:53:42', '2025-10-25 09:01:04'),
+(4, 'MD SUMIT E', 'Executive', 'Male', '01724698392', 'mutasimstore@gmail.com', 'public/admin/file/team/team-members/teamMember1761411484.jpeg', 'ZORABARI,MIRZAGONJ,DOMAR,NILPHAMARI', '<p>adasd</p>', '[null]', '[null]', NULL, NULL, NULL, NULL, 1, 0, NULL, NULL, '2025-10-25 16:58:06', '2025-10-25 16:58:06'),
+(5, 'SUMIT DD', 'DD', 'Male', '01724698392', 'mutasimstore@gmail.com', 'public/admin/file/team/team-members/teamMember1761411594.jpg', 'ZORABARI,MIRZAGONJ,DOMAR,NILPHAMARI', '<p>asdfsad</p>', '[null]', '[null]', NULL, NULL, NULL, NULL, 1, 0, NULL, NULL, '2025-10-25 16:59:54', '2025-10-25 16:59:54');
 
 -- --------------------------------------------------------
 
@@ -3174,14 +3267,14 @@ INSERT INTO `translations` (`id`, `translationable_type`, `translationable_id`, 
 (25, 'App\\Models\\Admin\\Service', 1, 'hi', 'service_name', 'asdasdasdasdas', '2025-09-24 16:12:26', '2025-09-24 16:29:45'),
 (26, 'App\\Models\\Admin\\Service', 1, 'hi', 'service_short_details', 'asdasdasdasdasdasdasdasdasdasdasdasdasdasdasd', '2025-09-24 16:12:26', '2025-09-24 16:29:46'),
 (27, 'App\\Models\\Admin\\Service', 1, 'hi', 'service_details', '<p>asd asdfadddasdas dasd asdasda dadadasdasdasd</p>', '2025-09-24 16:12:26', '2025-09-24 16:29:46'),
-(28, 'App\\Models\\Admin\\Team', 1, 'en', 'team_member_name', 'SUMITB', NULL, '2025-09-26 17:01:59'),
-(29, 'App\\Models\\Admin\\Team', 1, 'en', 'team_member_about', '<p><strong>ddddddddddddddddddddddd</strong></p>', NULL, '2025-09-26 17:01:59'),
-(30, 'App\\Models\\Admin\\Team', 1, 'en', 'team_member_desig', 'CEO', NULL, '2025-09-26 17:01:59'),
-(31, 'App\\Models\\Admin\\Team', 1, 'bn', 'team_member_name', 'bbbbbbbbbbbbb', NULL, '2025-09-26 17:01:59'),
-(32, 'App\\Models\\Admin\\Team', 1, 'bn', 'team_member_desig', 'bbbbbbbbbbbbbbbbbbbbbbbbbbb', NULL, '2025-09-26 17:01:59'),
+(28, 'App\\Models\\Admin\\Team', 1, 'en', 'team_member_name', 'SUMITB', NULL, '2025-10-25 09:01:47'),
+(29, 'App\\Models\\Admin\\Team', 1, 'en', 'team_member_about', '<p><strong>ddddddddddddddddddddddd</strong></p>', NULL, '2025-10-25 09:01:47'),
+(30, 'App\\Models\\Admin\\Team', 1, 'en', 'team_member_desig', 'CEO', NULL, '2025-10-25 09:01:47'),
+(31, 'App\\Models\\Admin\\Team', 1, 'bn', 'team_member_name', 'bbbbbbbbbbbbb', NULL, '2025-10-25 09:01:47'),
+(32, 'App\\Models\\Admin\\Team', 1, 'bn', 'team_member_desig', 'bbbbbbbbbbbbbbbbbbbbbbbbbbb', NULL, '2025-10-25 09:01:47'),
 (33, 'App\\Models\\Admin\\Team', 1, 'hi', 'team_member_name', 'hhhhhhhh', NULL, '2025-09-26 17:01:59'),
 (34, 'App\\Models\\Admin\\Team', 1, 'hi', 'team_member_desig', 'hhhhhhhhhhhhhhhhhhhhhhhhhhhh', NULL, '2025-09-26 17:01:59'),
-(35, 'App\\Models\\Admin\\Team', 1, 'bn', 'team_member_about', '<p>bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb</p>', NULL, '2025-09-26 17:01:59'),
+(35, 'App\\Models\\Admin\\Team', 1, 'bn', 'team_member_about', '<p>bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb</p>', NULL, '2025-10-25 09:01:47'),
 (36, 'App\\Models\\Admin\\Team', 1, 'hi', 'team_member_about', '<p>hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh</p>', NULL, '2025-09-26 17:01:59'),
 (87, 'App\\Models\\Admin\\Project', 2, 'en', 'project_name', 'Business Network', NULL, '2025-09-27 12:38:03'),
 (88, 'App\\Models\\Admin\\Project', 2, 'en', 'project_category', 'Design Business', NULL, '2025-09-27 12:38:03'),
@@ -3231,15 +3324,65 @@ INSERT INTO `translations` (`id`, `translationable_type`, `translationable_id`, 
 (132, 'App\\Models\\Admin\\HomepageSilder', 1, 'hi', 'slider_title', 'सर्वोत्तम आईटी-समाधान और व्यवसाय', NULL, '2025-10-13 14:09:33'),
 (133, 'App\\Models\\Admin\\HomepageSilder', 1, 'hi', 'slider_short_description', 'नल्लम ईयू निभ विटे इस टेम्पोर मोलेस्टी आईडी सेड एक्सथे। क्विस्क डिग्निसिम मैक्सिमस इप्सम मेटस इप्सम।', NULL, '2025-10-13 14:09:34'),
 (134, 'App\\Models\\Admin\\HomepageSilder', 1, 'hi', 'slider_button_text', 'हमसे संपर्क करें', NULL, '2025-10-13 14:09:35'),
-(135, 'App\\Models\\Admin\\Partner', 1, 'en', 'partner_name', 'Bangladesh', '2025-10-15 16:46:33', NULL),
-(136, 'App\\Models\\Admin\\Partner', 1, 'en', 'partner_details', '<p>asdfad</p>', '2025-10-15 16:46:33', NULL),
+(135, 'App\\Models\\Admin\\Partner', 1, 'en', 'partner_name', 'Bangladesh', '2025-10-15 16:46:33', '2025-10-25 08:09:37'),
+(136, 'App\\Models\\Admin\\Partner', 1, 'en', 'partner_details', '<p>asdfad</p>', '2025-10-15 16:46:33', '2025-10-25 08:09:37'),
 (137, 'App\\Models\\Admin\\Comment', 1, 'en', 'name', 'admin', '2025-10-15 17:31:10', NULL),
 (138, 'App\\Models\\Admin\\Comment', 1, 'en', 'designation', 'OFFICER, IT', '2025-10-15 17:31:10', NULL),
 (139, 'App\\Models\\Admin\\Comment', 1, 'en', 'comments', '<p>Could you clarify what kind of <strong>comments</strong> you mean?<br />\r\nHere are a few possible interpretations &mdash; please pick one:</p>', '2025-10-15 17:31:10', NULL),
-(140, 'App\\Models\\Admin\\Work', 2, 'en', 'work_title', 'New Work', '2025-10-17 11:42:50', NULL),
-(141, 'App\\Models\\Admin\\Work', 2, 'en', 'work_details', '<p>adasdasd</p>', '2025-10-17 11:42:50', NULL),
+(140, 'App\\Models\\Admin\\Work', 2, 'en', 'work_title', 'New Work', '2025-10-17 11:42:50', '2025-10-18 03:59:56'),
+(141, 'App\\Models\\Admin\\Work', 2, 'en', 'work_details', '<p>Have questions or need assistance with our live sports coverage? Our team is always ready to help you with any inquiries, technical issues, or partnership opportunities. Stay connected with us to ensure you never miss a moment of your favorite live matches and sporting events.</p>', '2025-10-17 11:42:50', '2025-10-18 03:59:56'),
 (142, 'App\\Models\\Admin\\WorkUpdate', 12, 'en', 'updates_details', '<p>adsadasdadasd</p>', '2025-10-17 13:55:19', NULL),
-(143, 'App\\Models\\Admin\\WorkUpdate', 12, 'en', 'updates_note', 'TEST', '2025-10-17 13:55:19', NULL);
+(143, 'App\\Models\\Admin\\WorkUpdate', 12, 'en', 'updates_note', 'TEST', '2025-10-17 13:55:19', NULL),
+(144, 'App\\Models\\Admin\\HomepageSilder', 2, 'en', 'slider_title', 'Test', NULL, '2025-10-18 07:24:27'),
+(145, 'App\\Models\\Admin\\HomepageSilder', 3, 'en', 'slider_title', 'Test', NULL, '2025-10-18 07:33:05'),
+(146, 'App\\Models\\Admin\\HomepageSilder', 3, 'bn', 'slider_title', 'পরীক্ষা', NULL, '2025-10-18 07:33:06'),
+(147, 'App\\Models\\Admin\\Service', 2, 'en', 'service_name', 'Nikah Service2', '2025-10-25 07:49:18', NULL),
+(148, 'App\\Models\\Admin\\Service', 2, 'en', 'service_short_details', 'A Nikah service facilitates the Islamic marriage ceremony, known as Nikah, in accordance with Islamic laws.', '2025-10-25 07:49:18', NULL),
+(149, 'App\\Models\\Admin\\Service', 2, 'en', 'service_details', '<p>asdasdsa</p>', '2025-10-25 07:49:18', NULL),
+(150, 'App\\Models\\Admin\\Service', 3, 'en', 'service_name', 'Nikah Service3', '2025-10-25 07:50:08', NULL),
+(151, 'App\\Models\\Admin\\Service', 3, 'en', 'service_short_details', 'A Nikah service facilitates the Islamic marriage ceremony, known as Nikah, in accordance with Islamic laws.', '2025-10-25 07:50:08', NULL),
+(152, 'App\\Models\\Admin\\Service', 3, 'en', 'service_details', '<p>asdadasdsa</p>', '2025-10-25 07:50:08', NULL),
+(153, 'App\\Models\\Admin\\Service', 4, 'en', 'service_name', 'Nikah Service4', '2025-10-25 07:50:24', NULL),
+(154, 'App\\Models\\Admin\\Service', 4, 'en', 'service_short_details', 'A Nikah service facilitates the Islamic marriage ceremony, known as Nikah, in accordance with Islamic laws.', '2025-10-25 07:50:24', NULL),
+(155, 'App\\Models\\Admin\\Service', 4, 'en', 'service_details', '<p>sddfds</p>', '2025-10-25 07:50:24', NULL),
+(156, 'App\\Models\\Admin\\Service', 5, 'en', 'service_name', 'Nikah Service5', '2025-10-25 07:50:55', NULL),
+(157, 'App\\Models\\Admin\\Service', 5, 'en', 'service_short_details', 'A Nikah service facilitates the Islamic marriage ceremony, known as Nikah, in accordance with Islamic laws.', '2025-10-25 07:50:55', NULL),
+(158, 'App\\Models\\Admin\\Service', 5, 'en', 'service_details', '<p>sdfsdf</p>', '2025-10-25 07:50:55', NULL),
+(159, 'App\\Models\\Admin\\Partner', 2, 'en', 'partner_name', 'Bangladesh', '2025-10-25 08:10:36', NULL),
+(160, 'App\\Models\\Admin\\Partner', 2, 'en', 'partner_details', '<p>sddsfds</p>', '2025-10-25 08:10:36', NULL),
+(161, 'App\\Models\\Admin\\Partner', 3, 'en', 'partner_name', 'Bangladesh', '2025-10-25 08:10:52', NULL),
+(162, 'App\\Models\\Admin\\Partner', 3, 'en', 'partner_details', '<p>sddsfds</p>', '2025-10-25 08:10:52', NULL),
+(163, 'App\\Models\\Admin\\Partner', 4, 'en', 'partner_name', 'Bangladesh', '2025-10-25 08:11:04', NULL),
+(164, 'App\\Models\\Admin\\Partner', 4, 'en', 'partner_details', '<p>sddsfds</p>', '2025-10-25 08:11:04', NULL),
+(165, 'App\\Models\\Admin\\Partner', 5, 'en', 'partner_name', 'Bangladesh', '2025-10-25 08:11:42', NULL),
+(166, 'App\\Models\\Admin\\Partner', 5, 'en', 'partner_details', '<p>sddsfds</p>', '2025-10-25 08:11:42', NULL),
+(167, 'App\\Models\\Admin\\Partner', 6, 'en', 'partner_name', 'Bangladesh', '2025-10-25 08:11:51', NULL),
+(168, 'App\\Models\\Admin\\Partner', 6, 'en', 'partner_details', '<p>sddsfds</p>', '2025-10-25 08:11:51', NULL),
+(169, 'App\\Models\\Admin\\Team', 2, 'en', 'team_member_name', 'MD SUMIT', '2025-10-25 08:52:59', '2025-10-25 09:00:44'),
+(170, 'App\\Models\\Admin\\Team', 2, 'en', 'team_member_about', '<p>asdsadsadsad</p>', '2025-10-25 08:52:59', '2025-10-25 09:00:44'),
+(171, 'App\\Models\\Admin\\Team', 2, 'en', 'team_member_desig', 'MD', '2025-10-25 08:52:59', '2025-10-25 09:00:44'),
+(172, 'App\\Models\\Admin\\Team', 3, 'en', 'team_member_name', 'MD MUTASIM NAIB SUMIT', '2025-10-25 08:53:42', '2025-10-25 09:01:04'),
+(173, 'App\\Models\\Admin\\Team', 3, 'en', 'team_member_about', '<p>asdasdasd</p>', '2025-10-25 08:53:42', '2025-10-25 09:01:04'),
+(174, 'App\\Models\\Admin\\Team', 3, 'en', 'team_member_desig', 'Sr.Executive', '2025-10-25 08:53:42', '2025-10-25 09:01:04'),
+(175, 'App\\Models\\Admin\\Team', 4, 'en', 'team_member_name', 'MD SUMIT E', '2025-10-25 16:58:06', NULL),
+(176, 'App\\Models\\Admin\\Team', 4, 'en', 'team_member_about', '<p>adasd</p>', '2025-10-25 16:58:06', NULL),
+(177, 'App\\Models\\Admin\\Team', 4, 'en', 'team_member_desig', 'Executive', '2025-10-25 16:58:06', NULL),
+(178, 'App\\Models\\Admin\\Team', 5, 'en', 'team_member_name', 'SUMIT DD', '2025-10-25 16:59:54', NULL),
+(179, 'App\\Models\\Admin\\Team', 5, 'en', 'team_member_about', '<p>asdfsad</p>', '2025-10-25 16:59:54', NULL),
+(180, 'App\\Models\\Admin\\Team', 5, 'en', 'team_member_desig', 'DD', '2025-10-25 16:59:54', NULL),
+(181, 'App\\Models\\Admin\\CountryRepresentation', 1, 'en', 'name', 'Aljazeera', '2025-10-26 17:37:39', '2025-10-26 18:21:55'),
+(182, 'App\\Models\\Admin\\CountryRepresentation', 2, 'en', 'name', 'CNN', '2025-10-26 18:23:30', NULL),
+(183, 'App\\Models\\Admin\\CountryRepresentation', 3, 'en', 'name', 'Euronews', '2025-10-26 18:23:45', NULL),
+(184, 'App\\Models\\Admin\\CountryRepresentation', 4, 'en', 'name', 'BBC', '2025-10-26 18:23:57', NULL),
+(185, 'App\\Models\\Admin\\CountryRepresentation', 5, 'en', 'name', 'Bloomberg', '2025-10-26 18:24:13', NULL),
+(186, 'App\\Models\\Admin\\Project', 1, 'en', 'title', 'Bangladesh Business Summit 2023', '2025-10-26 18:27:28', '2025-10-26 18:28:46'),
+(187, 'App\\Models\\Admin\\Project', 1, 'en', 'details', '<h2>Detailed description of the project</h2>\r\n\r\n<p>Bangladesh Business Summit 2023 is an international trade and investment promotion event. The summit, envisaged to become Bangladesh&rsquo;s flagship business promotion bi-annual event, seeks to highlight Bangladesh&rsquo;s economic and market strengths, and concrete trade and investment opportunities in Bangladesh by convening national and global businesses leaders, investors, policymakers, practitioners, policy and market analysts, academia, and innovators.</p>\r\n\r\n<p>The summit was organised under patronage and supervision of:</p>\r\n\r\n<ul>\r\n	<li>Ministry of Foreign Affairs, Bangladesh</li>\r\n	<li>Ministry of Commerce, Bangladesh</li>\r\n	<li>Bangladesh Investment Development Authority</li>\r\n</ul>\r\n\r\n<p>Objectives of the summit:</p>\r\n\r\n<ul>\r\n	<li>Highlight the success story that has set the foundations for sustainable growth trajectory of Bangladesh</li>\r\n	<li>Showcase the dynamic business /investment opportunities in Bangladesh</li>\r\n	<li>Showcase the improvements and business environment reforms</li>\r\n	<li>Gain insights of investment priorities of the global investors to improve policy</li>\r\n	<li>Facilitate exchange of investment success stories and good practices among investors</li>\r\n	<li>Seek investors&rsquo; views and suggestions to create more partnership opportunities</li>\r\n	<li>Secure concrete investment interest/proposals and develop a solid investment pipeline for important sectors</li>\r\n	<li>Facilitate effective networking, dialogue and partnership opportunities among national and international investors, policy makers and broader group of stakeholders</li>\r\n</ul>\r\n\r\n<table style=\"width:929px\">\r\n	<tbody>\r\n		<tr>\r\n			<td><strong>Name of legal entity</strong></td>\r\n			<td><strong>Country</strong></td>\r\n			<td><strong>Proportion carried out by candidate (%)</strong></td>\r\n			<td><strong>No of staff provided</strong></td>\r\n			<td><strong>Origin of funding</strong></td>\r\n			<td><strong>Dates (start/end)</strong></td>\r\n		</tr>\r\n		<tr>\r\n			<td><strong>Spellbound Communications Limited</strong></td>\r\n			<td>Bangladesh</td>\r\n			<td>100 input base</td>\r\n			<td>10</td>\r\n			<td>Private</td>\r\n			<td>01.01.2023-\r\n			<p>&nbsp;</p>\r\n\r\n			<p>01.06.2023</p>\r\n			</td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<h2>Type and scope of services provided</h2>\r\n\r\n<ol>\r\n	<li><strong>Management and implementation of the project:</strong>\r\n\r\n	<ul>\r\n		<li>Planning and Strategy</li>\r\n		<li>Project Timeline</li>\r\n		<li>Manage day-to-day activities</li>\r\n		<li>Secretariat Support</li>\r\n		<li>Provision of media coverage of activities and events organised</li>\r\n		<li>Guest management</li>\r\n		<li>Hospitality Coordination with Hotels</li>\r\n		<li>Coordination with Partners and Committee of FBCCI</li>\r\n	</ul>\r\n	</li>\r\n	<li><strong>Event organisation support:</strong>&nbsp;press conferences, panel discussions, breakout session, media briefings, exhibition, B2B matchmaking</li>\r\n	<li><strong>Provision of technical and logistical support</strong></li>\r\n	<li><strong>Media support:</strong>\r\n	<ul>\r\n		<li>Arrange CNN Experience</li>\r\n		<li>CNN Insight Session</li>\r\n		<li>Panel Discussion with Richard Quest</li>\r\n		<li>CNN Create&rsquo;s Interview-based shooting of Sponsor</li>\r\n		<li>Facilitation to CNN Editorial Team</li>\r\n		<li>Press coverage and monitoring services of Local and International Media</li>\r\n		<li>Press clipping reports</li>\r\n		<li>Social media reports</li>\r\n		<li>Coverage of events organised at the EUIC or upon request of the Contracting Authority</li>\r\n	</ul>\r\n	</li>\r\n	<li><strong>Design and Printing of publication Materials</strong></li>\r\n	<li><strong>Graphic design services</strong></li>\r\n	<li><strong>Production of promotional materials</strong></li>\r\n	<li><strong>Video production</strong></li>\r\n	<li><strong>Translation and proofreading services</strong></li>\r\n	<li><strong>Digital Platform Development, Maintenance and Promotion</strong></li>\r\n</ol>', '2025-10-26 18:27:28', '2025-10-26 18:28:46'),
+(188, 'App\\Models\\Admin\\Member', 1, 'en', 'name', 'Amcham Bangladesh', '2025-10-26 19:16:22', '2025-10-26 19:20:44'),
+(189, 'App\\Models\\Admin\\Member', 2, 'en', 'name', 'AAAB', '2025-10-26 19:17:52', NULL),
+(190, 'App\\Models\\Admin\\Member', 3, 'en', 'name', 'AAAB', '2025-10-26 19:18:08', NULL),
+(191, 'App\\Models\\Admin\\Member', 4, 'en', 'name', 'Amcham Bangladesh', '2025-10-26 19:18:57', NULL),
+(192, 'App\\Models\\Admin\\Member', 5, 'en', 'name', 'Amcham Bangladesh', '2025-10-26 19:19:07', NULL),
+(193, 'App\\Models\\Admin\\Member', 6, 'en', 'name', 'Amcham Bangladesh', '2025-10-26 19:20:30', NULL);
 
 -- --------------------------------------------------------
 
@@ -3385,7 +3528,7 @@ CREATE TABLE `works` (
 
 INSERT INTO `works` (`id`, `work_title`, `work_details`, `work_file`, `user_id`, `duration`, `total_cost`, `total_paid`, `payment_status`, `progress`, `progress_status`, `status`, `delete`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
 (1, 'New Work', '<p>New Work Details</p>', 'public/admin/file/work/work-files/workFile1760068151.pdf', 1, '10/10/2025 - 10/30/2025', 20000, 4889, 1, 10, 1, 1, 0, NULL, NULL, '2025-10-10 03:49:11', '2025-10-11 16:56:39'),
-(2, 'New Work', '<p>Have questions or need assistance with our live sports coverage? Our team is always ready to help you with any inquiries, technical issues, or partnership opportunities. Stay connected with us to ensure you never miss a moment of your favorite live matches and sporting events.</p>', 'public/admin/file/work/work-files/workFile1760701370.pdf', 5, '10/17/2025 - 10/27/2025', 28140, 2000, 1, 50, 1, 1, 0, NULL, NULL, '2025-10-17 11:42:50', '2025-10-17 18:19:09');
+(2, 'New Work', '<p>Have questions or need assistance with our live sports coverage? Our team is always ready to help you with any inquiries, technical issues, or partnership opportunities. Stay connected with us to ensure you never miss a moment of your favorite live matches and sporting events.</p>', 'public/admin/file/work/work-files/workFile1760701370.pdf', 5, '10/17/2025 - 10/27/2025', 28140, 2000, 1, 60, 1, 1, 0, NULL, NULL, '2025-10-17 11:42:50', '2025-10-18 03:59:56');
 
 --
 -- Triggers `works`
@@ -3449,7 +3592,7 @@ INSERT INTO `work_payments` (`id`, `work_id`, `user_id`, `asking_payment`, `aski
 (8, 1, 1, 5000, '2025-10-11', NULL, '2025-10-30', 1, 0, 1, NULL, '2025-10-11 07:25:33', '2025-10-11 07:25:33'),
 (9, 1, 1, 200, '2025-10-11', 100, '2025-10-18', 1, 1, 1, NULL, '2025-10-11 08:01:34', '2025-10-11 16:56:39'),
 (10, 1, 1, 300, '2025-10-11', 11, '2025-10-18', 1, 1, 1, NULL, '2025-10-11 08:04:39', '2025-10-11 16:55:59'),
-(11, 2, 5, 2000, '2025-10-17', 2000, '2025-10-17', 1, 0, 1, 1, '2025-10-17 11:42:50', '2025-10-17 11:42:50'),
+(11, 2, 5, 2000, '2025-10-18', 2000, '2025-10-18', 1, 0, 1, 1, '2025-10-17 11:42:50', '2025-10-18 03:59:27'),
 (12, 2, 5, 500, '2025-10-17', NULL, '2025-10-23', 1, 0, 1, NULL, '2025-10-17 13:55:19', '2025-10-17 13:55:19');
 
 -- --------------------------------------------------------
@@ -3465,6 +3608,7 @@ CREATE TABLE `work_updates` (
   `payment_id` bigint(20) UNSIGNED DEFAULT NULL,
   `updates_details` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `updates_note` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `customer_feedback` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `updates_file` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `status` tinyint(1) NOT NULL DEFAULT 1,
   `delete` tinyint(1) NOT NULL DEFAULT 0,
@@ -3478,16 +3622,16 @@ CREATE TABLE `work_updates` (
 -- Dumping data for table `work_updates`
 --
 
-INSERT INTO `work_updates` (`id`, `work_id`, `user_id`, `payment_id`, `updates_details`, `updates_note`, `updates_file`, `status`, `delete`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(4, 1, 1, 5, '<p>TEST UPDATE DETAILS</p>', 'TEST', 'public/admin/file/work/work-updates/workUpdates1760166396.pdf', 1, 0, 1, 1, '2025-10-11 07:06:36', '2025-10-11 15:41:08'),
-(5, 1, 1, 6, '<p>xzxz</p>', 'TEST', 'public/admin/file/work/work-updates/workUpdates1760167231.pdf', 1, 0, 1, NULL, '2025-10-11 07:20:31', '2025-10-11 07:20:31'),
-(6, 1, 1, 7, '<p>zzzxZ</p>', 'TEST', 'public/admin/file/work/work-updates/workUpdates1760167386.pdf', 1, 0, 1, NULL, '2025-10-11 07:23:06', '2025-10-11 07:23:06'),
-(7, 1, 1, 8, '<p>ddsfds</p>', 'TEST', 'public/admin/file/work/work-updates/workUpdates1760167533.pdf', 1, 0, 1, NULL, '2025-10-11 07:25:33', '2025-10-11 07:25:33'),
-(8, 1, 1, 9, '<p>asdasdsadas</p>', 'ttttttt', 'public/admin/file/work/work-updates/workUpdates1760169694.pdf', 1, 1, 1, NULL, '2025-10-11 08:01:34', '2025-10-11 16:56:39'),
-(9, 1, 1, 10, '<p>asdasdas</p>', 'asdasda', 'public/admin/file/work/work-updates/workUpdates1760169879.pdf', 1, 1, 1, NULL, '2025-10-11 08:04:39', '2025-10-11 16:55:59'),
-(10, 1, 1, NULL, '<p>asdasd</p>', 'TEST', 'public/admin/file/work/work-updates/workUpdates1760170110.pdf', 1, 0, 1, NULL, '2025-10-11 08:08:30', '2025-10-11 08:08:30'),
-(11, 1, 1, NULL, '<p>asdasdas</p>', 'TEST', 'public/admin/file/work/work-updates/workUpdates1760170287.pdf', 1, 0, 1, NULL, '2025-10-11 08:11:27', '2025-10-11 08:11:27'),
-(12, 2, 5, 12, '<p>adsadasdadasd</p>', 'TEST', 'public/admin/file/work/work-updates/workUpdates1760709319.pdf', 1, 0, 1, 1, '2025-10-17 13:55:19', '2025-10-17 13:55:19');
+INSERT INTO `work_updates` (`id`, `work_id`, `user_id`, `payment_id`, `updates_details`, `updates_note`, `customer_feedback`, `updates_file`, `status`, `delete`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
+(4, 1, 1, 5, '<p>TEST UPDATE DETAILS</p>', 'TEST', NULL, 'public/admin/file/work/work-updates/workUpdates1760166396.pdf', 1, 0, 1, 1, '2025-10-11 07:06:36', '2025-10-11 15:41:08'),
+(5, 1, 1, 6, '<p>xzxz</p>', 'TEST', NULL, 'public/admin/file/work/work-updates/workUpdates1760167231.pdf', 1, 0, 1, NULL, '2025-10-11 07:20:31', '2025-10-11 07:20:31'),
+(6, 1, 1, 7, '<p>zzzxZ</p>', 'TEST', NULL, 'public/admin/file/work/work-updates/workUpdates1760167386.pdf', 1, 0, 1, NULL, '2025-10-11 07:23:06', '2025-10-11 07:23:06'),
+(7, 1, 1, 8, '<p>ddsfds</p>', 'TEST', NULL, 'public/admin/file/work/work-updates/workUpdates1760167533.pdf', 1, 0, 1, NULL, '2025-10-11 07:25:33', '2025-10-11 07:25:33'),
+(8, 1, 1, 9, '<p>asdasdsadas</p>', 'ttttttt', NULL, 'public/admin/file/work/work-updates/workUpdates1760169694.pdf', 1, 1, 1, NULL, '2025-10-11 08:01:34', '2025-10-11 16:56:39'),
+(9, 1, 1, 10, '<p>asdasdas</p>', 'asdasda', NULL, 'public/admin/file/work/work-updates/workUpdates1760169879.pdf', 1, 1, 1, NULL, '2025-10-11 08:04:39', '2025-10-11 16:55:59'),
+(10, 1, 1, NULL, '<p>asdasd</p>', 'TEST', NULL, 'public/admin/file/work/work-updates/workUpdates1760170110.pdf', 1, 0, 1, NULL, '2025-10-11 08:08:30', '2025-10-11 08:08:30'),
+(11, 1, 1, NULL, '<p>asdasdas</p>', 'TEST', NULL, 'public/admin/file/work/work-updates/workUpdates1760170287.pdf', 1, 0, 1, NULL, '2025-10-11 08:11:27', '2025-10-11 08:11:27'),
+(12, 2, 5, 12, '<p>adsadasdadasd</p>', 'TEST', 'sadasdasdasdxvxcvxcvxcvcx', 'public/admin/file/work/work-updates/workUpdates1760709319.pdf', 1, 0, 1, 1, '2025-10-17 13:55:19', '2025-10-18 07:20:05');
 
 --
 -- Indexes for dumped tables
@@ -3564,6 +3708,14 @@ ALTER TABLE `countings`
   ADD KEY `countings_updated_by_foreign` (`updated_by`);
 
 --
+-- Indexes for table `country_representations`
+--
+ALTER TABLE `country_representations`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `country_representations_created_by_foreign` (`created_by`),
+  ADD KEY `country_representations_updated_by_foreign` (`updated_by`);
+
+--
 -- Indexes for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
@@ -3596,6 +3748,14 @@ ALTER TABLE `logos`
 ALTER TABLE `maintenances`
   ADD PRIMARY KEY (`id`),
   ADD KEY `maintenances_admin_id_foreign` (`admin_id`);
+
+--
+-- Indexes for table `members`
+--
+ALTER TABLE `members`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `members_created_by_foreign` (`created_by`),
+  ADD KEY `members_updated_by_foreign` (`updated_by`);
 
 --
 -- Indexes for table `messages`
@@ -3850,7 +4010,7 @@ ALTER TABLE `adjustments`
 -- AUTO_INCREMENT for table `admins`
 --
 ALTER TABLE `admins`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `api_keys`
@@ -3889,6 +4049,12 @@ ALTER TABLE `countings`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `country_representations`
+--
+ALTER TABLE `country_representations`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
@@ -3898,7 +4064,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `homepage_silders`
 --
 ALTER TABLE `homepage_silders`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `languages`
@@ -3919,16 +4085,22 @@ ALTER TABLE `maintenances`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `members`
+--
+ALTER TABLE `members`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT for table `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT for table `parent_categories`
@@ -3940,13 +4112,13 @@ ALTER TABLE `parent_categories`
 -- AUTO_INCREMENT for table `partners`
 --
 ALTER TABLE `partners`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `permissions`
 --
 ALTER TABLE `permissions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -3970,7 +4142,7 @@ ALTER TABLE `product_variants`
 -- AUTO_INCREMENT for table `projects`
 --
 ALTER TABLE `projects`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `pulse_aggregates`
@@ -4000,7 +4172,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `services`
 --
 ALTER TABLE `services`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `sizes`
@@ -4012,13 +4184,13 @@ ALTER TABLE `sizes`
 -- AUTO_INCREMENT for table `teams`
 --
 ALTER TABLE `teams`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `translations`
 --
 ALTER TABLE `translations`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=144;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=194;
 
 --
 -- AUTO_INCREMENT for table `units`
@@ -4110,6 +4282,13 @@ ALTER TABLE `countings`
   ADD CONSTRAINT `countings_updated_by_foreign` FOREIGN KEY (`updated_by`) REFERENCES `admins` (`id`) ON DELETE SET NULL;
 
 --
+-- Constraints for table `country_representations`
+--
+ALTER TABLE `country_representations`
+  ADD CONSTRAINT `country_representations_created_by_foreign` FOREIGN KEY (`created_by`) REFERENCES `admins` (`id`) ON DELETE SET NULL,
+  ADD CONSTRAINT `country_representations_updated_by_foreign` FOREIGN KEY (`updated_by`) REFERENCES `admins` (`id`) ON DELETE SET NULL;
+
+--
 -- Constraints for table `homepage_silders`
 --
 ALTER TABLE `homepage_silders`
@@ -4121,6 +4300,13 @@ ALTER TABLE `homepage_silders`
 --
 ALTER TABLE `maintenances`
   ADD CONSTRAINT `maintenances_admin_id_foreign` FOREIGN KEY (`admin_id`) REFERENCES `admins` (`id`);
+
+--
+-- Constraints for table `members`
+--
+ALTER TABLE `members`
+  ADD CONSTRAINT `members_created_by_foreign` FOREIGN KEY (`created_by`) REFERENCES `admins` (`id`) ON DELETE SET NULL,
+  ADD CONSTRAINT `members_updated_by_foreign` FOREIGN KEY (`updated_by`) REFERENCES `admins` (`id`) ON DELETE SET NULL;
 
 --
 -- Constraints for table `messages`

@@ -322,12 +322,12 @@
                                             <li><a href="{{ route('frontEnd.projects')."?type=Event" }}">{{ __('admin_local.Event') }}</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="{{ route('frontEnd.contactUs') }}">{{ __('admin_local.Brands') }}</a>
+                                    <li><a href="{{ route('frontEnd.brands') }}">{{ __('admin_local.Brands') }}</a>
                                     </li>
-                                    <li><a href="{{ route('frontEnd.contactUs') }}">{{ __('admin_local.Team') }}</a>
+                                    <li><a href="{{ route('frontEnd.teamMembers') }}">{{ __('admin_local.Team') }}</a>
                                     </li>
                                     <li><a
-                                            href="{{ route('frontEnd.contactUs') }}">{{ __('admin_local.Public Diplomacy') }}</a>
+                                            href="{{ route('frontEnd.publicDiplomacy') }}">{{ __('admin_local.Public Diplomacy') }}</a>
                                     </li>
                                     <li><a
                                             href="{{ route('frontEnd.contactUs') }}">{{ __('admin_local.Find Us') }}</a>

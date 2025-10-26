@@ -114,7 +114,7 @@ class FrontEndController extends Controller
         ]);
 
         $message = new Message();
-        $message->user_id = Auth::check()?Auth::user()->id:'';
+        $message->user_id = Auth::check()?Auth::user()->id:NULL;
         $message->name = $data->name;
         $message->email = $data->email;
         $message->phone = $data->phone;
@@ -126,5 +126,13 @@ class FrontEndController extends Controller
                  ->with('success', __('admin_local.Thanks for messaging. We will contact you within a short time'));
 
         }
+    }
+
+    public function brands(){
+        return view('frontend.pages.brands');
+    }
+
+    public function publicDiplomacy(){
+        return view('frontend.pages.publicdiplomacy');
     }
 }

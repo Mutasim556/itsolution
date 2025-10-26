@@ -5,11 +5,13 @@ use App\Http\Controllers\Admin\Auth\AdminAuthController;
 use App\Http\Controllers\Admin\Auth\AdminLoginController;
 use App\Http\Controllers\Admin\BrandingController;
 use App\Http\Controllers\Admin\ContactUsController;
+use App\Http\Controllers\Admin\CountryRepController;
 use App\Http\Controllers\Admin\HomepageSettingController;
 use App\Http\Controllers\Admin\Localization\BackendLanguageController;
 use App\Http\Controllers\Admin\Localization\ChangeLanguageController;
 use App\Http\Controllers\Admin\Localization\LanguageController;
 use App\Http\Controllers\Admin\LogoIconController;
+use App\Http\Controllers\Admin\MembersOfController;
 use App\Http\Controllers\Admin\PartnerController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\Role\RoleAndPermissionController;
@@ -140,12 +142,12 @@ Route::prefix('admin')->name('admin.')->group(function () {
             });
             /** Project End */
 
-            /** Branding Start */
-            // Route::resource('branding', BrandingController::class)->except('create', 'show');
-            // Route::controller(BrandingController::class)->prefix('branding')->group(function () {
-            //     Route::get('/update/status/{id}/{status}', 'updateStatus');
-            // });
-            /** Branding End */
+            /** Country Start */
+            Route::resource('country', CountryRepController::class)->except('create', 'show');
+            Route::controller(CountryRepController::class)->prefix('country')->group(function () {
+                Route::get('/update/status/{id}/{status}', 'updateStatus');
+            });
+            /** Country End */
 
             /** Partner Start */
             Route::resource('partner', PartnerController::class)->except('create', 'show');
@@ -153,6 +155,13 @@ Route::prefix('admin')->name('admin.')->group(function () {
                 Route::get('/update/status/{id}/{status}', 'updateStatus');
             });
             /** Partner End */
+
+            /** Members Of Start */
+            Route::resource('memberof', MembersOfController::class)->except('create', 'show');
+            Route::controller(MembersOfController::class)->prefix('memberof')->group(function () {
+                Route::get('/update/status/{id}/{status}', 'updateStatus');
+            });
+            /** Members Of End */
         });
 
         /** Work Start */

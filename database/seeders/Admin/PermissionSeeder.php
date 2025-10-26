@@ -119,5 +119,16 @@ class PermissionSeeder extends Seeder
         // Permission::create(['guard_name'=>'admin','name'=>'messages-index','group_name'=>'Messages']);
         // Permission::create(['guard_name'=>'admin','name'=>'messages-create','group_name'=>'Messages']);
 
+        //permission for Country
+        // Permission::create(['guard_name'=>'admin','name'=>'country-index','group_name'=>'Country Representation']);
+        // Permission::create(['guard_name'=>'admin','name'=>'country-create','group_name'=>'Country Representation']);
+        // Permission::create(['guard_name'=>'admin','name'=>'country-update','group_name'=>'Country Representation']);
+        // Permission::create(['guard_name'=>'admin','name'=>'country-delete','group_name'=>'Country Representation']);
+
+        //permission for Memberof
+        // Permission::create(['guard_name'=>'admin','name'=>'memberof-index','group_name'=>'Member Of']);
+        // Permission::create(['guard_name'=>'admin','name'=>'memberof-create','group_name'=>'Member Of']);
+        // Permission::create(['guard_name'=>'admin','name'=>'memberof-update','group_name'=>'Member Of']);
+        // Permission::create(['guard_name'=>'admin','name'=>'memberof-delete','group_name'=>'Member Of']);
     }
 }
