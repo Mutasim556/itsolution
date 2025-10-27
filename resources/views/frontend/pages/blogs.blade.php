@@ -1,6 +1,6 @@
 @extends('frontend.layouts.frontend')
 @push('title')
-    {{ __('admin_local.Blogs') }}
+    {{ __('admin_local.Innovation and Tech') }}
 @endpush
 @push('css')
     <style>
@@ -15,7 +15,7 @@
         }
 
         .ns-logo-card {
-            border: 2px solid #ffab17;
+            border: 2px solid #f6921e;
             border-radius: 14px;
             background-color: #fff;
             transition: 0.3s ease;
@@ -29,7 +29,7 @@
 
         /* 👇 Active div style */
         .ns-logo-card.active {
-            background-color: #ffab17;
+            background-color: #f6921e;
             color: #fff;
             box-shadow: 0 0 15px rgba(255, 171, 23, 0.6);
         }
@@ -74,7 +74,7 @@
         .ns-news-card:hover {
             transform: translateY(-6px);
             box-shadow: 0 6px 14px rgba(255, 171, 23, 0.3);
-            border-color: #ffab17;
+            border-color: #f6921e;
         }
 
         .ns-news-img img {
@@ -115,9 +115,9 @@
         .ns-theme-btn {
             background-color: transparent;
             /* transparent background */
-            color: #ffab17;
+            color: #f6921e;
             /* theme color text */
-            border: 2px solid #ffab17;
+            border: 2px solid #f6921e;
             /* theme color border */
             border-radius: 10px;
             font-weight: 600;
@@ -125,7 +125,7 @@
         }
 
         .ns-theme-btn:hover {
-            background-color: #ffab17;
+            background-color: #f6921e;
             /* fill with theme color on hover */
             color: #fff;
             /* white text on hover */
@@ -136,8 +136,8 @@
         .ns-read-more-btn {
             display: inline-block;
             padding: 0.5rem 1.2rem;
-            border: 2px solid #ffab17;
-            color: #ffab17;
+            border: 2px solid #f6921e;
+            color: #f6921e;
             border-radius: 0.25rem;
             text-decoration: none;
             transition: all 0.3s ease;
@@ -149,7 +149,7 @@
         }
 
         .ns-read-more-btn:hover {
-            background-color: #ffab17;
+            background-color: #f6921e;
             color: #fff;
             text-decoration: none;
         }
@@ -161,7 +161,7 @@
             <div class="col-12">
                 <div class="ns-section mb-50 text-center">
                     <h2 class="ns-section-title mb-0" style="font-size:25px;">
-                        {{ __('admin_local.Blogs') }}
+                        {{ __('admin_local.Innovation and Tech') }}
                     </h2>
                 </div>
             </div>
@@ -185,7 +185,7 @@
                                 </div>
                                 <div class="ns-news-footer d-flex justify-content-between px-3 pb-3">
                                     <div class="ns-news-author text-muted">
-                                        <small>Blog by: {{ $blog->admin->name ?? 'Adminsd' }}</small>
+                                        <small>Posted by: {{ $blog->admin->name ?? 'Adminsd' }}</small>
                                     </div>
                                     <div class="ns-news-date text-muted">
                                         <small>{{ $blog->created_at->format('M d, Y') }}</small>

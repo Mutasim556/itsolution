@@ -57,21 +57,21 @@
 
         /* Active dot */
         .swiper-pagination-bullet-active {
-            background: #fda610;
+            background: #f6921e;
             /* your custom color */
             transform: scale(1.2);
             /* optional: make active dot bigger */
         }
 
         .btn-theme {
-            background-color: #ffab17;
+            background-color: #f6921e;
             color: white;
             font-weight: 600;
             border-radius: 8px;
         }
 
         .btn-theme:hover {
-            background-color: #e79a13;
+            background-color: #f6921e;
         }
 
         .dropdown-menu {
@@ -113,7 +113,7 @@
         .spinner-border {
             width: 3rem;
             height: 3rem;
-            color: #ffab17 !important;
+            color: #f6921e !important;
             /* Match your theme color */
         }
 
@@ -121,7 +121,7 @@
             width: 80px;
             height: 80px;
             border: 6px solid #f3f3f3;
-            border-top: 6px solid #ffab17;
+            border-top: 6px solid #f6921e;
             border-radius: 50%;
             animation: spin 1s linear infinite;
             display: flex;
@@ -203,7 +203,7 @@
             right: 40px;
             /* Distance from right */
             z-index: 9999;
-            background-color: #ffab17;
+            background-color: #f6921e;
             /* Your theme color */
             color: #fff;
             border: none;
@@ -216,7 +216,7 @@
         }
 
         #backToTop:hover {
-            background-color: #e69900;
+            background-color: #f6921e;
             /* Darker on hover */
             transform: translateY(-2px);
         }
@@ -234,14 +234,14 @@
 
         .ns-header-btn.ns-theme-btn {
             background: transparent;
-            border: 2px solid #ffab17;
+            border: 2px solid #f6921e;
             /* your theme color */
-            color: #ffab17;
+            color: #f6921e;
             transition: all 0.3s ease;
         }
 
         .ns-header-btn.ns-theme-btn:hover {
-            background: #ffab17;
+            background: #f6921e;
             color: #fff;
         }
     </style>
@@ -309,7 +309,7 @@
                                             href="{{ route('frontEnd.services') }}">{{ __('admin_local.Capabilities') }}</a>
                                     </li>
                                     <li><a
-                                            href="{{ route('frontEnd.blogs') }}">{{ __('admin_local.Blogs') }}</a>
+                                            href="{{ route('frontEnd.blogs') }}">{{ __('admin_local.Innovation and Tech') }}</a>
                                     </li>
                                     <li class="menu-has-child">
                                         <a href="{{ route('frontEnd.projects') }}"
@@ -378,7 +378,12 @@
 
                     <div class="col-xl-4 col-lg-5 col-md-6">
                         <div class="ns-footer-widget mb-40">
-                            <h3 class="ns-footer-widget-title">Brandtect Ltd.</h3>
+                            <div class="ns-footer-logo">
+                                <a href="{{ url('/') }}"><img
+                                        src="{{ asset($logo ? $logo->main_site_header_logo : 'public/frontend/assets/img/logo/logo.png') }}"
+                                        alt="Not Found"></a>
+                            </div>
+                            <h3 class="ns-footer-widget-title"></h3>
                             <div class="ns-footer-widget-contact mb-3">
                                 <p>{{ __('admin_local.Address') }} : {{ $contact->address }}</p>
                                 <div class="ns-footer-widget-contact-info mb-15">

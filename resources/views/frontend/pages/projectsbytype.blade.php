@@ -50,7 +50,7 @@
         }
 
         .custom-badge {
-            background-color: #ffab17;
+            background-color: #f6921e;
             color: #fff;
             font-weight: 500;
             padding: 0.35rem 0.65rem;

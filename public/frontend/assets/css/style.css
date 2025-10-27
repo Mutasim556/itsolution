@@ -42,7 +42,7 @@
 }
 
 .ns-team-info-title a:hover {
-    color: #ffab17;
+    color: #f6921e;
     /* theme color */
 }
 
@@ -56,7 +56,7 @@
 }
 
 .ns-team-social-icon ul li a {
-    background: #ffab17;
+    background: #f6921e;
     color: #fff;
     border-radius: 50%;
     width: 35px;
@@ -187,9 +187,9 @@
 }
 
 .overlay a:hover {
-    background-color: #ffab17;
+    background-color: #f6921e;
     /* your theme color on hover */
-    border-color: #ffab17;
+    border-color: #f6921e;
     /* match border to background */
     color: #fff;
     /* keep text white */
@@ -231,7 +231,7 @@
     /* length of the line */
     height: 3px;
     /* thickness */
-    background-color: #ffab17;
+    background-color: #f6921e;
     /* your theme color */
     transform: translateY(-50%);
 }
@@ -298,7 +298,7 @@
 }
 
 .news-logo-box {
-    background: #fff;
+    background: #fff; 
     height: 130px;
     /* same height for every box */
     padding-left: 10px;

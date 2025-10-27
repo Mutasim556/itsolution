@@ -10,7 +10,7 @@
         }
 
         :root {
-            --theme-color: #ffab17;
+            --theme-color: #f6921e;
         }
 
         .ns-team-member-details {

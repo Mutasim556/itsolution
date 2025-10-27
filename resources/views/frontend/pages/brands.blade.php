@@ -27,7 +27,7 @@
             box-shadow: 0 0px 0px rgba(0, 0, 0, 0.15);
         }
         .news-logo-box img:hover {
-            border: 1px solid #ffab17;
+            border: 1px solid #f6921e;
         }
     </style>
 @endpush

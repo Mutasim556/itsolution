@@ -15,7 +15,7 @@
         }
 
         .ns-logo-card {
-            border: 2px solid #ffab17;
+            border: 2px solid #f6921e;
             border-radius: 14px;
             background-color: #fff;
             transition: 0.3s ease;
@@ -29,7 +29,7 @@
 
         /* 👇 Active div style */
         .ns-logo-card.active {
-            background-color: #ffab17;
+            background-color: #f6921e;
             color: #fff;
             box-shadow: 0 0 15px rgba(255, 171, 23, 0.6);
         }
@@ -74,7 +74,7 @@
         .ns-news-card:hover {
             transform: translateY(-6px);
             box-shadow: 0 6px 14px rgba(255, 171, 23, 0.3);
-            border-color: #ffab17;
+            border-color: #f6921e;
         }
 
         .ns-news-img img {
@@ -115,9 +115,9 @@
         .ns-theme-btn {
             background-color: transparent;
             /* transparent background */
-            color: #ffab17;
+            color: #f6921e;
             /* theme color text */
-            border: 2px solid #ffab17;
+            border: 2px solid #f6921e;
             /* theme color border */
             border-radius: 10px;
             font-weight: 600;
@@ -125,7 +125,7 @@
         }
 
         .ns-theme-btn:hover {
-            background-color: #ffab17;
+            background-color: #f6921e;
             /* fill with theme color on hover */
             color: #fff;
             /* white text on hover */

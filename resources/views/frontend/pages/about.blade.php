@@ -38,7 +38,7 @@
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-xl-12">
-                        <div class="ns-cta-content">
+                        <div class="ns-cta-content" style="float:left">
                             <span class="ns-cta-content-subtitle" style="font-size:40px">{{ $aboutus->company_name }}</span>
                             @php
                                 $contact = \App\Models\Admin\Contact::first();

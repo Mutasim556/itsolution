@@ -47,7 +47,7 @@
         }
 
         .breadcrumb-section .breadcrumb a {
-            color: #ffab17;
+            color: #f6921e;
             /* accent color */
             text-decoration: none;
         }
@@ -68,7 +68,7 @@
         }
 
         #p_details tbody {
-            background-color: #ffab17 !important;
+            background-color: #f6921e !important;
             color: #fff !important;
         }
 

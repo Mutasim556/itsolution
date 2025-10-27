@@ -3,6 +3,11 @@
     {{ __('admin_local.Home') }}
 @endpush
 @push('css')
+<style>
+    .bg-light{
+        background: #f1f0ef !important;
+    }
+</style>
 @endpush
 @section('content')
     <!-- banner area start -->
@@ -59,17 +64,8 @@
             ->get();
     @endphp
     @if (count($services) > 0)
-        <section class="ns-service-area pt-110 pb-110">
+        <section class="ns-service-area bg-light pt-110 pb-110">
             <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="ns-section mb-50 text-center">
-                            <h2 class="ns-section-title mb-0" style="font-size:25px;">{{ __('admin_local.Capabilities') }}
-                            </h2>
-                        </div>
-                    </div>
-                </div>
-
                 <div class="ns-service-wrap">
                     <div class="container">
                         <div class="row g-4">
@@ -142,9 +138,9 @@
                 </div>
             @endif
             <div class="container">
-                <div class="row justify-content-center">
+                <div class="row">
                     <div class="col-xl-12">
-                        <div class="ns-cta-content">
+                        <div class="ns-cta-content" style="text-align:left;">
                             <span class="ns-cta-content-subtitle"
                                 style="font-size:40px">{{ $aboutus->company_name }}</span>
                             @php
@@ -157,7 +153,7 @@
             </div>
         </div>
     @endif
-    <section class="image-grid">
+    <section class="image-grid bg-light">
         <div class="card" style="background-image: url({{ asset('public/frontend/assets/img/ppp/2.jpg') }});">
             <div class="overlay">
                 <h3>{{ __('admin_local.Branding') }}</h3>
@@ -190,7 +186,7 @@
         $partners = \App\Models\Admin\Partner::where([['status', 1], ['delete', 0]])->get();
     @endphp
     @if (count($partners) > 0)
-        <div class="ns-brand-area pt-80 pb-80">
+        <div class="ns-brand-area bg-light pt-80 pb-80">
             <div class="container">
                 <div class="row">
                     <div class="col-12">
@@ -228,7 +224,7 @@
         $members = \App\Models\Admin\Member::where([['delete', 0], ['status', 1]])->get();
     @endphp
     @if (count($members) > 0)
-        <section class="py-5 bg-light my-5">
+        <section class="py-5 bg-light">
             <div class="container">
                 <div class="row">
                     <div class="col-12">
@@ -254,7 +250,7 @@
     @php
         $countries = \App\Models\Admin\CountryRepresentation::where([['delete', 0], ['status', 1]])->get();
     @endphp
-    <section class="py-5 bg-white mb-5">
+    <section class="py-5 bg-light">
         <div class="container">
             <div class="row">
                 <div class="col-12">

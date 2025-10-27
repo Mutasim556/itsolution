@@ -24,7 +24,7 @@
         }
 
         :root {
-            --theme-color: #ffab17;
+            --theme-color: #f6921e;
         }
 
         .contact-page .contact-info .info-item .icon svg {

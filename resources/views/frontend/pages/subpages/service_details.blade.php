@@ -48,7 +48,7 @@
         }
 
         .breadcrumb-section .breadcrumb a {
-            color: #ffab17;
+            color: #f6921e;
             text-decoration: none;
         }
 
@@ -102,7 +102,7 @@
             content: "✓";
             position: absolute;
             left: 0;
-            color: #ffab17;
+            color: #f6921e;
             font-weight: bold;
         }
     </style>

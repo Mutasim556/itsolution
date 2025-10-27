@@ -6,7 +6,7 @@
     <style>
         /* Theme Color */
         :root {
-            --theme-color: #ffab17;
+            --theme-color: #f6921e;
         }
 
         .ns-blog-details-section {
@@ -108,7 +108,7 @@
                             class="d-flex flex-wrap justify-content-center align-items-center mb-4 text-muted small text-center">
                             <div class="me-3">
                                 <i class="fas fa-user text-warning"></i>
-                                <span>Created by: {{ $blog->admin->name ?? 'Admin' }}</span>
+                                <span>Posted by: {{ $blog->admin->name ?? 'Admin' }}</span>
                             </div>
                             <div class="me-3">
                                 <i class="far fa-calendar-alt text-warning"></i>

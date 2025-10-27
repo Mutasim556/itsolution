@@ -11,6 +11,7 @@ use App\Models\Admin\Service;
 use App\Models\Admin\Team;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Mews\Purifier\Facades\Purifier;
 use Vinkla\Hashids\Facades\Hashids;
 
@@ -127,6 +128,20 @@ class FrontEndController extends Controller
         $message->phone = $data->phone;
         $message->message = $data->message;
 
+        $data_mail = [
+            'name' => $data->name,
+            'email' => 'mutasimnaibsumit0@gmail.com',
+            'phone' => $data->phone,
+            'user_message' => $data->message
+        ];
+
+        Mail::send(['html' => 'frontend.pages.mail.message_mail'], $data_mail, function ($mail) use ($data_mail) {
+            $mail->to($data_mail['email'], $data_mail['name'])
+                ->subject("Contact Messages - " . env('APP_FRONTEND_NAME', 'TEST'))
+                ->from('info@brandtechbd.com', 'Brandtech');
+        });
+
+
 
         if ($message->save()) {
             return redirect()->to(url()->previous() . '#message_form')
@@ -183,15 +198,15 @@ class FrontEndController extends Controller
 
     public function blogs()
     {
-        $blogs = Blog::where([['status',1],['delete',0]])->take(6)->get();
-        $blogsC = Blog::where([['status',1],['delete',0]])->count();
-        return view('frontend.pages.blogs',compact('blogs','blogsC'));
+        $blogs = Blog::where([['status', 1], ['delete', 0]])->take(6)->get();
+        $blogsC = Blog::where([['status', 1], ['delete', 0]])->count();
+        return view('frontend.pages.blogs', compact('blogs', 'blogsC'));
     }
 
     public function blogLoadMore(Request $request)
     {
         $offset = $request->get('offset', 0);
-        
+
         $blogs = Blog::skip($offset)
             ->take(6)
             ->get();
