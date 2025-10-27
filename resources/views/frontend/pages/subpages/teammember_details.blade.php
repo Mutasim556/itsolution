@@ -1,6 +1,6 @@
 @extends('frontend.layouts.frontend')
 @push('title')
-    {{ __('admin_local.Services') }}
+    {{ $teamMs->team_member_name }}
 @endpush
 @push('css')
     <style>
@@ -92,7 +92,7 @@
                 <!-- Member Details -->
                 <div class="col-lg-7">
                     <div class="ns-member-content">
-                        <h2 class="fw-bold mb-2">{{ $teamMs->team_member_name }}</h2>
+                        <h3 class="fw-bold mb-2">{{ $teamMs->team_member_name }}</h3>
                         <h5 class="text-muted mb-4">{{ $teamMs->team_member_desig }}</h5>
 
                         <p class="text-secondary mb-4">

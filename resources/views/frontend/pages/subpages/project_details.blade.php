@@ -1,6 +1,6 @@
 @extends('frontend.layouts.frontend')
 @push('title')
-    {{ __('admin_local.Projects') }}
+    {{ $project->title ?? 'Project Title' }}
 @endpush
 @push('css')
     <style>

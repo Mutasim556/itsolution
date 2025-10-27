@@ -1,6 +1,6 @@
 @extends('frontend.layouts.frontend')
 @push('title')
-    {{ __('admin_local.Projects') }}
+     {{ request()->get('type') }}
 @endpush
 @push('css')
     <style>

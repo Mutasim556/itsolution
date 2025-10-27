@@ -1,6 +1,6 @@
 @extends('frontend.layouts.frontend')
 @push('title')
-    {{ __('admin_local.Services') }}
+    {{ __('admin_local.Capabilities') }}
 @endpush
 @push('css')
     <style>
@@ -62,7 +62,7 @@
                                             </a>
 
                                             <div class="ns-service-content-icon">
-                                                <img height="60px" width="60px"
+                                                <img style="border-radius: 30px;" height="60px" width="60px"
                                                     src="{{ asset($service->service_icon ? $service->service_icon : 'public/admin/images/images.png') }}"
                                                     alt="Not Found">
                                             </div>

@@ -1,6 +1,6 @@
 @extends('frontend.layouts.frontend')
 @push('title')
-    {{ __('admin_local.Blog') }}
+    {{ $blog->title }}
 @endpush
 @push('css')
     <style>

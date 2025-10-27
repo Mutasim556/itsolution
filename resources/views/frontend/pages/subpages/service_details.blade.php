@@ -1,7 +1,7 @@
 @extends('frontend.layouts.frontend')
 
 @push('title')
-    {{ $service->title ?? 'Service Details' }}
+    {{ $service->service_name ?? 'Service Details' }}
 @endpush
 
 @push('css')
