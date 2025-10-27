@@ -65,6 +65,12 @@
             'contact-index',
             'service-index',
             'project-index',
+            'partner-index',
+            'country-index', 
+            'public-diplomacy-index',
+            'memberof-index',
+            'message-index',
+            'blog-index'
         ]))
         <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="javascript:void(0)"><i
                     data-feather="book-open"></i><span> {{ __('admin_local.Pages') }}</span></a>
@@ -130,7 +136,7 @@
                             href="{{ route('admin.pages.partner.index') }}">{{ __('admin_local.Brands') }}</a>
                     </li>
                 @endif
-                @if (hasPermission(['country-index', 'comment-index']))
+                @if (hasPermission(['country-index', 'public-diplomacy-index']))
                     <li>
                         <a class="submenu-title" href="javascript:void(0)"
                             style="margin-bottom:5px;">{{ __('admin_local.Public Diplomacy') }}<span class="sub-arrow"><i
@@ -142,16 +148,22 @@
                                         href="{{ route('admin.pages.country.index') }}">{{ __('admin_local.Country Rep.') }}</a>
                                 </li>
                             @endif
-                            @if (hasPermission(['comment-index']))
+                            @if (hasPermission(['public-diplomacy-index']))
                                 <li><a
-                                        href="{{ route('admin.pages.homepage.comments') }}">{{ __('admin_local.Create') }} / {{ __('admin_local.Vew') }}</a>
+                                        href="{{ route('admin.pages.public-diplomacy.index') }}">{{ __('admin_local.Create') }} / {{ __('admin_local.Vew') }}</a>
                                 </li>
                             @endif
 
                         </ul>
                     </li>
                 @endif
-                @if (hasPermission(['message-index']))
+                @if (hasPermission(['blog-index']))
+                    <li>
+                        <a class="sidebar-link"
+                            href="{{ route('admin.pages.blog.index') }}">{{ __('admin_local.Blogs') }}</a>
+                    </li>
+                @endif
+                 @if (hasPermission(['blog-index']))
                     <li>
                         <a class="sidebar-link"
                             href="{{ route('admin.pages.memberof.index') }}">{{ __('admin_local.Member Of') }}</a>

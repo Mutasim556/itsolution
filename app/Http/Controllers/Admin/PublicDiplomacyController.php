@@ -4,25 +4,40 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Admin\CountryRepresentation;
+use App\Models\Admin\Language;
+use App\Models\Admin\PublicDiplomacy;
+use App\Models\Admin\Translation;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Intervention\Image\Drivers\Gd\Driver;
+use Intervention\Image\ImageManager;
 
 class PublicDiplomacyController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('permission:country-index,admin');
-        $this->middleware('permission:country-store,admin')->only('store');
-        $this->middleware('permission:country-update,admin')->only(['edit', 'update', 'updateStatus']);
-        $this->middleware('permission:country-delete,admin')->only('destroy');
+        $this->middleware('permission:public-diplomacy-index,admin');
+        $this->middleware('permission:public-diplomacy-store,admin')->only('store');
+        $this->middleware('permission:public-diplomacy-update,admin')->only(['edit', 'update', 'updateStatus']);
+        $this->middleware('permission:public-diplomacy-delete,admin')->only('destroy');
     }
+    /**
+     * Display a listing of the resource.
+     */
     public function index()
     {
-        $countries = CountryRepresentation::where([['delete', 0]])->get();
-        return view('backend.blade.pages.country', compact('countries'));
+        $publicDiplomacies = PublicDiplomacy::with('country')->where([['delete', 0]])->get();
+        $countries = CountryRepresentation::where([['delete', 0], ['status', 1]])->get();
+        return view('backend.blade.pages.publicdiplomacy', compact('publicDiplomacies', 'countries'));
     }
 
-
-    public function create() {}
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        //
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -30,59 +45,64 @@ class PublicDiplomacyController extends Controller
     public function store(Request $data)
     {
         $data->validate([
-            'partner_name' => 'required',
-            'partner_details' => 'required',
-            'partner_image' => 'required|mimes:jpg,jpeg,png',
+            'publicdiplomacy_title' => 'required',
+            'publicdiplomacy_name' => 'required',
+            'country_id' => 'required',
+            'link' => 'required',
+            'image' => 'required|mimes:jpg,jpeg,png',
         ], [
-            'partner_name.required' => __('admin_local.Partner name required'),
-            'partner_details.required' => __('admin_local.Partner details required'),
-            'partner_image.required' => __('admin_local.Partner image required'),
-            'partner_image.mimes' => __('admin_local.Invalid image format. (jpeg,jpg,png)'),
+            'publicdiplomacy_title.required' => __('admin_local.Title required'),
+            'publicdiplomacy_name.required' => __('admin_local.Name required'),
+            'country_id.required' => __('admin_local.Country representation required'),
+            'link.required' => __('admin_local.Link required'),
+            'image.required' => __('admin_local.Image required'),
+            'image.mimes' => __('admin_local.Invalid image format. (jpeg,jpg,png)'),
         ]);
 
 
-        $newpartner = new Partner();
+        $newpublicdiplomacy = new PublicDiplomacy();
 
-        $newpartner->partner_name = $data->partner_name;
-        $newpartner->partner_details = $data->partner_details;
+        $newpublicdiplomacy->title = $data->publicdiplomacy_title;
+        $newpublicdiplomacy->name = $data->publicdiplomacy_name;
+        $newpublicdiplomacy->country_id = $data->country_id;
+        $newpublicdiplomacy->link = $data->link;
 
-        $dir = getDirectoryLink('partner/partner-images');
+        $dir = getDirectoryLink('publicdiplomacy/publicdiplomacy-images');
         $makeDir = createDirectory($dir);
         $allImages = [];
-        if ($data->partner_image) {
-            $image = $data->partner_image;
-            $imageName = 'partnerImg' . time() . '.' . $image->getClientOriginalExtension();
+        if ($data->image) {
+            $image = $data->image;
+            $imageName = 'publicdiplomacyImg' . time() . '.' . $image->getClientOriginalExtension();
             $manager = new ImageManager(new Driver());
             $imageName  =  $dir . '/' . $imageName;
-            $manager->read($image)->resize(180, 150)->save($imageName);
-            $newpartner->partner_image = $imageName;
+            $manager->read($image)->save($imageName, 100);
+            $newpublicdiplomacy->image = $imageName;
         }
-        $newpartner->save();
+        $newpublicdiplomacy->save();
 
         /** Insert Translations Start */
         $languages =  Language::where([['status', 1], ['delete', 0]])->get();
         $datas = [];
         foreach ($languages as $lang) {
-            $partner_name = $lang->lang != 'en' ? 'partner_name_' . $lang->lang : 'partner_name';
-            $partner_details = $lang->lang != 'en' ? 'partner_details_' . $lang->lang : 'partner_details';
-            if ($data->$partner_name != null) {
+            $publicdiplomacy_title = $lang->lang != 'en' ? 'publicdiplomacy_title_' . $lang->lang : 'publicdiplomacy_title';
+            $publicdiplomacy_name = $lang->lang != 'en' ? 'publicdiplomacy_name_' . $lang->lang : 'publicdiplomacy_name';
+            if ($data->$publicdiplomacy_title != null) {
                 array_push($datas, array(
-                    'translationable_type'  => 'App\Models\Admin\Partner',
-                    'translationable_id'    => $newpartner->id,
+                    'translationable_type'  => 'App\Models\Admin\PublicDiplomacy',
+                    'translationable_id'    => $newpublicdiplomacy->id,
                     'locale'                => $lang->lang,
-                    'key'                   => 'partner_name',
-                    'value'                 => $data->$partner_name,
+                    'key'                   => 'title',
+                    'value'                 => $data->$publicdiplomacy_title,
                     'created_at'            => Carbon::now(),
                 ));
             }
-
-            if ($data->$partner_details != null) {
+            if ($data->$publicdiplomacy_name != null) {
                 array_push($datas, array(
-                    'translationable_type'  => 'App\Models\Admin\Partner',
-                    'translationable_id'    => $newpartner->id,
+                    'translationable_type'  => 'App\Models\Admin\PublicDiplomacy',
+                    'translationable_id'    => $newpublicdiplomacy->id,
                     'locale'                => $lang->lang,
-                    'key'                   => 'partner_details',
-                    'value'                 => $data->$partner_details,
+                    'key'                   => 'name',
+                    'value'                 => $data->$publicdiplomacy_name,
                     'created_at'            => Carbon::now(),
                 ));
             }
@@ -92,13 +112,13 @@ class PublicDiplomacyController extends Controller
 
 
         return response([
-            'partner' => Partner::findOrFail($newpartner->id),
+            'publicdiplomacy' => PublicDiplomacy::with('country')->where('id', $newpublicdiplomacy->id)->first(),
             'title' => __('admin_local.Congratulations !'),
-            'text' => __('admin_local.Partner added successfully.'),
+            'text' => __('admin_local.Added successfully.'),
             'confirmButtonText' => __('admin_local.Ok'),
-            'hasAnyPermission' => hasPermission(['partner-update', 'partner-delete']),
-            'hasEditPermission' => hasPermission(['partner-update']),
-            'hasDeletePermission' => hasPermission(['partner-delete']),
+            'hasAnyPermission' => hasPermission(['public-diplomacy-update', 'public-diplomacy-delete']),
+            'hasEditPermission' => hasPermission(['public-diplomacy-update']),
+            'hasDeletePermission' => hasPermission(['public-diplomacy-delete']),
         ], 200);
     }
 
@@ -115,8 +135,8 @@ class PublicDiplomacyController extends Controller
      */
     public function edit(string $id)
     {
-        $partner = Partner::withoutGlobalScope('translate')->findOrFail($id);
-        return response($partner);
+        $publicdiplomacy = PublicDiplomacy::with('country')->withoutGlobalScope('translate')->findOrFail($id);
+        return response($publicdiplomacy);
     }
 
     /**
@@ -125,74 +145,76 @@ class PublicDiplomacyController extends Controller
     public function update(Request $data, string $id)
     {
         $data->validate([
-            'partner_name' => 'required',
-            'partner_details' => 'required',
-            'partner_image' => 'mimes:jpg,jpeg,png',
+            'publicdiplomacy_title' => 'required',
+            'publicdiplomacy_name' => 'required',
+            'country_id' => 'required',
+            'image' => 'mimes:jpg,jpeg,png',
         ], [
-            'partner_name.required' => __('admin_local.Partner name required'),
-            'partner_details.required' => __('admin_local.Partner details required'),
-            'partner_image.required' => __('admin_local.Partner image required'),
-            'partner_image.mimes' => __('admin_local.Invalid image format. (jpeg,jpg,png)'),
+            'publicdiplomacy_title.required' => __('admin_local.Title required'),
+            'publicdiplomacy_name.required' => __('admin_local.Name required'),
+            'country_id.required' => __('admin_local.Country representation required'),
+            'link.required' => __('admin_local.Link required'),
+            'image.required' => __('admin_local.Image required'),
+            'image.mimes' => __('admin_local.Invalid image format. (jpeg,jpg,png)'),
         ]);
 
 
-        $updatepartner = Partner::findOrFail($id);
+        $updatepublicdiplomacy = PublicDiplomacy::findOrFail($id);
 
-        $updatepartner->partner_name = $data->partner_name;
-        $updatepartner->partner_details = $data->partner_details;
+        $updatepublicdiplomacy->title = $data->publicdiplomacy_title;
+        $updatepublicdiplomacy->name = $data->publicdiplomacy_name;
+        $updatepublicdiplomacy->country_id = $data->country_id;
+        $updatepublicdiplomacy->link = $data->link;
 
-        $dir = getDirectoryLink('partner/partner-images');
+        $dir = getDirectoryLink('publicdiplomacy/publicdiplomacy-images');
         $makeDir = createDirectory($dir);
-        if ($data->partner_image) {
-            $image = $data->partner_image;
-            $imageName = 'partnerImg' . time() . '.' . $image->getClientOriginalExtension();
+        $allImages = [];
+        if ($data->image) {
+            $image = $data->image;
+            $imageName = 'publicdiplomacyImg' . time() . '.' . $image->getClientOriginalExtension();
             $manager = new ImageManager(new Driver());
             $imageName  =  $dir . '/' . $imageName;
-            $manager->read($image)->resize(180, 150)->save($imageName);
-            $updatepartner->partner_image = $imageName;
+            $manager->read($image)->save($imageName, 100);
+            $updatepublicdiplomacy->image = $imageName;
         }
 
-
-
-        $updatepartner->save();
+        $updatepublicdiplomacy->save();
 
         /** Insert Translations Start */
         $languages =  Language::where([['status', 1], ['delete', 0]])->get();
         $datas = [];
         foreach ($languages as $lang) {
-            $partner_name = $lang->lang != 'en' ? 'partner_name_' . $lang->lang : 'partner_name';
-            $partner_details = $lang->lang != 'en' ? 'partner_details_' . $lang->lang : 'partner_details';
+            $publicdiplomacy_title = $lang->lang != 'en' ? 'publicdiplomacy_title_' . $lang->lang : 'publicdiplomacy_title';
+            $publicdiplomacy_name = $lang->lang != 'en' ? 'publicdiplomacy_name_' . $lang->lang : 'publicdiplomacy_name';
 
-            if ($data->$partner_name != null) {
+            if ($data->$publicdiplomacy_title != null) {
                 Translation::updateOrInsert([
-                    'translationable_type'  => 'App\Models\Admin\Partner',
-                    'translationable_id'    => $updatepartner->id,
+                    'translationable_type'  => 'App\Models\Admin\PublicDiplomacy',
+                    'translationable_id'    => $updatepublicdiplomacy->id,
                     'locale'                => $lang->lang,
-                    'key'                   => 'partner_name',
+                    'key'                   => 'title',
                 ], [
-                    'value'                 => $data->$partner_name,
+                    'value'                 => $data->$publicdiplomacy_title,
                     'updated_at'            => Carbon::now(),
                 ]);
             }
-
-            if ($data->$partner_details != null) {
+            if ($data->$publicdiplomacy_name != null) {
                 Translation::updateOrInsert([
-                    'translationable_type'  => 'App\Models\Admin\Partner',
-                    'translationable_id'    => $updatepartner->id,
+                    'translationable_type'  => 'App\Models\Admin\PublicDiplomacy',
+                    'translationable_id'    => $updatepublicdiplomacy->id,
                     'locale'                => $lang->lang,
-                    'key'                   => 'partner_details',
+                    'key'                   => 'name',
                 ], [
-                    'value'                 => $data->$partner_details,
+                    'value'                 => $data->$publicdiplomacy_name,
                     'updated_at'            => Carbon::now(),
                 ]);
             }
-
         }
 
         return response([
-            'partner' => Partner::findOrFail($id),
+            'publicdiplomacy' => PublicDiplomacy::with('country')->findOrFail($id),
             'title' => __('admin_local.Congratulations !'),
-            'text' => __('admin_local.Partner updated successfully.'),
+            'text' => __('admin_local.Updated successfully.'),
             'confirmButtonText' => __('admin_local.Ok'),
         ], 200);
     }
@@ -202,21 +224,21 @@ class PublicDiplomacyController extends Controller
      */
     public function destroy(string $id)
     {
-        $partner = Partner::findOrFail($id);
-        $partner->delete=1;
-        $partner->updated_at=Carbon::now();
-        $partner->save();
+        $publicdiplomacy = PublicDiplomacy::findOrFail($id);
+        $publicdiplomacy->delete = 1;
+        $publicdiplomacy->updated_at = Carbon::now();
+        $publicdiplomacy->save();
         return response([
-            'title'=>__('admin_local.Congratulations !'),
-            'text'=>__('admin_local.Partner deleted successfully.'),
-            'confirmButtonText'=>__('admin_local.Ok'),
+            'title' => __('admin_local.Congratulations !'),
+            'text' => __('admin_local.Deleted successfully.'),
+            'confirmButtonText' => __('admin_local.Ok'),
         ]);
     }
 
     public function updateStatus(Request $data)
     {
-        Partner::where('id', $data->id)->update(['status' => $data->status, 'updated_at' => Carbon::now()]);
-        $partner = Partner::where('id', $data->id)->first();
-        return $partner;
+        PublicDiplomacy::where('id', $data->id)->update(['status' => $data->status, 'updated_at' => Carbon::now()]);
+        $publicpiplomacy = PublicDiplomacy::where('id', $data->id)->first();
+        return $publicpiplomacy;
     }
 }

@@ -299,7 +299,6 @@
                     </div>
                 </div>
                 <div class="ns-header-right">
-
                     <div class="ns-header-navbar">
                         <div class="ns-header-menu">
                             <nav class="ns-header-main-menu mobile-menu-2" id="mobile-menu-2">
@@ -310,7 +309,7 @@
                                             href="{{ route('frontEnd.services') }}">{{ __('admin_local.Capabilities') }}</a>
                                     </li>
                                     <li><a
-                                            href="{{ route('frontEnd.projects') }}">{{ __('admin_local.Innovation and Tech') }}</a>
+                                            href="{{ route('frontEnd.blogs') }}">{{ __('admin_local.Blogs') }}</a>
                                     </li>
                                     <li class="menu-has-child">
                                         <a href="{{ route('frontEnd.projects') }}"

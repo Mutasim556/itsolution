@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AboutUsController;
 use App\Http\Controllers\Admin\Auth\AdminAuthController;
 use App\Http\Controllers\Admin\Auth\AdminLoginController;
+use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\BrandingController;
 use App\Http\Controllers\Admin\ContactUsController;
 use App\Http\Controllers\Admin\CountryRepController;
@@ -14,6 +15,7 @@ use App\Http\Controllers\Admin\LogoIconController;
 use App\Http\Controllers\Admin\MembersOfController;
 use App\Http\Controllers\Admin\PartnerController;
 use App\Http\Controllers\Admin\ProjectController;
+use App\Http\Controllers\Admin\PublicDiplomacyController;
 use App\Http\Controllers\Admin\Role\RoleAndPermissionController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\Settings\MaintenanceModeController;
@@ -149,6 +151,13 @@ Route::prefix('admin')->name('admin.')->group(function () {
             });
             /** Country End */
 
+            /** Project Start */
+            Route::resource('public-diplomacy', PublicDiplomacyController::class)->except('create', 'show');
+            Route::controller(PublicDiplomacyController::class)->prefix('public-diplomacy')->group(function () {
+                Route::get('/update/status/{id}/{status}', 'updateStatus');
+            });
+            /** Project End */
+
             /** Partner Start */
             Route::resource('partner', PartnerController::class)->except('create', 'show');
             Route::controller(PartnerController::class)->prefix('partner')->group(function () {
@@ -162,6 +171,13 @@ Route::prefix('admin')->name('admin.')->group(function () {
                 Route::get('/update/status/{id}/{status}', 'updateStatus');
             });
             /** Members Of End */
+
+            /** Blog Start */
+            Route::resource('blog', BlogController::class)->except('create', 'show');
+            Route::controller(BlogController::class)->prefix('blog')->group(function () {
+                Route::get('/update/status/{id}/{status}', 'updateStatus');
+            });
+            /** Blog End */
         });
 
         /** Work Start */

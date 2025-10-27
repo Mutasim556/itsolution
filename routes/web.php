@@ -40,6 +40,11 @@ Route::middleware('frontLang')->group(function () {
 
         Route::get('/brands', 'brands')->name('brands');
         Route::get('/public-diplomacy', 'publicDiplomacy')->name('publicDiplomacy');
+        Route::get('/public-diplomacy/load-more', 'loadMore')->name('loadMore');
+
+        Route::get('/blogs', 'blogs')->name('blogs');
+        Route::get('/blogs/load-more', 'blogLoadMore')->name('blogLoadMore');
+        Route::get('/blog-details/{slug}', 'blogDetails')->name('blogDetails');
     });
     Route::get('/change-front-lang/{lang}', function () {
         try {

@@ -130,5 +130,17 @@ class PermissionSeeder extends Seeder
         // Permission::create(['guard_name'=>'admin','name'=>'memberof-create','group_name'=>'Member Of']);
         // Permission::create(['guard_name'=>'admin','name'=>'memberof-update','group_name'=>'Member Of']);
         // Permission::create(['guard_name'=>'admin','name'=>'memberof-delete','group_name'=>'Member Of']);
+
+        //permission for Public Diplomacy
+        // Permission::create(['guard_name'=>'admin','name'=>'public-diplomacy-index','group_name'=>'Public Diplomacy']);
+        // Permission::create(['guard_name'=>'admin','name'=>'public-diplomacy-create','group_name'=>'Public Diplomacy']);
+        // Permission::create(['guard_name'=>'admin','name'=>'public-diplomacy-update','group_name'=>'Public Diplomacy']);
+        // Permission::create(['guard_name'=>'admin','name'=>'public-diplomacy-delete','group_name'=>'Public Diplomacy']);
+
+        //permission for Blog
+        // Permission::create(['guard_name'=>'admin','name'=>'blog-index','group_name'=>'Blog']);
+        // Permission::create(['guard_name'=>'admin','name'=>'blog-create','group_name'=>'Blog']);
+        // Permission::create(['guard_name'=>'admin','name'=>'blog-update','group_name'=>'Blog']);
+        // Permission::create(['guard_name'=>'admin','name'=>'blog-delete','group_name'=>'Blog']);
     }
 }

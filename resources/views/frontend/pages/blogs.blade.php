@@ -1,6 +1,6 @@
 @extends('frontend.layouts.frontend')
 @push('title')
-    {{ __('admin_local.Public Diplomacy') }}
+    {{ __('admin_local.Blogs') }}
 @endpush
 @push('css')
     <style>
@@ -132,6 +132,27 @@
             transform: scale(1.05);
             /* subtle hover animation */
         }
+
+        .ns-read-more-btn {
+            display: inline-block;
+            padding: 0.5rem 1.2rem;
+            border: 2px solid #ffab17;
+            color: #ffab17;
+            border-radius: 0.25rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            max-width: 160px;
+            /* <-- Set the desired width */
+            font-size: 16px !important;
+            text-align: center;
+            margin-top: 20px !important;
+        }
+
+        .ns-read-more-btn:hover {
+            background-color: #ffab17;
+            color: #fff;
+            text-decoration: none;
+        }
     </style>
 @endpush
 @section('content')
@@ -140,54 +161,46 @@
             <div class="col-12">
                 <div class="ns-section mb-50 text-center">
                     <h2 class="ns-section-title mb-0" style="font-size:25px;">
-                        {{ __('admin_local.Public Diplomacy') }}
+                        {{ __('admin_local.Blogs') }}
                     </h2>
                 </div>
             </div>
         </div>
     </div>
-    @php
-        $countries = \App\Models\Admin\CountryRepresentation::where([['delete', 0], ['status', 1]])->get();
-    @endphp
-    @if (count($countries) > 0)
-        <section class="ns-logo-section py-5">
-            <div class="container">
-                <div class="row g-4 justify-content-center">
-                    @foreach ($countries as $key => $country)
-                        <div class="col-6 col-md-4 col-lg-2 text-center">
-                            <a href="{{ route('frontEnd.publicDiplomacy') . '?pd=' . \Vinkla\Hashids\Facades\Hashids::encode($country->id) }}"
-                                class="ns-logo-link text-decoration-none">
-                                <div
-                                    class="ns-logo-card p-3 {{ request()->pd && \Vinkla\Hashids\Facades\Hashids::encode($country->id) == request()->pd ? 'active' : '' }}">
-                                    <div class="ns-logo-img mb-3">
-                                        <img src="{{ asset($country->logo ?? 'public/frontend/assets/img/pub_dip/bbc.png') }}"
-                                            alt="{{ $country->name }}" class="img-fluid">
-                                    </div>
-                                    <h6 class="ns-logo-name m-0">{{ $country->name }}</h6>
-                                </div>
-                            </a>
-                        </div>
-                    @endforeach
-                </div>
-            </div>
-        </section>
-    @endif
+
     <section class="ns-news-section py-5 my-4">
         <div class="container">
             <div class="row g-4 justify-content-center" id="project-container">
-                @foreach ($publicdiplomacies as $pdKey => $publicdiplomacy)
+                @foreach ($blogs as $blogKey => $blog)
                     <div class="col-12 col-md-6 col-lg-4 mb-4">
-                        <a target="__blank" href="{{ $publicdiplomacy->link }}" class="ns-news-link text-decoration-none">
+                        <a href="{{ route('frontEnd.blogDetails',[\Str::slug($blog->title)."?blog=".\Vinkla\Hashids\Facades\Hashids::encode($blog->id)]) }}" class="ns-news-link text-decoration-none">
                             <div class="ns-news-card">
                                 <div class="ns-news-img position-relative">
-                                    <img src="{{ asset($publicdiplomacy->image ?? 'public/frontend/assets/img/project/project-41.jpg') }}"
+                                    @php
+                                        $images = json_decode($blog->images);
+                                    @endphp
+                                    <img src="{{ asset($images[0] ?? 'public/frontend/assets/img/project/project-41.jpg') }}"
                                         alt="News Image" class="img-fluid">
-                                    <span class="ns-news-badge">{{ $publicdiplomacy->country->name }}</span>
+                                    {{-- <span class="ns-news-badge">{{ $blog->country->name }}</span> --}}
                                 </div>
-                                <div class="ns-news-content p-3">
-                                    <h5 class="ns-news-title mb-2">{{ $publicdiplomacy->title }}</h5>
-                                    <p class="ns-news-author mb-0"><strong>{{ $publicdiplomacy->name }}</strong></p>
+                                <div class="ns-news-footer d-flex justify-content-between px-3 pb-3">
+                                    <div class="ns-news-author text-muted">
+                                        <small>Blog by: {{ $blog->admin->name ?? 'Adminsd' }}</small>
+                                    </div>
+                                    <div class="ns-news-date text-muted">
+                                        <small>{{ $blog->created_at->format('M d, Y') }}</small>
+                                    </div>
                                 </div>
+                                <div class="ns-news-content p-3 text-center">
+                                    <h5 class="ns-news-title mb-2">{{ $blog->title }}</h5>
+                                    <div class="mt-auto">
+                                        <a href="{{ route('frontEnd.blogDetails',[\Str::slug($blog->title)."?blog=".\Vinkla\Hashids\Facades\Hashids::encode($blog->id)]) }}"
+                                            class="ns-read-more-btn w-100 text-center text-uppercase fw-bold">
+                                            Read More
+                                        </a>
+                                    </div>
+                                </div>
+
                             </div>
                         </a>
                     </div>
@@ -195,7 +208,7 @@
 
             </div>
         </div>
-        @if ($publicdiplomacyC > 6)
+        @if ($blogsC > 6)
             <section class="text-center mt-5">
                 <button type="button" class="btn ns-theme-btn px-4 py-2" data-offset="6" id="load-more-btn">
                     View More
@@ -203,35 +216,36 @@
             </section>
         @endif
     </section>
-
-
+    <!-- Blog Section End -->
 @endsection
+
 @push('js')
-    <script>
-        $(document).ready(function() {
-            $('#load-more-btn').on('click', function() {
-                $(this).text('Please Wait ...')
-                let offset = $(this).data('offset');
-                let getData = `{{ request()->has('pd') ? '?pd=' . request()->get('pd') : '' }}`;
-                $.ajax({
-                    url: "{{ route('frontEnd.loadMore') }}" + getData,
-                    type: "GET",
-                    data: {
-                        offset: offset
+    @push('js')
+        <script>
+            $(document).ready(function() {
+                $('#load-more-btn').on('click', function() {
+                    $(this).text('Please Wait ...')
+                    let offset = $(this).data('offset');
+                    $.ajax({
+                        url: "{{ route('frontEnd.blogLoadMore') }}",
+                        type: "GET",
+                        data: {
+                            offset: offset
 
-                    },
-                    success: function(response) {
-                        if (response.html.trim() !== '') {
-                            $('#project-container').append(response.html);
-                            $('#load-more-btn').data('offset', offset + 6);
-                        } else {
-                            $('#load-more-btn').hide(); // hide when no more data
+                        },
+                        success: function(response) {
+                            if (response.html.trim() !== '') {
+                                $('#project-container').append(response.html);
+                                $('#load-more-btn').data('offset', offset + 6);
+                            } else {
+                                $('#load-more-btn').hide(); // hide when no more data
+                            }
+
+                            $('#load-more-btn').text('View More')
                         }
-
-                        $('#load-more-btn').text('View More')
-                    }
+                    });
                 });
             });
-        });
-    </script>
+        </script>
+    @endpush
 @endpush

@@ -52,6 +52,36 @@
     @endif
 
 
+    @php
+        $members = \App\Models\Admin\Member::where([['delete', 0], ['status', 1]])->get();
+    @endphp
+    @if (count($members) > 0)
+        <section class="py-5 bg-light my-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="ns-section mb-50 text-center">
+                            <h2 class="ns-section-title mb-0" style="font-size:25px;">{{ __('admin_local.MEMEBER OF') }}
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row g-4 justify-content-center align-items-center">
+                    @foreach ($members as $member)
+                        <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+                            <div class="news-logo-box">
+                                <img src="{{ asset($member->logo ?? 'public/frontend/assets/img/pub_dip/bbc.png') }}"
+                                    style="height: 100%" class="img-fluid" alt="BBC">
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </section>
+    @endif
+    @php
+        $countries = \App\Models\Admin\CountryRepresentation::where([['delete', 0], ['status', 1]])->get();
+    @endphp
     <section class="py-5 bg-white mb-5">
         <div class="container">
             <div class="row">
@@ -64,81 +94,14 @@
                 </div>
             </div>
             <div class="row g-4 justify-content-center align-items-center">
-                <!-- News Channel 1 -->
-                <div class="col-6 col-sm-4 col-md-3 col-lg-2">
-                    <div class="news-logo-box">
-                        <img src="{{ asset('public/frontend/assets/img/pub_dip/bbc.png') }}" class="img-fluid"
-                            alt="BBC">
+                @foreach ($countries as $country)
+                    <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="news-logo-box">
+                            <img src="{{ asset($country->logo ?? 'public/frontend/assets/img/pub_dip/bbc.png') }}"
+                                style="height: 100%" class="img-fluid" alt="BBC">
+                        </div>
                     </div>
-                </div>
-
-                <!-- News Channel 2 -->
-                <div class="col-6 col-sm-4 col-md-3 col-lg-2">
-                    <div class="news-logo-box">
-                        <img src="{{ asset('public/frontend/assets/img/pub_dip/cnn.png') }}" style="height: 100%"
-                            class="img-fluid" alt="CNN">
-                    </div>
-                </div>
-
-                <!-- News Channel 3 -->
-                <div class="col-6 col-sm-4 col-md-3 col-lg-2">
-                    <div class="news-logo-box">
-                        <img src="{{ asset('public/frontend/assets/img/pub_dip/aljazeera.png') }}" style="height: 100%"
-                            class="img-fluid" alt="Al Jazeera">
-                    </div>
-                </div>
-
-                <!-- News Channel 4 -->
-                <div class="col-6 col-sm-4 col-md-3 col-lg-2">
-                    <div class="news-logo-box">
-                        <img src="{{ asset('public/frontend/assets/img/pub_dip/bloomberg.png') }}" style="height: 100%"
-                            class="img-fluid" alt="bloomberg">
-                    </div>
-                </div>
-
-                <!-- News Channel 5 -->
-                <div class="col-6 col-sm-4 col-md-3 col-lg-2">
-                    <div class="news-logo-box">
-                        <img src="{{ asset('public/frontend/assets/img/pub_dip/euronews.png') }}" style="height: 100%"
-                            class="img-fluid" alt="euronews">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="py-5 bg-light my-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="ns-section mb-50 text-center">
-                        <h2 class="ns-section-title mb-0" style="font-size:25px;">{{ __('admin_local.MEMEBER OF') }}
-                        </h2>
-                    </div>
-                </div>
-            </div>
-            <div class="row g-4 justify-content-center align-items-center">
-                <div class="col-6 col-sm-4 col-md-3 col-lg-2">
-                    <div class="news-logo-box">
-                        <img src="{{ asset('public/frontend/assets/img/pub_dip/bbc.png') }}" class="img-fluid"
-                            alt="BBC">
-                    </div>
-                </div>
-
-                <!-- News Channel 2 -->
-                <div class="col-6 col-sm-4 col-md-3 col-lg-2">
-                    <div class="news-logo-box">
-                        <img src="{{ asset('public/frontend/assets/img/pub_dip/cnn.png') }}" style="height: 100%"
-                            class="img-fluid" alt="CNN">
-                    </div>
-                </div>
-
-                <!-- News Channel 3 -->
-                <div class="col-6 col-sm-4 col-md-3 col-lg-2">
-                    <div class="news-logo-box">
-                        <img src="{{ asset('public/frontend/assets/img/pub_dip/aljazeera.png') }}" style="height: 100%"
-                            class="img-fluid" alt="Al Jazeera">
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>

@@ -150,7 +150,7 @@ class ProjectController extends Controller
             'project_title' => 'required',
             'project_details' => 'required',
             'project_type' => 'required',
-            'project_images.*' => 'required|mimes:jpg,jpeg,png',
+            'project_images.*' => 'mimes:jpg,jpeg,png',
         ], [
             'project_title.required' => __('admin_local.Project title required'),
             'project_details.required' => __('admin_local.Project details required'),
