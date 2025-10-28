@@ -3,11 +3,13 @@
     {{ __('admin_local.Home') }}
 @endpush
 @push('css')
-<style>
-    .bg-light{
-        background: #f1f0ef !important;
-    }
-</style>
+    <style>
+        .bg-light {
+            background: #f1f0ef !important;
+        }
+
+        
+    </style>
 @endpush
 @section('content')
     <!-- banner area start -->
@@ -236,12 +238,12 @@
                 </div>
                 <div class="row g-4 justify-content-center align-items-center">
                     @foreach ($members as $member)
-                    <div class="col-6 col-sm-4 col-md-3 col-lg-2">
-                        <div class="news-logo-box">
-                            <img src="{{ asset($member->logo??'public/frontend/assets/img/pub_dip/bbc.png') }}" style="height: 100%" class="img-fluid"
-                                alt="BBC">
+                        <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+                            <div class="news-logo-box">
+                                <img src="{{ asset($member->logo ?? 'public/frontend/assets/img/pub_dip/bbc.png') }}"
+                                    style="height: 100%" class="img-fluid" alt="BBC">
+                            </div>
                         </div>
-                    </div>
                     @endforeach
                 </div>
             </div>

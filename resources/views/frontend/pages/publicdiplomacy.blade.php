@@ -135,7 +135,7 @@
     </style>
 @endpush
 @section('content')
-    <div class="container" style="margin-top: 60px !important;">
+    <div class="container" style="padding-top: 60px !important;">
         <div class="row">
             <div class="col-12">
                 <div class="ns-section mb-50 text-center">
@@ -150,7 +150,7 @@
         $countries = \App\Models\Admin\CountryRepresentation::where([['delete', 0], ['status', 1]])->get();
     @endphp
     @if (count($countries) > 0)
-        <section class="ns-logo-section py-5">
+        <section class="ns-logo-section  py-5">
             <div class="container">
                 <div class="row g-4 justify-content-center">
                     @foreach ($countries as $key => $country)
@@ -172,7 +172,7 @@
             </div>
         </section>
     @endif
-    <section class="ns-news-section py-5 my-4">
+    <section class="ns-news-section bg-light py-5">
         <div class="container">
             <div class="row g-4 justify-content-center" id="project-container">
                 @foreach ($publicdiplomacies as $pdKey => $publicdiplomacy)

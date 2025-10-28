@@ -4,7 +4,7 @@
     // meanmenu
     $('#mobile-menu-2').meanmenu({
         meanMenuContainer: '.mobile-menu-2',
-        meanScreenWidth: "2499"
+        meanScreenWidth: "8000"
     });
     $('#mobile-menu').meanmenu({
         meanMenuContainer: '.mobile-menu',
@@ -185,35 +185,22 @@
     initVideoPopup();
     const frontSliderActive = new Swiper(".slider-active", {
         slidesPerView: 1,
-        // spaceBetween: 60,
-        speed: 1500,
+        speed: 1500,         // transition duration
         loop: true,
         pagination: {
             el: ".ns-slide-pagination",
             clickable: true,
         },
         breakpoints: {
-            0: {
-                slidesPerView: 1,
-            },
-            576: {
-                slidesPerView: 1,
-            },
-            768: {
-                slidesPerView: 1,
-            },
-            992: {
-                slidesPerView: 1,
-            },
-            1200: {
-                slidesPerView: 1
-            },
-            1400: {
-                slidesPerView: 1
-            }
+            0: { slidesPerView: 1 },
+            576: { slidesPerView: 1 },
+            768: { slidesPerView: 1 },
+            992: { slidesPerView: 1 },
+            1200: { slidesPerView: 1 },
+            1400: { slidesPerView: 1 }
         },
         autoplay: {
-            delay: 3000,             // wait 3s before sliding
+            delay: 5000,      // slide stays 5 seconds
             disableOnInteraction: false,
         },
         on: {
@@ -222,6 +209,7 @@
             }
         }
     });
+
 
     // service active 2
     const serviceActiveTwo = new Swiper(".service-active-2", {

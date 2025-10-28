@@ -4,9 +4,9 @@
 @endpush
 @push('css')
     <style>
-        .ns-logo-section {
+        /* .ns-logo-section {
             background-color: #313131;
-        }
+        } */
 
         .ns-logo-link {
             display: block;
@@ -156,7 +156,7 @@
     </style>
 @endpush
 @section('content')
-    <div class="container" style="margin-top: 60px !important;">
+    <div class="container" style="padding-top: 60px !important;">
         <div class="row">
             <div class="col-12">
                 <div class="ns-section mb-50 text-center">
@@ -168,7 +168,7 @@
         </div>
     </div>
 
-    <section class="ns-news-section py-5 my-4">
+    <section class="ns-news-section bg-light py-5 py-4">
         <div class="container">
             <div class="row g-4 justify-content-center" id="project-container">
                 @foreach ($blogs as $blogKey => $blog)

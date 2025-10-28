@@ -78,16 +78,16 @@
     </style>
 @endpush
 @section('content')
-    <section class="breadcrumb-section text-white d-flex align-items-center"
-        style="background-color: #343a40; min-height: 250px;">
+    <section class="breadcrumb-section text-white  d-flex align-items-center"
+        style="background-color: #112337; min-height: 250px;">
         <div class="container text-center">
-            <h3 class="fw-bold mb-2" style="color:white">Blog Details</h3>
+            <h3 class="fw-bold mb-2" style="color:white">Innovation and Tech</h3>
 
         </div>
     </section>
 
 
-    <section class="ns-blog-details-section py-5">
+    <section class="ns-blog-details-section bg-light py-5">
         <div class="container">
             <div class="row g-4 justify-content-center">
                 <!-- Blog Content -->

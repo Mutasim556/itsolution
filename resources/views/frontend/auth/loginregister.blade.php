@@ -93,6 +93,9 @@
             color: var(--theme-color);
             text-decoration: underline;
         }
+        body{
+            background: #f1f0ef;
+        }
     </style>
 @endpush
 @section('content')

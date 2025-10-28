@@ -18,7 +18,7 @@
             ->get();
     @endphp
     @if (count($services) > 0)
-        <section class="ns-service-area pt-110 pb-110">
+        <section class="ns-service-area bg-light pt-110 pb-110">
             <div class="container">
                 <div class="row">
                     <div class="col-12">

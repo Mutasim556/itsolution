@@ -5,7 +5,7 @@
 @push('css')
 @endpush
 @section('content')
-    <div class="container" style="margin-top: 60px !important;">
+    <div class="container" style="padding-top: 60px !important;">
         <div class="row">
             <div class="col-12">
                 <div class="ns-section mb-50 text-center">
@@ -16,7 +16,7 @@
             </div>
         </div>
     </div>
-    <section class="image-grid">
+    <section class="image-grid bg-light">
 
         <div class="card" style="background-image: url({{ asset('public/frontend/assets/img/ppp/2.jpg') }});">
             <div class="overlay">

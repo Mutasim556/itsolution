@@ -6141,6 +6141,7 @@ only screen and (min-width: 768px) and (max-width: 991px),
     background-color: #fff;
     border-radius: 5px;
     overflow: hidden;
+    min-height:530px;
 }
 
 .ns-service-content {
@@ -8109,8 +8110,8 @@ only screen and (min-width: 768px) and (max-width: 991px),
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: var(--clr-common-black);
-    opacity: 0.831;
+    background-color: #112337;
+    opacity: 0.99;
     z-index: -1;
 }
 
@@ -8200,18 +8201,17 @@ only screen and (min-width: 768px) and (max-width: 991px),
 }
 
 .ns-cta-shape-1::before {
-    width: 155px;
-    height: 155px;
+    width: 200px;
+    height: 200px;
     position: absolute;
     top: 0;
     right: 0;
-    /* move it to the right */
     background-color: var(--clr-theme-primary);
-    clip-path: polygon(0 0, 100% 100%, 100% 0);
-    /* mirror the triangle to top-right */
+    clip-path: path("M0,0 C200,0 200,200 200,200 L200,0 Z");
     content: "";
     z-index: 1;
 }
+
 
 
 .ns-cta-shape-2 {

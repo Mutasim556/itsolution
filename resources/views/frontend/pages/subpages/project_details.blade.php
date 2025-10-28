@@ -109,7 +109,7 @@
 @endpush
 @section('content')
     <section class="breadcrumb-section text-white d-flex align-items-center"
-        style="background-color: #343a40; min-height: 250px;">
+        style="background-color: #112337; min-height: 250px;">
         <div class="container text-center">
             <h1 class="fw-bold mb-2">{{ $project->title ?? 'Project Title' }}</h1>
             <nav aria-label="breadcrumb">

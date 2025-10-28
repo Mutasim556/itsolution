@@ -207,7 +207,7 @@
             </div>
         </div>
     </div>
-    <div class="container mt-5 " style="padding-top: 10px;padding-bottom:100px">
+    <div class="container pt-5 " style="padding-top: 10px;padding-bottom:100px">
         <ul class="nav nav-tabs" id="authTab" role="tablist">
             <li class="nav-item" role="presentation">
                 <button class="nav-link {{ $errors->any() || session()->has('success') ? '' : 'active' }}" id="login-tab"

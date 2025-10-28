@@ -25,8 +25,10 @@
     <link rel="stylesheet" href="{{ asset('public/frontend/assets/css/nice-select.css') }}">
     <link rel="stylesheet" href="{{ asset('public/frontend/assets/css/meanmenu.css') }}">
     <link rel="stylesheet" href="{{ asset('public/frontend/assets/css/swipper.css') }}">
-    <link rel="stylesheet" href="{{ asset('public/frontend/assets/css/main.css') }}">
-    <link rel="stylesheet" href="{{ asset('public/frontend/assets/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/frontend/assets/css/main.css?v=').time() }}">
+    <link rel="stylesheet" href="{{ asset('public/frontend/assets/css/style.css?v=').time() }}">
+    {{-- <link rel="stylesheet" href="{{ asset('public/frontend/assets/css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/frontend/assets/css/style.css') }}"> --}}
 
     <style>
         .ns-slide-pagination {
@@ -157,9 +159,9 @@
 
         /* Header after scrolling past slider */
         /* Bottom-only shadow for header after scroll */
-        header.scrolled .ns-header-wrap {
+        /* header.scrolled .ns-header-wrap {
             box-shadow: 0 4px 10px -2px rgba(0, 0, 0, 0.1);
-        }
+        } */
 
 
 
@@ -360,7 +362,7 @@
     </div>
     <!-- search start end -->
 
-    <main>
+    <main class="bg-light">
         @yield('content')
     </main>
     <!-- footer area start -->
@@ -380,7 +382,7 @@
                         <div class="ns-footer-widget mb-40">
                             <div class="ns-footer-logo">
                                 <a href="{{ url('/') }}"><img
-                                        src="{{ asset($logo ? $logo->main_site_header_logo : 'public/frontend/assets/img/logo/logo.png') }}"
+                                        src="{{ asset($logo ? $logo->main_site_footer_logo : 'public/frontend/assets/img/logo/logo.png') }}"
                                         alt="Not Found"></a>
                             </div>
                             <h3 class="ns-footer-widget-title"></h3>
@@ -415,8 +417,7 @@
                                             <hr class="dropdown-divider">
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" href="{{ route('user.attemptLogout') }}"
-                                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                            <a class="dropdown-item" href="{{ route('user.attemptLogout') }}">
                                                 {{ __('admin_local.Logout') }}
                                             </a>
 
@@ -489,7 +490,7 @@
     <script src="{{ asset('public/frontend/assets/js/jquery.magnific-popup.min.js') }}"></script>
     <script src="{{ asset('public/frontend/assets/js/odometer.min.js') }}"></script>
     <script src="{{ asset('public/frontend/assets/js/appear.min.js') }}"></script>
-    <script src="{{ asset('public/frontend/assets/js/main.js') }}"></script>
+    <script src="{{ asset('public/frontend/assets/js/main.js?v=').time() }}"></script>
     <script>
         window.addEventListener("load", function() {
             const preloader = document.getElementById("preloader");

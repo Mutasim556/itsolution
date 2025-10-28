@@ -66,7 +66,7 @@
     </style>
 @endpush
 @section('content')
-    <section class="ns-team-member-details py-5">
+    <section class="ns-team-member-details bg-light py-5">
         <div class="container" style="margin-top: 60px !important;">
             <div class="row">
                 <div class="col-12">

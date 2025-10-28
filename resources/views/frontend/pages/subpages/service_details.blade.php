@@ -110,8 +110,8 @@
 
 @section('content')
     <!-- Breadcrumb Section -->
-    <section class="breadcrumb-section"
-        style="background-image: url('{{ asset($service->banner_image ?? 'frontend/images/service-banner.jpg') }}');">
+    <section class="breadcrumb-section "
+        style="background:#112337">
         <div class="container">
             <h1 style="color:white">{{ $service->service_name ?? 'Service Title' }}</h1>
 

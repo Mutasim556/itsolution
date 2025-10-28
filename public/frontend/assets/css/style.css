@@ -298,7 +298,7 @@
 }
 
 .news-logo-box {
-    background: #fff; 
+    background: #fff;
     height: 130px;
     /* same height for every box */
     padding-left: 10px;
@@ -321,4 +321,8 @@
 .news-logo-box:hover {
     transform: translateY(-5px);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.bg-light {
+    background: #f1f0ef !important;
 }

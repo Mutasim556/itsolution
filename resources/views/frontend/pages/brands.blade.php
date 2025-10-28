@@ -11,6 +11,7 @@
             border-radius: 8px;
             box-shadow: 0 0px 0px rgba(0, 0, 0, 0.08);
             border: 0;
+            background: #f1f0ef !important;
         }
 
         .news-logo-box img {
@@ -27,7 +28,7 @@
             box-shadow: 0 0px 0px rgba(0, 0, 0, 0.15);
         }
         .news-logo-box img:hover {
-            border: 1px solid #f6921e;
+            border: 1px solid #112337;
         }
     </style>
 @endpush
@@ -58,7 +59,7 @@
                 </div>
             </div>
         </div> --}}
-        <section class="py-5 bg-white my-5">
+        <section class="py-5 bg-light py-5">
             <div class="container">
                 <div class="row">
                     <div class="col-12">
