@@ -102,6 +102,14 @@
                                 </div>
                             </div>
                             <div class="row mt-3">
+                                <div class="col-md-3 py-2">
+                                    <label for="">{{ __('admin_local.Instagram') }}</label>
+                                </div>
+                                <div class="col-md-5">
+                                    <input type="text" class="form-control" name="instagram" id="instagram" value="{{ $contactinfo->instagram }}">
+                                </div>
+                            </div>
+                            <div class="row mt-3">
                                 <div class="col-md-6 py-2">
 
                                 </div>

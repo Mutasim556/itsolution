@@ -25,8 +25,8 @@
     <link rel="stylesheet" href="{{ asset('public/frontend/assets/css/nice-select.css') }}">
     <link rel="stylesheet" href="{{ asset('public/frontend/assets/css/meanmenu.css') }}">
     <link rel="stylesheet" href="{{ asset('public/frontend/assets/css/swipper.css') }}">
-    <link rel="stylesheet" href="{{ asset('public/frontend/assets/css/main.css?v=').time() }}">
-    <link rel="stylesheet" href="{{ asset('public/frontend/assets/css/style.css?v=').time() }}">
+    <link rel="stylesheet" href="{{ asset('public/frontend/assets/css/main.css?v=') . time() }}">
+    <link rel="stylesheet" href="{{ asset('public/frontend/assets/css/style.css?v=') . time() }}">
     {{-- <link rel="stylesheet" href="{{ asset('public/frontend/assets/css/main.css') }}">
     <link rel="stylesheet" href="{{ asset('public/frontend/assets/css/style.css') }}"> --}}
 
@@ -246,6 +246,19 @@
             background: #f6921e;
             color: #fff;
         }
+
+        .ns-footer-social {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            /* space between icons */
+        }
+
+        .ns-footer-social a img {
+            display: inline-block;
+            vertical-align: middle;
+        }
     </style>
     @stack('css')
 </head>
@@ -297,6 +310,7 @@
                     <div class="ns-header-logo-img">
                         <a href="{{ url('/') }}"><img
                                 src="{{ asset($logo ? $logo->main_site_header_logo : 'public/frontend/assets/img/logo/logo.png') }}"
+                                style="width: 250px; height: auto; margin-left:90px;"
                                 alt="Not Found"></a>
                     </div>
                 </div>
@@ -317,10 +331,18 @@
                                         <a href="{{ route('frontEnd.projects') }}"
                                             class="">{{ __('admin_local.Projects') }}</a>
                                         <ul class="submenu">
-                                            <li><a href="{{ route('frontEnd.projects')."?type=Branding" }}">{{ __('admin_local.Branding') }}</a></li>
-                                            <li><a href="{{ route('frontEnd.projects')."?type=Campaign" }}">{{ __('admin_local.Campaign') }}</a></li>
-                                            <li><a href="{{ route('frontEnd.projects')."?type=Tech" }}">{{ __('admin_local.Tech') }}</a></li>
-                                            <li><a href="{{ route('frontEnd.projects')."?type=Event" }}">{{ __('admin_local.Event') }}</a></li>
+                                            <li><a
+                                                    href="{{ route('frontEnd.projects') . '?type=Branding' }}">{{ __('admin_local.Branding') }}</a>
+                                            </li>
+                                            <li><a
+                                                    href="{{ route('frontEnd.projects') . '?type=Campaign' }}">{{ __('admin_local.Campaign') }}</a>
+                                            </li>
+                                            <li><a
+                                                    href="{{ route('frontEnd.projects') . '?type=Tech' }}">{{ __('admin_local.Tech') }}</a>
+                                            </li>
+                                            <li><a
+                                                    href="{{ route('frontEnd.projects') . '?type=Event' }}">{{ __('admin_local.Event') }}</a>
+                                            </li>
                                         </ul>
                                     </li>
                                     <li><a href="{{ route('frontEnd.brands') }}">{{ __('admin_local.Brands') }}</a>
@@ -387,6 +409,7 @@
                             </div>
                             <h3 class="ns-footer-widget-title"></h3>
                             <div class="ns-footer-widget-contact mb-3">
+                                <p><strong>BrandTech Solutions Ltd.</strong></p>
                                 <p>{{ __('admin_local.Address') }} : {{ $contact->address }}</p>
                                 <div class="ns-footer-widget-contact-info mb-15">
                                     <span>{{ __('admin_local.Phone') }}:<a
@@ -441,21 +464,31 @@
                                     <a target="__blank" href="{{ $contact->facebook }}"><i
                                             class="fab fa-facebook-f"></i></a>
                                 @endif
+
                                 @if ($contact && $contact->twitter)
-                                    <a target="__blank" href="{{ $contact->twitter }}"><i
-                                            class="fab fa-twitter"></i></a>
+                                    <a target="__blank" href="{{ $contact->twitter }}">
+                                        <img src="{{ asset('public/frontend/assets/img/x2.svg') }}" alt="X"
+                                            style="width: 18px; height: 18px; vertical-align: middle; filter: brightness(0) invert(1);">
+                                    </a>
                                 @endif
+
                                 @if ($contact && $contact->linkedin)
                                     <a target="__blank" href="{{ $contact->linkedin }}"><i
                                             class="fab fa-linkedin-in"></i></a>
                                 @endif
+
                                 @if ($contact && $contact->youtube)
                                     <a target="__blank" href="{{ $contact->youtube }}"><i
                                             class="fab fa-youtube"></i></a>
                                 @endif
+                                @if ($contact && $contact->instagram)
+                                    <a target="__blank" href="{{ $contact->instagram }}"><i
+                                            class="fab fa-instagram"></i></a>
+                                @endif
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -490,7 +523,7 @@
     <script src="{{ asset('public/frontend/assets/js/jquery.magnific-popup.min.js') }}"></script>
     <script src="{{ asset('public/frontend/assets/js/odometer.min.js') }}"></script>
     <script src="{{ asset('public/frontend/assets/js/appear.min.js') }}"></script>
-    <script src="{{ asset('public/frontend/assets/js/main.js?v=').time() }}"></script>
+    <script src="{{ asset('public/frontend/assets/js/main.js?v=') . time() }}"></script>
     <script>
         window.addEventListener("load", function() {
             const preloader = document.getElementById("preloader");

@@ -38,6 +38,7 @@ class ContactUsController extends Controller
         $contactinfo->twitter = $data->twitter;
         $contactinfo->youtube = $data->youtube;
         $contactinfo->linkedin = $data->linkedin;
+        $contactinfo->instagram = $data->instagram;
 
         $contactinfo->save();
         return back();

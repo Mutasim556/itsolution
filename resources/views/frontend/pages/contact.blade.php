@@ -122,6 +122,18 @@
         .contact-form form {
             flex: 1;
         }
+        .ns-footer-social {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            /* space between icons */
+        }
+
+        .ns-footer-social a img {
+            display: inline-block;
+            vertical-align: middle;
+        }
     </style>
 @endpush
 @section('content')
@@ -155,7 +167,13 @@
                                     </svg>
                                 </div>
                                 <div>
-                                    <h5>{{ $contact->phone }}</h5>
+                                    @php
+                                        $Phone = explode(',',$contact->phone)
+                                    @endphp
+                                    @foreach ($Phone as $pval)
+                                    <h5>{{ $pval }}</h5>
+                                    @endforeach
+
                                     <p>Call us: Sun - Thu 9:30 - 18:30</p>
                                 </div>
                             </div>
@@ -170,6 +188,7 @@
                                 </div>
                                 <div>
                                     <h5>Address</h5>
+                                    <p><strong>BrandTech Solutions Ltd.</strong></p>
                                     <p>{{ $contact->address }}</p>
                                 </div>
                             </div>
@@ -184,7 +203,7 @@
                                     </svg>
                                 </div>
                                 <div>
-                                    <h5>{{ $contact->email }}</h5>
+                                    <h5 style="text-transform: lowercase">{{ $contact->email }}</h5>
                                     <p>Drop us a line anytime!</p>
                                 </div>
                             </div>
@@ -196,8 +215,10 @@
                                             class="fab fa-facebook-f"></i></a>
                                 @endif
                                 @if ($contact && $contact->twitter)
-                                    <a class="text-dark" target="__blank" href="{{ $contact->twitter }}"><i
-                                            class="fab fa-twitter"></i></a>
+                                    <a target="__blank" href="{{ $contact->twitter }}">
+                                        <img src="{{ asset('public/frontend/assets/img/x2.svg') }}" alt="X"
+                                            style="width: 18px; height: 18px; vertical-align: middle;">
+                                    </a>
                                 @endif
                                 @if ($contact && $contact->linkedin)
                                     <a class="text-dark" target="__blank" href="{{ $contact->linkedin }}"><i
@@ -206,6 +227,10 @@
                                 @if ($contact && $contact->youtube)
                                     <a class="text-dark" target="__blank" href="{{ $contact->youtube }}"><i
                                             class="fab fa-youtube"></i></a>
+                                @endif
+                                @if ($contact && $contact->instagram)
+                                    <a class="text-dark" target="__blank" href="{{ $contact->instagram }}"><i
+                                            class="fab fa-instagram"></i></a>
                                 @endif
                             </div>
                         </div>
