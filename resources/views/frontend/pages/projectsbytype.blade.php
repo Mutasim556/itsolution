@@ -1,6 +1,6 @@
 @extends('frontend.layouts.frontend')
 @push('title')
-     {{ request()->get('type') }}
+    {{ request()->get('type') }}
 @endpush
 @push('css')
     <style>
@@ -57,9 +57,99 @@
             border-radius: 0.5rem;
             font-size: 0.85rem;
         }
+
+        .ns-logo-section {
+            background-color: #112337;
+        }
+
+        .ns-logo-link {
+            display: block;
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .ns-logo-card {
+            border: 2px solid #f6921e;
+            border-radius: 14px;
+            background-color: #fff;
+            transition: 0.3s ease;
+            height: 100%;
+        }
+
+        .ns-logo-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 6px 14px rgba(255, 171, 23, 0.35);
+        }
+
+        /* 👇 Active div style */
+        .ns-logo-card.active {
+            background-color: #f6921e;
+            color: #fff;
+            box-shadow: 0 0 15px rgba(255, 171, 23, 0.6);
+        }
+
+        .ns-logo-card.active .ns-logo-name {
+            color: #fff;
+        }
+
+        .ns-logo-img {
+            height: 110px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .ns-logo-img img {
+            max-height: 100px;
+            object-fit: contain;
+        }
+
+        .ns-logo-name {
+            font-weight: 800;
+            color: #333;
+            font-size: 16px;
+        }
     </style>
 @endpush
 @section('content')
+    @if (strtoupper(request()->get('type')) == 'TECH')
+
+
+        <div class="container" style="padding-top: 30px !important;">
+            <div class="row">
+                <div class="col-12">
+                    <div class="ns-section mb-50 text-center">
+                        <h2 class="ns-section-title mb-0" style="font-size:25px;">
+                            {{ __('admin_local.Our Projects') }}
+                        </h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @php
+            $ourprojects = \App\Models\Admin\OurProject::where([['delete', 0], ['status', 1]])->get();
+        @endphp
+        @if (count($ourprojects) > 0)
+            <section class="ns-logo-section  py-5">
+                <div class="container">
+                    <div class="row g-4 justify-content-center">
+                        @foreach ($ourprojects as $key => $ourproject)
+                            <div class="col-6 col-md-4 col-lg-2 text-center">
+                                <a target="__blank" href="{{ $ourproject->link ?? '#' }}" class="ns-logo-link text-decoration-none">
+                                    <div class="ns-logo-card p-3">
+                                        <div class="ns-logo-img">
+                                            <img src="{{ asset($ourproject->logo ?? 'public/frontend/assets/img/pub_dip/bbc.png') }}"
+                                                alt="{{ $ourproject->name }}" class="img-fluid">
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </section>
+        @endif
+    @endif
     <section class="py-5 bg-light">
         <div class="container" style="padding-bottom: 50px !important;">
             <div class="container" style="margin-top: 60px !important;">
@@ -76,7 +166,8 @@
             <div class="row g-4">
                 @foreach ($projects as $project)
                     <div class="col-md-4 col-sm-6">
-                        <a href="{{ route('frontEnd.projectDetails',[\Str::slug($project->title)."?project=".\Vinkla\Hashids\Facades\Hashids::encode($project->id)]) }}" class="text-decoration-none blog-card">
+                        <a href="{{ route('frontEnd.projectDetails', [\Str::slug($project->title) . '?project=' . \Vinkla\Hashids\Facades\Hashids::encode($project->id)]) }}"
+                            class="text-decoration-none blog-card">
                             <div class="card border-0 shadow-sm h-100">
                                 @php
                                     $pImages = json_decode($project->images, true);

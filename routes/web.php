@@ -39,6 +39,7 @@ Route::middleware('frontLang')->group(function () {
         Route::post('/contact-us', 'contactUsStore')->name('contactUsStore')->middleware('throttle:3,1');
 
         Route::get('/brands', 'brands')->name('brands');
+        Route::get('/wings', 'wings')->name('wings');
         Route::get('/public-diplomacy', 'publicDiplomacy')->name('publicDiplomacy');
         Route::get('/public-diplomacy/load-more', 'loadMore')->name('loadMore');
 
@@ -133,4 +134,33 @@ Route::middleware('frontLang')->group(function () {
         Route::get('/get-work-payments/{id?}','getWorkPayments')->name('getWorkPayments');
         Route::put('/updates-feedback/{id?}','updatesFeedback')->name('updatesFeedback');
     });
+});
+Route::get('/test-mail', function () {
+    $to = "mutasimnaibsumit0@gmail.com"; // recipient
+$subject = "Test Email from PHP";
+$message = "
+<html>
+<head>
+  <title>Test Email</title>
+</head>
+<body>
+  <h2>Hello!</h2>
+  <p>This is a test email sent using PHP <strong>mail()</strong> function.</p>
+</body>
+</html>
+";
+
+// To send HTML mail, the Content-type header must be set
+$headers = "MIME-Version: 1.0" . "\r\n";
+$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+
+// Additional headers
+$headers .= "From: Brandtech <messages@brandtechbd.com>" . "\r\n";
+$headers .= "Reply-To: messages@brandtechbd.com" . "\r\n";
+
+if(mail($to, $subject, $message, $headers)){
+    echo "Mail sent successfully!";
+} else {
+    echo "Mail sending failed.";
+}
 });

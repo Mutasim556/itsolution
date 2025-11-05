@@ -130,7 +130,8 @@ class FrontEndController extends Controller
 
         $data_mail = [
             'name' => $data->name,
-            'email' => 'mutasimnaibsumit0@gmail.com',
+            // 'email' => 'mutasimincepta@gmail.com',
+            'email' => 'info@brandtechbd.com',
             'phone' => $data->phone,
             'user_message' => $data->message
         ];
@@ -138,7 +139,7 @@ class FrontEndController extends Controller
         Mail::send(['html' => 'frontend.pages.mail.message_mail'], $data_mail, function ($mail) use ($data_mail) {
             $mail->to($data_mail['email'], $data_mail['name'])
                 ->subject("Contact Messages - " . env('APP_FRONTEND_NAME', 'TEST'))
-                ->from('info@brandtechbd.com', 'Brandtech');
+                ->from('messages@brandtechbd.com', 'Brandtech');
         });
 
 
@@ -227,5 +228,9 @@ class FrontEndController extends Controller
         } else {
             return response()->view('errors.frontend.404', ['message' => __('admin_local.We are not able to find this blog.Please select our projects from the menu.')], 404);
         }
+    }
+
+    public function wings(){
+         return view('frontend.pages.wing');
     }
 }

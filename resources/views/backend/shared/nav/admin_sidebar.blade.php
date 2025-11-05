@@ -130,10 +130,22 @@
                             href="{{ route('admin.pages.project.index') }}">{{ __('admin_local.Projects') }}</a>
                     </li>
                 @endif
+                @if (hasPermission(['our-project-index']))
+                    <li>
+                        <a class="sidebar-link"
+                            href="{{ route('admin.pages.our-projects.index') }}">{{ __('admin_local.Our Projects') }}</a>
+                    </li>
+                @endif
                 @if (hasPermission(['partner-index']))
                     <li>
                         <a class="sidebar-link"
                             href="{{ route('admin.pages.partner.index') }}">{{ __('admin_local.Brands') }}</a>
+                    </li>
+                @endif
+                @if (hasPermission(['wings-index']))
+                    <li>
+                        <a class="sidebar-link"
+                            href="{{ route('admin.pages.wings.index') }}">{{ __('admin_local.Our Wings') }}</a>
                     </li>
                 @endif
                 @if (hasPermission(['country-index', 'public-diplomacy-index']))

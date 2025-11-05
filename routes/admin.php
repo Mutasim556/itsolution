@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\Localization\ChangeLanguageController;
 use App\Http\Controllers\Admin\Localization\LanguageController;
 use App\Http\Controllers\Admin\LogoIconController;
 use App\Http\Controllers\Admin\MembersOfController;
+use App\Http\Controllers\Admin\OurProjectController;
 use App\Http\Controllers\Admin\PartnerController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\PublicDiplomacyController;
@@ -21,8 +22,10 @@ use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\Settings\MaintenanceModeController;
 use App\Http\Controllers\Admin\TeamController;
 use App\Http\Controllers\Admin\User\UserController;
+use App\Http\Controllers\Admin\WingsController;
 use App\Http\Controllers\Admin\WorkController;
 use App\Http\Controllers\Admin\WorkUpdatesController;
+use App\Models\Admin\OurProject;
 use Illuminate\Support\Facades\Route;
 use Stichoza\GoogleTranslate\GoogleTranslate;
 
@@ -171,6 +174,20 @@ Route::prefix('admin')->name('admin.')->group(function () {
                 Route::get('/update/status/{id}/{status}', 'updateStatus');
             });
             /** Members Of End */
+
+            /** Wings Start */
+            Route::resource('wings', WingsController::class)->except('create', 'show');
+            Route::controller(WingsController::class)->prefix('wings')->group(function () {
+                Route::get('/update/status/{id}/{status}', 'updateStatus');
+            });
+            /** Wings End */
+
+            /** Our Projects Start */
+            Route::resource('our-projects', OurProjectController::class)->except('create', 'show');
+            Route::controller(OurProjectController::class)->prefix('our-projects')->group(function () {
+                Route::get('/update/status/{id}/{status}', 'updateStatus');
+            });
+            /** Our Projects End */
 
             /** Blog Start */
             Route::resource('blog', BlogController::class)->except('create', 'show');

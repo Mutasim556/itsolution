@@ -5,7 +5,7 @@
 @push('css')
     <style>
         .ns-logo-section {
-            background-color: #313131;
+            background-color: #112337;
         }
 
         .ns-logo-link {

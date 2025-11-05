@@ -25,10 +25,10 @@
     <link rel="stylesheet" href="{{ asset('public/frontend/assets/css/nice-select.css') }}">
     <link rel="stylesheet" href="{{ asset('public/frontend/assets/css/meanmenu.css') }}">
     <link rel="stylesheet" href="{{ asset('public/frontend/assets/css/swipper.css') }}">
-    <link rel="stylesheet" href="{{ asset('public/frontend/assets/css/main.css?v=') . time() }}">
-    <link rel="stylesheet" href="{{ asset('public/frontend/assets/css/style.css?v=') . time() }}">
-    {{-- <link rel="stylesheet" href="{{ asset('public/frontend/assets/css/main.css') }}">
-    <link rel="stylesheet" href="{{ asset('public/frontend/assets/css/style.css') }}"> --}}
+    {{-- <link rel="stylesheet" href="{{ asset('public/frontend/assets/css/main.css?v=').time() }}">
+    <link rel="stylesheet" href="{{ asset('public/frontend/assets/css/style.css?v=').time() }}"> --}}
+    <link rel="stylesheet" href="{{ asset('public/frontend/assets/css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/frontend/assets/css/style.css') }}">
 
     <style>
         .ns-slide-pagination {
@@ -259,6 +259,26 @@
             display: inline-block;
             vertical-align: middle;
         }
+
+        #brandtech_logo {
+            width: 460px;
+            height: auto;
+            margin-left: 90px;
+        }
+
+        @media(max-width:601px) {
+            #brandtech_logo {
+                width: 100% !important;
+                height: auto !important;
+                margin-left: 0px !important;
+            }
+            .ns-header-logo{
+                width: 300px !important;
+            }
+            .ns-header-logo-img {
+                width: 210px !important;
+            }
+        }
     </style>
     @stack('css')
 </head>
@@ -310,8 +330,7 @@
                     <div class="ns-header-logo-img">
                         <a href="{{ url('/') }}"><img
                                 src="{{ asset($logo ? $logo->main_site_header_logo : 'public/frontend/assets/img/logo/logo.png') }}"
-                                style="width: 250px; height: auto; margin-left:90px;"
-                                alt="Not Found"></a>
+                                alt="Not Found" id="brandtech_logo"></a>
                     </div>
                 </div>
                 <div class="ns-header-right">
@@ -346,6 +365,8 @@
                                         </ul>
                                     </li>
                                     <li><a href="{{ route('frontEnd.brands') }}">{{ __('admin_local.Brands') }}</a>
+                                    </li>
+                                    <li><a href="{{ route('frontEnd.wings') }}">{{ __('admin_local.Our Wings') }}</a>
                                     </li>
                                     <li><a href="{{ route('frontEnd.teamMembers') }}">{{ __('admin_local.Team') }}</a>
                                     </li>
@@ -409,15 +430,18 @@
                             </div>
                             <h3 class="ns-footer-widget-title"></h3>
                             <div class="ns-footer-widget-contact mb-3">
-                                <p><strong>BrandTech Solutions Ltd.</strong></p>
-                                <p>{{ __('admin_local.Address') }} : {{ $contact->address }}</p>
+                                <p style="font-size:21px;"><strong>Brandtech Solutions Ltd.</strong></p>
+                                <p style="font-size:21px;">{{ __('admin_local.Address') }} : {{ $contact->address }}
+                                </p>
                                 <div class="ns-footer-widget-contact-info mb-15">
-                                    <span>{{ __('admin_local.Phone') }}:<a
-                                            href="tel:{{ $contact->phone }}">{{ $contact->phone }}</a></span>
+                                    <span style="font-size:21px;">{{ __('admin_local.Phone') }}:<a
+                                            href="tel:{{ $contact->phone }}"
+                                            style="font-size:21px;">{{ $contact->phone }}</a></span>
                                 </div>
                                 <div class="ns-footer-widget-contact-info">
-                                    <span>{{ __('admin_local.Email') }}:<a
-                                            href="mailto:{{ $contact->email }}">{{ $contact->email }}</a></span>
+                                    <span style="font-size:21px;">{{ __('admin_local.Email') }}:<a
+                                            href="mailto:{{ $contact->email }}"
+                                            style="font-size:21px;">{{ $contact->email }}</a></span>
                                 </div>
                             </div>
 
@@ -458,25 +482,23 @@
                     </div>
                     <div class="col-xl-3 col-lg-5 col-md-6">
                         <div class="ns-footer-widget mb-40 text-center">
-                            <p class="ns-footer-widget-text">{{ __('admin_local.CONNECT') }}</p>
+                            <p class="ns-footer-widget-text" style="font-size:21px;">{{ __('admin_local.CONNECT') }}
+                            </p>
                             <div class="ns-footer-social">
                                 @if ($contact && $contact->facebook)
                                     <a target="__blank" href="{{ $contact->facebook }}"><i
                                             class="fab fa-facebook-f"></i></a>
                                 @endif
-
                                 @if ($contact && $contact->twitter)
                                     <a target="__blank" href="{{ $contact->twitter }}">
                                         <img src="{{ asset('public/frontend/assets/img/x2.svg') }}" alt="X"
                                             style="width: 18px; height: 18px; vertical-align: middle; filter: brightness(0) invert(1);">
                                     </a>
                                 @endif
-
                                 @if ($contact && $contact->linkedin)
                                     <a target="__blank" href="{{ $contact->linkedin }}"><i
                                             class="fab fa-linkedin-in"></i></a>
                                 @endif
-
                                 @if ($contact && $contact->youtube)
                                     <a target="__blank" href="{{ $contact->youtube }}"><i
                                             class="fab fa-youtube"></i></a>
@@ -488,7 +510,6 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -498,7 +519,7 @@
                     <div class="col-xl-12 col-md-12 col-sm-12 text-center">
                         <div class="ns-footer-copyright-text">
                             <p>Copyright
-                                &copy;<span>{{ $aboutus ? $aboutus->company_name : env('APP_FRONTEND_NAME') }}</span>
+                                &copy;<span>Brandtech Solutions Ltd.</span>
                                 all
                                 rights reserved.</p>
                         </div>
@@ -523,7 +544,8 @@
     <script src="{{ asset('public/frontend/assets/js/jquery.magnific-popup.min.js') }}"></script>
     <script src="{{ asset('public/frontend/assets/js/odometer.min.js') }}"></script>
     <script src="{{ asset('public/frontend/assets/js/appear.min.js') }}"></script>
-    <script src="{{ asset('public/frontend/assets/js/main.js?v=') . time() }}"></script>
+    <script src="{{ asset('public/frontend/assets/js/main.js') }}"></script>
+    {{-- <script src="{{ asset('public/frontend/assets/js/main.js?v=').time() }}"></script> --}}
     <script>
         window.addEventListener("load", function() {
             const preloader = document.getElementById("preloader");

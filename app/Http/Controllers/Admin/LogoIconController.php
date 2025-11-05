@@ -89,7 +89,8 @@ class LogoIconController extends Controller
             $imageName = 'mainSiteHeaderLogo' . time() . '.' . $image->getClientOriginalExtension();
             $manager = new ImageManager(new Driver());
             $imageName  =  $dir . '/' . $imageName;
-            $manager->read($image)->resize(193, 46)->save($imageName);
+            $manager->read($image)->save($imageName,100);
+            // $manager->read($image)->resize(193, 46)->save($imageName);
             $updateLogo->main_site_header_logo = $imageName;
         }
         if($data->main_site_footer_logo){
@@ -97,7 +98,8 @@ class LogoIconController extends Controller
             $imageName = 'mainSiteFooterLogo' . time() . '.' . $image->getClientOriginalExtension();
             $manager = new ImageManager(new Driver());
             $imageName  =  $dir . '/' . $imageName;
-            $manager->read($image)->resize(165, 40)->save($imageName);
+            $manager->read($image)->save($imageName,100);
+            // $manager->read($image)->resize(165, 40)->save($imageName);
             $updateLogo->main_site_footer_logo = $imageName;
         }
         if($data->main_site_icon){

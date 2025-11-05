@@ -8,43 +8,157 @@
             background: #f1f0ef !important;
         }
 
-        
+        .ns-slider-area {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ns-slider-single {
+            background-size: cover !important;
+            background-position: center center !important;
+            background-repeat: no-repeat !important;
+            width: 100%;
+            height: 110vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+
+        .ns-slider-content {
+            position: relative;
+            z-index: 2;
+            color: #fff;
+        }
+
+        .ns-slider-title {
+            font-size: 3rem;
+            font-weight: 700;
+            line-height: 1.2;
+            color: #fff;
+        }
+
+        .ns-slider-text {
+            font-size: 1.1rem;
+            margin-top: 1rem;
+            color: #f1f1f1;
+        }
+
+        .ns-theme2-btn {
+            background: #ff6b00;
+            color: #fff;
+            padding: 12px 25px;
+            border-radius: 30px;
+            display: inline-block;
+            transition: 0.3s;
+        }
+
+        .ns-theme2-btn:hover {
+            background: #e95c00;
+            color: #fff;
+        }
+
+        .ns-play-btn {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            border: 2px solid #fff;
+            color: #fff;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 15px;
+            transition: 0.3s;
+        }
+
+        .ns-play-btn:hover {
+            background: #ff6b00;
+            border-color: #ff6b00;
+        }
+
+        /* Dots (pagination) styling */
+        .swiper-pagination-bullet {
+            background: #fff;
+            opacity: 0.6;
+            width: 10px;
+            height: 10px;
+            margin: 0 6px !important;
+            transition: all 0.3s ease;
+        }
+
+        .swiper-pagination-bullet-active {
+            background: #ff6b00;
+            opacity: 1;
+            transform: scale(1.2);
+        }
+
+        .swiper-pagination {
+            bottom: 30px !important;
+            text-align: center;
+        }
+
+        @media(max-width:601px) {
+            .ns-slider-single {
+                background-size: cover !important;
+                background-position: center center !important;
+                background-repeat: no-repeat !important;
+                width: 100%;
+                height: 50vh;
+                /* 50% of screen height */
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: relative;
+                overflow: hidden;
+                /* prevent overflow issues */
+            }
+        }
     </style>
 @endpush
 @section('content')
     <!-- banner area start -->
-    <section class="ns-banner-area">
-        <div class="swiper-container slider-active">
+    <section class="ns-slider-area relative">
+        <div class="swiper-container ns-slider-active">
             <div class="swiper-wrapper">
                 @php
                     $sliders = \App\Models\Admin\HomepageSilder::where([['status', 1], ['delete', 0]])->get();
                 @endphp
                 @foreach ($sliders as $slider)
                     <div class="swiper-slide">
-                        <div class="ns-banner-single bg-default"
-                            data-background="{{ asset('public/' . $slider->slider_image) }}">
+                        <div class="ns-slider-single"
+                            style="background-image: url('{{ asset('public/' . $slider->slider_image) }}');">
+                            {{-- <div class="ns-slider-overlay"></div> --}}
                             <div class="container">
                                 <div class="row">
-                                    <div class="col-xl-7 ">
-                                        <div class="ns-banner-content">
-                                            @if ($slider->slider_title != '')
-                                                <h2 class="ns-banner-content-title">
+                                    <div class="col-xl-7 col-lg-8 col-md-10">
+                                        <div class="ns-slider-content">
+                                            @if ($slider->slider_title)
+                                                <h2 class="ns-slider-title animate__animated animate__fadeInDown">
                                                     {{ $slider->slider_title }}
                                                 </h2>
                                             @endif
-                                            @if ($slider->slider_short_description != '')
-                                                <p>{{ $slider->slider_short_description }}</p>
+
+                                            @if ($slider->slider_short_description)
+                                                <p
+                                                    class="ns-slider-text animate__animated animate__fadeInUp animate__delay-1s">
+                                                    {{ $slider->slider_short_description }}
+                                                </p>
                                             @endif
-                                            <div class="ns-banner-action-btn">
-                                                @if ($slider->slider_link != '')
+
+                                            <div class="ns-slider-btns mt-4">
+                                                @if ($slider->slider_link)
                                                     <a href="{{ $slider->slider_link }}"
-                                                        class="ns-header-btn ns-theme-btn">{{ $slider->slider_button_text }}
-                                                        <i class="fal fa-arrow-right"></i></a>
+                                                        class="ns-theme-btn animate__animated animate__fadeInUp animate__delay-2s">
+                                                        {{ $slider->slider_button_text ?? 'Learn More' }}
+                                                        <i class="fal fa-arrow-right"></i>
+                                                    </a>
                                                 @endif
-                                                @if ($slider->slider_video != '')
+
+                                                @if ($slider->slider_video)
                                                     <a href="https://www.youtube.com/watch?v={{ $slider->slider_video }}"
-                                                        onclick="return false;" class="ns-play-btn popup-video"><i
-                                                            class="fas fa-play"></i></a>
+                                                        class="ns-play-btn popup-video animate__animated animate__fadeInUp animate__delay-3s">
+                                                        <i class="fas fa-play"></i>
+                                                    </a>
                                                 @endif
                                             </div>
                                         </div>
@@ -55,9 +169,14 @@
                     </div>
                 @endforeach
             </div>
-            <div class="swiper-pagination ns-slide-pagination" style="margin-top: -20px;"></div>
+
+            <!-- Dots only -->
+            <div class="swiper-pagination"></div>
         </div>
     </section>
+
+
+
 
     @php
         $services = \App\Models\Admin\Service::where([['status', 1], ['delete', 0]])
@@ -218,7 +337,36 @@
             </div>
         </div>
     @endif
-
+    @php
+        $wings = \App\Models\Admin\Wing::where([['delete', 0], ['status', 1]])->get();
+    @endphp
+    @if (count($wings) > 0)
+        <section class="py-5 bg-light">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="ns-section mb-50 text-center">
+                            <h2 class="ns-section-title mb-0" style="font-size:25px;">
+                                {{ __('admin_local.Our Wings') }}
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row g-4 justify-content-center align-items-center">
+                    @foreach ($wings as $wing)
+                        <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+                            <a target="__blank" href="{{ $wing->link ?? '#' }}">
+                                <div class="news-logo-box">
+                                    <img src="{{ asset($wing->logo ?? 'public/frontend/assets/img/pub_dip/bbc.png') }}"
+                                        style="height: 100%" class="img-fluid" alt="BBC">
+                                </div>
+                            </a>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </section>
+    @endif
     @php
         $contact = \App\Models\Admin\Contact::first();
     @endphp
@@ -258,7 +406,7 @@
                 <div class="col-12">
                     <div class="ns-section mb-50 text-center">
                         <h2 class="ns-section-title mb-0" style="font-size:25px;">
-                            {{ __('admin_local.COUNTRY REPRESENTATION') }}
+                            {{ __('admin_local.Public Diplomacy') }}
                         </h2>
                     </div>
                 </div>
@@ -276,4 +424,37 @@
         </div>
     </section>
 
+
 @endsection
+
+@push('js')
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const sliderContainer = document.querySelector(".ns-slider-active .swiper-wrapper");
+            const slides = sliderContainer.querySelectorAll(".swiper-slide");
+
+            // 👇 Duplicate if only one slide (so it keeps sliding)
+            if (slides.length === 1) {
+                const clone = slides[0].cloneNode(true);
+                sliderContainer.appendChild(clone);
+            }
+
+            // ✅ Initialize Swiper
+            new Swiper(".ns-slider-active", {
+                loop: true,
+                autoplay: {
+                    delay: 5000, // ⏱ 5 seconds
+                    disableOnInteraction: false,
+                    reverseDirection: false, // false = right → left
+                },
+                pagination: {
+                    el: ".swiper-pagination",
+                    clickable: true,
+                },
+                speed: 1000, // smooth transition
+                direction: "horizontal", // 👈 ensures horizontal sliding
+                effect: "slide", // 👈 slide instead of fade
+            });
+        });
+    </script>
+@endpush

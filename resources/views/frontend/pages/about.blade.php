@@ -157,29 +157,33 @@
         </section>
     @endif
     @php
-        $countries = \App\Models\Admin\CountryRepresentation::where([['delete', 0], ['status', 1]])->get();
+        $wings = \App\Models\Admin\Wing::where([['delete', 0], ['status', 1]])->get();
     @endphp
-    <section class="py-5 bg-light pb-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="ns-section mb-50 text-center">
-                        <h2 class="ns-section-title mb-0" style="font-size:25px;">
-                            {{ __('admin_local.COUNTRY REPRESENTATION') }}
-                        </h2>
-                    </div>
-                </div>
-            </div>
-            <div class="row g-4 justify-content-center align-items-center">
-                @foreach ($countries as $country)
-                    <div class="col-6 col-sm-4 col-md-3 col-lg-2">
-                        <div class="news-logo-box">
-                            <img src="{{ asset($country->logo ?? 'public/frontend/assets/img/pub_dip/bbc.png') }}"
-                                style="height: 100%" class="img-fluid" alt="BBC">
+    @if (count($wings) > 0)
+        <section class="py-5 bg-light">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="ns-section mb-50 text-center">
+                            <h2 class="ns-section-title mb-0" style="font-size:25px;">
+                                {{ __('admin_local.Our Wings') }}
+                            </h2>
                         </div>
                     </div>
-                @endforeach
+                </div>
+                <div class="row g-4 justify-content-center align-items-center">
+                    @foreach ($wings as $wing)
+                        <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+                            <a target="__blank" href="{{ $wing->link ?? '#' }}">
+                                <div class="news-logo-box">
+                                    <img src="{{ asset($wing->logo ?? 'public/frontend/assets/img/pub_dip/bbc.png') }}"
+                                        style="height: 100%" class="img-fluid" alt="BBC">
+                                </div>
+                            </a>
+                        </div>
+                    @endforeach
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+    @endif
 @endsection

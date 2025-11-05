@@ -142,5 +142,17 @@ class PermissionSeeder extends Seeder
         // Permission::create(['guard_name'=>'admin','name'=>'blog-create','group_name'=>'Blog']);
         // Permission::create(['guard_name'=>'admin','name'=>'blog-update','group_name'=>'Blog']);
         // Permission::create(['guard_name'=>'admin','name'=>'blog-delete','group_name'=>'Blog']);
+
+        //permission for Wings
+        // Permission::create(['guard_name'=>'admin','name'=>'wings-index','group_name'=>'Wings']);
+        // Permission::create(['guard_name'=>'admin','name'=>'wings-create','group_name'=>'Wings']);
+        // Permission::create(['guard_name'=>'admin','name'=>'wings-update','group_name'=>'Wings']);
+        // Permission::create(['guard_name'=>'admin','name'=>'wings-delete','group_name'=>'Wings']);
+
+        //permission for Our Projects
+        // Permission::create(['guard_name'=>'admin','name'=>'our-project-index','group_name'=>'Our Projects']);
+        // Permission::create(['guard_name'=>'admin','name'=>'our-project-create','group_name'=>'Our Projects']);
+        // Permission::create(['guard_name'=>'admin','name'=>'our-project-update','group_name'=>'Our Projects']);
+        // Permission::create(['guard_name'=>'admin','name'=>'our-project-delete','group_name'=>'Our Projects']);
     }
 }

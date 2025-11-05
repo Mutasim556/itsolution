@@ -188,7 +188,7 @@
                                 </div>
                                 <div>
                                     <h5>Address</h5>
-                                    <p><strong>BrandTech Solutions Ltd.</strong></p>
+                                    <p><strong>Brandtech Solutions Ltd.</strong></p>
                                     <p>{{ $contact->address }}</p>
                                 </div>
                             </div>
